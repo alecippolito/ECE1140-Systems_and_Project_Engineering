@@ -1,11 +1,11 @@
-#include "ctc.h"
+#include "system_centraltimer.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    CTC w;
-    w.show();
+    System_CentralTimer CT;
+    CT.show();
     return a.exec();
 }

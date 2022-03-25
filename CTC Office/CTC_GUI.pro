@@ -9,29 +9,29 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    choosedispatch.cpp \
     chooseline.cpp \
     customdispatch.cpp \
     main.cpp \
     ctc.cpp \
+    system_centraltimer.cpp \
     trackedit.cpp \
     trainedit.cpp \
     updateschedule.cpp
 
 HEADERS += \
-    choosedispatch.h \
     chooseline.h \
     ctc.h \
     customdispatch.h \
+    system_centraltimer.h \
     trackedit.h \
     trainedit.h \
     updateschedule.h
 
 FORMS += \
-    choosedispatch.ui \
     chooseline.ui \
     ctc.ui \
     customdispatch.ui \
+    system_centraltimer.ui \
     trackedit.ui \
     trainedit.ui \
     updateschedule.ui
