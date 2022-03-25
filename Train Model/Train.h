@@ -7,7 +7,7 @@
 class MainWindow;
 //Singular instance of a train (Object implementation of a train)
 
-
+//yo
 class Train{
 
     public:
