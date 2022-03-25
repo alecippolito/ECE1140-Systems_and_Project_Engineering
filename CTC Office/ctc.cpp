@@ -5,6 +5,8 @@
 #include <QFile>
 #include <QTextStream>
 
+//test to see if Github will read this
+
 CTC::CTC(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CTC)
