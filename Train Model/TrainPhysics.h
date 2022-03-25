@@ -1,6 +1,5 @@
 #ifndef TRAINPHYSICS_H
 #define TRAINPHYSICS_H
-#include "Train.h"
 
 
 class TrainPhysics{
@@ -8,18 +7,16 @@ class TrainPhysics{
         int numCars;
         double mass;
         double length;
+        double width;
+        double height;
         double currentVelocity;
-        
+        double power;
+        double acceleration;
 
-    TrainPhysics(int numCars, Block *block);
+    TrainPhysics(int numCars/*, Block *block*/);
     double calculateVelocity();
 
+    void setPower(double);
+    double getPower();
 };
-
-
-
-
-
-
-
-#endif
+#endif // TRAINPHYSICS_H
