@@ -1,0 +1,15 @@
+debug/chooseline.o
+debug/customdispatch.o
+debug/main.o
+debug/ctc.o
+debug/system_centraltimer.o
+debug/trackedit.o
+debug/trainedit.o
+debug/updateschedule.o
+debug/moc_chooseline.o
+debug/moc_ctc.o
+debug/moc_customdispatch.o
+debug/moc_system_centraltimer.o
+debug/moc_trackedit.o
+debug/moc_trainedit.o
+debug/moc_updateschedule.o
