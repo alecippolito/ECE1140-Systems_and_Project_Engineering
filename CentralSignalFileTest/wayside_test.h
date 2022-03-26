@@ -15,11 +15,11 @@ public:
     explicit Wayside_test(QWidget *parent = nullptr);
     ~Wayside_test();
 
-private slots:
-    void receiveTrainData(int, double);
-
 private:
     Ui::Wayside_test *ui;
+
+private slots:
+    void receiveTrainData(int, double);
 };
 
 #endif // WAYSIDE_TEST_H

@@ -9,19 +9,18 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    central.cpp \
     ctc_test.cpp \
     main.cpp \
-    signals.cpp \
     wayside_test.cpp
 
 HEADERS += \
+    central.h \
     ctc_test.h \
-    signals.h \
     wayside_test.h
 
 FORMS += \
     ctc_test.ui \
-    signals.ui \
     wayside_test.ui
 
 # Default rules for deployment.

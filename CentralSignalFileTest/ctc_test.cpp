@@ -12,3 +12,10 @@ CTC_test::~CTC_test()
 {
     delete ui;
 }
+
+void CTC_test::on_pushButton_clicked()
+{
+    //when the button is pressed, emit the signal
+    emit sendTrainData(80,40);
+}
+
