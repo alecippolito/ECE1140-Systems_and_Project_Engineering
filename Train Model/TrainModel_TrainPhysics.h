@@ -1,5 +1,5 @@
-#ifndef TRAINPHYSICS_H
-#define TRAINPHYSICS_H
+#ifndef TRAINMODEL_TRAINPHYSICS_H
+#define TRAINMODEL_TRAINPHYSICS_H
 #include "TrackModel_Block.h"
 
 class TrainPhysics{
@@ -26,6 +26,7 @@ class TrainPhysics{
         bool signalPickupFailure = false;
         Block *block;
         double distanceToBlockEnd;
+        bool atEndOfBlock = false;
 
     TrainPhysics(int numCars, Block *block);
     double calculateVelocity();

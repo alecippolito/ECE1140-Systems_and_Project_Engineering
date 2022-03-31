@@ -71,7 +71,7 @@ void TrainPhysics::setPower(double num)
     double distTravelled = getDistanceTravelledInBlock();
     if(distTravelled >= block->blockLength)
     {
-
+        atEndOfBlock = true;
     }
 
 }

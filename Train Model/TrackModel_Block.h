@@ -1,5 +1,5 @@
-#ifndef BLOCK_H
-#define BLOCK_H
+#ifndef TRACKMODEL_BLOCK_H
+#define TRACKMODEL_BLOCK_H
 
 #include <string>
 

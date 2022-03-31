@@ -1,5 +1,5 @@
-#ifndef TRAIN_H
-#define TRAIN_H
+#ifndef TRAINMODEL_TRAIN_H
+#define TRAINMODEL_TRAIN_H
 #include <string>
 #include <chrono>
 #include "TrackModel_Block.h"
