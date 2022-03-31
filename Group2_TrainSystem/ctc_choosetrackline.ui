@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CTC_MainWindow</class>
- <widget class="QDialog" name="CTC_MainWindow">
+ <class>CTC_ChooseTrackLine</class>
+ <widget class="QDialog" name="CTC_ChooseTrackLine">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>953</width>
-    <height>594</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CTC</string>
+   <string>Choose Line</string>
   </property>
  </widget>
  <resources/>
