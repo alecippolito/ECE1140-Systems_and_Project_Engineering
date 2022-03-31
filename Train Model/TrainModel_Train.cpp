@@ -1,21 +1,30 @@
-#include "Train.h"
+#include "TrainModel_Train.h"
 #include "TrainModelUI.h"
 
-    Train::Train(int num)
+    Train::Train(int num, Block *b)
         {
             trainUI = new MainWindow();
             trainUI->updateTrain(this);
-            trainMetrics = new TrainPhysics(num);       //later add blocks
+            trainUI->show();
+            trainMetrics = new TrainPhysics(num, b);       //later add blocks
             updateUI();
         }
 
-
+    //no destructor bc unnecessary
+    /*
+    Train::~Train()
+    {
+        delete trainUI;
+        delete trainMetrics;
+    }
+    */
 
     void Train::setPower(double p)
     {
         trainMetrics->setPower(p);
         updateUI();
     }
+
     void Train::setTemperature(double t)
     {
         temperature = t;
@@ -104,12 +113,17 @@
     {
         passengerBrake = f;
     }
+
+    void Train::updateBlock(Block* b)
+    {
+        trainMetrics->setBlock(b);
+    }
     void Train::updateUI()
     {
-        trainUI->updateNumCars(numCars);
-        trainUI->updateLength(length);
-        trainUI->updatePassengers(passengerCount);
-        trainUI->updateCrewCount(crewCount);
+        trainUI->updateNumCars(trainMetrics->numCars);
+        trainUI->updateLength(trainMetrics->length);
+        trainUI->updatePassengers(trainMetrics->passengers);
+        trainUI->updateCrewCount(trainMetrics->crewMembers);
         trainUI->updateWeight(trainMetrics->mass);
         trainUI->updateLeftDoors(leftDoors);
         trainUI->updateRightDoors(rightDoors);
@@ -117,10 +131,10 @@
         trainUI->updateTemperature(temperature);
         trainUI->updateIntercom(announcements);
         trainUI->updateDestination(destination);
-        //trainUI->updateCurrentBlock(Block);
+        trainUI->updateCurrentBlock(trainMetrics->block);
         //trainUI->updateNextBlock(Block);
-        trainUI->updatePower(power);
-        trainUI->updateVelocity(currentVelocity);
+        trainUI->updatePower(trainMetrics->power);
+        trainUI->updateVelocity(trainMetrics->currentVelocity);
         trainUI->updateAcceleration(trainMetrics->acceleration);
         trainUI->updateBrakeFailureStatus(brakeFailure);
         trainUI->updateSignalPickupFailureStatus(signalPickupFailure);

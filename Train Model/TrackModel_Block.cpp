@@ -1,4 +1,4 @@
-#include "Block.h"
+#include "TrackModel_Block.h"
 
 bool Block::isOccupied()
 {
@@ -59,4 +59,9 @@ void Block::setTo(std::string s){
 
 void Block::setFrom(std::string s){
     from = s;
+}
+
+double Block::getBlockLength()
+{
+    return blockLength;
 }

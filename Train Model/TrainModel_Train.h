@@ -1,13 +1,14 @@
-#ifndef TRAIN_H
-#define TRAIN_H
+#ifndef TRAINMODEL_TRAIN_H
+#define TRAINMODEL_TRAIN_H
 #include <string>
 #include <chrono>
-#include "Block.h"
-#include "TrainPhysics.h"
+#include "TrackModel_Block.h"
+#include "TrainModel_TrainPhysics.h"
 class MainWindow;
+
 //Singular instance of a train (Object implementation of a train)
 
-//yo
+
 class Train{
 
     public:
@@ -32,15 +33,16 @@ class Train{
             bool rightDoors;
             bool lightsOn;
             bool available;
-            //Block *currentBlock;
+            Block *currentBlock;
             bool engineFailure = false;
             bool signalPickupFailure = false;
             bool brakeFailure = false;
             bool passengerBrake = false;
             TrainPhysics *trainMetrics;
             MainWindow *trainUI;
-    Train(int);
 
+    Train(int, Block *b);
+    //~Train();
     void updateUI();
     void setPower(double);
     void setTemperature(double);
@@ -48,6 +50,7 @@ class Train{
     void setDestination(std::string);
     void setLeftDoors(bool);
     void setRightDoors(bool);
+    void updateBlock(Block *b);
     void lights_On();
     void lightsOff();
     void setAvailable(bool);

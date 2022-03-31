@@ -13,19 +13,22 @@ SOURCES += \
     ctc_dispatchtrain.cpp \
     ctc_mainwindow.cpp \
     main.cpp \
-    system_centraltimer_connector.cpp
+    system_centraltimer_connector.cpp \
+    TrainModelUI.cpp
 
 HEADERS += \
     ctc_choosetrackline.h \
     ctc_dispatchtrain.h \
     ctc_mainwindow.h \
-    system_centraltimer_connector.h
+    system_centraltimer_connector.h \
+    TrainModelUI.h
 
 FORMS += \
     ctc_choosetrackline.ui \
     ctc_dispatchtrain.ui \
     ctc_mainwindow.ui \
-    system_centraltimer_connector.ui
+    system_centraltimer_connector.ui \
+    TrainModelUI.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
