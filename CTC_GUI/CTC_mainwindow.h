@@ -1,5 +1,5 @@
-#ifndef CTC_H
-#define CTC_H
+#ifndef CTC_MAINWINDOW_H
+#define CTC_MAINWINDOW_H
 
 #include <QMainWindow>
 #include "choosedispatch.h"
@@ -36,6 +36,8 @@ class CTC : public QMainWindow
 public:
     CTC(QWidget *parent = nullptr);
     ~CTC();
+    QVector<TrackBlock> getGreenLine();
+    QVector<TrackBlock> getRedLine();
 
 private slots:
     void on_actionDispatch_Train_triggered();
@@ -75,8 +77,6 @@ private:
     QVector<int> stationAuthoritiesGreen;
     QVector<double> stationDistancesGreen;
     QVector<double> stationDistancesRed;
-    //QVector<double> averageStationSpeedLimitRed;
-    //QVector<double> averageStationSpeedLimitGreen;
     QString spaces(int);
     bool redline;
     int number;
@@ -85,4 +85,4 @@ private:
     int trackSetGreen;
     int setSize;
 };
-#endif // CTC_H
+#endif // CTC_MAINWINDOW_H

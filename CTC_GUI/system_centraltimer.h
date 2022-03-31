@@ -2,7 +2,7 @@
 #define SYSTEM_CENTRALTIMER_H
 
 #include <QDialog>
-#include "ctc.h"
+#include "CTC_mainwindow.h"
 
 namespace Ui {
 class System_CentralTimer;
