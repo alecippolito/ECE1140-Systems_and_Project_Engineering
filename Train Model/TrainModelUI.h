@@ -7,7 +7,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
-#include "TrainModel_Train.h"
+#include "Train.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -43,10 +43,11 @@ public:
     void updateEmergencyBrakeStatus(bool);
 
 private slots:
-    void on_actionBrakeFailureButton_clicked();
-    void on_actionEngineFailureButton_clicked();
-    void on_actionSignalPickupFailureButton_clicked();
-    void on_actionEmergencyBrakeButton_clicked();
+    void on_BrakeFailureButton_clicked();
+    void on_EngineFailureButton_clicked();
+    void on_SignalPickupFailureButton_clicked();
+    void on_EmergencyBrakeButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Train *train;

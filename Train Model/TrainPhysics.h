@@ -1,6 +1,6 @@
-#ifndef TRAINMODEL_TRAINPHYSICS_H
-#define TRAINMODEL_TRAINPHYSICS_H
-#include "TrackModel_Block.h"
+#ifndef TRAINPHYSICS_H
+#define TRAINPHYSICS_H
+#include "Block.h"
 
 class TrainPhysics{
     public:

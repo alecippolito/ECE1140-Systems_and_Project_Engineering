@@ -1,9 +1,9 @@
-#ifndef TRAINMODEL_TRAIN_H
-#define TRAINMODEL_TRAIN_H
+#ifndef TRAIN_H
+#define TRAIN_H
 #include <string>
 #include <chrono>
-#include "TrackModel_Block.h"
-#include "TrainModel_TrainPhysics.h"
+#include "Block.h"
+#include "TrainPhysics.h"
 class MainWindow;
 
 //Singular instance of a train (Object implementation of a train)
@@ -40,6 +40,7 @@ class Train{
             bool passengerBrake = false;
             TrainPhysics *trainMetrics;
             MainWindow *trainUI;
+            bool atEndOfBlock;
 
     Train(int, Block *b);
     //~Train();

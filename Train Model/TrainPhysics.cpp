@@ -1,4 +1,4 @@
-#include "TrainModel_TrainPhysics.h"
+#include "TrainPhysics.h"
 
 TrainPhysics::TrainPhysics(int num, Block* b)
 {

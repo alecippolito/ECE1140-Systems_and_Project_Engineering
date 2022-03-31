@@ -1,4 +1,4 @@
-#include "TrainModel_Train.h"
+#include "Train.h"
 #include "TrainModelUI.h"
 
     Train::Train(int num, Block *b)
@@ -22,6 +22,7 @@
     void Train::setPower(double p)
     {
         trainMetrics->setPower(p);
+        atEndOfBlock = trainMetrics->atEndOfBlock;
         updateUI();
     }
 
@@ -34,26 +35,32 @@
     {
         destination = d;
     }
+
     void Train::setLeftDoors(bool d)
     {
         leftDoors = d;
     }
+
     void Train::setRightDoors(bool d)
     {
         rightDoors = d;
     }
+
     void Train::lights_On()
     {
         lightsOn = true;
     }
+
     void Train::lightsOff()
     {
         lightsOn = false;
     }
+
     void Train::setAvailable(bool b)
     {
         available = b;
     }
+
     void Train::setAnnouncement(std::string a)
     {
         announcements = a;
@@ -63,34 +70,42 @@
     {
         return currentVelocity;
     }
+
     double Train::getPower()
     {
         return trainMetrics->getPower();
     }
+
     double Train::getTemperature()
     {
         return temperature;
     }
+
     double Train::getSpeed()
     {
         return trainMetrics->currentVelocity;
     }
+
     std::string Train::getDestination()
     {
         return destination;
     }
+
     bool Train::getAvailable()
     {
         return available;
     }
+
     bool Train::getLeftDoors()
     {
         return leftDoors;
     }
+
     bool Train::getRightDoors()
     {
         return rightDoors;
     }
+
     std::string Train::getAnnouncement()
     {
         return announcements;
@@ -100,10 +115,12 @@
     {
         engineFailure = f;
     }
+
     void Train::setFailureSignalPickup(bool f)
     {
         signalPickupFailure = f;
     }
+
     void Train::setFailureBrake(bool f)
     {
         brakeFailure = f;
@@ -118,6 +135,7 @@
     {
         trainMetrics->setBlock(b);
     }
+
     void Train::updateUI()
     {
         trainUI->updateNumCars(trainMetrics->numCars);

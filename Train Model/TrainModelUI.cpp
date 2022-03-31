@@ -20,22 +20,22 @@ void MainWindow::updateTrain(Train *t)
 }
 
 
-void MainWindow::on_actionBrakeFailureButton_clicked()
+void MainWindow::on_BrakeFailureButton_clicked()
 {
     train->setFailureBrake(true);
 }
 
-void MainWindow::on_actionEngineFailureButton_clicked()
+void MainWindow::on_EngineFailureButton_clicked()
 {
     train->setFailureEngine(true);
 }
 
-void MainWindow::on_actionSignalPickupFailureButton_clicked()
+void MainWindow::on_SignalPickupFailureButton_clicked()
 {
     train->setFailureSignalPickup(true);
 }
 
-void MainWindow::on_actionEmergencyBrakeButton_clicked()
+void MainWindow::on_EmergencyBrakeButton_clicked()
 {
     train->setPassengerBrake(true);
 }
