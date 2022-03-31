@@ -2,6 +2,8 @@
 
 #include <QApplication>
 
+//the main file where the Central Timer UI is called
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
