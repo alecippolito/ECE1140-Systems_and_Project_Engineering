@@ -1,3 +1,6 @@
+#ifndef BLOCK_H
+#define BLOCK_H
+
 #include <string>
 
 class Block {
@@ -15,7 +18,7 @@ class Block {
             int timeToTravelBlock;
             Block *previousBlock, *nextBlock1, *nextBlock2;    //nextBlock2 only if track has 2 choices (Switch is active)
             std::string to, from;
-            
+
 
 
             Block(int num){
@@ -38,6 +41,8 @@ class Block {
             void setTo(std::string);
             void setFrom(std::string);
 
+            double getBlockLength();
+
 
 
 
@@ -48,3 +53,4 @@ class Block {
 
 
 };
+#endif // BLOCK_H

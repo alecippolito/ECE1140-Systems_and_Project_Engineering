@@ -7,7 +7,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
-#include "Train.h"
+#include "TrainModel_Train.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,8 +32,8 @@ public:
     void updateTemperature(double);
     void updateIntercom(std::string);
     void updateDestination(std::string);
-    //void updateCurrentBlock(Block);
-    //void updateNextBlock(Block);
+    void updateCurrentBlock(Block *b);
+    //void updateNextBlock(Block *b);
     void updatePower(double);
     void updateVelocity(double);
     void updateAcceleration(double);

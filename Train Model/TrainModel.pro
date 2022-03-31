@@ -9,15 +9,17 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Train.cpp \
+    TrackModel_Block.cpp \
+    TrainModel_Train.cpp \
     TrainModelUI.cpp \
-    TrainPhysics.cpp \
-    main.cpp
+    TrainModel_TrainPhysics.cpp \
+    TrainModel_main.cpp
 
 HEADERS += \
-    Train.h \
+    TrackModel_Block.h \
+    TrainModel_Train.h \
     TrainModelUI.h \
-    TrainPhysics.h
+    TrainModel_TrainPhysics.h
 
 FORMS += \
     TrainModelUI.ui

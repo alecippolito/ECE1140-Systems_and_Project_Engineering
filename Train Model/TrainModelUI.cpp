@@ -97,7 +97,10 @@ void MainWindow::updateDestination(std::string d)
     ui->destinationLabel->setText(QString::fromStdString(d));
 }
 
-//void updateCurrentBlock(Block);
+void MainWindow::updateCurrentBlock(Block *b)
+{
+    ui->currentBlockLabel->setText(QString::number(b->blockNumber));
+}
 
 //void updateNextBlock(Block);
 
