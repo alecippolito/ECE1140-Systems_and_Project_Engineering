@@ -11,7 +11,7 @@
 // *************************************************
 //              Added Includes
 // *************************************************
-#include "TrainModel_Train.h"
+#include "Train.h"
 
 
 QT_BEGIN_NAMESPACE

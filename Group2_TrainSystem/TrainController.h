@@ -8,7 +8,7 @@
 // *************************************************
 //              Added Includes
 // *************************************************
-#include "TrainModel_Train.h"
+#include "Train.h"
 
 
 class TrainController
