@@ -4,7 +4,9 @@ release/ctc_mainwindow.o
 release/ctc_mainwindow.o
 release/main.o
 release/system_centraltimer_connector.o
+release/TrainModelUI.o
 release/moc_ctc_choosetrackline.o
 release/moc_ctc_dispatchtrain.o
 release/moc_ctc_mainwindow.o
 release/moc_system_centraltimer_connector.o
+release/moc_TrainModelUI.o

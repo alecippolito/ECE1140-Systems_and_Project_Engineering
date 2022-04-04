@@ -4,7 +4,9 @@ debug/ctc_mainwindow.o
 debug/ctc_mainwindow.o
 debug/main.o
 debug/system_centraltimer_connector.o
+debug/TrainModelUI.o
 debug/moc_ctc_choosetrackline.o
 debug/moc_ctc_dispatchtrain.o
 debug/moc_ctc_mainwindow.o
 debug/moc_system_centraltimer_connector.o
+debug/moc_TrainModelUI.o
