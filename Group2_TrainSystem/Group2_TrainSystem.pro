@@ -15,7 +15,7 @@ SOURCES += \
     ctc_mainwindow.cpp \
     main.cpp \
     system_centraltimer_connector.cpp \
-    TrainModelUI.cpp
+    TrainModelUI.cpp \ 
 
 HEADERS += \
     ctc_choosetrackline.h \
