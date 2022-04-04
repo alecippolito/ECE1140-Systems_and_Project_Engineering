@@ -12,7 +12,6 @@ SOURCES += \
     ctc_choosetrackline.cpp \
     ctc_dispatchtrain.cpp \
     ctc_mainwindow.cpp \
-    ctc_mainwindow.cpp \
     main.cpp \
     system_centraltimer_connector.cpp \
     TrainModelUI.cpp \ 
@@ -24,7 +23,6 @@ HEADERS += \
     ctc_choosetrackline.h \
     ctc_dispatchtrain.h \
     ctc_mainwindow.h \
-    ctc_mainwindow.h \
     system_centraltimer_connector.h \
     TrainModelUI.h \
     Train.h \
@@ -34,7 +32,6 @@ HEADERS += \
 FORMS += \
     ctc_choosetrackline.ui \
     ctc_dispatchtrain.ui \
-    ctc_mainwindow.ui \
     ctc_mainwindow.ui \
     system_centraltimer_connector.ui \
     TrainModelUI.ui
