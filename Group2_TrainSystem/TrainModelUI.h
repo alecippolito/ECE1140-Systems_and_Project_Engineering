@@ -43,10 +43,10 @@ public:
     void updateEmergencyBrakeStatus(bool);
 
 private slots:
-    void on_actionBrakeFailureButton_clicked();
-    void on_actionEngineFailureButton_clicked();
-    void on_actionSignalPickupFailureButton_clicked();
-    void on_actionEmergencyBrakeButton_clicked();
+    void on_BrakeFailureButton_clicked();
+    void on_EngineFailureButton_clicked();
+    void on_SignalPickupFailureButton_clicked();
+    void on_EmergencyBrakeButton_clicked();
 private:
     Ui::MainWindow *ui;
     Train *train;

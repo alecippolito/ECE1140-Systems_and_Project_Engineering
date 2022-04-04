@@ -5,6 +5,9 @@
 
 //to include the modules inside this project, include the .h files here
 #include "ctc_mainwindow.h"
+#include "TrainControllerGUI.h"
+#include "Train.h"
+#include "Block.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class System_CentralTimer_Connector; }
@@ -23,5 +26,7 @@ private:
 
     //create pointers to all modules
     CTC_MainWindow *ctc;
+    TrainControllerGUI *tc;
+    MainWindow *tm;
 };
 #endif // SYSTEM_CENTRALTIMER_CONNECTOR_H

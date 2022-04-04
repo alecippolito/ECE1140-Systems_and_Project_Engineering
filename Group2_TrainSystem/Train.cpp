@@ -114,21 +114,25 @@
     void Train::setFailureEngine(bool f)
     {
         engineFailure = f;
+        trainUI->updateEngineFailureStatus(f);
     }
 
     void Train::setFailureSignalPickup(bool f)
     {
         signalPickupFailure = f;
+        trainUI->updateSignalPickupFailureStatus(f);
     }
 
     void Train::setFailureBrake(bool f)
     {
         brakeFailure = f;
+        trainUI->updateBrakeFailureStatus(f);
     }
 
     void Train::setPassengerBrake(bool f)
     {
         passengerBrake = f;
+        trainUI->updateEmergencyBrakeStatus(f);
     }
 
     void Train::updateBlock(Block* b)

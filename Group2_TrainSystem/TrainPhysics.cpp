@@ -3,10 +3,12 @@
 TrainPhysics::TrainPhysics(int num, Block* b)
 {
     numCars = num;
+    length = numCars * 32.2;
     block = b;
     calculateMass();
     calculateVelocity();
     distanceToBlockEnd = b->getBlockLength();
+
 }
 
 double TrainPhysics::calculateVelocity()

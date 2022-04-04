@@ -26,12 +26,12 @@ TrainControllerGUI::TrainControllerGUI(QWidget *parent)
 {
 
      ui->setupUi(this);
-     timer = startTimer(1000);
+     //timer = startTimer(1000);
 }
 
 TrainControllerGUI::~TrainControllerGUI()
 {
-    killTimer(timer);
+    //killTimer(timer);
     delete ui;
 }
 
