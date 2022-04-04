@@ -2,7 +2,7 @@
 #include "ui_ctc_mainwindow.h"
 
 CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
-    QDialog(parent),
+    QMainWindow(parent),
     ui(new Ui::CTC_MainWindow)
 {
     ui->setupUi(this);

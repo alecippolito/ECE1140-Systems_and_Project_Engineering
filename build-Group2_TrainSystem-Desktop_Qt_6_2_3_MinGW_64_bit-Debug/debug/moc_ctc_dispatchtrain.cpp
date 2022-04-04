@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'ctc_mainwindow.h'
+** Meta object code from reading C++ file 'ctc_dispatchtrain.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.3)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../../Group2_TrainSystem_Copy/ctc_mainwindow.h"
+#include "../../../Group2_TrainSystem_Copy/ctc_dispatchtrain.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'ctc_mainwindow.h' doesn't include <QObject>."
+#error "The header file 'ctc_dispatchtrain.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.2.3. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,22 +21,22 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_CTC_MainWindow_t {
+struct qt_meta_stringdata_CTC_DispatchTrain_t {
     const uint offsetsAndSize[2];
-    char stringdata0[15];
+    char stringdata0[18];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_CTC_MainWindow_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_CTC_MainWindow_t qt_meta_stringdata_CTC_MainWindow = {
+    uint(offsetof(qt_meta_stringdata_CTC_DispatchTrain_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_CTC_DispatchTrain_t qt_meta_stringdata_CTC_DispatchTrain = {
     {
-QT_MOC_LITERAL(0, 14) // "CTC_MainWindow"
+QT_MOC_LITERAL(0, 17) // "CTC_DispatchTrain"
 
     },
-    "CTC_MainWindow"
+    "CTC_DispatchTrain"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_CTC_MainWindow[] = {
+static const uint qt_meta_data_CTC_DispatchTrain[] = {
 
  // content:
       10,       // revision
@@ -52,7 +52,7 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
        0        // eod
 };
 
-void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void CTC_DispatchTrain::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -60,14 +60,14 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     (void)_a;
 }
 
-const QMetaObject CTC_MainWindow::staticMetaObject = { {
-    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
-    qt_meta_stringdata_CTC_MainWindow.offsetsAndSize,
-    qt_meta_data_CTC_MainWindow,
+const QMetaObject CTC_DispatchTrain::staticMetaObject = { {
+    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
+    qt_meta_stringdata_CTC_DispatchTrain.offsetsAndSize,
+    qt_meta_data_CTC_DispatchTrain,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_CTC_MainWindow_t
-, QtPrivate::TypeAndForceComplete<CTC_MainWindow, std::true_type>
+qt_incomplete_metaTypeArray<qt_meta_stringdata_CTC_DispatchTrain_t
+, QtPrivate::TypeAndForceComplete<CTC_DispatchTrain, std::true_type>
 
 
 
@@ -76,22 +76,22 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_CTC_MainWindow_t
 } };
 
 
-const QMetaObject *CTC_MainWindow::metaObject() const
+const QMetaObject *CTC_DispatchTrain::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *CTC_MainWindow::qt_metacast(const char *_clname)
+void *CTC_DispatchTrain::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_CTC_MainWindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CTC_DispatchTrain.stringdata0))
         return static_cast<void*>(this);
-    return QMainWindow::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
-int CTC_MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int CTC_DispatchTrain::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QMainWindow::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

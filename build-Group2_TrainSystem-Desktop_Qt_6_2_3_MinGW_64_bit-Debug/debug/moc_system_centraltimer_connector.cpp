@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../Group2_TrainSystem/system_centraltimer_connector.h"
+#include "../../../Group2_TrainSystem_Copy/system_centraltimer_connector.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

@@ -1,19 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author/>
+ <comment/>
+ <exportmacro/>
  <class>CTC_MainWindow</class>
- <widget class="QDialog" name="CTC_MainWindow">
+ <widget name="CTC_MainWindow" class="QMainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>953</width>
-    <height>594</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CTC</string>
+   <string>MainWindow</string>
   </property>
+  <widget name="menubar" class="QMenuBar"/>
+  <widget name="centralwidget" class="QWidget"/>
+  <widget name="statusbar" class="QStatusBar"/>
  </widget>
- <resources/>
+ <pixmapfunction/>
  <connections/>
 </ui>
