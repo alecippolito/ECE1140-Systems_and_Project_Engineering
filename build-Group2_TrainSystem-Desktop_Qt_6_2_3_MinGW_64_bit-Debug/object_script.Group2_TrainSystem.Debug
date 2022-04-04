@@ -1,10 +1,12 @@
 debug/ctc_choosetrackline.o
 debug/ctc_dispatchtrain.o
 debug/ctc_mainwindow.o
-debug/ctc_mainwindow.o
 debug/main.o
 debug/system_centraltimer_connector.o
 debug/TrainModelUI.o
+debug/Train.o
+debug/Block.o
+debug/TrainPhysics.o
 debug/moc_ctc_choosetrackline.o
 debug/moc_ctc_dispatchtrain.o
 debug/moc_ctc_mainwindow.o

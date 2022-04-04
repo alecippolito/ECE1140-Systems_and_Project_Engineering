@@ -15,6 +15,15 @@ public:
     explicit CTC_ChooseTrackLine(QWidget *parent = nullptr);
     ~CTC_ChooseTrackLine();
 
+private slots:
+
+    void on_RedLineButton_clicked();
+    void on_GreenLineButton_clicked();
+
+signals:
+    void dispatchRed();
+    void dispatchGreen();
+
 private:
     Ui::CTC_ChooseTrackLine *ui;
 };
