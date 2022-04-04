@@ -12,3 +12,16 @@ CTC_ChooseTrackLine::~CTC_ChooseTrackLine()
 {
     delete ui;
 }
+
+
+void CTC_ChooseTrackLine::on_RedLineButton_clicked()
+{
+    emit dispatchRed();
+}
+
+
+void CTC_ChooseTrackLine::on_GreenLineButton_clicked()
+{
+    emit dispatchGreen();
+}
+
