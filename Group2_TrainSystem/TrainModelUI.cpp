@@ -1,5 +1,5 @@
 #include "TrainModelUI.h"
-#include "ui_mainwindow.h"
+#include "ui_TrainModelUI.h"
 #include <QAbstractButton>
 
 MainWindow::MainWindow(QWidget *parent)

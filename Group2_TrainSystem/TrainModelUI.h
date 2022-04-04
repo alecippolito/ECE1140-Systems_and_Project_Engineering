@@ -7,7 +7,7 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
-#include "TrainModel_Train.h"
+#include "Train.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
