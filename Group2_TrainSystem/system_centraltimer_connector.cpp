@@ -48,7 +48,6 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
     timer->start(1000);
-=======
     tc = new TrainControllerGUI();
     tc->show();
     Block *b = new Block(1);

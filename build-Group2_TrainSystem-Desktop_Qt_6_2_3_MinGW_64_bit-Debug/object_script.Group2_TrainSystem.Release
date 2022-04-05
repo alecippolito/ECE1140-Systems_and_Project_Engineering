@@ -7,8 +7,11 @@ release/TrainModelUI.o
 release/Train.o
 release/Block.o
 release/TrainPhysics.o
+release/TrainControllerGUI.o
+release/TrainController.o
 release/moc_ctc_choosetrackline.o
 release/moc_ctc_dispatchtrain.o
 release/moc_ctc_mainwindow.o
 release/moc_system_centraltimer_connector.o
 release/moc_TrainModelUI.o
+release/moc_TrainControllerGUI.o

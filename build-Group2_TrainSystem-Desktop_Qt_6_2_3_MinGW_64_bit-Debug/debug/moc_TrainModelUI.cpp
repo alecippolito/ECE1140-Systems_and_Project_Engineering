@@ -23,24 +23,24 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     const uint offsetsAndSize[12];
-    char stringdata0[166];
+    char stringdata0[142];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 10), // "MainWindow"
-QT_MOC_LITERAL(11, 35), // "on_actionBrakeFailureButton_c..."
-QT_MOC_LITERAL(47, 0), // ""
-QT_MOC_LITERAL(48, 36), // "on_actionEngineFailureButton_..."
-QT_MOC_LITERAL(85, 42), // "on_actionSignalPickupFailureB..."
-QT_MOC_LITERAL(128, 37) // "on_actionEmergencyBrakeButton..."
+QT_MOC_LITERAL(11, 29), // "on_BrakeFailureButton_clicked"
+QT_MOC_LITERAL(41, 0), // ""
+QT_MOC_LITERAL(42, 30), // "on_EngineFailureButton_clicked"
+QT_MOC_LITERAL(73, 36), // "on_SignalPickupFailureButton_..."
+QT_MOC_LITERAL(110, 31) // "on_EmergencyBrakeButton_clicked"
 
     },
-    "MainWindow\0on_actionBrakeFailureButton_clicked\0"
-    "\0on_actionEngineFailureButton_clicked\0"
-    "on_actionSignalPickupFailureButton_clicked\0"
-    "on_actionEmergencyBrakeButton_clicked"
+    "MainWindow\0on_BrakeFailureButton_clicked\0"
+    "\0on_EngineFailureButton_clicked\0"
+    "on_SignalPickupFailureButton_clicked\0"
+    "on_EmergencyBrakeButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,10 +78,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_actionBrakeFailureButton_clicked(); break;
-        case 1: _t->on_actionEngineFailureButton_clicked(); break;
-        case 2: _t->on_actionSignalPickupFailureButton_clicked(); break;
-        case 3: _t->on_actionEmergencyBrakeButton_clicked(); break;
+        case 0: _t->on_BrakeFailureButton_clicked(); break;
+        case 1: _t->on_EngineFailureButton_clicked(); break;
+        case 2: _t->on_SignalPickupFailureButton_clicked(); break;
+        case 3: _t->on_EmergencyBrakeButton_clicked(); break;
         default: ;
         }
     }
