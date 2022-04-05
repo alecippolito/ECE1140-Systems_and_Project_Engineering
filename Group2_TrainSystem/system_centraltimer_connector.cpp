@@ -31,6 +31,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     ctc = new CTC_MainWindow();
     ctc->show();
 
+
     //initialize the timing variables
     //Timer starts at the CURRENT TIME
     timeDialation = 1;
@@ -47,6 +48,13 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
     timer->start(1000);
+=======
+    tc = new TrainControllerGUI();
+    tc->show();
+    Block *b = new Block(1);
+    Train *t = new Train(1, b);
+    t->setPower(100);
+
 }
 
 System_CentralTimer_Connector::~System_CentralTimer_Connector()

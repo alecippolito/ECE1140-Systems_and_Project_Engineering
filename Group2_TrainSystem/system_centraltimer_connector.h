@@ -5,6 +5,9 @@
 
 //to include the modules inside this project, include the .h files here
 #include "ctc_mainwindow.h"
+#include "TrainControllerGUI.h"
+#include "Train.h"
+#include "Block.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class System_CentralTimer_Connector; }
@@ -37,6 +40,7 @@ private:
 
     //create pointers to all modules
     CTC_MainWindow *ctc;
+<<<<<<< HEAD
 
     //pointer to a QTimer class
     QTimer *timer;
@@ -49,5 +53,9 @@ private:
     //internal functions
     void displayDateTime();
 
+=======
+    TrainControllerGUI *tc;
+    MainWindow *tm;
+>>>>>>> 6bcfa8b8de533ee80c77ceb57504963c8388e391
 };
 #endif // SYSTEM_CENTRALTIMER_CONNECTOR_H
