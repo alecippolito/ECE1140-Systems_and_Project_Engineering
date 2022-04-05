@@ -48,8 +48,7 @@
 
 
 		}
-		
-		
+
         void TrainController :: setPowerCommand(double newPowerCommand){
 			powerCommand = newPowerCommand;			
 		}

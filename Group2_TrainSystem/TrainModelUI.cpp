@@ -102,7 +102,10 @@ void MainWindow::updateCurrentBlock(Block *b)
     ui->currentBlockLabel->setText(QString::number(b->blockNumber));
 }
 
-//void updateNextBlock(Block);
+void MainWindow::updateNextBlock(Block *b)
+{
+    ui->nextBlockLabel->setText(QString::number(b->blockNumber));
+}
 
 void MainWindow::updatePower(double p)
 {

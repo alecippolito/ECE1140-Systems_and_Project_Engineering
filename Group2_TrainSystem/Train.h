@@ -34,6 +34,7 @@ class Train{
             bool lightsOn;
             bool available;
             Block *currentBlock;
+            Block *nextBlock;
             bool engineFailure = false;
             bool signalPickupFailure = false;
             bool brakeFailure = false;

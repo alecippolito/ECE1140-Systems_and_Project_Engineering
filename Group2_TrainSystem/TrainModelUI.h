@@ -33,7 +33,7 @@ public:
     void updateIntercom(std::string);
     void updateDestination(std::string);
     void updateCurrentBlock(Block *b);
-    //void updateNextBlock(Block *b);
+    void updateNextBlock(Block *b);
     void updatePower(double);
     void updateVelocity(double);
     void updateAcceleration(double);

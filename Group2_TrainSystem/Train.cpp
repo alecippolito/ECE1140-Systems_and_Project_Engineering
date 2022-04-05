@@ -154,7 +154,7 @@
         trainUI->updateIntercom(announcements);
         trainUI->updateDestination(destination);
         trainUI->updateCurrentBlock(trainMetrics->block);
-        //trainUI->updateNextBlock(Block);
+        trainUI->updateNextBlock(nextBlock);
         trainUI->updatePower(trainMetrics->power);
         trainUI->updateVelocity(trainMetrics->currentVelocity);
         trainUI->updateAcceleration(trainMetrics->acceleration);

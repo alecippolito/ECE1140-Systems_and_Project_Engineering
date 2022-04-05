@@ -26,12 +26,12 @@ TrainControllerGUI::TrainControllerGUI(QWidget *parent)
 {
 
      ui->setupUi(this);
-     //timer = startTimer(1000);
+     timer = startTimer(1000);
 }
 
 TrainControllerGUI::~TrainControllerGUI()
 {
-    //killTimer(timer);
+    killTimer(timer);
     delete ui;
 }
 
@@ -56,6 +56,10 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
 //              Added Public
 // *************************************************
 
+void TrainControllerGUI :: setTrain(Train *t)
+{
+    train = t;
+}
 
 void TrainControllerGUI :: updatePower()
 {
@@ -149,7 +153,6 @@ void TrainControllerGUI::on_incSpeed_clicked()
 {
     double currentSpeed = tc.getSetpointSpeed();
     tc.setSetpointSpeed(currentSpeed + 5.0);
-    qDebug() << "speed: = " << tc.getSetpointSpeed();
 }
 
 void TrainControllerGUI::on_decSpeed_clicked()
@@ -191,6 +194,7 @@ void TrainControllerGUI::on_eBrakeButton_clicked()
 {
     tc.setPowerCommand(0.0);
     tc.setEmergencyBrake(true);
+    train->setPassengerBrake(true);
 }
 
 void TrainControllerGUI::on_submit_clicked()
