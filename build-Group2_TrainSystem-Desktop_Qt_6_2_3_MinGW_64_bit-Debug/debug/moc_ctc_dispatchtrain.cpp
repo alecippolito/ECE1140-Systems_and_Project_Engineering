@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../../Group2_TrainSystem_Copy/ctc_dispatchtrain.h"
+#include "../../Group2_TrainSystem/ctc_dispatchtrain.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

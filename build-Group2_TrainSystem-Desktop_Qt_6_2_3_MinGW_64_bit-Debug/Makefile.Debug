@@ -1022,38 +1022,7 @@ debug/ctc_choosetrackline.o: ../Group2_TrainSystem/ctc_choosetrackline.cpp ../Gr
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QSizeF \
 		D:/Qt/6.2.3/mingw_64/include/QtGui/QTransform \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qnativeinterface.h \
-		ui_ctc_choosetrackline.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/QVariant \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QApplication \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qeventloop.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfutureinterface.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qmutex.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qresultstore.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture_impl.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qthreadpool.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qthread.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qdeadlinetimer.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qelapsedtimer.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qrunnable.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qexception.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qinputmethod.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qlocale.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication_platform.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QPushButton \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qpushbutton.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qabstractbutton.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qicon.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QVBoxLayout \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qboxlayout.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qlayout.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qlayoutitem.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qgridlayout.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QWidget
+		ui_ctc_choosetrackline.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ctc_choosetrackline.o ..\Group2_TrainSystem\ctc_choosetrackline.cpp
 
 debug/ctc_dispatchtrain.o: ../Group2_TrainSystem/ctc_dispatchtrain.cpp ../Group2_TrainSystem/ctc_dispatchtrain.h \
@@ -1184,28 +1153,7 @@ debug/ctc_dispatchtrain.o: ../Group2_TrainSystem/ctc_dispatchtrain.cpp ../Group2
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QSizeF \
 		D:/Qt/6.2.3/mingw_64/include/QtGui/QTransform \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qnativeinterface.h \
-		ui_ctc_dispatchtrain.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/QVariant \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QApplication \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qeventloop.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfutureinterface.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qmutex.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qresultstore.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture_impl.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qthreadpool.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qthread.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qdeadlinetimer.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qelapsedtimer.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qrunnable.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qexception.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qinputmethod.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qlocale.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication_platform.h
+		ui_ctc_dispatchtrain.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ctc_dispatchtrain.o ..\Group2_TrainSystem\ctc_dispatchtrain.cpp
 
 debug/ctc_mainwindow.o: ../Group2_TrainSystem/ctc_mainwindow.cpp ../Group2_TrainSystem/ctc_mainwindow.h \
@@ -1343,44 +1291,12 @@ debug/ctc_mainwindow.o: ../Group2_TrainSystem/ctc_mainwindow.cpp ../Group2_Train
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qdialog.h \
 		../Group2_TrainSystem/ctc_dispatchtrain.h \
 		ui_ctc_mainwindow.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/QVariant \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/QAction \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qaction.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QApplication \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qeventloop.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfutureinterface.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qmutex.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qresultstore.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture_impl.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qthreadpool.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qthread.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qdeadlinetimer.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qelapsedtimer.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qrunnable.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qexception.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qinputmethod.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qlocale.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication_platform.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QLabel \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qlabel.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qframe.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qpicture.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qtextdocument.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QMenu \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmenu.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QMenuBar \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmenubar.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QPushButton \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qpushbutton.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qabstractbutton.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QStatusBar \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qstatusbar.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QWidget
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QMessageBox \
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QFile \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qfile.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qfiledevice.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QTextStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ctc_mainwindow.o ..\Group2_TrainSystem\ctc_mainwindow.cpp
 
 debug/main.o: ../Group2_TrainSystem/main.cpp ../Group2_TrainSystem/system_centraltimer_connector.h \
@@ -1676,34 +1592,15 @@ debug/system_centraltimer_connector.o: ../Group2_TrainSystem/system_centraltimer
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qdialog.h \
 		../Group2_TrainSystem/ctc_dispatchtrain.h \
 		ui_system_centraltimer_connector.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/QVariant \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QApplication \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qeventloop.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfutureinterface.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qmutex.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qresultstore.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture_impl.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qthreadpool.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qthread.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qdeadlinetimer.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qelapsedtimer.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qrunnable.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qexception.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qinputmethod.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QDate \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qdatetime.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcalendar.h \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qlocale.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication_platform.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QMenuBar \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmenubar.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmenu.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qaction.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QStatusBar \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qstatusbar.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QWidget
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QTime \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QDebug \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QTimer \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qtimer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\system_centraltimer_connector.o ..\Group2_TrainSystem\system_centraltimer_connector.cpp
 
 debug/TrainModelUI.o: ../Group2_TrainSystem/TrainModelUI.cpp ../Group2_TrainSystem/TrainModelUI.h \
@@ -1873,38 +1770,8 @@ debug/TrainModelUI.o: ../Group2_TrainSystem/TrainModelUI.cpp ../Group2_TrainSyst
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
 		ui_TrainModelUI.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/QVariant \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QFormLayout \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qformlayout.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QLayout \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qlayout.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qlayoutitem.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qboxlayout.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qgridlayout.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QGraphicsView \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qgraphicsview.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qpainter.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qtextoption.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qpen.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qscrollarea.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qframe.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QLabel \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qlabel.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qpicture.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qtextdocument.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QMenuBar \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmenubar.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmenu.h \
-		D:/Qt/6.2.3/mingw_64/include/QtGui/qaction.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QPushButton \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qpushbutton.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qabstractbutton.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QStatusBar \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qstatusbar.h \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QWidget \
-		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QAbstractButton
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QAbstractButton \
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\TrainModelUI.o ..\Group2_TrainSystem\TrainModelUI.cpp
 
 debug/Train.o: ../Group2_TrainSystem/Train.cpp ../Group2_TrainSystem/Train.h \

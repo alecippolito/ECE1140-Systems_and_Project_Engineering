@@ -108,45 +108,7 @@ void CTC_MainWindow::initializeTrackVector()
                                         "Green W134","Green W135","Green W136","Green W137","Green W138","Green W139","Green W140","Green W141","Green W142",
                                         "Green W143","Green X144","Green X145","Green X146","Green Y147","Green Y148","Green Y149","Green Z150"};
 
-    /*
-    //Read in data from text files that I made
-    //Names for Red Line Track Blocks
-    QFile file("C:/Users/username/Documents/CTC_GUI/redLineNames.txt");
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            //qFatal("Unable to load input file");
-            return;
-        }
-    QTextStream in(&file);
 
-
-    //Green Line Names
-    QFile file4("C:/Users/username/Documents/CTC_GUI/greenLineNames.txt");
-        if (!file4.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            qFatal("Unable to load input file");
-            return;
-        }
-    QTextStream in4(&file4);
-
-    //add data for red line
-    while (!in.atEnd()) {
-        //QString line = in.readLine();
-
-        tempTrack.name = in.readLine();
-        tempTrack.occupancy = 0;
-        tempTrack.open = true;
-        TrackVectorRed.push_back(tempTrack);
-    }
-
-    //add data for green line
-    while (!in4.atEnd()) {
-        tempTrack.name = in4.readLine();
-        tempTrack.occupancy = 0;
-        tempTrack.open = true;
-        TrackVectorGreen.push_back(tempTrack);
-    }
-    */
 
     //loop through both vectors and add all data
     for (unsigned i = 0; i < BlockNamesRed.size(); i++)
