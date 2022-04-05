@@ -114,7 +114,7 @@ public:
 
     void retranslateUi(QMainWindow *CTC_MainWindow)
     {
-        CTC_MainWindow->setWindowTitle(QCoreApplication::translate("CTC_MainWindow", "MainWindow", nullptr));
+        CTC_MainWindow->setWindowTitle(QCoreApplication::translate("CTC_MainWindow", "CTC main window", nullptr));
         actionOpen_Close_Track->setText(QCoreApplication::translate("CTC_MainWindow", "Open/ Close Track", nullptr));
         actionManual->setText(QCoreApplication::translate("CTC_MainWindow", "Manual", nullptr));
         actionAutomatic->setText(QCoreApplication::translate("CTC_MainWindow", "Automatic", nullptr));

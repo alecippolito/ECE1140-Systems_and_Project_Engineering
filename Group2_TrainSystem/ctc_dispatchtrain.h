@@ -15,8 +15,19 @@ public:
     explicit CTC_DispatchTrain(QWidget *parent = nullptr);
     ~CTC_DispatchTrain();
 
+private slots:
+    void receiveStationData(QVector<double>,QVector<QString>,QVector<int>);
+
+signals:
+    void addTrain(int,int,int,int,QString,double,int);
+
 private:
     Ui::CTC_DispatchTrain *ui;
+
+    //all vectors and variables
+    QVector<QString> stationNames;
+    QVector<double> stationDistances;
+    QVector<int> stationAuthorities;
 };
 
 #endif // CTC_DISPATCHTRAIN_H

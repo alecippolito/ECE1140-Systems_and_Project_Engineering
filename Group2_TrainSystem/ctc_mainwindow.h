@@ -50,7 +50,7 @@ private slots:
     void on_actionView_Train_Statuses_triggered();
 
 signals:
-    void dispatchTrain(QVector<double>, QVector<QString>, QVector<int>);
+    void sendStationData(QVector<double>, QVector<QString>, QVector<int>);
 
 private:
     //internal functions
@@ -63,6 +63,8 @@ private:
 
     //all internal variables and vectors
     QVector<Train_CTC> TrainVector;
+    QVector<Train_CTC> TrainSchedule;
+    QVector<Train_CTC> TrainStandby;
     QVector<TrackBlock> TrackVector;
     QVector<TrackBlock> TrackVectorRed;
     QVector<TrackBlock> TrackVectorGreen;
@@ -73,7 +75,6 @@ private:
     QVector<double> stationDistancesGreen;
     QVector<double> stationDistancesRed;
     QString spaces(int);
-    bool redline;
     int number;
     int trainSet;
     int trackSetRed;

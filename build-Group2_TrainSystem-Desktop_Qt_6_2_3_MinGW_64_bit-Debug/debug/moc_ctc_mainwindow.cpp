@@ -24,28 +24,28 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CTC_MainWindow_t {
     const uint offsetsAndSize[26];
-    char stringdata0[296];
+    char stringdata0[298];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_CTC_MainWindow_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_CTC_MainWindow_t qt_meta_stringdata_CTC_MainWindow = {
     {
 QT_MOC_LITERAL(0, 14), // "CTC_MainWindow"
-QT_MOC_LITERAL(15, 13), // "dispatchTrain"
-QT_MOC_LITERAL(29, 0), // ""
-QT_MOC_LITERAL(30, 13), // "QList<double>"
-QT_MOC_LITERAL(44, 10), // "QList<int>"
-QT_MOC_LITERAL(55, 33), // "on_actionDispatch_Train_trigg..."
-QT_MOC_LITERAL(89, 15), // "RedLineSelected"
-QT_MOC_LITERAL(105, 17), // "GreenLineSelected"
-QT_MOC_LITERAL(123, 25), // "on_previousButton_clicked"
-QT_MOC_LITERAL(149, 21), // "on_NextButton_clicked"
-QT_MOC_LITERAL(171, 43), // "on_actionView_Green_Line_Stat..."
-QT_MOC_LITERAL(215, 41), // "on_actionView_Red_Line_Status..."
-QT_MOC_LITERAL(257, 38) // "on_actionView_Train_Statuses_..."
+QT_MOC_LITERAL(15, 15), // "sendStationData"
+QT_MOC_LITERAL(31, 0), // ""
+QT_MOC_LITERAL(32, 13), // "QList<double>"
+QT_MOC_LITERAL(46, 10), // "QList<int>"
+QT_MOC_LITERAL(57, 33), // "on_actionDispatch_Train_trigg..."
+QT_MOC_LITERAL(91, 15), // "RedLineSelected"
+QT_MOC_LITERAL(107, 17), // "GreenLineSelected"
+QT_MOC_LITERAL(125, 25), // "on_previousButton_clicked"
+QT_MOC_LITERAL(151, 21), // "on_NextButton_clicked"
+QT_MOC_LITERAL(173, 43), // "on_actionView_Green_Line_Stat..."
+QT_MOC_LITERAL(217, 41), // "on_actionView_Red_Line_Status..."
+QT_MOC_LITERAL(259, 38) // "on_actionView_Train_Statuses_..."
 
     },
-    "CTC_MainWindow\0dispatchTrain\0\0"
+    "CTC_MainWindow\0sendStationData\0\0"
     "QList<double>\0QList<int>\0"
     "on_actionDispatch_Train_triggered\0"
     "RedLineSelected\0GreenLineSelected\0"
@@ -105,7 +105,7 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         auto *_t = static_cast<CTC_MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->dispatchTrain((*reinterpret_cast< QList<double>(*)>(_a[1])),(*reinterpret_cast< QList<QString>(*)>(_a[2])),(*reinterpret_cast< QList<int>(*)>(_a[3]))); break;
+        case 0: _t->sendStationData((*reinterpret_cast< QList<double>(*)>(_a[1])),(*reinterpret_cast< QList<QString>(*)>(_a[2])),(*reinterpret_cast< QList<int>(*)>(_a[3]))); break;
         case 1: _t->on_actionDispatch_Train_triggered(); break;
         case 2: _t->RedLineSelected(); break;
         case 3: _t->GreenLineSelected(); break;
@@ -133,7 +133,7 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (CTC_MainWindow::*)(QVector<double> , QVector<QString> , QVector<int> );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CTC_MainWindow::dispatchTrain)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CTC_MainWindow::sendStationData)) {
                 *result = 0;
                 return;
             }
@@ -188,7 +188,7 @@ int CTC_MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void CTC_MainWindow::dispatchTrain(QVector<double> _t1, QVector<QString> _t2, QVector<int> _t3)
+void CTC_MainWindow::sendStationData(QVector<double> _t1, QVector<QString> _t2, QVector<int> _t3)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

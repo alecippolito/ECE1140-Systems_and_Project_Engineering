@@ -52,7 +52,9 @@ void CTC_MainWindow::RedLineSelected()
     dp = new CTC_DispatchTrain();
     dp->show();
 
-    //connect the signals
+    //send the red line stations to the dispatch window
+    QObject::connect(this, SIGNAL(sendStationData(QVector<double>,QVector<QString>,QVector<int>)),dp,SLOT(receiveStationData(QVector<double>,QVector<QString>,QVector<int>)));
+    emit sendStationData(stationDistancesRed,stationNamesRed,stationAuthoritiesRed);
 }
 
 void CTC_MainWindow::GreenLineSelected()
@@ -61,7 +63,9 @@ void CTC_MainWindow::GreenLineSelected()
     dp = new CTC_DispatchTrain();
     dp->show();
 
-    //connect the signal
+    //send the green line stations to the dispatch window
+    QObject::connect(this, SIGNAL(sendStationData(QVector<double>,QVector<QString>,QVector<int>)),dp,SLOT(receiveStationData(QVector<double>,QVector<QString>,QVector<int>)));
+    emit sendStationData(stationDistancesGreen,stationNamesGreen,stationAuthoritiesGreen);
 }
 
 void CTC_MainWindow::initializeTrackVector()

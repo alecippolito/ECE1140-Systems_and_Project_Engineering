@@ -6,13 +6,198 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>475</width>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dispatch Train</string>
   </property>
+  <widget class="QLabel" name="DepartureTime">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>80</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Departure Time</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ArriveTime">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>80</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Arrival Time</string>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="DepartTime">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>140</y>
+     <width>118</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="ArrivalTime">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>140</y>
+     <width>118</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="DepartureCheck">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>80</y>
+     <width>21</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="ArrivalCheck">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>80</y>
+     <width>21</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="DepartDate">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>110</y>
+     <width>111</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Monday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Tuesday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Wednesday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Thursday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Friday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Saturday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Sunday</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QComboBox" name="ArriveDate">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>110</y>
+     <width>111</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Monday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Tuesday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Wednesday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Thursday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Friday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Saturday</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Sunday</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QListWidget" name="StationList">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>210</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DispatchButton">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>430</y>
+     <width>93</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Dispatch</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
