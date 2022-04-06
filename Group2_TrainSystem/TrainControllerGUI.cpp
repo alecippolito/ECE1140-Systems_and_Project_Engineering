@@ -43,7 +43,6 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
     if (dispatch == false){
             dispatchTrain();
     }
-    qDebug() << "EVENT: = " << event->timerId();
     tc.calculatePower();
     updatePower();
     updateSpeed();
