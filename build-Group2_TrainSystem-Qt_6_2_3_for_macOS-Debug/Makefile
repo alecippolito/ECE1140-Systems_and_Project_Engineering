@@ -745,7 +745,11 @@ ctc_choosetrackline.o: ../Group2_TrainSystem/ctc_choosetrackline.cpp ../Group2_T
 ctc_dispatchtrain.o: ../Group2_TrainSystem/ctc_dispatchtrain.cpp ../Group2_TrainSystem/ctc_dispatchtrain.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_ctc_dispatchtrain.h
+		ui_ctc_dispatchtrain.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ctc_dispatchtrain.o ../Group2_TrainSystem/ctc_dispatchtrain.cpp
 
 ctc_mainwindow.o: ../Group2_TrainSystem/ctc_mainwindow.cpp ../Group2_TrainSystem/ctc_mainwindow.h \
@@ -761,7 +765,9 @@ ctc_mainwindow.o: ../Group2_TrainSystem/ctc_mainwindow.cpp ../Group2_TrainSystem
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QFile \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qfile.h \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QTextStream \
-		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qtextstream.h
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qtextstream.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ctc_mainwindow.o ../Group2_TrainSystem/ctc_mainwindow.cpp
 
 main.o: ../Group2_TrainSystem/main.cpp ../Group2_TrainSystem/system_centraltimer_connector.h \
@@ -796,7 +802,14 @@ system_centraltimer_connector.o: ../Group2_TrainSystem/system_centraltimer_conne
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
 		../Group2_TrainSystem/yardToDormontTrackModel.h \
-		ui_system_centraltimer_connector.h
+		ui_system_centraltimer_connector.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDate \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QTime \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QTimer \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o system_centraltimer_connector.o ../Group2_TrainSystem/system_centraltimer_connector.cpp
 
 TrainModelUI.o: ../Group2_TrainSystem/TrainModelUI.cpp ../Group2_TrainSystem/TrainModelUI.h \

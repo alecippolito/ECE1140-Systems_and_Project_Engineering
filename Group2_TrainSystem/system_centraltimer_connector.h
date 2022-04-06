@@ -64,7 +64,6 @@ private:
     //internal functions
     void displayDateTime();
 
-    TrainControllerGUI *tc;
     TrainControllerGUI *tcGUI;
     MainWindow *tm;
     YardDormontTrackModel trackModel;

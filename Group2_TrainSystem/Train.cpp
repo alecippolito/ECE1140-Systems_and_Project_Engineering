@@ -7,6 +7,7 @@
             trainUI->updateTrain(this);
             trainUI->show();
             trainMetrics = new TrainPhysics(num, b);       //later add blocks
+            nextBlock = b;      //REPLACE THIS WITH TRACK CONTROLLER
             updateUI();
         }
 

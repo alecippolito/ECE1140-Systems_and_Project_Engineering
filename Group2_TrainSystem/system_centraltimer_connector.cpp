@@ -30,8 +30,6 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     //in order for the modules and their UI's to run, execute them here, in the constructor
     ctc = new CTC_MainWindow();
     ctc->show();
-    tcGUI = new TrainControllerGUI();
-    tcGUI->show();
 
 
     //initialize the timing variables
@@ -61,13 +59,8 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     //testing purposes: receiving a dispatch signal from the CTC
     QObject::connect(ctc, SIGNAL(sendTrainData(bool,int,double)), this, SLOT(receiveDispatchSignal_test(bool,int,double)));
 
-
-    tc = new TrainControllerGUI();
-    tc->show();
-    Block *b = new Block(1);
-    Train *t = new Train(1, b);
-    t->setPower(100);
-
+    tcGUI = new TrainControllerGUI();
+    tcGUI->show();
     Train *t = new Train(1, trackModel.track[0]);
     tcGUI->setTrain(t);
 
