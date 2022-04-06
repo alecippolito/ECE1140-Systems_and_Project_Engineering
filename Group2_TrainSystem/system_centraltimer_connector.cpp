@@ -1,7 +1,6 @@
 #include "system_centraltimer_connector.h"
 #include "ui_system_centraltimer_connector.h"
 
-<<<<<<< HEAD
 #include <QDate>
 #include <QTime>
 #include <QDebug>
@@ -22,8 +21,6 @@
 //secondsInDay value: measures the seconds elapsed since midnight of that day.
 // there are 86400 seconds in a day. This function will add 1 second at a certain frequency.
 
-=======
->>>>>>> 6c8a2a8b0be58d9607c2ca44879c9144b48c6c3d
 System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::System_CentralTimer_Connector)
@@ -37,7 +34,6 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     tcGUI->show();
 
 
-<<<<<<< HEAD
     //initialize the timing variables
     //Timer starts at the CURRENT TIME
     days = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
@@ -71,10 +67,9 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     Block *b = new Block(1);
     Train *t = new Train(1, b);
     t->setPower(100);
-=======
+
     Train *t = new Train(1, trackModel.track[0]);
     tcGUI->setTrain(t);
->>>>>>> 6c8a2a8b0be58d9607c2ca44879c9144b48c6c3d
 
 }
 
@@ -83,7 +78,6 @@ System_CentralTimer_Connector::~System_CentralTimer_Connector()
     delete ui;
 }
 
-<<<<<<< HEAD
 void System_CentralTimer_Connector::receiveDispatchSignal_test(bool redline_temp, int authority_temp, double speed_temp)
 {
     qDebug() << "Dispatch signal received!";
@@ -221,6 +215,3 @@ void System_CentralTimer_Connector::on_TimeButton_2pm_clicked()
     displayDateTime();
     emit sendTime(day,secondsInDay);
 }
-
-=======
->>>>>>> 6c8a2a8b0be58d9607c2ca44879c9144b48c6c3d
