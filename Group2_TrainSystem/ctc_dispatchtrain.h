@@ -16,18 +16,34 @@ public:
     ~CTC_DispatchTrain();
 
 private slots:
-    void receiveStationData(QVector<double>,QVector<QString>,QVector<int>);
+    void receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>);
+    void on_DepartureCheck_stateChanged(int arg1);
+    void on_ArrivalCheck_stateChanged(int arg1);
+    void updateTimeDisplay(int,int);
+    void receiveSystemTime(int,int);
+    void on_DispatchButton_clicked();
 
 signals:
-    void addTrain(int,int,int,int,QString,double,int);
+    void requestSystemTime();
+    void dispatchImmediate(bool,int,double);
+    void dispatchSchedule(bool,int,double,int);
 
 private:
     Ui::CTC_DispatchTrain *ui;
+
+    //internal functions
+    double returnSuggestedSpeed();
+    int returnAuthority();
 
     //all vectors and variables
     QVector<QString> stationNames;
     QVector<double> stationDistances;
     QVector<int> stationAuthorities;
+    bool redline;
+    double standardSpeed;
+    int currentDay;
+    int currentSeconds;
+    int departTimeMinute;
 };
 
 #endif // CTC_DISPATCHTRAIN_H

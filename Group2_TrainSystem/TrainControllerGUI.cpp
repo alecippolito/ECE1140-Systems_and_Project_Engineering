@@ -40,6 +40,7 @@ TrainControllerGUI::~TrainControllerGUI()
 // *************************************************
 void TrainControllerGUI :: timerEvent(QTimerEvent *event)
 {
+    if(train != nullptr){
     if (dispatch == false){
             dispatchTrain();
     }
@@ -50,6 +51,7 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
     updateLights();
     updateBrake();
     dispatchTrain();
+    }
 }
 // *************************************************
 //              Added Public

@@ -67,7 +67,7 @@ private:
     // *************************************************
     //              Added
     // *************************************************
-    Train *train;
+    Train *train = nullptr;
     int timer;
     bool dispatch = false;
 

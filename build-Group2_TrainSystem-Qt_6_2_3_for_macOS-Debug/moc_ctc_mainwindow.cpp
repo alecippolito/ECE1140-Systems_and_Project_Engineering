@@ -23,37 +23,46 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CTC_MainWindow_t {
-    const uint offsetsAndSize[26];
-    char stringdata0[296];
+    const uint offsetsAndSize[38];
+    char stringdata0[401];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_CTC_MainWindow_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_CTC_MainWindow_t qt_meta_stringdata_CTC_MainWindow = {
     {
 QT_MOC_LITERAL(0, 14), // "CTC_MainWindow"
-QT_MOC_LITERAL(15, 13), // "dispatchTrain"
-QT_MOC_LITERAL(29, 0), // ""
-QT_MOC_LITERAL(30, 13), // "QList<double>"
-QT_MOC_LITERAL(44, 10), // "QList<int>"
-QT_MOC_LITERAL(55, 33), // "on_actionDispatch_Train_trigg..."
-QT_MOC_LITERAL(89, 15), // "RedLineSelected"
-QT_MOC_LITERAL(105, 17), // "GreenLineSelected"
-QT_MOC_LITERAL(123, 25), // "on_previousButton_clicked"
-QT_MOC_LITERAL(149, 21), // "on_NextButton_clicked"
-QT_MOC_LITERAL(171, 43), // "on_actionView_Green_Line_Stat..."
-QT_MOC_LITERAL(215, 41), // "on_actionView_Red_Line_Status..."
-QT_MOC_LITERAL(257, 38) // "on_actionView_Train_Statuses_..."
+QT_MOC_LITERAL(15, 15), // "sendStationData"
+QT_MOC_LITERAL(31, 0), // ""
+QT_MOC_LITERAL(32, 13), // "QList<double>"
+QT_MOC_LITERAL(46, 10), // "QList<int>"
+QT_MOC_LITERAL(57, 13), // "sendTrainData"
+QT_MOC_LITERAL(71, 8), // "sendTime"
+QT_MOC_LITERAL(80, 33), // "on_actionDispatch_Train_trigg..."
+QT_MOC_LITERAL(114, 15), // "RedLineSelected"
+QT_MOC_LITERAL(130, 17), // "GreenLineSelected"
+QT_MOC_LITERAL(148, 25), // "on_previousButton_clicked"
+QT_MOC_LITERAL(174, 21), // "on_NextButton_clicked"
+QT_MOC_LITERAL(196, 43), // "on_actionView_Green_Line_Stat..."
+QT_MOC_LITERAL(240, 41), // "on_actionView_Red_Line_Status..."
+QT_MOC_LITERAL(282, 38), // "on_actionView_Train_Statuses_..."
+QT_MOC_LITERAL(321, 11), // "receiveTime"
+QT_MOC_LITERAL(333, 18), // "receiveTimeRequest"
+QT_MOC_LITERAL(352, 24), // "receiveDispatchImmediate"
+QT_MOC_LITERAL(377, 23) // "receiveDispatchSchedule"
 
     },
-    "CTC_MainWindow\0dispatchTrain\0\0"
-    "QList<double>\0QList<int>\0"
-    "on_actionDispatch_Train_triggered\0"
+    "CTC_MainWindow\0sendStationData\0\0"
+    "QList<double>\0QList<int>\0sendTrainData\0"
+    "sendTime\0on_actionDispatch_Train_triggered\0"
     "RedLineSelected\0GreenLineSelected\0"
     "on_previousButton_clicked\0"
     "on_NextButton_clicked\0"
     "on_actionView_Green_Line_Statuses_triggered\0"
     "on_actionView_Red_Line_Statuses_triggered\0"
-    "on_actionView_Train_Statuses_triggered"
+    "on_actionView_Train_Statuses_triggered\0"
+    "receiveTime\0receiveTimeRequest\0"
+    "receiveDispatchImmediate\0"
+    "receiveDispatchSchedule"
 };
 #undef QT_MOC_LITERAL
 
@@ -63,28 +72,36 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,   68,    2, 0x06,    1 /* Public */,
+       1,    4,  104,    2, 0x06,    1 /* Public */,
+       5,    3,  113,    2, 0x06,    6 /* Public */,
+       6,    2,  120,    2, 0x06,   10 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,   75,    2, 0x08,    5 /* Private */,
-       6,    0,   76,    2, 0x08,    6 /* Private */,
-       7,    0,   77,    2, 0x08,    7 /* Private */,
-       8,    0,   78,    2, 0x08,    8 /* Private */,
-       9,    0,   79,    2, 0x08,    9 /* Private */,
-      10,    0,   80,    2, 0x08,   10 /* Private */,
-      11,    0,   81,    2, 0x08,   11 /* Private */,
-      12,    0,   82,    2, 0x08,   12 /* Private */,
+       7,    0,  125,    2, 0x08,   13 /* Private */,
+       8,    0,  126,    2, 0x08,   14 /* Private */,
+       9,    0,  127,    2, 0x08,   15 /* Private */,
+      10,    0,  128,    2, 0x08,   16 /* Private */,
+      11,    0,  129,    2, 0x08,   17 /* Private */,
+      12,    0,  130,    2, 0x08,   18 /* Private */,
+      13,    0,  131,    2, 0x08,   19 /* Private */,
+      14,    0,  132,    2, 0x08,   20 /* Private */,
+      15,    2,  133,    2, 0x08,   21 /* Private */,
+      16,    0,  138,    2, 0x08,   24 /* Private */,
+      17,    3,  139,    2, 0x08,   25 /* Private */,
+      18,    4,  146,    2, 0x08,   29 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3, QMetaType::QStringList, 0x80000000 | 4,    2,    2,    2,
+    QMetaType::Void, QMetaType::Bool, 0x80000000 | 3, QMetaType::QStringList, 0x80000000 | 4,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double,    2,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
 
  // slots: parameters
     QMetaType::Void,
@@ -95,6 +112,10 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double,    2,    2,    2,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, QMetaType::Int,    2,    2,    2,    2,
 
        0        // eod
 };
@@ -105,15 +126,21 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         auto *_t = static_cast<CTC_MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->dispatchTrain((*reinterpret_cast< QList<double>(*)>(_a[1])),(*reinterpret_cast< QList<QString>(*)>(_a[2])),(*reinterpret_cast< QList<int>(*)>(_a[3]))); break;
-        case 1: _t->on_actionDispatch_Train_triggered(); break;
-        case 2: _t->RedLineSelected(); break;
-        case 3: _t->GreenLineSelected(); break;
-        case 4: _t->on_previousButton_clicked(); break;
-        case 5: _t->on_NextButton_clicked(); break;
-        case 6: _t->on_actionView_Green_Line_Statuses_triggered(); break;
-        case 7: _t->on_actionView_Red_Line_Statuses_triggered(); break;
-        case 8: _t->on_actionView_Train_Statuses_triggered(); break;
+        case 0: _t->sendStationData((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< QList<double>(*)>(_a[2])),(*reinterpret_cast< QList<QString>(*)>(_a[3])),(*reinterpret_cast< QList<int>(*)>(_a[4]))); break;
+        case 1: _t->sendTrainData((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
+        case 2: _t->sendTime((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 3: _t->on_actionDispatch_Train_triggered(); break;
+        case 4: _t->RedLineSelected(); break;
+        case 5: _t->GreenLineSelected(); break;
+        case 6: _t->on_previousButton_clicked(); break;
+        case 7: _t->on_NextButton_clicked(); break;
+        case 8: _t->on_actionView_Green_Line_Statuses_triggered(); break;
+        case 9: _t->on_actionView_Red_Line_Statuses_triggered(); break;
+        case 10: _t->on_actionView_Train_Statuses_triggered(); break;
+        case 11: _t->receiveTime((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 12: _t->receiveTimeRequest(); break;
+        case 13: _t->receiveDispatchImmediate((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
+        case 14: _t->receiveDispatchSchedule((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -122,9 +149,9 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 0:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
+            case 1:
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<double> >(); break;
-            case 2:
+            case 3:
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<int> >(); break;
             }
             break;
@@ -132,9 +159,23 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (CTC_MainWindow::*)(QVector<double> , QVector<QString> , QVector<int> );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CTC_MainWindow::dispatchTrain)) {
+            using _t = void (CTC_MainWindow::*)(bool , QVector<double> , QVector<QString> , QVector<int> );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CTC_MainWindow::sendStationData)) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (CTC_MainWindow::*)(bool , int , double );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CTC_MainWindow::sendTrainData)) {
+                *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (CTC_MainWindow::*)(int , int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CTC_MainWindow::sendTime)) {
+                *result = 2;
                 return;
             }
         }
@@ -148,8 +189,8 @@ const QMetaObject CTC_MainWindow::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_CTC_MainWindow_t
-, QtPrivate::TypeAndForceComplete<CTC_MainWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<double>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<int>, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<CTC_MainWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<double>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<int>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 >,
@@ -176,22 +217,36 @@ int CTC_MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 15;
     }
     return _id;
 }
 
 // SIGNAL 0
-void CTC_MainWindow::dispatchTrain(QVector<double> _t1, QVector<QString> _t2, QVector<int> _t3)
+void CTC_MainWindow::sendStationData(bool _t1, QVector<double> _t2, QVector<QString> _t3, QVector<int> _t4)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void CTC_MainWindow::sendTrainData(bool _t1, int _t2, double _t3)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
-    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void CTC_MainWindow::sendTime(int _t1, int _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

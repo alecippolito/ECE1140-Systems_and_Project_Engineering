@@ -37,6 +37,9 @@ public:
     QLabel *label_2;
     QPushButton *previousButton;
     QPushButton *NextButton;
+    QLabel *TimeStatement;
+    QLabel *DayLabel;
+    QLabel *TimeLabel;
     QMenuBar *menubar;
     QMenu *menuEdit_Track;
     QMenu *menuDispatch;
@@ -78,6 +81,15 @@ public:
         NextButton = new QPushButton(centralwidget);
         NextButton->setObjectName(QString::fromUtf8("NextButton"));
         NextButton->setGeometry(QRect(710, 570, 93, 29));
+        TimeStatement = new QLabel(centralwidget);
+        TimeStatement->setObjectName(QString::fromUtf8("TimeStatement"));
+        TimeStatement->setGeometry(QRect(640, 10, 101, 20));
+        DayLabel = new QLabel(centralwidget);
+        DayLabel->setObjectName(QString::fromUtf8("DayLabel"));
+        DayLabel->setGeometry(QRect(640, 30, 101, 20));
+        TimeLabel = new QLabel(centralwidget);
+        TimeLabel->setObjectName(QString::fromUtf8("TimeLabel"));
+        TimeLabel->setGeometry(QRect(640, 50, 63, 20));
         CTC_MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(CTC_MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -126,6 +138,9 @@ public:
         label_2->setText(QString());
         previousButton->setText(QCoreApplication::translate("CTC_MainWindow", "<-- Previous", nullptr));
         NextButton->setText(QCoreApplication::translate("CTC_MainWindow", "Next -->", nullptr));
+        TimeStatement->setText(QCoreApplication::translate("CTC_MainWindow", "Current Time:", nullptr));
+        DayLabel->setText(QString());
+        TimeLabel->setText(QString());
         menuEdit_Track->setTitle(QCoreApplication::translate("CTC_MainWindow", "Edit Track", nullptr));
         menuDispatch->setTitle(QCoreApplication::translate("CTC_MainWindow", "Dispatch", nullptr));
         menuView->setTitle(QCoreApplication::translate("CTC_MainWindow", "View", nullptr));

@@ -58,27 +58,35 @@ SOURCES       = ../Group2_TrainSystem/ctc_choosetrackline.cpp \
 		../Group2_TrainSystem/main.cpp \
 		../Group2_TrainSystem/system_centraltimer_connector.cpp \
 		../Group2_TrainSystem/TrainModelUI.cpp \
+		../Group2_TrainSystem/yardToDormontTrackModel.cpp \
 		../Group2_TrainSystem/Train.cpp \
 		../Group2_TrainSystem/Block.cpp \
-		../Group2_TrainSystem/TrainPhysics.cpp moc_ctc_choosetrackline.cpp \
+		../Group2_TrainSystem/TrainPhysics.cpp \
+		../Group2_TrainSystem/TrainControllerGUI.cpp \
+		../Group2_TrainSystem/TrainController.cpp moc_ctc_choosetrackline.cpp \
 		moc_ctc_dispatchtrain.cpp \
 		moc_ctc_mainwindow.cpp \
 		moc_system_centraltimer_connector.cpp \
-		moc_TrainModelUI.cpp
+		moc_TrainModelUI.cpp \
+		moc_TrainControllerGUI.cpp
 OBJECTS       = ctc_choosetrackline.o \
 		ctc_dispatchtrain.o \
 		ctc_mainwindow.o \
 		main.o \
 		system_centraltimer_connector.o \
 		TrainModelUI.o \
+		yardToDormontTrackModel.o \
 		Train.o \
 		Block.o \
 		TrainPhysics.o \
+		TrainControllerGUI.o \
+		TrainController.o \
 		moc_ctc_choosetrackline.o \
 		moc_ctc_dispatchtrain.o \
 		moc_ctc_mainwindow.o \
 		moc_system_centraltimer_connector.o \
-		moc_TrainModelUI.o
+		moc_TrainModelUI.o \
+		moc_TrainControllerGUI.o
 DIST          = ../../Qt/6.2.3/macos/mkspecs/features/spec_pre.prf \
 		../../Qt/6.2.3/macos/mkspecs/features/device_config.prf \
 		../../Qt/6.2.3/macos/mkspecs/common/unix.conf \
@@ -226,15 +234,21 @@ DIST          = ../../Qt/6.2.3/macos/mkspecs/features/spec_pre.prf \
 		../Group2_TrainSystem/TrainModelUI.h \
 		../Group2_TrainSystem/Train.h \
 		../Group2_TrainSystem/Block.h \
-		../Group2_TrainSystem/TrainPhysics.h ../Group2_TrainSystem/ctc_choosetrackline.cpp \
+		../Group2_TrainSystem/TrainPhysics.h \
+		../Group2_TrainSystem/TrainControllerGUI.h \
+		../Group2_TrainSystem/TrainController.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h ../Group2_TrainSystem/ctc_choosetrackline.cpp \
 		../Group2_TrainSystem/ctc_dispatchtrain.cpp \
 		../Group2_TrainSystem/ctc_mainwindow.cpp \
 		../Group2_TrainSystem/main.cpp \
 		../Group2_TrainSystem/system_centraltimer_connector.cpp \
 		../Group2_TrainSystem/TrainModelUI.cpp \
+		../Group2_TrainSystem/yardToDormontTrackModel.cpp \
 		../Group2_TrainSystem/Train.cpp \
 		../Group2_TrainSystem/Block.cpp \
-		../Group2_TrainSystem/TrainPhysics.cpp
+		../Group2_TrainSystem/TrainPhysics.cpp \
+		../Group2_TrainSystem/TrainControllerGUI.cpp \
+		../Group2_TrainSystem/TrainController.cpp
 QMAKE_TARGET  = Group2_TrainSystem
 DESTDIR       = 
 TARGET        = Group2_TrainSystem.app/Contents/MacOS/Group2_TrainSystem
@@ -255,7 +269,7 @@ include /Users/trent/Qt/6.2.3/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-Group2_TrainSystem.app/Contents/MacOS/Group2_TrainSystem: ui_ctc_choosetrackline.h ui_ctc_dispatchtrain.h ui_ctc_mainwindow.h ui_system_centraltimer_connector.h ui_TrainModelUI.h $(OBJECTS)  
+Group2_TrainSystem.app/Contents/MacOS/Group2_TrainSystem: ui_ctc_choosetrackline.h ui_ctc_dispatchtrain.h ui_ctc_mainwindow.h ui_system_centraltimer_connector.h ui_TrainModelUI.h ui_TrainControllerGUI.h $(OBJECTS)  
 	@test -d Group2_TrainSystem.app/Contents/MacOS/ || mkdir -p Group2_TrainSystem.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -577,9 +591,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../Group2_TrainSystem/ctc_choosetrackline.h ../Group2_TrainSystem/ctc_dispatchtrain.h ../Group2_TrainSystem/ctc_mainwindow.h ../Group2_TrainSystem/system_centraltimer_connector.h ../Group2_TrainSystem/TrainModelUI.h ../Group2_TrainSystem/Train.h ../Group2_TrainSystem/Block.h ../Group2_TrainSystem/TrainPhysics.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Group2_TrainSystem/ctc_choosetrackline.cpp ../Group2_TrainSystem/ctc_dispatchtrain.cpp ../Group2_TrainSystem/ctc_mainwindow.cpp ../Group2_TrainSystem/main.cpp ../Group2_TrainSystem/system_centraltimer_connector.cpp ../Group2_TrainSystem/TrainModelUI.cpp ../Group2_TrainSystem/Train.cpp ../Group2_TrainSystem/Block.cpp ../Group2_TrainSystem/TrainPhysics.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Group2_TrainSystem/ctc_choosetrackline.ui ../Group2_TrainSystem/ctc_dispatchtrain.ui ../Group2_TrainSystem/ctc_mainwindow.ui ../Group2_TrainSystem/system_centraltimer_connector.ui ../Group2_TrainSystem/TrainModelUI.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Group2_TrainSystem/ctc_choosetrackline.h ../Group2_TrainSystem/ctc_dispatchtrain.h ../Group2_TrainSystem/ctc_mainwindow.h ../Group2_TrainSystem/system_centraltimer_connector.h ../Group2_TrainSystem/TrainModelUI.h ../Group2_TrainSystem/Train.h ../Group2_TrainSystem/Block.h ../Group2_TrainSystem/TrainPhysics.h ../Group2_TrainSystem/TrainControllerGUI.h ../Group2_TrainSystem/TrainController.h ../Group2_TrainSystem/yardToDormontTrackModel.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Group2_TrainSystem/ctc_choosetrackline.cpp ../Group2_TrainSystem/ctc_dispatchtrain.cpp ../Group2_TrainSystem/ctc_mainwindow.cpp ../Group2_TrainSystem/main.cpp ../Group2_TrainSystem/system_centraltimer_connector.cpp ../Group2_TrainSystem/TrainModelUI.cpp ../Group2_TrainSystem/yardToDormontTrackModel.cpp ../Group2_TrainSystem/Train.cpp ../Group2_TrainSystem/Block.cpp ../Group2_TrainSystem/TrainPhysics.cpp ../Group2_TrainSystem/TrainControllerGUI.cpp ../Group2_TrainSystem/TrainController.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Group2_TrainSystem/ctc_choosetrackline.ui ../Group2_TrainSystem/ctc_dispatchtrain.ui ../Group2_TrainSystem/ctc_mainwindow.ui ../Group2_TrainSystem/system_centraltimer_connector.ui ../Group2_TrainSystem/TrainModelUI.ui ../Group2_TrainSystem/TrainControllerGUI.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -608,9 +622,9 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_ctc_choosetrackline.cpp moc_ctc_dispatchtrain.cpp moc_ctc_mainwindow.cpp moc_system_centraltimer_connector.cpp moc_TrainModelUI.cpp
+compiler_moc_header_make_all: moc_ctc_choosetrackline.cpp moc_ctc_dispatchtrain.cpp moc_ctc_mainwindow.cpp moc_system_centraltimer_connector.cpp moc_TrainModelUI.cpp moc_TrainControllerGUI.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_ctc_choosetrackline.cpp moc_ctc_dispatchtrain.cpp moc_ctc_mainwindow.cpp moc_system_centraltimer_connector.cpp moc_TrainModelUI.cpp
+	-$(DEL_FILE) moc_ctc_choosetrackline.cpp moc_ctc_dispatchtrain.cpp moc_ctc_mainwindow.cpp moc_system_centraltimer_connector.cpp moc_TrainModelUI.cpp moc_TrainControllerGUI.cpp
 moc_ctc_choosetrackline.cpp: ../Group2_TrainSystem/ctc_choosetrackline.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -626,6 +640,10 @@ moc_ctc_dispatchtrain.cpp: ../Group2_TrainSystem/ctc_dispatchtrain.h \
 moc_ctc_mainwindow.cpp: ../Group2_TrainSystem/ctc_mainwindow.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../Group2_TrainSystem/ctc_choosetrackline.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../Group2_TrainSystem/ctc_dispatchtrain.h \
 		../../Qt/6.2.3/macos/libexec/moc
 	/Users/trent/Qt/6.2.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=12 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trent/Qt/6.2.3/macos/mkspecs/macx-clang -I/Users/trent/ECE1140-Group2/Group2_TrainSystem -I/Users/trent/Qt/6.2.3/macos/lib/QtWidgets.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtGui.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trent/Qt/6.2.3/macos/lib ../Group2_TrainSystem/ctc_mainwindow.h -o moc_ctc_mainwindow.cpp
 
@@ -633,6 +651,16 @@ moc_system_centraltimer_connector.cpp: ../Group2_TrainSystem/system_centraltimer
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../Group2_TrainSystem/ctc_mainwindow.h \
+		../Group2_TrainSystem/ctc_choosetrackline.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../Group2_TrainSystem/ctc_dispatchtrain.h \
+		../Group2_TrainSystem/TrainControllerGUI.h \
+		../Group2_TrainSystem/TrainController.h \
+		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/Block.h \
+		../Group2_TrainSystem/TrainPhysics.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../../Qt/6.2.3/macos/libexec/moc
 	/Users/trent/Qt/6.2.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=12 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trent/Qt/6.2.3/macos/mkspecs/macx-clang -I/Users/trent/ECE1140-Group2/Group2_TrainSystem -I/Users/trent/Qt/6.2.3/macos/lib/QtWidgets.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtGui.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trent/Qt/6.2.3/macos/lib ../Group2_TrainSystem/system_centraltimer_connector.h -o moc_system_centraltimer_connector.cpp
 
@@ -655,13 +683,23 @@ moc_TrainModelUI.cpp: ../Group2_TrainSystem/TrainModelUI.h \
 		../../Qt/6.2.3/macos/libexec/moc
 	/Users/trent/Qt/6.2.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=12 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trent/Qt/6.2.3/macos/mkspecs/macx-clang -I/Users/trent/ECE1140-Group2/Group2_TrainSystem -I/Users/trent/Qt/6.2.3/macos/lib/QtWidgets.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtGui.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trent/Qt/6.2.3/macos/lib ../Group2_TrainSystem/TrainModelUI.h -o moc_TrainModelUI.cpp
 
+moc_TrainControllerGUI.cpp: ../Group2_TrainSystem/TrainControllerGUI.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../Group2_TrainSystem/TrainController.h \
+		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/Block.h \
+		../Group2_TrainSystem/TrainPhysics.h \
+		../../Qt/6.2.3/macos/libexec/moc
+	/Users/trent/Qt/6.2.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=12 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trent/Qt/6.2.3/macos/mkspecs/macx-clang -I/Users/trent/ECE1140-Group2/Group2_TrainSystem -I/Users/trent/Qt/6.2.3/macos/lib/QtWidgets.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtGui.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trent/Qt/6.2.3/macos/lib ../Group2_TrainSystem/TrainControllerGUI.h -o moc_TrainControllerGUI.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_ctc_choosetrackline.h ui_ctc_dispatchtrain.h ui_ctc_mainwindow.h ui_system_centraltimer_connector.h ui_TrainModelUI.h
+compiler_uic_make_all: ui_ctc_choosetrackline.h ui_ctc_dispatchtrain.h ui_ctc_mainwindow.h ui_system_centraltimer_connector.h ui_TrainModelUI.h ui_TrainControllerGUI.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_ctc_choosetrackline.h ui_ctc_dispatchtrain.h ui_ctc_mainwindow.h ui_system_centraltimer_connector.h ui_TrainModelUI.h
+	-$(DEL_FILE) ui_ctc_choosetrackline.h ui_ctc_dispatchtrain.h ui_ctc_mainwindow.h ui_system_centraltimer_connector.h ui_TrainModelUI.h ui_TrainControllerGUI.h
 ui_ctc_choosetrackline.h: ../Group2_TrainSystem/ctc_choosetrackline.ui \
 		../../Qt/6.2.3/macos/libexec/uic
 	/Users/trent/Qt/6.2.3/macos/libexec/uic ../Group2_TrainSystem/ctc_choosetrackline.ui -o ui_ctc_choosetrackline.h
@@ -681,6 +719,10 @@ ui_system_centraltimer_connector.h: ../Group2_TrainSystem/system_centraltimer_co
 ui_TrainModelUI.h: ../Group2_TrainSystem/TrainModelUI.ui \
 		../../Qt/6.2.3/macos/libexec/uic
 	/Users/trent/Qt/6.2.3/macos/libexec/uic ../Group2_TrainSystem/TrainModelUI.ui -o ui_TrainModelUI.h
+
+ui_TrainControllerGUI.h: ../Group2_TrainSystem/TrainControllerGUI.ui \
+		../../Qt/6.2.3/macos/libexec/uic
+	/Users/trent/Qt/6.2.3/macos/libexec/uic ../Group2_TrainSystem/TrainControllerGUI.ui -o ui_TrainControllerGUI.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -703,19 +745,45 @@ ctc_choosetrackline.o: ../Group2_TrainSystem/ctc_choosetrackline.cpp ../Group2_T
 ctc_dispatchtrain.o: ../Group2_TrainSystem/ctc_dispatchtrain.cpp ../Group2_TrainSystem/ctc_dispatchtrain.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_ctc_dispatchtrain.h
+		ui_ctc_dispatchtrain.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ctc_dispatchtrain.o ../Group2_TrainSystem/ctc_dispatchtrain.cpp
 
 ctc_mainwindow.o: ../Group2_TrainSystem/ctc_mainwindow.cpp ../Group2_TrainSystem/ctc_mainwindow.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		ui_ctc_mainwindow.h
+		../Group2_TrainSystem/ctc_choosetrackline.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../Group2_TrainSystem/ctc_dispatchtrain.h \
+		ui_ctc_mainwindow.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QFile \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qfile.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QTextStream \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qtextstream.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ctc_mainwindow.o ../Group2_TrainSystem/ctc_mainwindow.cpp
 
 main.o: ../Group2_TrainSystem/main.cpp ../Group2_TrainSystem/system_centraltimer_connector.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../Group2_TrainSystem/ctc_mainwindow.h \
+		../Group2_TrainSystem/ctc_choosetrackline.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../Group2_TrainSystem/ctc_dispatchtrain.h \
+		../Group2_TrainSystem/TrainControllerGUI.h \
+		../Group2_TrainSystem/TrainController.h \
+		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/Block.h \
+		../Group2_TrainSystem/TrainPhysics.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Group2_TrainSystem/main.cpp
@@ -724,7 +792,24 @@ system_centraltimer_connector.o: ../Group2_TrainSystem/system_centraltimer_conne
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../Group2_TrainSystem/ctc_mainwindow.h \
-		ui_system_centraltimer_connector.h
+		../Group2_TrainSystem/ctc_choosetrackline.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../Group2_TrainSystem/ctc_dispatchtrain.h \
+		../Group2_TrainSystem/TrainControllerGUI.h \
+		../Group2_TrainSystem/TrainController.h \
+		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/Block.h \
+		../Group2_TrainSystem/TrainPhysics.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
+		ui_system_centraltimer_connector.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDate \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QTime \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QTimer \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o system_centraltimer_connector.o ../Group2_TrainSystem/system_centraltimer_connector.cpp
 
 TrainModelUI.o: ../Group2_TrainSystem/TrainModelUI.cpp ../Group2_TrainSystem/TrainModelUI.h \
@@ -747,6 +832,10 @@ TrainModelUI.o: ../Group2_TrainSystem/TrainModelUI.cpp ../Group2_TrainSystem/Tra
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QAbstractButton \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TrainModelUI.o ../Group2_TrainSystem/TrainModelUI.cpp
+
+yardToDormontTrackModel.o: ../Group2_TrainSystem/yardToDormontTrackModel.cpp ../Group2_TrainSystem/yardToDormontTrackModel.h \
+		../Group2_TrainSystem/Block.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o yardToDormontTrackModel.o ../Group2_TrainSystem/yardToDormontTrackModel.cpp
 
 Train.o: ../Group2_TrainSystem/Train.cpp ../Group2_TrainSystem/Train.h \
 		../Group2_TrainSystem/Block.h \
@@ -773,6 +862,30 @@ TrainPhysics.o: ../Group2_TrainSystem/TrainPhysics.cpp ../Group2_TrainSystem/Tra
 		../Group2_TrainSystem/Block.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TrainPhysics.o ../Group2_TrainSystem/TrainPhysics.cpp
 
+TrainControllerGUI.o: ../Group2_TrainSystem/TrainControllerGUI.cpp ../Group2_TrainSystem/TrainControllerGUI.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../Group2_TrainSystem/TrainController.h \
+		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/Block.h \
+		../Group2_TrainSystem/TrainPhysics.h \
+		ui_TrainControllerGUI.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QString \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QTimer \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QObject \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TrainControllerGUI.o ../Group2_TrainSystem/TrainControllerGUI.cpp
+
+TrainController.o: ../Group2_TrainSystem/TrainController.cpp ../Group2_TrainSystem/TrainController.h \
+		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/Block.h \
+		../Group2_TrainSystem/TrainPhysics.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TrainController.o ../Group2_TrainSystem/TrainController.cpp
+
 moc_ctc_choosetrackline.o: moc_ctc_choosetrackline.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ctc_choosetrackline.o moc_ctc_choosetrackline.cpp
 
@@ -787,6 +900,9 @@ moc_system_centraltimer_connector.o: moc_system_centraltimer_connector.cpp
 
 moc_TrainModelUI.o: moc_TrainModelUI.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_TrainModelUI.o moc_TrainModelUI.cpp
+
+moc_TrainControllerGUI.o: moc_TrainControllerGUI.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_TrainControllerGUI.o moc_TrainControllerGUI.cpp
 
 ####### Install
 

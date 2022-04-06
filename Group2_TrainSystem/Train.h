@@ -13,7 +13,7 @@ class Train{
 
     public:
             int numCars;
-            double currentVelocity;
+            double currentVelocity = 0;
             double nextVelocity;
             double power;
             double length;

@@ -7,10 +7,8 @@
 
 //struct for the Train - how train values are stored inside the CTC for display
 struct Train_CTC{
-    QString TrainNumber;
-    QString destination;
-    int departure;
-    int arrival;
+    bool redline;
+    int dispatchTime;
     int authority;
     double suggestedSpeed;
 };
@@ -38,23 +36,27 @@ private slots:
     void on_actionDispatch_Train_triggered();
     void RedLineSelected();
     void GreenLineSelected();
-
     void on_previousButton_clicked();
-
     void on_NextButton_clicked();
-
     void on_actionView_Green_Line_Statuses_triggered();
-
     void on_actionView_Red_Line_Statuses_triggered();
-
     void on_actionView_Train_Statuses_triggered();
+    void receiveTime(int,int);
+    void receiveTimeRequest();
+    void receiveDispatchImmediate(bool,int,double);
+    void receiveDispatchSchedule(bool,int,double,int);
 
 signals:
-    void sendStationData(QVector<double>, QVector<QString>, QVector<int>);
+    void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>);
+    void sendTrainData(bool,int, double);
+    void sendTime(int,int);
 
 private:
     //internal functions
     void initializeTrackVector();
+    void checkDispatch();
+    void dispatchTrain();
+    void displayTime();
 
     //initializing all sub UI's
     Ui::CTC_MainWindow *ui;
@@ -65,6 +67,7 @@ private:
     QVector<Train_CTC> TrainVector;
     QVector<Train_CTC> TrainSchedule;
     QVector<Train_CTC> TrainStandby;
+    QVector<Train_CTC> TrainQueue;
     QVector<TrackBlock> TrackVector;
     QVector<TrackBlock> TrackVectorRed;
     QVector<TrackBlock> TrackVectorGreen;
@@ -75,11 +78,14 @@ private:
     QVector<double> stationDistancesGreen;
     QVector<double> stationDistancesRed;
     QString spaces(int);
+    QVector<QString> days;
     int number;
     int trainSet;
     int trackSetRed;
     int trackSetGreen;
     int setSize;
+    int currentDay;
+    int currentSecondsSinceMidnight;
 };
 
 #endif // CTC_MAINWINDOW_H

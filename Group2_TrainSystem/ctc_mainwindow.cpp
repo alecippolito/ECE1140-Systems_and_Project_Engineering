@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
+#include <QDebug>
 
 CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,6 +13,7 @@ CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     //initialize the UI to the correct values
+    days = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
     initializeTrackVector();
     number = 0;
     ui->previousButton->setVisible(false);
@@ -30,6 +32,19 @@ CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
 CTC_MainWindow::~CTC_MainWindow()
 {
     delete ui;
+}
+
+//slot to receive time from the central timer
+//inputs: day value, seconds since midnight
+//Central Timer will periodically send the time data the CTC, CTC will update its own values
+//Every time update, the CTC will check to see if there are any trains to update
+void CTC_MainWindow::receiveTime(int day_temp, int secondsSinceMidnight_temp)
+{
+    currentDay = day_temp;
+    currentSecondsSinceMidnight = secondsSinceMidnight_temp;
+    displayTime();
+
+    checkDispatch();
 }
 
 void CTC_MainWindow::on_actionDispatch_Train_triggered()
@@ -53,8 +68,20 @@ void CTC_MainWindow::RedLineSelected()
     dp->show();
 
     //send the red line stations to the dispatch window
-    QObject::connect(this, SIGNAL(sendStationData(QVector<double>,QVector<QString>,QVector<int>)),dp,SLOT(receiveStationData(QVector<double>,QVector<QString>,QVector<int>)));
-    emit sendStationData(stationDistancesRed,stationNamesRed,stationAuthoritiesRed);
+    QObject::connect(this, SIGNAL(sendStationData(bool,QVector<double>,QVector<QString>,QVector<int>)),dp,SLOT(receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>)));
+    emit sendStationData(true,stationDistancesRed,stationNamesRed,stationAuthoritiesRed);
+
+    //send current time to dispatch window
+    QObject::connect(this, SIGNAL(sendTime(int,int)), dp, SLOT(updateTimeDisplay(int,int)));
+    emit sendTime(currentDay,currentSecondsSinceMidnight);
+
+    //if the dispatch window needs it, send the current time
+    QObject::connect(dp, SIGNAL(requestSystemTime()), this, SLOT(receiveTimeRequest()));
+    QObject::connect(this, SIGNAL(sendTime(int,int)),dp, SLOT(receiveSystemTime(int,int)));
+
+    //connect the actual dispatch signals
+    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double)), this, SLOT(receiveDispatchImmediate(bool,int,double)));
+    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int)), this, SLOT(receiveDispatchSchedule(bool,int,double,int)));
 }
 
 void CTC_MainWindow::GreenLineSelected()
@@ -64,8 +91,55 @@ void CTC_MainWindow::GreenLineSelected()
     dp->show();
 
     //send the green line stations to the dispatch window
-    QObject::connect(this, SIGNAL(sendStationData(QVector<double>,QVector<QString>,QVector<int>)),dp,SLOT(receiveStationData(QVector<double>,QVector<QString>,QVector<int>)));
-    emit sendStationData(stationDistancesGreen,stationNamesGreen,stationAuthoritiesGreen);
+    QObject::connect(this, SIGNAL(sendStationData(bool,QVector<double>,QVector<QString>,QVector<int>)),dp,SLOT(receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>)));
+    emit sendStationData(false,stationDistancesGreen,stationNamesGreen,stationAuthoritiesGreen);
+
+    //send current time to dispatch window
+    QObject::connect(this, SIGNAL(sendTime(int,int)), dp, SLOT(updateTimeDisplay(int,int)));
+    emit sendTime(currentDay,currentSecondsSinceMidnight);
+
+    //if the dispatch window needs it, send the current time
+    QObject::connect(dp, SIGNAL(requestSystemTime()), this, SLOT(receiveTimeRequest()));
+    QObject::connect(this, SIGNAL(sendTime(int,int)),dp, SLOT(receiveSystemTime(int,int)));
+
+    //connect the actual dispatch signals
+    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double)), this, SLOT(receiveDispatchImmediate(bool,int,double)));
+    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int)), this, SLOT(receiveDispatchSchedule(bool,int,double,int)));
+}
+
+void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, double sugg_speed_temp)
+{
+    cl->hide();
+
+    //check if block outside of yard is open
+    if ((redline_temp == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
+    {
+        emit sendTrainData(redline_temp,auth_temp,sugg_speed_temp);
+    }
+    else
+    {
+        //if it isn't, add train to the queue, wait for next opportunity
+        Train_CTC tempTrain;
+        tempTrain.authority = auth_temp;
+        tempTrain.dispatchTime = 0;     //not needed
+        tempTrain.redline = redline_temp;
+        tempTrain.suggestedSpeed = sugg_speed_temp;
+        TrainQueue.push_back(tempTrain);
+    }
+
+}
+
+void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, double sugg_speed_temp, int departTime_temp)
+{
+    cl->hide();
+
+    //add train to list of trains on standby
+    Train_CTC tempTrain;
+    tempTrain.authority = auth_temp;
+    tempTrain.dispatchTime = departTime_temp;
+    tempTrain.redline = redline_temp;
+    tempTrain.suggestedSpeed = sugg_speed_temp;
+    TrainStandby.push_back(tempTrain);
 }
 
 void CTC_MainWindow::initializeTrackVector()
@@ -264,4 +338,64 @@ QString CTC_MainWindow::spaces(int num)
     }
     return temp;
 }
+
+void CTC_MainWindow::displayTime()
+{
+    //display the time on the central timer module
+    ui->DayLabel->setText(days[currentDay]);
+
+    int tempHour, tempMinute, tempSecond;
+    QString tempTime;
+    tempHour = currentSecondsSinceMidnight/3600;
+    tempMinute = (currentSecondsSinceMidnight - 3600*tempHour)/60;
+    tempSecond = (currentSecondsSinceMidnight - 3600*tempHour - 60*tempMinute);
+    tempTime = QString::number(tempHour) + ":" + QString::number(tempMinute) + ":" + QString::number(tempSecond);
+    ui->TimeLabel->setText(tempTime);
+}
+
+void CTC_MainWindow::checkDispatch()
+{
+    //loop through all track vectors and dispatch one of them
+
+    //highest priority is the queue - trains that needed to be dispatched already have experienced delays
+    if (TrainQueue.size() != 0)
+    {
+        if ((TrainQueue[0].redline == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
+        {
+            emit sendTrainData(TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed);
+
+            //remove this train from the list, break out of the function
+            TrainQueue.removeFirst();
+            return;
+        }
+    }
+
+    //next, loop through the list of trains on standby
+    int tempMinute = (currentDay*86400 + currentSecondsSinceMidnight)/60;
+    for (unsigned int i = 0; i < TrainStandby.size(); i++)
+    {
+        if (tempMinute == TrainStandby[i].dispatchTime)
+        {
+            if ((TrainStandby[i].redline == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
+            {
+                emit sendTrainData(TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed);
+
+                //remove this train from the list, break out of the function
+                TrainStandby.remove(i);
+                return;
+            }
+            else
+            {
+                TrainQueue.push_back(TrainStandby[i]);
+            }
+        }
+    }
+
+}
+
+void CTC_MainWindow::receiveTimeRequest()
+{
+    emit sendTime(currentDay,currentSecondsSinceMidnight);
+}
+
 
