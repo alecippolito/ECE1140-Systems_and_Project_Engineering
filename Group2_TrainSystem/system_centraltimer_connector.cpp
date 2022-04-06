@@ -59,6 +59,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     //testing purposes: receiving a dispatch signal from the CTC
     QObject::connect(ctc, SIGNAL(sendTrainData(bool,int,double)), this, SLOT(receiveDispatchSignal_test(bool,int,double)));
 
+
     tcGUI = new TrainControllerGUI();
     tcGUI->show();
     Train *t = new Train(1, trackModel.track[0]);
@@ -126,14 +127,7 @@ void System_CentralTimer_Connector::displayDateTime()
 {
     //display the time on the central timer module
     ui->DayDisplay->setText(days[day]);
-
-    int tempHour, tempMinute, tempSecond;
-    QString tempTime;
-    tempHour = secondsInDay/3600;
-    tempMinute = (secondsInDay - 3600*tempHour)/60;
-    tempSecond = (secondsInDay - 3600*tempHour - 60*tempMinute);
-    tempTime = QString::number(tempHour) + ":" + QString::number(tempMinute) + ":" + QString::number(tempSecond);
-    ui->TimeDisplay->setText(tempTime);
+    ui->TimeDisplay->setText(QTime::fromMSecsSinceStartOfDay(secondsInDay*1000).toString("h:mm:ss A"));
 }
 
 
