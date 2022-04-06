@@ -14,7 +14,8 @@ SOURCES += \
     ctc_mainwindow.cpp \
     main.cpp \
     system_centraltimer_connector.cpp \
-    TrainModelUI.cpp \ 
+    TrainModelUI.cpp \
+    yardToDormontTrackModel.cpp \
     Train.cpp \
     Block.cpp \
     TrainPhysics.cpp \
@@ -31,7 +32,8 @@ HEADERS += \
     Block.h \
     TrainPhysics.h \
     TrainControllerGUI.h \
-    TrainController.h
+    TrainController.h \
+    yardToDormontTrackModel.h
 
 FORMS += \
     ctc_choosetrackline.ui \

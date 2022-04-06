@@ -8,6 +8,7 @@
 #include "TrainControllerGUI.h"
 #include "Train.h"
 #include "Block.h"
+#include "yardToDormontTrackModel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class System_CentralTimer_Connector; }
@@ -21,6 +22,7 @@ public:
     System_CentralTimer_Connector(QWidget *parent = nullptr);
     ~System_CentralTimer_Connector();
 
+<<<<<<< HEAD
 private slots:
     void updateTime();
     void on_OneTimesSpeed_clicked();
@@ -44,11 +46,14 @@ signals:
     void sendTime(int,int);
     void sendTimeUpdate(int);
 
+=======
+>>>>>>> 6c8a2a8b0be58d9607c2ca44879c9144b48c6c3d
 private:
     Ui::System_CentralTimer_Connector *ui;
 
     //create pointers to all modules
     CTC_MainWindow *ctc;
+<<<<<<< HEAD
 
     //pointer to a QTimer class
     QTimer *timer;
@@ -64,6 +69,10 @@ private:
     void displayDateTime();
 
     TrainControllerGUI *tc;
+=======
+    TrainControllerGUI *tcGUI;
+>>>>>>> 6c8a2a8b0be58d9607c2ca44879c9144b48c6c3d
     MainWindow *tm;
+    YardDormontTrackModel trackModel;
 };
 #endif // SYSTEM_CENTRALTIMER_CONNECTOR_H

@@ -43,6 +43,7 @@ public:
     void updateBrake();
     void dispatchTrain();
     void startMoving();
+    void setTrain(Train *t);
 
 private slots:
     // *************************************************

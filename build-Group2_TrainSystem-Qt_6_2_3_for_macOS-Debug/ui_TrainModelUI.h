@@ -408,8 +408,8 @@ public:
         label_13->setText(QCoreApplication::translate("MainWindow", "Intercom", nullptr));
         numCarsLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         lengthLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        widthLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        heightLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        widthLabel->setText(QCoreApplication::translate("MainWindow", "3.42", nullptr));
+        heightLabel->setText(QCoreApplication::translate("MainWindow", "2.65", nullptr));
         passengerCountLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         crewCountLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         weightLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
@@ -426,7 +426,7 @@ public:
         label_14->setText(QCoreApplication::translate("MainWindow", "Destination", nullptr));
         label_15->setText(QCoreApplication::translate("MainWindow", "Current Block", nullptr));
         label_16->setText(QCoreApplication::translate("MainWindow", "Next Block", nullptr));
-        destinationLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        destinationLabel->setText(QCoreApplication::translate("MainWindow", "Dormont", nullptr));
         currentBlockLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         nextBlockLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         label_17->setText(QCoreApplication::translate("MainWindow", "Power", nullptr));
