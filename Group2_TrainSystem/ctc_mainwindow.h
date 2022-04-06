@@ -2,6 +2,7 @@
 #define CTC_MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTime>
 #include "ctc_choosetrackline.h"
 #include "ctc_dispatchtrain.h"
 
@@ -45,6 +46,7 @@ private slots:
     void receiveTimeRequest();
     void receiveDispatchImmediate(bool,int,double);
     void receiveDispatchSchedule(bool,int,double,int);
+    void receiveBlockStatus(bool,int,int,bool);
 
 signals:
     void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>);

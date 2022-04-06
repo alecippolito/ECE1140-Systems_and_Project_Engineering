@@ -343,14 +343,7 @@ void CTC_MainWindow::displayTime()
 {
     //display the time on the central timer module
     ui->DayLabel->setText(days[currentDay]);
-
-    int tempHour, tempMinute, tempSecond;
-    QString tempTime;
-    tempHour = currentSecondsSinceMidnight/3600;
-    tempMinute = (currentSecondsSinceMidnight - 3600*tempHour)/60;
-    tempSecond = (currentSecondsSinceMidnight - 3600*tempHour - 60*tempMinute);
-    tempTime = QString::number(tempHour) + ":" + QString::number(tempMinute) + ":" + QString::number(tempSecond);
-    ui->TimeLabel->setText(tempTime);
+    ui->TimeLabel->setText(QTime::fromMSecsSinceStartOfDay(currentSecondsSinceMidnight*1000).toString("h:mm:ss A"));
 }
 
 void CTC_MainWindow::checkDispatch()
@@ -398,4 +391,21 @@ void CTC_MainWindow::receiveTimeRequest()
     emit sendTime(currentDay,currentSecondsSinceMidnight);
 }
 
+
+//slot to receive the data about the track block from wayside - update internal TrackBlockVector
+//input - data about SINGLE trackblock
+//no outputs
+void CTC_MainWindow::receiveBlockStatus(bool redline_temp, int trackNumber, int occupancy_temp, bool open_temp)
+{
+    if (redline_temp == true)
+    {
+        TrackVectorRed[trackNumber+1].occupancy = occupancy_temp;
+        TrackVectorRed[trackNumber+1].open = open_temp;
+    }
+    else
+    {
+        TrackVectorGreen[trackNumber+2].occupancy = occupancy_temp;
+        TrackVectorGreen[trackNumber+2].open = open_temp;
+    }
+}
 

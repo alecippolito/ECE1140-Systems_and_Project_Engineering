@@ -4,6 +4,7 @@ debug/ctc_mainwindow.o
 debug/main.o
 debug/system_centraltimer_connector.o
 debug/TrainModelUI.o
+debug/yardToDormontTrackModel.o
 debug/Train.o
 debug/Block.o
 debug/TrainPhysics.o
