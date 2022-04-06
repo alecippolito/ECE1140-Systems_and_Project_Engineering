@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dispatch Train</string>
   </property>
-  <widget class="QLabel" name="DepartureTime">
+  <widget class="QLabel" name="DepartureTimeLabel">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -26,7 +26,7 @@
     <string>Departure Time</string>
    </property>
   </widget>
-  <widget class="QLabel" name="ArriveTime">
+  <widget class="QLabel" name="ArriveTimeLabel">
    <property name="geometry">
     <rect>
      <x>290</x>
@@ -196,6 +196,32 @@
    </property>
    <property name="text">
     <string>Dispatch</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="LeaveNowLabel">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>170</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="LeaveAtSSLabel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>170</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
