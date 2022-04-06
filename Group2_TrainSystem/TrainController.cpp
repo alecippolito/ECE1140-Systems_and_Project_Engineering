@@ -7,9 +7,12 @@
 //              Includes
 // *************************************************
 #include "TrainController.h"
+#include <QDebug>
 
 
     void TrainController :: calculatePower(){
+        double speed = 0;
+        /*
         if(getAutomaticMode()==0){
             setpointSpeed = commandedSpeed;
         }
@@ -42,12 +45,32 @@
             if (authority <= 0) {
                 powerCommand = 0.0;
             }
+            */
+            if(serviceBrakeEnabled==false && emergencyBrakeEnabled==false && passengerEBrakeEnabled==false){
+                speed = setpointSpeed;
+                // max speed is 70
+                if(speed>70){
+                    speed = 70;
+                }
+                // min speed is 0
+                if(speed<0){
+                    speed = 0;
+                }
+                if(trainVelocity<0){
+                trainVelocity = 0;
+                }
+
+                double e_k = speed-trainVelocity;
+                double u_k = u_k_1 + (7/2)*(e_k+e_k_1);
+                powerCommand = kp*e_k+ki*u_k;
+            }
+
+            if(powerCommand>120000){
+                powerCommand =120000;
+            }
+        }
 
 
-
-
-
-		}
 
         void TrainController :: setPowerCommand(double newPowerCommand){
 			powerCommand = newPowerCommand;			
@@ -133,4 +156,6 @@
         bool TrainController :: getLightsOn(){
 			return lightsOn;
 		}
-        
+        void TrainController :: setT(int newT){
+            T = newT;
+        }

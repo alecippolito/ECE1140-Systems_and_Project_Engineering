@@ -50,6 +50,7 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
     updateDoors();
     updateLights();
     updateBrake();
+    updateMode();
     dispatchTrain();
     }
 }
@@ -133,8 +134,8 @@ void TrainControllerGUI :: updateBrake()
 void TrainControllerGUI :: dispatchTrain()
 {
     if (tc.getAutomaticMode()==0){
-        tc.setKi(225000); // default ki
-        tc.setKp(225000); // defult kp
+        tc.setKi(225); // default ki
+        tc.setKp(225); // defult kp
         startMoving();
     }
     dispatch = true;

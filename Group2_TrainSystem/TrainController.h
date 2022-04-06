@@ -17,12 +17,9 @@ class TrainController
         double powerCommand = 0;
         double kp;
         double ki;
-        double e_k;
         double e_k_1 = 0; // for first itteration of the power calculation
-        double u_k;
         double u_k_1 = 0; // for first itteration of the power calculation
-        double speed = 0;
-        double T = 1;
+        double T = 1; // Tx speed
         double commandedSpeed = 0;
         double setpointSpeed = 0;
         double trainVelocity; // for power calculation
@@ -71,6 +68,7 @@ class TrainController
         void setLightsOn(bool);
         bool getLightsOn();
         void setHeadlightsOn(bool);
+        void setT(int);
       
 };
 
