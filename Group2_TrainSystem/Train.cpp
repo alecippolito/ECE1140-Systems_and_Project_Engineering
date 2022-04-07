@@ -20,9 +20,10 @@
     }
     */
 
-    void Train::setPower(double p)
+    void Train::setPower(double p, double limit)
     {
-        trainMetrics->setPower(p);
+        trainMetrics->setPower(p, limit);
+        currentVelocity = trainMetrics->getVelocity();
         atEndOfBlock = trainMetrics->atEndOfBlock;
         updateUI();
     }
@@ -115,24 +116,32 @@
     void Train::setFailureEngine(bool f)
     {
         engineFailure = f;
+        trainMetrics->currentVelocity = 0;
+        trainMetrics->setEngineFailure(true);
         trainUI->updateEngineFailureStatus(f);
     }
 
     void Train::setFailureSignalPickup(bool f)
     {
         signalPickupFailure = f;
+        trainMetrics->currentVelocity = 0;
+        trainMetrics->setSignalPickupFailure(f);
         trainUI->updateSignalPickupFailureStatus(f);
     }
 
     void Train::setFailureBrake(bool f)
     {
         brakeFailure = f;
+        trainMetrics->currentVelocity = 0;
+        trainMetrics->setBrakeFailure(f);
         trainUI->updateBrakeFailureStatus(f);
     }
 
     void Train::setPassengerBrake(bool f)
     {
         passengerBrake = f;
+        trainMetrics->currentVelocity = 0;
+        trainMetrics->emergencyBrake = f;
         trainUI->updateEmergencyBrakeStatus(f);
     }
 

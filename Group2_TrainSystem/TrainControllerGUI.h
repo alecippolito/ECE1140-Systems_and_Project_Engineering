@@ -32,6 +32,7 @@ public:
     //              Added Instances
     // *************************************************
     TrainController tc;
+    double setpointSpeedForModel;
     // *************************************************
     //              Added Functions
     // *************************************************

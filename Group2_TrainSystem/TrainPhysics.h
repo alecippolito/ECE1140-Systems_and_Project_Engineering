@@ -14,13 +14,13 @@ class TrainPhysics{
         double lastAcceleration = 0;
         bool emergencyBrake = false;
         bool serviceBrake = false;
-        double accelerationLimit = 0.5;
+        double accelerationLimit =0.5;
         double decelerationLimitServiceBrake = -1.2;
         double decelerationLimitEmergencyBrake = -2.73;
         double force = 0;
         int passengers = 100;
         int crewMembers = 20;
-        double time = 0.1;
+        double time = 1;
         bool engineFailure = false;
         bool brakeFailure = false;
         bool signalPickupFailure = false;
@@ -32,7 +32,7 @@ class TrainPhysics{
     double calculateVelocity();
     void calculateMass();
 
-    void setPower(double);
+    void setPower(double, double);
     double getPower();
     void setEngineFailure(bool);
     void setBrakeFailure(bool);

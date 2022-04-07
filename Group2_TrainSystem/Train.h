@@ -46,7 +46,7 @@ class Train{
     Train(int, Block *b);
     //~Train();
     void updateUI();
-    void setPower(double);
+    void setPower(double, double);
     void setTemperature(double);
     void setSpeed(double);
     void setDestination(std::string);
