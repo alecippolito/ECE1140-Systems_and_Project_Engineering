@@ -44,6 +44,7 @@ private slots:
 signals:
     void sendTime(int,int);
     void sendTimeUpdate(int);
+    void sendTimeDialation(double);
 
 private:
     Ui::System_CentralTimer_Connector *ui;

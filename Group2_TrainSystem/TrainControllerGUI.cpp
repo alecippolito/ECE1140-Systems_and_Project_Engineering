@@ -147,6 +147,7 @@ void TrainControllerGUI :: startMoving()
 }
 
 
+
 // *************************************************
 //              Private Slots
 // *************************************************
@@ -208,5 +209,10 @@ void TrainControllerGUI::on_submit_clicked()
     tc.setKp(kpVal);
     tc.setKi(kiVal);
     startMoving();
+}
+
+void TrainControllerGUI::receiveTimeDialation(double td)
+{
+    tc.setT(td);
 }
 
