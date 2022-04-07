@@ -16,14 +16,14 @@ class Track_controller{
             int curr_block;
             int authority;
             int wayside_block_num;
-            int suggested_speed;
+            double suggested_speed;
             QString failuremode;
-            int commanded_speed;
+            double commanded_speed;
             int speed_limit;
 
     public:
 
-    Track_controller(int, int, int, int, int);
+    Track_controller(int, int, int, int, double);
     void Set_currblock(int);
     void Set_signal(bool);
     void Set_crossbar(bool);
@@ -31,8 +31,8 @@ class Track_controller{
     void Set_trackcondition(bool);
     void Set_switch_track(bool);
     void Set_authority(int);
-    void Set_suggestedspeed(int);
-    void Set_commandedspeed(int);
+    void Set_suggestedspeed(double);
+    void Set_commandedspeed(double);
     void Set_maintenancemode(bool);
     void Set_speedlimit(int);
     int Get_speedlimit();
@@ -44,8 +44,8 @@ class Track_controller{
     bool Get_trackcondition();
     int Get_trackoccupancy();
     int Get_authority();
-    int Get_suggestedspeed();
-    int Get_commandedspeed();
+    double Get_suggestedspeed();
+    double Get_commandedspeed();
     bool Set_PLC();
     void Change_switch();
 };

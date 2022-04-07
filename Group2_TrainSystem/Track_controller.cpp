@@ -2,7 +2,7 @@
 #include <QString>
 
 
-    Track_controller::Track_controller(int occu, int block, int author, int wayside_blocks, int sugg_speed)
+    Track_controller::Track_controller(int occu, int block, int author, int wayside_blocks, double sugg_speed)
     {
         track_condition = true;
         maintenence = false;
@@ -54,11 +54,11 @@
     {
         authority = distance;
     }
-    void Track_controller::Set_suggestedspeed(int speed)
+    void Track_controller::Set_suggestedspeed(double speed)
     {
         suggested_speed = speed;
     }
-    void Track_controller::Set_commandedspeed(int speed)
+    void Track_controller::Set_commandedspeed(double speed)
     {
         commanded_speed = speed;
     }
@@ -72,11 +72,11 @@
         return maintenence;
     }
 
-    int Track_controller::Get_suggestedspeed()
+    double Track_controller::Get_suggestedspeed()
     {
         return suggested_speed;
     }
-    int Track_controller::Get_commandedspeed()
+    double Track_controller::Get_commandedspeed()
     {
         return commanded_speed;
     }

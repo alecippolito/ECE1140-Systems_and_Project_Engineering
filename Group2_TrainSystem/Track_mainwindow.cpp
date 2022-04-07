@@ -106,3 +106,14 @@ void Track_mainwindow::update_PLC()
     ui -> lcdNumber_5 -> display(track->Get_authority());
 
 }
+
+
+//signal to receive speed and authority
+void Track_mainwindow::receiveTrainData(int trainNum_temp, bool redline_temp, int authority_temp, double speed_temp)
+{
+    qDebug() << "Authority and speed received from CTC!";
+    qDebug() << "Authority: " << authority_temp;
+    qDebug() << "Suggested speed: " << speed_temp;
+    track->Set_authority(authority_temp);
+    track->Set_suggestedspeed(speed_temp);
+}
