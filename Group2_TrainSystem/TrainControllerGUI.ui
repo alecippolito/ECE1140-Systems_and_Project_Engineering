@@ -18,22 +18,22 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
+      <y>20</y>
       <width>231</width>
-      <height>121</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Inccrese Speed</string>
+     <string>Increase Speed</string>
     </property>
    </widget>
    <widget class="QPushButton" name="decSpeed">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>150</y>
+      <y>80</y>
       <width>231</width>
-      <height>111</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -45,8 +45,8 @@
      <rect>
       <x>280</x>
       <y>10</y>
-      <width>161</width>
-      <height>201</height>
+      <width>171</width>
+      <height>111</height>
      </rect>
     </property>
    </widget>
@@ -54,9 +54,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>270</y>
+      <y>150</y>
       <width>231</width>
-      <height>101</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -67,9 +67,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>450</y>
-      <width>231</width>
-      <height>101</height>
+      <y>230</y>
+      <width>221</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -79,10 +79,10 @@
    <widget class="QPushButton" name="serviceBrake">
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>480</x>
       <y>100</y>
-      <width>311</width>
-      <height>81</height>
+      <width>291</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -92,32 +92,32 @@
    <widget class="QLabel" name="speedLabel">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>200</y>
-      <width>91</width>
+      <x>280</x>
+      <y>120</y>
+      <width>201</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string> Speed</string>
+     <string> Setpoint Speed</string>
     </property>
    </widget>
    <widget class="QLCDNumber" name="currentPower">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>240</y>
-      <width>161</width>
-      <height>201</height>
+      <x>280</x>
+      <y>160</y>
+      <width>171</width>
+      <height>101</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="powerLabel">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>470</y>
-      <width>81</width>
+      <x>280</x>
+      <y>270</y>
+      <width>171</width>
       <height>31</height>
      </rect>
     </property>
@@ -128,21 +128,21 @@
    <widget class="QLabel" name="lightStatus">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>410</y>
+      <x>20</x>
+      <y>280</y>
       <width>211</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Light Staus: OFF</string>
+     <string>Light Status: OFF</string>
     </property>
    </widget>
    <widget class="QLabel" name="doorStatus">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>370</y>
+      <y>190</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -154,10 +154,10 @@
    <widget class="QPushButton" name="mode">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>220</y>
-      <width>311</width>
-      <height>61</height>
+      <x>480</x>
+      <y>10</y>
+      <width>261</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -168,8 +168,8 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>290</y>
-      <width>281</width>
+      <y>70</y>
+      <width>261</width>
       <height>21</height>
      </rect>
     </property>
@@ -180,8 +180,8 @@
    <widget class="QLabel" name="eBrakeStatus">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>180</y>
+      <x>20</x>
+      <y>390</y>
       <width>311</width>
       <height>31</height>
      </rect>
@@ -193,8 +193,8 @@
    <widget class="QPushButton" name="eBrakeButton">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>10</y>
+      <x>20</x>
+      <y>310</y>
       <width>311</width>
       <height>71</height>
      </rect>
@@ -249,7 +249,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

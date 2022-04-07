@@ -45,8 +45,8 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
             dispatchTrain();
     }
     tc.calculatePower();
-    updatePower();
     updateSpeed();
+    updatePower();
     updateDoors();
     updateLights();
     updateBrake();
@@ -67,7 +67,7 @@ void TrainControllerGUI :: updatePower()
 {
     tc.setTrainVelocity(train -> getCurrentVelocity());
     double curPower = tc.getPowerCommand();
-    train -> setPower(curPower);
+    train -> setPower(curPower, setpointSpeedForModel);
     ui -> currentPower -> display(curPower);
     qDebug() << "POWER: " << curPower;
 }
@@ -76,6 +76,7 @@ void TrainControllerGUI :: updatePower()
 void TrainControllerGUI :: updateSpeed()
 {
     double curSpeed = tc.getSetpointSpeed();
+    setpointSpeedForModel = curSpeed;
     if(tc.getServiceBrakeFlag()==true || tc.getEmergencyBrakeFlag()==true || tc.getPassengerEBrake()==true ){
         curSpeed = 0;
     }
@@ -124,7 +125,10 @@ void TrainControllerGUI :: updateMode()
 void TrainControllerGUI :: updateBrake()
 {
     if(tc.getServiceBrakeFlag()==true || tc.getEmergencyBrakeFlag()==true || tc.getPassengerEBrake()==true){
-        train->setFailureBrake(true);
+        if(tc.getEmergencyBrakeFlag() == true)
+        {
+            train->setPassengerBrake(true);
+        }
         tc.setPowerCommand(0);
     }
 
@@ -134,14 +138,16 @@ void TrainControllerGUI :: updateBrake()
 void TrainControllerGUI :: dispatchTrain()
 {
     if (tc.getAutomaticMode()==0){
-        tc.setKi(225); // default ki
-        tc.setKp(225); // defult kp
+        tc.setKi(5000); // default ki 225
+        tc.setKp(5000); // defult kp 225
         startMoving();
     }
     dispatch = true;
 }
 void TrainControllerGUI :: startMoving()
 {
+    // train ->
+    // tc.setCommandedSpeed();
     tc.setSetpointSpeed(tc.getCommandedSpeed());
     tc.calculatePower();
 }
@@ -178,7 +184,6 @@ void TrainControllerGUI::on_lightButton_clicked()
 void TrainControllerGUI::on_serviceBrake_clicked()
 {
     tc.setPowerCommand(0.0);
-    tc.setEmergencyBrake(true);
 }
 
 

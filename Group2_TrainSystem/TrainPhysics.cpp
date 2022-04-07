@@ -1,4 +1,5 @@
 #include "TrainPhysics.h"
+#include <QDebug>
 
 TrainPhysics::TrainPhysics(int num, Block* b)
 {
@@ -13,40 +14,79 @@ TrainPhysics::TrainPhysics(int num, Block* b)
 
 double TrainPhysics::calculateVelocity()
 {
-    if(currentVelocity > 0 && (!serviceBrake || !emergencyBrake)) //normal calculation of force if train is moving or neither brake is on
+    if(currentVelocity > 0) //normal calculation of force if train is moving or neither brake is on
     {
-        force = (power / currentVelocity) - (9.8 * mass) /*- (mass * 9.8 * block->getSlope)*/;
+        force = (power / currentVelocity) - (.098 * (mass/2.205)) /*- (mass * 9.8 * block->getSlope)*/;          //mass to kg
     }
-    else    //if train is stationary and a brake is on
+    else if((!serviceBrake && !emergencyBrake) && (power>0))    //if train is stationary and a brake is on
+    {
+        force = 100000;  //random large amount to start train
+    }
+
+    else
+    {
+        force = 0;  //if brakes are on
+    }
+
+    if(force < 0)
     {
         force = 0;
     }
 
     //set acceleration w/ limits
-    acceleration = force / mass;
+    lastAcceleration = acceleration;
+    acceleration = force / (mass/2.205);
+    qDebug() << "Force: " << force;
+    qDebug() << "Acceleration: " << acceleration;
     if(acceleration > accelerationLimit)
     {
         acceleration = accelerationLimit;
     }
-    else if(emergencyBrake)
-    {
-        acceleration = decelerationLimitEmergencyBrake;
-    }
-    else if(serviceBrake)
+
+    if(!emergencyBrake && acceleration < decelerationLimitServiceBrake)
     {
         acceleration = decelerationLimitServiceBrake;
     }
 
+    if(serviceBrake)
+    {
+        if(currentVelocity > 0)
+        {
+        acceleration = decelerationLimitServiceBrake;
+        }
+        else
+        {
+            acceleration = 0;
+        }
+    }
+
+    if(emergencyBrake)
+    {
+
+        if(currentVelocity > 0)
+        {
+            acceleration = decelerationLimitEmergencyBrake;
+        }
+        else
+        {
+            acceleration = 0;
+        }
+    }
+
     //get current time
     //TODO
-    time = .1;
+    time = 1;
 
-    double newAcceleration = lastAcceleration + acceleration;
-    double newVelocity = currentVelocity + ((time/2) * newAcceleration);
-    if(newVelocity < 0) { newVelocity = 0;}
-    if(newVelocity > 70) { newVelocity = 70;}
+    double totalAcceleration = lastAcceleration + acceleration;
+    double newVelocity = currentVelocity + ((time/2) * totalAcceleration);
 
+    double newVelocityMph = newVelocity * 2.23694;
+    if(newVelocityMph < 0) { newVelocityMph = 0;}
+    if(newVelocityMph > 70) { newVelocityMph = 70;}
+
+    newVelocity = newVelocityMph / 2.23694;
     return newVelocity;
+
 }
 
 double TrainPhysics::getVelocity()
@@ -54,7 +94,7 @@ double TrainPhysics::getVelocity()
     return currentVelocity;
 }
 
-void TrainPhysics::setPower(double num)
+void TrainPhysics::setPower(double num, double limit)
 {
     if(engineFailure)
     {
@@ -65,12 +105,25 @@ void TrainPhysics::setPower(double num)
     power = num;
     }
 
+    double currentVelocityMph = currentVelocity * 2.23694;
+    if(currentVelocityMph >= limit)
+    {
+        currentVelocityMph = limit;
+        acceleration = 0;
+        currentVelocity = currentVelocityMph / 2.23694;
+    }
+    else
+    {
     double v = calculateVelocity();
     lastVelocity = currentVelocity;
     currentVelocity = v;
+    }
 
     //keep track of where the train is
     double distTravelled = getDistanceTravelledInBlock();
+
+    atEndOfBlock = false;
+
     if(distTravelled >= block->blockLength)
     {
         atEndOfBlock = true;
@@ -86,13 +139,16 @@ double TrainPhysics::getPower()
 void TrainPhysics::calculateMass()
 {
     mass = (passengers + crewMembers) * 181; //181 = average weight in lbs of an adult
-    mass += numCars * 113400; //flexity car weight in lbs
+    mass += (numCars * 113400); //flexity car weight in lbs
 }
 
 double TrainPhysics::getDistanceTravelledInBlock()
 {
     double velocityTotal = lastVelocity + currentVelocity;
     double distanceTravelled = (block->getBlockLength() - distanceToBlockEnd) + ((time/2) * velocityTotal);
+    distanceToBlockEnd = distanceToBlockEnd - distanceTravelled;
+    qDebug() << "BlockLength: " << block->getBlockLength();
+    qDebug() << "distanceTravelled" << distanceTravelled;
     return distanceTravelled;
 }
 

@@ -7,7 +7,8 @@
             trainUI->updateTrain(this);
             trainUI->show();
             trainMetrics = new TrainPhysics(num, b);       //later add blocks
-            nextBlock = b;      //REPLACE THIS WITH TRACK CONTROLLER
+            nextBlock = trackModel.track[1];      //REPLACE THIS WITH TRACK CONTROLLER
+            blocksLeft--;
             updateUI();
         }
 
@@ -20,11 +21,20 @@
     }
     */
 
-    void Train::setPower(double p)
+    void Train::setPower(double p, double limit)
     {
-        trainMetrics->setPower(p);
+        checkBlock();
+        if(blocksLeft >= 0){
+        trainMetrics->setPower(p, limit);
+        currentVelocity = trainMetrics->getVelocity();
         atEndOfBlock = trainMetrics->atEndOfBlock;
+        }
+
         updateUI();
+        //if(blocksLeft == 0)
+        //{
+          //  trainUI->hide();
+        //}
     }
 
     void Train::setTemperature(double t)
@@ -115,30 +125,58 @@
     void Train::setFailureEngine(bool f)
     {
         engineFailure = f;
+        trainMetrics->currentVelocity = 0;
+        trainMetrics->setEngineFailure(true);
         trainUI->updateEngineFailureStatus(f);
     }
 
     void Train::setFailureSignalPickup(bool f)
     {
         signalPickupFailure = f;
+        trainMetrics->currentVelocity = 0;
+        trainMetrics->setSignalPickupFailure(f);
         trainUI->updateSignalPickupFailureStatus(f);
     }
 
     void Train::setFailureBrake(bool f)
     {
         brakeFailure = f;
+        trainMetrics->currentVelocity = 0;
+        trainMetrics->setBrakeFailure(f);
         trainUI->updateBrakeFailureStatus(f);
     }
 
     void Train::setPassengerBrake(bool f)
     {
         passengerBrake = f;
+        trainMetrics->currentVelocity = 0;
+        trainMetrics->emergencyBrake = f;
         trainUI->updateEmergencyBrakeStatus(f);
     }
 
     void Train::updateBlock(Block* b)
     {
         trainMetrics->setBlock(b);
+    }
+
+    void Train::checkBlock()
+    {
+        if(atEndOfBlock == true && blocksLeft > 0)
+        {
+            blocksLeft--;
+            atEndOfBlock = false;
+            currentBlock = nextBlock;
+            trainMetrics->setBlock(currentBlock);
+            if(blocksLeft > 0)
+            {
+                nextBlock = trackModel.track[17-blocksLeft];
+            }
+            else
+            {
+                nextBlock = nullptr;
+            }
+            updateUI();
+        }
     }
 
     void Train::updateUI()
@@ -155,7 +193,10 @@
         trainUI->updateIntercom(announcements);
         trainUI->updateDestination(destination);
         trainUI->updateCurrentBlock(trainMetrics->block);
+        if(nextBlock != nullptr)
+        {
         trainUI->updateNextBlock(nextBlock);
+        }
         trainUI->updatePower(trainMetrics->power);
         trainUI->updateVelocity(trainMetrics->currentVelocity);
         trainUI->updateAcceleration(trainMetrics->acceleration);

@@ -12,6 +12,7 @@
 //              Added Includes
 // *************************************************
 #include "Train.h"
+#include "Block.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -32,6 +33,7 @@ public:
     //              Added Instances
     // *************************************************
     TrainController tc;
+    double setpointSpeedForModel;
     // *************************************************
     //              Added Functions
     // *************************************************
