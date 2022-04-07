@@ -21,7 +21,10 @@ SOURCES += \
     Block.cpp \
     TrainPhysics.cpp \
     TrainControllerGUI.cpp \
-    TrainController.cpp
+    TrainController.cpp \
+    Track_controller.cpp \
+    PLC.cpp \
+    Track_mainwindow.cpp
 
 HEADERS += \
     ctc_choosetrackline.h \
@@ -35,7 +38,10 @@ HEADERS += \
     TrainControllerGUI.h \
     TrainController.h \
     trackmodel.h \
-    yardToDormontTrackModel.h
+    yardToDormontTrackModel.h \
+    Track_controller.h \
+    PLC.h \
+    Track_mainwindow.h
 
 FORMS += \
     ctc_choosetrackline.ui \
@@ -44,7 +50,8 @@ FORMS += \
     system_centraltimer_connector.ui \
     TrainModelUI.ui \
     TrainControllerGUI.ui \
-    trackmodel.ui
+    trackmodel.ui \
+    Track_mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

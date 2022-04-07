@@ -1,0 +1,8 @@
+Start
+Ld 152
+AND wayside_block
+str
+Ld 62
+AND wayside_block
+str
+end
