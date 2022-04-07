@@ -14,13 +14,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    plc = new PLC(63,10,62);
+    //plc = new PLC(63,10,62);
 
     timer = startTimer(100);
 
-    track = new Track_controller(10,10,10,62,10);
+    //track = new Track_controller(10,10,10,62,10);
 
-    plc->Run_PLC();
+    //plc->Run_PLC();
 }
 
 MainWindow::~MainWindow()
