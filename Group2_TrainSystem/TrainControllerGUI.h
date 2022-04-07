@@ -33,7 +33,7 @@ public:
     //              Added Instances
     // *************************************************
     TrainController tc;
-    Block *block;
+    double setpointSpeedForModel;
     // *************************************************
     //              Added Functions
     // *************************************************
@@ -60,6 +60,7 @@ private slots:
     void on_serviceBrake_pressed();
     void on_eBrakeButton_clicked();
     void on_submit_clicked();
+    void receiveTimeDialation(double);
 
 private:
     // *************************************************

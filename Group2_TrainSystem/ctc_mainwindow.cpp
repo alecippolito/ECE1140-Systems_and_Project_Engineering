@@ -161,15 +161,15 @@ void CTC_MainWindow::initializeTrackVector()
     stationDistancesRed = {250,625,1875,2225,2745,3265,3465,4183.2};
     stationAuthoritiesRed = {4,11,16,20,30,40,42,54};
 
-    QVector<QString> BlockNamesRed = {"Red AA1","Red AA2","Red A1","Red A2","Red A3","Red B4","Red B5","Red B6","Red C7","Red C8","Red C9","Red D10","Red D11",
+    QVector<QString> BlockNamesRed = {"Red A1","Red A2","Red A3","Red B4","Red B5","Red B6","Red C7","Red C8","Red C9","Red D10","Red D11",
                                       "Red D12","Red E13","Red E14","Red E15","Red F16","Red F17","Red F18","Red F19","Red F20","Red G21","Red G22",
                                       "Red G23","Red H24","Red H25","Red H26","Red H27","Red H28","Red H29","Red H30","Red H31","Red H32","Red H33",
                                       "Red H34", "Red H35","Red H36","Red H37","Red H38","Red H39","Red H40","Red H41", "Red H42","Red H43","Red H44",
                                       "Red H45","Red I46","Red I47","Red I48","Red J49","Red J50","Red J51","Red J52","Red J53","Red J54", "Red K55",
                                       "Red K56","Red K57","Red L58","Red L59","Red L60","Red M61","Red M62","Red M63","Red N64","Red N65","Red N66",
-                                      "Red O67","Red P68","Red P69","Red P70","Red Q71","Red R72","Red S73","Red S74","Red S75","Red T76"};
+                                      "Red O67","Red P68","Red P69","Red P70","Red Q71","Red R72","Red S73","Red S74","Red S75","Red T76","Red AA1"};
 
-    QVector<QString> BlockNamesGreen = {"Green AA1","Green AA2","Green A1","Green A2","Green A3","Green B4","Green B5","Green B6","Green C7", "Green C8",
+    QVector<QString> BlockNamesGreen = {"Green A1","Green A2","Green A3","Green B4","Green B5","Green B6","Green C7", "Green C8",
                                         "Green C9","Green C10","Green C11","Green C12","Green D13","Green D14","Green D15","Green D16","Green E17","Green E18",
                                         "Green E19","Green E20", "Green F21","Green F22","Green F23","Green F24","Green F25","Green F26","Green F27","Green F28",
                                         "Green G29","Green G30","Green G31","Green G32","Green H33","Green H34","Green H35","Green I36","Green I37","Green I38",
@@ -184,7 +184,7 @@ void CTC_MainWindow::initializeTrackVector()
                                         "Green U116","Green V117","Green V118","Green V119","Green V120","Green V121","Green W122","Green W123","Green W124",
                                         "Green W125","Green W126","Green W127","Green W128","Green W129","Green W130","Green W131","Green W132","Green W133",
                                         "Green W134","Green W135","Green W136","Green W137","Green W138","Green W139","Green W140","Green W141","Green W142",
-                                        "Green W143","Green X144","Green X145","Green X146","Green Y147","Green Y148","Green Y149","Green Z150"};
+                                        "Green W143","Green X144","Green X145","Green X146","Green Y147","Green Y148","Green Y149","Green Z150","Green AA1","Green AA2"};
 
 
 
@@ -353,7 +353,7 @@ void CTC_MainWindow::checkDispatch()
     //highest priority is the queue - trains that needed to be dispatched already have experienced delays
     if (TrainQueue.size() != 0)
     {
-        if ((TrainQueue[0].redline == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
+        if ((TrainQueue[0].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
         {
             emit sendTrainData(TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed);
 
@@ -369,7 +369,7 @@ void CTC_MainWindow::checkDispatch()
     {
         if (tempMinute == TrainStandby[i].dispatchTime)
         {
-            if ((TrainStandby[i].redline == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
+            if ((TrainStandby[i].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
             {
                 emit sendTrainData(TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed);
 

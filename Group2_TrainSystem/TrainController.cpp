@@ -47,7 +47,7 @@
                 powerCommand = 0.0;
             }
             */
-
+        commandedSpeed = setpointSpeed;
             if(serviceBrakeEnabled==false && emergencyBrakeEnabled==false && passengerEBrakeEnabled==false){
                 speed = setpointSpeed;
                 // max speed is 70
@@ -82,7 +82,7 @@
 
 
         void TrainController :: setPowerCommand(double newPowerCommand){
-			powerCommand = newPowerCommand;			
+			powerCommand = newPowerCommand;
 		}
         double TrainController :: getPowerCommand(){
 			return powerCommand;
@@ -167,4 +167,7 @@
 		}
         void TrainController :: setT(int newT){
             T = newT;
+
+            //qDebug() << "T is updated";
+            //qDebug() << T;
         }
