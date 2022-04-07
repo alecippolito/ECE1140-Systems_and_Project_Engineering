@@ -136,3 +136,6 @@
             //qDebug() << "T is updated";
             //qDebug() << T;
         }
+        double TrainController ::getSpeedLimit(){
+            return speedLimit;
+        }

@@ -31,6 +31,7 @@ class TrainController
         bool passengerEBrakeEnabled = false;
         bool doorsOpen = false;
         bool lightsOn = false;
+        double speedLimit = 40;
 
     public:
     // *************************************************
@@ -69,6 +70,7 @@ class TrainController
         bool getLightsOn();
         void setHeadlightsOn(bool);
         void setT(int);
+        double getSpeedLimit();
       
 };
 

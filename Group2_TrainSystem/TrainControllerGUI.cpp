@@ -92,6 +92,11 @@ void TrainControllerGUI :: updateSpeed()
         curSpeed = 0;
     }
     ui -> currentSetpoint -> display(curSpeed);
+    /*
+    if(tc.getCommandedSpeed() < tc.getSpeedLimit()){
+        tc.setCommandedSpeed(tc.getCommandedSpeed() + 2);
+    }
+    */
 }
 
 void TrainControllerGUI :: updateDoors()
@@ -231,4 +236,5 @@ void TrainControllerGUI::receiveTimeDialation(double td)
 {
     tc.setT(td);
 }
+
 
