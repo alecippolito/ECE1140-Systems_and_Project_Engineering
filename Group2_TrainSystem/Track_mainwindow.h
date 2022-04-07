@@ -7,7 +7,7 @@
 #include "PLC.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class Track_mainwindow; }
 QT_END_NAMESPACE
 
 class Track_mainwindow : public QMainWindow
@@ -23,9 +23,12 @@ public:
     void update_PLC();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::Track_mainwindow *ui;
     PLC *plc;
     int timer;
+
+private slots:
+    void receiveTrainData(int,bool,int,double);
 protected:
         void timerEvent(QTimerEvent *Event) override;
 
