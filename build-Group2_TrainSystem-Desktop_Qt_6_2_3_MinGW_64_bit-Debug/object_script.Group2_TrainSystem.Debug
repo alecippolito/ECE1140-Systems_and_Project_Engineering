@@ -4,6 +4,7 @@ debug/ctc_mainwindow.o
 debug/main.o
 debug/system_centraltimer_connector.o
 debug/TrainModelUI.o
+debug/trackmodel.o
 debug/yardToDormontTrackModel.o
 debug/Train.o
 debug/Block.o
@@ -16,3 +17,4 @@ debug/moc_ctc_mainwindow.o
 debug/moc_system_centraltimer_connector.o
 debug/moc_TrainModelUI.o
 debug/moc_TrainControllerGUI.o
+debug/moc_trackmodel.o

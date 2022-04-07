@@ -50,7 +50,7 @@ private slots:
 
 signals:
     void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>);
-    void sendTrainData(bool,int, double);
+    void sendTrainData(int,bool,int, double);
     void sendTime(int,int);
 
 private:
@@ -59,6 +59,7 @@ private:
     void checkDispatch();
     void dispatchTrain();
     void displayTime();
+    void updateTrainVector(int,bool,QTime,int,double,int,QString);
 
     //initializing all sub UI's
     Ui::CTC_MainWindow *ui;
@@ -88,6 +89,7 @@ private:
     int setSize;
     int currentDay;
     int currentSecondsSinceMidnight;
+    int TrainNumber;
 };
 
 #endif // CTC_MAINWINDOW_H

@@ -4,6 +4,7 @@ release/ctc_mainwindow.o
 release/main.o
 release/system_centraltimer_connector.o
 release/TrainModelUI.o
+release/trackmodel.o
 release/yardToDormontTrackModel.o
 release/Train.o
 release/Block.o
@@ -16,3 +17,4 @@ release/moc_ctc_mainwindow.o
 release/moc_system_centraltimer_connector.o
 release/moc_TrainModelUI.o
 release/moc_TrainControllerGUI.o
+release/moc_trackmodel.o

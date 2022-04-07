@@ -22,6 +22,7 @@ CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
     trackSetRed = 0;
     trackSetGreen = 0;
     setSize = 20;
+    TrainNumber = 0;
 
     //you WILL set the font to Consolas
     QFont font("Consolas",9);
@@ -114,7 +115,8 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
     //check if block outside of yard is open
     if ((redline_temp == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
     {
-        emit sendTrainData(redline_temp,auth_temp,sugg_speed_temp);
+        TrainNumber++;
+        emit sendTrainData(TrainNumber,redline_temp,auth_temp,sugg_speed_temp);
     }
     else
     {
@@ -355,7 +357,8 @@ void CTC_MainWindow::checkDispatch()
     {
         if ((TrainQueue[0].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
         {
-            emit sendTrainData(TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed);
+            TrainNumber++;
+            emit sendTrainData(TrainNumber,TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed);
 
             //remove this train from the list, break out of the function
             TrainQueue.removeFirst();
@@ -371,7 +374,8 @@ void CTC_MainWindow::checkDispatch()
         {
             if ((TrainStandby[i].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
             {
-                emit sendTrainData(TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed);
+                TrainNumber++;
+                emit sendTrainData(TrainNumber,TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed);
 
                 //remove this train from the list, break out of the function
                 TrainStandby.remove(i);
@@ -399,13 +403,13 @@ void CTC_MainWindow::receiveBlockStatus(bool redline_temp, int trackNumber, int 
 {
     if (redline_temp == true)
     {
-        TrackVectorRed[trackNumber+1].occupancy = occupancy_temp;
-        TrackVectorRed[trackNumber+1].open = open_temp;
+        TrackVectorRed[trackNumber].occupancy = occupancy_temp;
+        TrackVectorRed[trackNumber].open = open_temp;
     }
     else
     {
-        TrackVectorGreen[trackNumber+2].occupancy = occupancy_temp;
-        TrackVectorGreen[trackNumber+2].open = open_temp;
+        TrackVectorGreen[trackNumber].occupancy = occupancy_temp;
+        TrackVectorGreen[trackNumber].open = open_temp;
     }
 }
 

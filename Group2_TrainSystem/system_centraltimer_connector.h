@@ -9,6 +9,7 @@
 #include "Train.h"
 #include "Block.h"
 #include "yardToDormontTrackModel.h"
+#include "trackmodel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class System_CentralTimer_Connector; }
@@ -37,8 +38,7 @@ private slots:
     void on_SunButton_clicked();
     void on_ThousandTimesSpeed_clicked();
     void on_TimeButton_1pm_clicked();
-    void receiveDispatchSignal_test(bool,int,double);
-
+    void receiveDispatchSignal_test(int,bool,int,double);
     void on_TimeButton_2pm_clicked();
 
 signals:
@@ -68,5 +68,6 @@ private:
     TrainControllerGUI *tcGUI;
     MainWindow *tm;
     YardDormontTrackModel trackModel;
+    TrackModel *realTrackModel;
 };
 #endif // SYSTEM_CENTRALTIMER_CONNECTOR_H
