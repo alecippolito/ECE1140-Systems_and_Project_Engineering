@@ -2,6 +2,7 @@
 #define TRAIN_H
 #include <string>
 #include <chrono>
+#include "yardToDormontTrackModel.h"
 #include "Block.h"
 #include "TrainPhysics.h"
 class MainWindow;
@@ -41,7 +42,9 @@ class Train{
             bool passengerBrake = false;
             TrainPhysics *trainMetrics;
             MainWindow *trainUI;
-            bool atEndOfBlock;
+            bool atEndOfBlock = false;
+            YardDormontTrackModel trackModel;
+            int blocksLeft = 17;
 
     Train(int, Block *b);
     //~Train();
@@ -57,6 +60,7 @@ class Train{
     void lightsOff();
     void setAvailable(bool);
     void setAnnouncement(std::string);
+    void checkBlock();
 
     double getCurrentVelocity();
     double getPower();

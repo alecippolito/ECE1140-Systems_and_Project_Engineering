@@ -7,7 +7,8 @@
             trainUI->updateTrain(this);
             trainUI->show();
             trainMetrics = new TrainPhysics(num, b);       //later add blocks
-            nextBlock = b;      //REPLACE THIS WITH TRACK CONTROLLER
+            nextBlock = trackModel.track[1];      //REPLACE THIS WITH TRACK CONTROLLER
+            blocksLeft--;
             updateUI();
         }
 
@@ -22,9 +23,12 @@
 
     void Train::setPower(double p, double limit)
     {
+        checkBlock();
+        if(blocksLeft >= 0){
         trainMetrics->setPower(p, limit);
         currentVelocity = trainMetrics->getVelocity();
         atEndOfBlock = trainMetrics->atEndOfBlock;
+        }
         updateUI();
     }
 
@@ -148,6 +152,19 @@
     void Train::updateBlock(Block* b)
     {
         trainMetrics->setBlock(b);
+    }
+
+    void Train::checkBlock()
+    {
+        if(atEndOfBlock == true && blocksLeft > 0)
+        {
+            atEndOfBlock = false;
+            currentBlock = nextBlock;
+            trainMetrics->setBlock(currentBlock);
+            blocksLeft--;
+            nextBlock = trackModel.track[17-blocksLeft];
+            updateUI();
+        }
     }
 
     void Train::updateUI()

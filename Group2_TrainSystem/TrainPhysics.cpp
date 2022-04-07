@@ -118,6 +118,9 @@ void TrainPhysics::setPower(double num, double limit)
 
     //keep track of where the train is
     double distTravelled = getDistanceTravelledInBlock();
+
+    atEndOfBlock = false;
+
     if(distTravelled >= block->blockLength)
     {
         atEndOfBlock = true;
@@ -140,6 +143,9 @@ double TrainPhysics::getDistanceTravelledInBlock()
 {
     double velocityTotal = lastVelocity + currentVelocity;
     double distanceTravelled = (block->getBlockLength() - distanceToBlockEnd) + ((time/2) * velocityTotal);
+    distanceToBlockEnd = distanceToBlockEnd - distanceTravelled;
+    qDebug() << "BlockLength: " << block->getBlockLength();
+    qDebug() << "distanceTravelled" << distanceTravelled;
     return distanceTravelled;
 }
 
