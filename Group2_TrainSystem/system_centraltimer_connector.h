@@ -10,6 +10,9 @@
 #include "Block.h"
 #include "yardToDormontTrackModel.h"
 #include "trackmodel.h"
+#include "Track_controller.h"
+#include "PLC.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class System_CentralTimer_Connector; }
