@@ -249,6 +249,3 @@ void TrainControllerGUI::receiveTimeDialation(double td)
 {
     tc.setT(td);
 }
-
-
-

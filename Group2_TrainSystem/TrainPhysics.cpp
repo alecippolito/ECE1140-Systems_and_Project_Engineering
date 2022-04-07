@@ -22,6 +22,7 @@ double TrainPhysics::calculateVelocity()
     {
         force = 100000;  //random large amount to start train
     }
+
     else
     {
         force = 0;  //if brakes are on
@@ -35,6 +36,8 @@ double TrainPhysics::calculateVelocity()
     //set acceleration w/ limits
     lastAcceleration = acceleration;
     acceleration = force / (mass/2.205);
+    qDebug() << "Force: " << force;
+    qDebug() << "Acceleration: " << acceleration;
     if(acceleration > accelerationLimit)
     {
         acceleration = accelerationLimit;
@@ -118,6 +121,9 @@ void TrainPhysics::setPower(double num, double limit)
 
     //keep track of where the train is
     double distTravelled = getDistanceTravelledInBlock();
+
+    atEndOfBlock = false;
+
     if(distTravelled >= block->blockLength)
     {
         atEndOfBlock = true;
@@ -140,6 +146,9 @@ double TrainPhysics::getDistanceTravelledInBlock()
 {
     double velocityTotal = lastVelocity + currentVelocity;
     double distanceTravelled = (block->getBlockLength() - distanceToBlockEnd) + ((time/2) * velocityTotal);
+    distanceToBlockEnd = distanceToBlockEnd - distanceTravelled;
+    qDebug() << "BlockLength: " << block->getBlockLength();
+    qDebug() << "distanceTravelled" << distanceTravelled;
     return distanceTravelled;
 }
 

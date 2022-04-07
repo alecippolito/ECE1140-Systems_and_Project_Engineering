@@ -5,8 +5,14 @@
 class
         YardDormontTrackModel{
         public:
-            Block *track[17];
+            Block *track[12];
             YardDormontTrackModel();
+            double returnSpeedLimit(int);
+            double returnTrackBlockLength(int);
+            int returnTrackModelSize();
+
+        private:
+            int trackSize = 12;
 
 };
 

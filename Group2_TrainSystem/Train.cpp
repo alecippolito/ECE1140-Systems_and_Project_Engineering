@@ -7,7 +7,8 @@
             trainUI->updateTrain(this);
             trainUI->show();
             trainMetrics = new TrainPhysics(num, b);       //later add blocks
-            nextBlock = b;      //REPLACE THIS WITH TRACK CONTROLLER
+            nextBlock = trackModel.track[1];      //REPLACE THIS WITH TRACK CONTROLLER
+            blocksLeft--;
             updateUI();
         }
 
@@ -22,10 +23,18 @@
 
     void Train::setPower(double p, double limit)
     {
+        checkBlock();
+        if(blocksLeft >= 0){
         trainMetrics->setPower(p, limit);
         currentVelocity = trainMetrics->getVelocity();
         atEndOfBlock = trainMetrics->atEndOfBlock;
+        }
+
         updateUI();
+        //if(blocksLeft == 0)
+        //{
+          //  trainUI->hide();
+        //}
     }
 
     void Train::setTemperature(double t)
@@ -150,6 +159,26 @@
         trainMetrics->setBlock(b);
     }
 
+    void Train::checkBlock()
+    {
+        if(atEndOfBlock == true && blocksLeft > 0)
+        {
+            blocksLeft--;
+            atEndOfBlock = false;
+            currentBlock = nextBlock;
+            trainMetrics->setBlock(currentBlock);
+            if(blocksLeft > 0)
+            {
+                nextBlock = trackModel.track[12-blocksLeft];
+            }
+            else
+            {
+                nextBlock = nullptr;
+            }
+            updateUI();
+        }
+    }
+
     void Train::updateUI()
     {
         trainUI->updateNumCars(trainMetrics->numCars);
@@ -164,7 +193,10 @@
         trainUI->updateIntercom(announcements);
         trainUI->updateDestination(destination);
         trainUI->updateCurrentBlock(trainMetrics->block);
+        if(nextBlock != nullptr)
+        {
         trainUI->updateNextBlock(nextBlock);
+        }
         trainUI->updatePower(trainMetrics->power);
         trainUI->updateVelocity(trainMetrics->currentVelocity);
         trainUI->updateAcceleration(trainMetrics->acceleration);
