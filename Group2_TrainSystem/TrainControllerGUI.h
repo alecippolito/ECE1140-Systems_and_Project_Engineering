@@ -43,6 +43,7 @@ public:
     void updateLights();
     void updateMode();
     void updateBrake();
+    void updateStatus();
     void dispatchTrain();
     void startMoving();
     void setTrain(Train *t);
@@ -57,10 +58,10 @@ private slots:
     void on_lightButton_clicked();
     void on_serviceBrake_clicked();
     void on_mode_clicked();
-    void on_serviceBrake_pressed();
     void on_eBrakeButton_clicked();
     void on_submit_clicked();
     void receiveTimeDialation(double);
+
 
 private:
     // *************************************************
@@ -73,6 +74,7 @@ private:
     Train *train = nullptr;
     int timer;
     bool dispatch = false;
+    bool brake = false;
 
 protected:
     // *************************************************

@@ -173,3 +173,9 @@
         trainUI->updateEngineFailureStatus(engineFailure);
         trainUI->updateEmergencyBrakeStatus(passengerBrake);
     }
+
+    Block* Train :: getNextBlock()
+    {
+        return nextBlock;
+    }
+
