@@ -22,6 +22,7 @@ double TrainPhysics::calculateVelocity()
     {
         force = 100000;  //random large amount to start train
     }
+
     else
     {
         force = 0;  //if brakes are on
@@ -35,6 +36,8 @@ double TrainPhysics::calculateVelocity()
     //set acceleration w/ limits
     lastAcceleration = acceleration;
     acceleration = force / (mass/2.205);
+    qDebug() << "Force: " << force;
+    qDebug() << "Acceleration: " << acceleration;
     if(acceleration > accelerationLimit)
     {
         acceleration = accelerationLimit;

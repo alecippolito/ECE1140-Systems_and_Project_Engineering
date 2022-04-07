@@ -138,8 +138,8 @@ void TrainControllerGUI :: updateBrake()
 void TrainControllerGUI :: dispatchTrain()
 {
     if (tc.getAutomaticMode()==0){
-        tc.setKi(22500); // default ki
-        tc.setKp(22500); // defult kp
+        tc.setKi(5000); // default ki 225
+        tc.setKp(5000); // defult kp 225
         startMoving();
     }
     dispatch = true;

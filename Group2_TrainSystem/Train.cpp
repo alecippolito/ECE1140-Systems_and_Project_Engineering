@@ -29,7 +29,12 @@
         currentVelocity = trainMetrics->getVelocity();
         atEndOfBlock = trainMetrics->atEndOfBlock;
         }
+
         updateUI();
+        //if(blocksLeft == 0)
+        //{
+          //  trainUI->hide();
+        //}
     }
 
     void Train::setTemperature(double t)
@@ -158,11 +163,18 @@
     {
         if(atEndOfBlock == true && blocksLeft > 0)
         {
+            blocksLeft--;
             atEndOfBlock = false;
             currentBlock = nextBlock;
             trainMetrics->setBlock(currentBlock);
-            blocksLeft--;
-            nextBlock = trackModel.track[17-blocksLeft];
+            if(blocksLeft > 0)
+            {
+                nextBlock = trackModel.track[17-blocksLeft];
+            }
+            else
+            {
+                nextBlock = nullptr;
+            }
             updateUI();
         }
     }
@@ -181,7 +193,10 @@
         trainUI->updateIntercom(announcements);
         trainUI->updateDestination(destination);
         trainUI->updateCurrentBlock(trainMetrics->block);
+        if(nextBlock != nullptr)
+        {
         trainUI->updateNextBlock(nextBlock);
+        }
         trainUI->updatePower(trainMetrics->power);
         trainUI->updateVelocity(trainMetrics->currentVelocity);
         trainUI->updateAcceleration(trainMetrics->acceleration);
