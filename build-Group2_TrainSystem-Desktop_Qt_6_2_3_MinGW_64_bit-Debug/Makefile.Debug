@@ -712,10 +712,12 @@ debug/moc_system_centraltimer_connector.cpp: ../Group2_TrainSystem/system_centra
 		../Group2_TrainSystem/TrainControllerGUI.h \
 		../Group2_TrainSystem/TrainController.h \
 		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
-		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/trackmodel.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QVector \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qvector.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.2.3/mingw_64/bin/moc.exe
 	D:\Qt\6.2.3\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/username/Documents/ECE1140-Group2/build-Group2_TrainSystem-Desktop_Qt_6_2_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.2.3/mingw_64/mkspecs/win32-g++ -IC:/Users/username/Documents/ECE1140-Group2/Group2_TrainSystem -ID:/Qt/6.2.3/mingw_64/include -ID:/Qt/6.2.3/mingw_64/include/QtWidgets -ID:/Qt/6.2.3/mingw_64/include/QtGui -ID:/Qt/6.2.3/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw900_64/x86_64-w64-mingw32/include ..\Group2_TrainSystem\system_centraltimer_connector.h -o debug\moc_system_centraltimer_connector.cpp
@@ -884,6 +886,7 @@ debug/moc_TrainModelUI.cpp: ../Group2_TrainSystem/TrainModelUI.h \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QMessageBox \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmessagebox.h \
 		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
 		debug/moc_predefs.h \
@@ -1022,6 +1025,7 @@ debug/moc_TrainControllerGUI.cpp: ../Group2_TrainSystem/TrainControllerGUI.h \
 		D:/Qt/6.2.3/mingw_64/include/QtGui/qicon.h \
 		../Group2_TrainSystem/TrainController.h \
 		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
 		debug/moc_predefs.h \
@@ -1156,7 +1160,8 @@ debug/moc_trackmodel.cpp: ../Group2_TrainSystem/trackmodel.h \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QSizeF \
 		D:/Qt/6.2.3/mingw_64/include/QtGui/QTransform \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qnativeinterface.h \
-		../Group2_TrainSystem/Block.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QVector \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qvector.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.2.3/mingw_64/bin/moc.exe
 	D:\Qt\6.2.3\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/username/Documents/ECE1140-Group2/build-Group2_TrainSystem-Desktop_Qt_6_2_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.2.3/mingw_64/mkspecs/win32-g++ -IC:/Users/username/Documents/ECE1140-Group2/Group2_TrainSystem -ID:/Qt/6.2.3/mingw_64/include -ID:/Qt/6.2.3/mingw_64/include/QtWidgets -ID:/Qt/6.2.3/mingw_64/include/QtGui -ID:/Qt/6.2.3/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw900_64/x86_64-w64-mingw32/include ..\Group2_TrainSystem\trackmodel.h -o debug\moc_trackmodel.cpp
@@ -1887,10 +1892,12 @@ debug/main.o: ../Group2_TrainSystem/main.cpp ../Group2_TrainSystem/system_centra
 		../Group2_TrainSystem/TrainControllerGUI.h \
 		../Group2_TrainSystem/TrainController.h \
 		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
-		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/trackmodel.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QVector \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qvector.h \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QApplication \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qapplication.h \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication.h \
@@ -2054,10 +2061,12 @@ debug/system_centraltimer_connector.o: ../Group2_TrainSystem/system_centraltimer
 		../Group2_TrainSystem/TrainControllerGUI.h \
 		../Group2_TrainSystem/TrainController.h \
 		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
-		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/trackmodel.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QVector \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qvector.h \
 		ui_system_centraltimer_connector.h \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QVariant \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QApplication \
@@ -2265,6 +2274,7 @@ debug/TrainModelUI.o: ../Group2_TrainSystem/TrainModelUI.cpp ../Group2_TrainSyst
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QMessageBox \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmessagebox.h \
 		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
 		ui_TrainModelUI.h \
@@ -2430,11 +2440,36 @@ debug/trackmodel.o: ../Group2_TrainSystem/trackmodel.cpp ../Group2_TrainSystem/t
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QSizeF \
 		D:/Qt/6.2.3/mingw_64/include/QtGui/QTransform \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qnativeinterface.h \
-		../Group2_TrainSystem/Block.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QVector \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qvector.h \
 		ui_trackmodel.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/QFile \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfile.h \
-		D:/Qt/6.2.3/mingw_64/include/QtCore/qfiledevice.h
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QVariant \
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QApplication \
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qapplication.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qeventloop.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qfutureinterface.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qmutex.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qresultstore.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qfuture_impl.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qthreadpool.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qthread.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qdeadlinetimer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qelapsedtimer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qrunnable.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qexception.h \
+		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication.h \
+		D:/Qt/6.2.3/mingw_64/include/QtGui/qinputmethod.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qlocale.h \
+		D:/Qt/6.2.3/mingw_64/include/QtGui/qguiapplication_platform.h \
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QLabel \
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qlabel.h \
+		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qframe.h \
+		D:/Qt/6.2.3/mingw_64/include/QtGui/qpicture.h \
+		D:/Qt/6.2.3/mingw_64/include/QtGui/qtextdocument.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\trackmodel.o ..\Group2_TrainSystem\trackmodel.cpp
 
 debug/yardToDormontTrackModel.o: ../Group2_TrainSystem/yardToDormontTrackModel.cpp ../Group2_TrainSystem/yardToDormontTrackModel.h \
@@ -2442,6 +2477,7 @@ debug/yardToDormontTrackModel.o: ../Group2_TrainSystem/yardToDormontTrackModel.c
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\yardToDormontTrackModel.o ..\Group2_TrainSystem\yardToDormontTrackModel.cpp
 
 debug/Train.o: ../Group2_TrainSystem/Train.cpp ../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
 		../Group2_TrainSystem/TrainModelUI.h \
@@ -2613,7 +2649,84 @@ debug/Block.o: ../Group2_TrainSystem/Block.cpp ../Group2_TrainSystem/Block.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Block.o ..\Group2_TrainSystem\Block.cpp
 
 debug/TrainPhysics.o: ../Group2_TrainSystem/TrainPhysics.cpp ../Group2_TrainSystem/TrainPhysics.h \
-		../Group2_TrainSystem/Block.h
+		../Group2_TrainSystem/Block.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QDebug \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qdebug.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qalgorithms.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qglobal.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qconfig-bootstrapped.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qconfig.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qtcore-config.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qsystemdetection.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qprocessordetection.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcompilerdetection.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qtypeinfo.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcontainerfwd.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qsysinfo.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qlogging.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qflags.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qatomic.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qbasicatomic.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qatomic_bootstrap.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qgenericatomic.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qatomic_cxx11.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qglobalstatic.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qnumeric.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qversiontagging.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qhash.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcontainertools_impl.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qhashfunctions.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstring.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qchar.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstringview.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qbytearray.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qrefcount.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qnamespace.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qtmetamacros.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qarraydata.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qpair.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qarraydatapointer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qarraydataops.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qbytearrayview.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstringliteral.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstringalgorithms.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qanystringview.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qutf8stringview.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstringtokenizer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstringbuilder.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qiterator.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qlist.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qbytearraylist.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstringlist.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstringmatcher.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qmath.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qmap.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qshareddata.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qshareddata_impl.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qtextstream.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qiodevicebase.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qscopedpointer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qstringconverter.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qset.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcontiguouscache.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qsharedpointer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qobject.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qobjectdefs.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreevent.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qmetatype.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcompare.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qvarlengtharray.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qscopeguard.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qdatastream.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qiterable.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qmetacontainer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcontainerinfo.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qtaggedpointer.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qobject_impl.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qbindingstorage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\TrainPhysics.o ..\Group2_TrainSystem\TrainPhysics.cpp
 
 debug/TrainControllerGUI.o: ../Group2_TrainSystem/TrainControllerGUI.cpp ../Group2_TrainSystem/TrainControllerGUI.h \
@@ -2748,6 +2861,7 @@ debug/TrainControllerGUI.o: ../Group2_TrainSystem/TrainControllerGUI.cpp ../Grou
 		D:/Qt/6.2.3/mingw_64/include/QtGui/qicon.h \
 		../Group2_TrainSystem/TrainController.h \
 		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
 		ui_TrainControllerGUI.h \
@@ -2811,6 +2925,7 @@ debug/TrainControllerGUI.o: ../Group2_TrainSystem/TrainControllerGUI.cpp ../Grou
 
 debug/TrainController.o: ../Group2_TrainSystem/TrainController.cpp ../Group2_TrainSystem/TrainController.h \
 		../Group2_TrainSystem/Train.h \
+		../Group2_TrainSystem/yardToDormontTrackModel.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QDebug \
