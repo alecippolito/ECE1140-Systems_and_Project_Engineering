@@ -159,4 +159,7 @@
 		}
         void TrainController :: setT(int newT){
             T = newT;
+
+            //qDebug() << "T is updated";
+            //qDebug() << T;
         }

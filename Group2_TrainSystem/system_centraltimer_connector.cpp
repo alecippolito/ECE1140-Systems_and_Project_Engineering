@@ -60,10 +60,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     QObject::connect(ctc, SIGNAL(sendTrainData(bool,int,double)), this, SLOT(receiveDispatchSignal_test(bool,int,double)));
 
 
-    tcGUI = new TrainControllerGUI();
-    tcGUI->show();
-    Train *t = new Train(1, trackModel.track[0]);
-    tcGUI->setTrain(t);
+
 
 }
 
@@ -79,6 +76,16 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(bool redline_temp
     qDebug() << "Authority: " << QString::number(authority_temp);
     qDebug() << "Suggested speed: " << QString::number(speed_temp);
     qDebug();
+
+    //create a new Train Controller GUI
+    tcGUI = new TrainControllerGUI();
+    tcGUI->show();
+    Train *t = new Train(1, trackModel.track[0]);
+    tcGUI->setTrain(t);
+
+    //connect the time dialation to the train controller
+    QObject::connect(this, SIGNAL(sendTimeDialation(double)),tcGUI,SLOT(receiveTimeDialation(double)));
+    emit sendTimeDialation(timeDialation);
 }
 
 void System_CentralTimer_Connector::updateTime()
@@ -99,28 +106,38 @@ void System_CentralTimer_Connector::updateTime()
 
 void System_CentralTimer_Connector::on_OneTimesSpeed_clicked()
 {
-    timer->setInterval(1000);
+    timeDialation = 1;
+    timer->setInterval(1000/timeDialation);
+    emit sendTimeDialation(timeDialation);
 }
 
 
 void System_CentralTimer_Connector::on_TenTimesSpeed_clicked()
 {
-    timer->setInterval(100);
+    timeDialation = 10;
+    timer->setInterval(1000/timeDialation);
+    emit sendTimeDialation(timeDialation);
 }
 
 void System_CentralTimer_Connector::on_SixtyTimesSpeed_clicked()
 {
-    timer->setInterval(1000/60);
+    timeDialation = 60;
+    timer->setInterval(1000/timeDialation);
+    emit sendTimeDialation(timeDialation);
 }
 
 void System_CentralTimer_Connector::on_HundredTimesSpeed_clicked()
 {
-    timer->setInterval(10);
+    timeDialation = 100;
+    timer->setInterval(1000/timeDialation);
+    emit sendTimeDialation(timeDialation);
 }
 
 void System_CentralTimer_Connector::on_ThousandTimesSpeed_clicked()
 {
-    timer->setInterval(1);
+    timeDialation = 1000;
+    timer->setInterval(1000/timeDialation);
+    emit sendTimeDialation(timeDialation);
 }
 
 void System_CentralTimer_Connector::displayDateTime()
