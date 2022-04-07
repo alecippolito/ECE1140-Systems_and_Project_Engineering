@@ -22,7 +22,7 @@ class TrainController
         double T = 1; // Tx speed
         double commandedSpeed = 0;
         double setpointSpeed = 0;
-        double speedLimit = 40;
+        double speedLimit = 30;
         double trainVelocity; // for power calculation
         double trainSpeed; // for power calculation
         double authority = 0;

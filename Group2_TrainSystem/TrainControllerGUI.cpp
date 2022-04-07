@@ -85,9 +85,11 @@ void TrainControllerGUI :: updateSpeed()
         curSpeed = 0;
     }
     ui -> currentSetpoint -> display(curSpeed);
-    if(tc.getCommandedSpeed() < tc.getSpeedLimit()){
+
+    if(tc.getCommandedSpeed() < 40){
         tc.setCommandedSpeed(tc.getCommandedSpeed() + 2);
     }
+
 }
 
 void TrainControllerGUI :: updateDoors()
@@ -131,6 +133,7 @@ void TrainControllerGUI :: updateMode()
 
 void TrainControllerGUI :: updateBrake()
 {
+    tc.setPassengerEBrake(train->brakeFailure);
     if(tc.getPassengerEBrake() == true){
         train->setPassengerBrake(true);
         tc.setPowerCommand(0);
@@ -139,6 +142,7 @@ void TrainControllerGUI :: updateBrake()
         tc.setPowerCommand(0);
         ui -> eBrakeStatus -> setText("E-Brake Status: ON");
     }
+
 
 
 
@@ -155,8 +159,6 @@ void TrainControllerGUI :: dispatchTrain()
 }
 void TrainControllerGUI :: startMoving()
 {
-    // train ->
-    // tc.setCommandedSpeed();
     tc.setServiceBrake(false);
     tc.setSetpointSpeed(tc.getCommandedSpeed());
     tc.calculatePower();
@@ -184,6 +186,9 @@ void TrainControllerGUI :: updateStatus()
    if(train->getNextBlock() == nullptr){
         ui -> statusLabel -> setText("Train is at station");
     }
+}
+int TrainControllerGUI :: getSpeedLimit(){
+    return train->getCurrentBlock()->speedLimitKmHr;
 }
 
 

@@ -23,7 +23,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainWindow
+class Ui_Track_mainwindow
 {
 public:
     QWidget *centralwidget;
@@ -56,15 +56,15 @@ public:
     QMenu *menuWayside_Controller;
     QStatusBar *statusbar;
 
-    void setupUi(QMainWindow *MainWindow)
+    void setupUi(QMainWindow *Track_mainwindow)
     {
-        if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        if (Track_mainwindow->objectName().isEmpty())
+            Track_mainwindow->setObjectName(QString::fromUtf8("Track_mainwindow"));
+        Track_mainwindow->resize(800, 600);
         QFont font;
         font.setBold(false);
-        MainWindow->setFont(font);
-        centralwidget = new QWidget(MainWindow);
+        Track_mainwindow->setFont(font);
+        centralwidget = new QWidget(Track_mainwindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         Upload_PLC = new QPushButton(centralwidget);
         Upload_PLC->setObjectName(QString::fromUtf8("Upload_PLC"));
@@ -93,7 +93,6 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::Button, brush);
         currentBlockVal->setPalette(palette);
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Source Serif Pro Black"));
         font1.setBold(true);
         font1.setItalic(false);
         font1.setUnderline(true);
@@ -165,7 +164,7 @@ public:
         label_18 = new QLabel(centralwidget);
         label_18->setObjectName(QString::fromUtf8("label_18"));
         label_18->setGeometry(QRect(200, 30, 49, 16));
-        MainWindow->setCentralWidget(centralwidget);
+        Track_mainwindow->setCentralWidget(centralwidget);
         Upload_PLC->raise();
         label->raise();
         currentBlockVal->raise();
@@ -191,52 +190,52 @@ public:
         label_16->raise();
         label_17->raise();
         label_18->raise();
-        menubar = new QMenuBar(MainWindow);
+        menubar = new QMenuBar(Track_mainwindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         menuWayside_Controller = new QMenu(menubar);
         menuWayside_Controller->setObjectName(QString::fromUtf8("menuWayside_Controller"));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
+        Track_mainwindow->setMenuBar(menubar);
+        statusbar = new QStatusBar(Track_mainwindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
+        Track_mainwindow->setStatusBar(statusbar);
 
         menubar->addAction(menuWayside_Controller->menuAction());
 
-        retranslateUi(MainWindow);
+        retranslateUi(Track_mainwindow);
 
-        QMetaObject::connectSlotsByName(MainWindow);
+        QMetaObject::connectSlotsByName(Track_mainwindow);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindow)
+    void retranslateUi(QMainWindow *Track_mainwindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        Upload_PLC->setText(QCoreApplication::translate("MainWindow", "Upload_PLC", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Current_block", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Switch_poistion", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "Track status", nullptr));
-        label_6->setText(QCoreApplication::translate("MainWindow", "Suggested speed", nullptr));
-        label_7->setText(QCoreApplication::translate("MainWindow", "Train_presence", nullptr));
-        label_8->setText(QCoreApplication::translate("MainWindow", "Speed Limit", nullptr));
-        label_9->setText(QCoreApplication::translate("MainWindow", "Authority", nullptr));
-        label_10->setText(QCoreApplication::translate("MainWindow", "Commanded speed", nullptr));
-        label_11->setText(QCoreApplication::translate("MainWindow", "Railway_crossbar", nullptr));
-        label_12->setText(QCoreApplication::translate("MainWindow", "Failure mode", nullptr));
-        label_13->setText(QCoreApplication::translate("MainWindow", "OFF", nullptr));
-        label_14->setText(QCoreApplication::translate("MainWindow", "Maintenance mode", nullptr));
-        label_15->setText(QCoreApplication::translate("MainWindow", "OFF", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "Track signal", nullptr));
-        label_16->setText(QCoreApplication::translate("MainWindow", "OFF", nullptr));
-        label_17->setText(QCoreApplication::translate("MainWindow", "Good", nullptr));
-        label_18->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        menuWayside_Controller->setTitle(QCoreApplication::translate("MainWindow", "Wayside Controller", nullptr));
+        Track_mainwindow->setWindowTitle(QCoreApplication::translate("Track_mainwindow", "MainWindow", nullptr));
+        Upload_PLC->setText(QCoreApplication::translate("Track_mainwindow", "Upload_PLC", nullptr));
+        label->setText(QCoreApplication::translate("Track_mainwindow", "Current_block", nullptr));
+        label_2->setText(QCoreApplication::translate("Track_mainwindow", "Switch_poistion", nullptr));
+        label_3->setText(QCoreApplication::translate("Track_mainwindow", "TextLabel", nullptr));
+        label_5->setText(QCoreApplication::translate("Track_mainwindow", "Track status", nullptr));
+        label_6->setText(QCoreApplication::translate("Track_mainwindow", "Suggested speed", nullptr));
+        label_7->setText(QCoreApplication::translate("Track_mainwindow", "Train_presence", nullptr));
+        label_8->setText(QCoreApplication::translate("Track_mainwindow", "Speed Limit", nullptr));
+        label_9->setText(QCoreApplication::translate("Track_mainwindow", "Authority", nullptr));
+        label_10->setText(QCoreApplication::translate("Track_mainwindow", "Commanded speed", nullptr));
+        label_11->setText(QCoreApplication::translate("Track_mainwindow", "Railway_crossbar", nullptr));
+        label_12->setText(QCoreApplication::translate("Track_mainwindow", "Failure mode", nullptr));
+        label_13->setText(QCoreApplication::translate("Track_mainwindow", "OFF", nullptr));
+        label_14->setText(QCoreApplication::translate("Track_mainwindow", "Maintenance mode", nullptr));
+        label_15->setText(QCoreApplication::translate("Track_mainwindow", "OFF", nullptr));
+        label_4->setText(QCoreApplication::translate("Track_mainwindow", "Track signal", nullptr));
+        label_16->setText(QCoreApplication::translate("Track_mainwindow", "OFF", nullptr));
+        label_17->setText(QCoreApplication::translate("Track_mainwindow", "Good", nullptr));
+        label_18->setText(QCoreApplication::translate("Track_mainwindow", "TextLabel", nullptr));
+        menuWayside_Controller->setTitle(QCoreApplication::translate("Track_mainwindow", "Wayside Controller", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class MainWindow: public Ui_MainWindow {};
+    class Track_mainwindow: public Ui_Track_mainwindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE

@@ -12,7 +12,6 @@
 //              Added Includes
 // *************************************************
 #include "Train.h"
-#include "Block.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -75,6 +74,7 @@ private:
     int timer;
     bool dispatch = false;
     bool brake = false;
+    int getSpeedLimit();
 
 protected:
     // *************************************************

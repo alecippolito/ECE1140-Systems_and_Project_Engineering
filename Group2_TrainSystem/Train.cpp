@@ -211,3 +211,8 @@
         return nextBlock;
     }
 
+    Block* Train :: getCurrentBlock()
+    {
+        return currentBlock;
+    }
+
