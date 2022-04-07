@@ -142,6 +142,8 @@ void TrainControllerGUI :: dispatchTrain()
 }
 void TrainControllerGUI :: startMoving()
 {
+    // train ->
+    // tc.setCommandedSpeed();
     tc.setSetpointSpeed(tc.getCommandedSpeed());
     tc.calculatePower();
 }
