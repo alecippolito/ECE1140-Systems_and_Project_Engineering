@@ -31,6 +31,8 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     ctc = new CTC_MainWindow();
     ctc->show();
     realTrackModel = new TrackModel();
+    trackController = new Track_mainwindow();
+    trackController->show();
 
     //initialize the timing variables
     //Timer starts at the CURRENT TIME

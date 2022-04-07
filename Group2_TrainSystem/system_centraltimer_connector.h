@@ -12,6 +12,7 @@
 #include "trackmodel.h"
 #include "Track_controller.h"
 #include "PLC.h"
+#include "Track_mainwindow.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -72,5 +73,6 @@ private:
     MainWindow *tm;
     YardDormontTrackModel trackModel;
     TrackModel *realTrackModel;
+    Track_mainwindow *trackController;
 };
 #endif // SYSTEM_CENTRALTIMER_CONNECTOR_H

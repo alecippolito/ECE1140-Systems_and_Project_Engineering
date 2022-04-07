@@ -10,7 +10,7 @@
 
 Track_mainwindow::Track_mainwindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::Track_mainwindow)
 {
     ui->setupUi(this);
 

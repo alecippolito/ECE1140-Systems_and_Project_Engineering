@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QRegularExpression>
 
 //Block = 62 = true; block = 152 = false
 
@@ -16,7 +17,7 @@ PLC::PLC(int block, int speed, int ways_block)
 bool PLC::Run_PLC()
 {
     //Object for opening file
-    QFile infile("C:/Junior_2022/ECE_1140(systempro)/PLC.txt");
+    QFile infile("C:/Users/username/Documents/ECE1140-Group2/Group2_TrainSystem/PLC.txt");
     QTextStream stream(&infile);
     QStringList list_second;
     QString str;
@@ -47,7 +48,7 @@ bool PLC::Run_PLC()
         while(1)
         {
             str = stream.readLine();
-            list_second = str.split(QRegExp("\\s+"));
+            list_second = str.split(QRegularExpression("\\s+"));
 
             if(list_second.at(0) == "Ld")
             {

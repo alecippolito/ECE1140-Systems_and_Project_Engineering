@@ -19,8 +19,8 @@ class PLC //private Track_controller
             int curr_block;
             int suggested_speed;
             int wayside_block;
-            QString store[10];
-            int store_int[10];
+            QString store[100];
+            int store_int[100];
             switch_position save_block;
 
     public:
