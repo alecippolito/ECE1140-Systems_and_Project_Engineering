@@ -169,7 +169,7 @@
             trainMetrics->setBlock(currentBlock);
             if(blocksLeft > 0)
             {
-                nextBlock = trackModel.track[17-blocksLeft];
+                nextBlock = trackModel.track[12-blocksLeft];
             }
             else
             {

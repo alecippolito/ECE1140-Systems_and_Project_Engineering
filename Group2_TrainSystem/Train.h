@@ -44,7 +44,7 @@ class Train{
             MainWindow *trainUI;
             bool atEndOfBlock = false;
             YardDormontTrackModel trackModel;
-            int blocksLeft = 17;
+            int blocksLeft = 12;
 
     Train(int, Block *b);
     //~Train();
