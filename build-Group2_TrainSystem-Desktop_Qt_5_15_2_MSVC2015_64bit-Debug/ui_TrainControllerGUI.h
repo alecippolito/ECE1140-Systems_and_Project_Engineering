@@ -111,7 +111,7 @@ public:
         TrainControllerGUI->setCentralWidget(centralwidget);
         menubar = new QMenuBar(TrainControllerGUI);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 19));
+        menubar->setGeometry(QRect(0, 0, 800, 22));
         TrainControllerGUI->setMenuBar(menubar);
         statusbar = new QStatusBar(TrainControllerGUI);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -125,14 +125,14 @@ public:
     void retranslateUi(QMainWindow *TrainControllerGUI)
     {
         TrainControllerGUI->setWindowTitle(QCoreApplication::translate("TrainControllerGUI", "TrainControllerGUI", nullptr));
-        incSpeed->setText(QCoreApplication::translate("TrainControllerGUI", "Inccrese Speed", nullptr));
+        incSpeed->setText(QCoreApplication::translate("TrainControllerGUI", "Increase Speed", nullptr));
         decSpeed->setText(QCoreApplication::translate("TrainControllerGUI", "Decrease Speed", nullptr));
         doorButton->setText(QCoreApplication::translate("TrainControllerGUI", "Open/Close Door", nullptr));
         lightButton->setText(QCoreApplication::translate("TrainControllerGUI", "Lights On/Off", nullptr));
         serviceBrake->setText(QCoreApplication::translate("TrainControllerGUI", "Brake", nullptr));
         speedLabel->setText(QCoreApplication::translate("TrainControllerGUI", " Setpoint Speed", nullptr));
         powerLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Power", nullptr));
-        lightStatus->setText(QCoreApplication::translate("TrainControllerGUI", "Light Staus: OFF", nullptr));
+        lightStatus->setText(QCoreApplication::translate("TrainControllerGUI", "Light Status: OFF", nullptr));
         doorStatus->setText(QCoreApplication::translate("TrainControllerGUI", "Door Staus: CLOSED", nullptr));
         mode->setText(QCoreApplication::translate("TrainControllerGUI", "Automatic/Manual", nullptr));
         modeStatus->setText(QCoreApplication::translate("TrainControllerGUI", "Mode: Manual", nullptr));

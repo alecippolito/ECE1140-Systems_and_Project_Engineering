@@ -67,7 +67,7 @@
                 powerCommand = kp*e_k+ki*u_k;
             }
             if(authority == 1){
-                powerCommand = powewrCommanded/2;
+                powerCommand = powerCommand/2;
             }
             if(authority == 0){
                 powerCommand = 0;
