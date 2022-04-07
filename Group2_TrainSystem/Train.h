@@ -28,7 +28,7 @@ class Train{
             double decelerationLimit = -1.2;
             double velocityLimit = 70;
             double temperature = 72.0;
-            std::string destination;
+            std::string destination = "Dormont";
             std::string announcements;
             bool leftDoors; //true = open, false = closed
             bool rightDoors;
