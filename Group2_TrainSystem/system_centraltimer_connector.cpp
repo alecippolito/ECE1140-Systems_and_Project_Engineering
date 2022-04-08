@@ -31,8 +31,8 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     ctc = new CTC_MainWindow();
     ctc->show();
     realTrackModel = new TrackModel();
-    trackController = new Track_mainwindow();
-    trackController->show();
+    //trackController = new Track_mainwindow();
+    //trackController->show();
 
     //initialize the timing variables
     //Timer starts at the CURRENT TIME
@@ -62,7 +62,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,double)), this, SLOT(receiveDispatchSignal_test(int,bool,int,double)));
 
     //send speed and authority from CTC to Wayside
-    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,double)), trackController, SLOT(receiveTrainData(int,bool,int,double)));
+    //QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,double)), trackController, SLOT(receiveTrainData(int,bool,int,double)));
 }
 
 System_CentralTimer_Connector::~System_CentralTimer_Connector()

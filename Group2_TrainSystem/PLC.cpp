@@ -17,7 +17,7 @@ PLC::PLC(int block, int speed, int ways_block)
 bool PLC::Run_PLC()
 {
     //Object for opening file
-    QFile infile("C:\Users\ajipp\OneDrive\Documents\GitHub\ECE1140-Group2\Group2_TrainSystem");
+    QFile infile("trent/ECE1140-Group2/Group2_TrainSystem");
     QTextStream stream(&infile);
     QStringList list_second;
     QString str;
@@ -97,8 +97,11 @@ bool PLC::Run_PLC()
         }
     }
 
+
     infile.close();
 
     return true;
+
 }
+
 
