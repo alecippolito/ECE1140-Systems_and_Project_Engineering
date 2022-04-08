@@ -7,6 +7,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->BrakeFailureStatusLight->setStyleSheet("background-color:red");
+    ui->EngineFailureStatusLight->setStyleSheet("background-color:red");
+    ui->SignalPickupFailureStatusLight->setStyleSheet("background-color:red");
+    ui->EmergencyBrakeStatusLight->setStyleSheet("background-color:red");
 }
 
 MainWindow::~MainWindow()
