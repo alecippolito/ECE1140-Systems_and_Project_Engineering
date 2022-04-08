@@ -66,6 +66,7 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
     updateStatus();
     }
 }
+}
 // *************************************************
 //              Added Public
 // *************************************************

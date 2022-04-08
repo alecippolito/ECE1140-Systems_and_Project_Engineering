@@ -32,7 +32,7 @@ class TrainController
         bool passengerEBrakeEnabled = false;
         bool doorsOpen = false;
         bool lightsOn = false;
-        double speedLimit = 40;
+
 
     public:
     // *************************************************

@@ -142,6 +142,3 @@
         void  TrainController :: setSpeedLimit(double newSpeedLimit){
             speedLimit = newSpeedLimit;
         }
-        double TrainController ::getSpeedLimit(){
-            return speedLimit;
-        }
