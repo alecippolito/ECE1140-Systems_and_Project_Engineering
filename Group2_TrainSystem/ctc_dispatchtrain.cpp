@@ -11,7 +11,7 @@ CTC_DispatchTrain::CTC_DispatchTrain(QWidget *parent) :
     ui->setupUi(this);
 
     //initialize dispatch Train UI
-    standardSpeed = 40; //40 Km/Hr
+    standardSpeed = 10; //40 Km/Hr
     ui->DepartureCheck->setChecked(true);
     ui->ArrivalCheck->setChecked(true);
     currentDay = 0;
@@ -203,14 +203,15 @@ double CTC_DispatchTrain::returnSuggestedSpeed()
     }
     else if (ui->DepartureCheck->isChecked() == true && ui->ArrivalCheck->isChecked() == false)
     {
-        //leave station at 40 Km/Hr: standard speed
+        //leave station at standard speed
         return standardSpeed;
     }
     else if (ui->DepartureCheck->isChecked() == false && ui->ArrivalCheck->isChecked() == true)
     {
         //train will leave at currentTime: right now
         emit requestSystemTime();
-        totalTime = (currentDay*86400 + currentSeconds) + ((currentDay*86400 + currentSeconds) < departureTimeSeconds ? 604800 : 0) - departureTimeSeconds;
+        //totalTime = (currentDay*86400 + currentSeconds) + ((currentDay*86400 + currentSeconds) < departureTimeSeconds ? 604800 : 0) - departureTimeSeconds;
+        totalTime = arrivalTimeSeconds + (arrivalTimeSeconds < ((currentDay*86400 + currentSeconds) ? 604800 : 0)) - (currentDay*86400 + currentSeconds);
     }
     else
     {

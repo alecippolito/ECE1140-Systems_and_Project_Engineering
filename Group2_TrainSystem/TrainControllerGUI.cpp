@@ -46,6 +46,16 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
             dispatchTrain();
     }
     tc.calculatePower();
+    if(train->brakeFailure || train->signalPickupFailure || train->engineFailure || train->passengerBrake)
+    {
+        tc.setPassengerEBrake(true);
+        tc.setPowerCommand(0);
+        tc.setSetpointSpeed(0);
+        updatePower();
+        updateSpeed();
+        updateBrake();
+    }
+    else{
     updateSpeed();
     updatePower();
     updateDoors();

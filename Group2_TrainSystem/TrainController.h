@@ -32,6 +32,7 @@ class TrainController
         bool passengerEBrakeEnabled = false;
         bool doorsOpen = false;
         bool lightsOn = false;
+        double speedLimit = 40;
 
     public:
     // *************************************************
@@ -61,7 +62,7 @@ class TrainController
         void setEmergencyBrake(bool);
         bool getEmergencyBrakeFlag();
         void setPassengerEBrake(bool);
-        bool getPassengerEBrake();  
+        bool getPassengerEBrake();
         void setAuthority(double);
         double getAuthority();
 		void setDoorsOpen(bool);
@@ -72,7 +73,7 @@ class TrainController
         void setT(int);
         double getSpeedLimit();
         void setSpeedLimit(double);
-      
+
 };
 
-#endif 
+#endif
