@@ -38,6 +38,7 @@ TrainControllerGUI::~TrainControllerGUI()
 // *************************************************
 //              Timer Event
 // *************************************************
+
 void TrainControllerGUI :: timerEvent(QTimerEvent *event)
 {
     if(train != nullptr){
@@ -62,8 +63,9 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
     updateBrake();
     updateMode();
     dispatchTrain();
-        }
+    updateStatus();
     }
+}
 }
 // *************************************************
 //              Added Public
@@ -76,11 +78,13 @@ void TrainControllerGUI :: setTrain(Train *t)
 
 void TrainControllerGUI :: updatePower()
 {
+    if( train->getNextBlock() == nullptr){
+        tc.setPowerCommand(0);
+    }
     tc.setTrainVelocity(train -> getCurrentVelocity());
     double curPower = tc.getPowerCommand();
     train -> setPower(curPower, setpointSpeedForModel);
     ui -> currentPower -> display(curPower);
-    qDebug() << "POWER: " << curPower;
 }
 
 
@@ -92,11 +96,11 @@ void TrainControllerGUI :: updateSpeed()
         curSpeed = 0;
     }
     ui -> currentSetpoint -> display(curSpeed);
-    /*
-    if(tc.getCommandedSpeed() < tc.getSpeedLimit()){
+
+    if(tc.getCommandedSpeed() < 40){
         tc.setCommandedSpeed(tc.getCommandedSpeed() + 2);
     }
-    */
+
 }
 
 void TrainControllerGUI :: updateDoors()
@@ -140,34 +144,63 @@ void TrainControllerGUI :: updateMode()
 
 void TrainControllerGUI :: updateBrake()
 {
-    if(tc.getServiceBrakeFlag()==true || tc.getEmergencyBrakeFlag()==true || tc.getPassengerEBrake()==true){
-        if(tc.getEmergencyBrakeFlag() == true)
-        {
-            train->setPassengerBrake(true);
-        }
+    tc.setPassengerEBrake(train->brakeFailure);
+    if(tc.getPassengerEBrake() == true){
+        train->setPassengerBrake(true);
         tc.setPowerCommand(0);
     }
+    if(tc.getEmergencyBrakeFlag()==true){
+        tc.setPowerCommand(0);
+        ui -> eBrakeStatus -> setText("E-Brake Status: ON");
+    }
+
+
 
 
 }
 
 void TrainControllerGUI :: dispatchTrain()
 {
-    if (tc.getAutomaticMode()==0){
-        tc.setKi(5000); // default ki 225
-        tc.setKp(5000); // defult kp 225
+    if (tc.getAutomaticMode()==1){
+        tc.setKi(225); // default ki
+        tc.setKp(225); // defult kp
         startMoving();
     }
     dispatch = true;
 }
 void TrainControllerGUI :: startMoving()
 {
-    // train ->
-    // tc.setCommandedSpeed();
+    tc.setServiceBrake(false);
     tc.setSetpointSpeed(tc.getCommandedSpeed());
     tc.calculatePower();
 }
-
+void TrainControllerGUI :: updateStatus()
+{
+    if(tc.getAutomaticMode() == true && tc.getPowerCommand() > 0){
+        ui -> statusLabel -> setText("Train is moving in Automatic Mode");
+    }
+    if(tc.getAutomaticMode() == false && tc.getPowerCommand() > 0){
+        ui -> statusLabel -> setText("Train is moving in Manuel Mode");
+    }
+    if(tc.getServiceBrakeFlag()==true){
+        ui -> statusLabel -> setText("Service Brake Detected");
+    }
+    if(tc.getEmergencyBrakeFlag()==true){
+        ui -> statusLabel -> setText("Emergency Brake Detected");
+    }
+    if(tc.getPassengerEBrake()==true){
+        ui -> statusLabel -> setText("Passenger Emergency Brake Detected");
+    }
+    if(tc.getAuthority()==1){
+        ui -> statusLabel -> setText("Train is close to stop");
+    }
+   if(train->getNextBlock() == nullptr){
+        ui -> statusLabel -> setText("Train is at station");
+    }
+}
+int TrainControllerGUI :: getSpeedLimit(){
+    return train->getCurrentBlock()->speedLimitKmHr;
+}
 
 
 // *************************************************
@@ -200,6 +233,7 @@ void TrainControllerGUI::on_lightButton_clicked()
 void TrainControllerGUI::on_serviceBrake_clicked()
 {
     tc.setPowerCommand(0.0);
+    tc.setServiceBrake(true);
 }
 
 
@@ -208,11 +242,6 @@ void TrainControllerGUI::on_mode_clicked()
     tc.setAutomaticMode(!tc.getAutomaticMode());
 }
 
-void TrainControllerGUI::on_serviceBrake_pressed()
-{
-    tc.setPowerCommand(0.0);
-    tc.setServiceBrake(true);
-}
 
 void TrainControllerGUI::on_eBrakeButton_clicked()
 {
@@ -236,5 +265,3 @@ void TrainControllerGUI::receiveTimeDialation(double td)
 {
     tc.setT(td);
 }
-
-

@@ -79,5 +79,8 @@ class Train{
 
     void setPassengerBrake(bool);
 
+    Block* getNextBlock();
+    Block* getCurrentBlock();
+
 };
 #endif // TRAIN_H

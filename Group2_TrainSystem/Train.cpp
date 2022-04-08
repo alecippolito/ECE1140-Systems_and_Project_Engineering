@@ -206,3 +206,14 @@
         trainUI->updateEmergencyBrakeStatus(passengerBrake);
         trainUI->updateAdSpace(adSpace);
     }
+
+    Block* Train :: getNextBlock()
+    {
+        return nextBlock;
+    }
+
+    Block* Train :: getCurrentBlock()
+    {
+        return currentBlock;
+    }
+

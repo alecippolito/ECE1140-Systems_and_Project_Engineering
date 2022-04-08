@@ -22,16 +22,17 @@ class TrainController
         double T = 1; // Tx speed
         double commandedSpeed = 0;
         double setpointSpeed = 0;
+        double speedLimit = 30;
         double trainVelocity; // for power calculation
         double trainSpeed; // for power calculation
         double authority = 0;
-        bool automaticMode = false;
+        bool automaticMode = true;
         bool serviceBrakeEnabled = false;
         bool emergencyBrakeEnabled = false;
         bool passengerEBrakeEnabled = false;
         bool doorsOpen = false;
         bool lightsOn = false;
-        double speedLimit = 40;
+
 
     public:
     // *************************************************
@@ -61,7 +62,7 @@ class TrainController
         void setEmergencyBrake(bool);
         bool getEmergencyBrakeFlag();
         void setPassengerEBrake(bool);
-        bool getPassengerEBrake();  
+        bool getPassengerEBrake();
         void setAuthority(double);
         double getAuthority();
 		void setDoorsOpen(bool);
@@ -71,7 +72,8 @@ class TrainController
         void setHeadlightsOn(bool);
         void setT(int);
         double getSpeedLimit();
-      
+        void setSpeedLimit(double);
+
 };
 
-#endif 
+#endif

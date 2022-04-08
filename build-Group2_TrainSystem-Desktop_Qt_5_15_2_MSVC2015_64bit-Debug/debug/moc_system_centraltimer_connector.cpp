@@ -104,8 +104,8 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
       16,    0,  131,    2, 0x08 /* Private */,
       17,    0,  132,    2, 0x08 /* Private */,
       18,    0,  133,    2, 0x08 /* Private */,
-      19,    3,  134,    2, 0x08 /* Private */,
-      20,    0,  141,    2, 0x08 /* Private */,
+      19,    4,  134,    2, 0x08 /* Private */,
+      20,    0,  143,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
@@ -127,7 +127,7 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double,    2,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, QMetaType::Double,    2,    2,    2,    2,
     QMetaType::Void,
 
        0        // eod
@@ -156,7 +156,7 @@ void System_CentralTimer_Connector::qt_static_metacall(QObject *_o, QMetaObject:
         case 14: _t->on_SunButton_clicked(); break;
         case 15: _t->on_ThousandTimesSpeed_clicked(); break;
         case 16: _t->on_TimeButton_1pm_clicked(); break;
-        case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3]))); break;
+        case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4]))); break;
         case 18: _t->on_TimeButton_2pm_clicked(); break;
         default: ;
         }
