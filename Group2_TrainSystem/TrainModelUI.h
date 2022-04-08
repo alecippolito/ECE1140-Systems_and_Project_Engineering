@@ -41,6 +41,7 @@ public:
     void updateSignalPickupFailureStatus(bool);
     void updateEngineFailureStatus(bool);
     void updateEmergencyBrakeStatus(bool);
+    void updateAdSpace(bool);   //true = snowpiercer, false = unstoppable
 
 private slots:
     void on_BrakeFailureButton_clicked();

@@ -169,3 +169,21 @@ void MainWindow::updateEmergencyBrakeStatus(bool f)
         ui->EmergencyBrakeStatusLight->setStyleSheet("background-color:green");
     }
 }
+
+void MainWindow::updateAdSpace(bool movie)
+{
+    if(movie == true)
+    {
+        //snowpiercer
+        ui->snowpiercerImage->setVisible(true);
+        ui->traintobusanImage->setVisible(false);
+    }
+    else
+    {
+        //train to busan
+        ui->snowpiercerImage->setVisible(false);
+        ui->traintobusanImage->setVisible(true);
+    }
+
+
+}

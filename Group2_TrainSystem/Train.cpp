@@ -204,4 +204,5 @@
         trainUI->updateSignalPickupFailureStatus(signalPickupFailure);
         trainUI->updateEngineFailureStatus(engineFailure);
         trainUI->updateEmergencyBrakeStatus(passengerBrake);
+        trainUI->updateAdSpace(adSpace);
     }
