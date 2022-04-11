@@ -72,7 +72,7 @@ private:
     TrainControllerGUI *tcGUI;
     MainWindow *tm;
     YardDormontTrackModel trackModel;
-    TrackModel *realTrackModel;
+    TrackModel realTrackModel;
     //sTrack_mainwindow *trackController;
 };
 #endif // SYSTEM_CENTRALTIMER_CONNECTOR_H

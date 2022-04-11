@@ -38,7 +38,7 @@ void Block::setCumElevation(double num){
 }
 
 void Block::setTimeToTravelBlock(int num){
-    timeToTravelBlock = num;
+    secondsToTraverseBlock = num;
 }
 
 void Block::setPreviousBlock(Block b){

@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QVector>
+#include "Block.h"
+
 
 namespace Ui {
 class TrackModel;
@@ -15,7 +17,10 @@ class TrackModel : public QDialog
 public:
     explicit TrackModel(QWidget *parent = nullptr);
     ~TrackModel();
-
+    void loadRedLine();
+    void loadGreenLine();
+    Block *redline[78]; //76 blocks + 2 blocks for yard
+    Block *greenline[152];  //150 blocks + 2 blocks for yard
 
 private slots:
     void changeOccupancy(bool, int, int);    //bool - which track line to go to, int - for track number, int - new occupancy

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>greenline.csv</file>
+        <file>redline.csv</file>
+    </qresource>
+</RCC>

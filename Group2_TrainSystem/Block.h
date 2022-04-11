@@ -6,16 +6,19 @@
 class Block {
 
     public:
+            std::string lineType;
+            std::string section;
+            std::string infrastructure;
+            std::string stationSide;
             bool occupied;
             int blockNumber;
-            char section;
             double blockLength;
             double blockGrade;
             int speedLimitKmHr;
             double speedLimitMSec;
             double elevation;
             double cumElevation;
-            int timeToTravelBlock;
+            double secondsToTraverseBlock;
             Block *previousBlock, *nextBlock1, *nextBlock2;    //nextBlock2 only if track has 2 choices (Switch is active)
             std::string to, from;
 

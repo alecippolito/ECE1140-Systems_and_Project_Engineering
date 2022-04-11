@@ -30,7 +30,8 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     //in order for the modules and their UI's to run, execute them here, in the central file constructor
     ctc = new CTC_MainWindow();
     ctc->show();
-    realTrackModel = new TrackModel();
+    realTrackModel.loadRedLine();
+    realTrackModel.loadGreenLine();
     //trackController = new Track_mainwindow();
     //trackController->show();
 
