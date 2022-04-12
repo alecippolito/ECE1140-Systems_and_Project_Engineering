@@ -99,7 +99,9 @@ OBJECTS       = ctc_choosetrackline.o \
 		moc_TrainControllerGUI.o \
 		moc_trackmodel.o \
 		moc_Track_mainwindow.o
-DIST          = ../../Qt/6.2.3/macos/mkspecs/features/spec_pre.prf \
+DIST          = ../Group2_TrainSystem/redline.csv \
+		../Group2_TrainSystem/greenline.csv \
+		../../Qt/6.2.3/macos/mkspecs/features/spec_pre.prf \
 		../../Qt/6.2.3/macos/mkspecs/features/device_config.prf \
 		../../Qt/6.2.3/macos/mkspecs/common/unix.conf \
 		../../Qt/6.2.3/macos/mkspecs/common/mac.conf \
@@ -688,11 +690,6 @@ moc_system_centraltimer_connector.cpp: ../Group2_TrainSystem/system_centraltimer
 		../Group2_TrainSystem/trackmodel.h \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QVector \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qvector.h \
-		../Group2_TrainSystem/Track_controller.h \
-		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QString \
-		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qstring.h \
-		../Group2_TrainSystem/PLC.h \
-		../Group2_TrainSystem/Track_mainwindow.h \
 		../../Qt/6.2.3/macos/libexec/moc
 	/Users/trent/Qt/6.2.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=12 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trent/Qt/6.2.3/macos/mkspecs/macx-clang -I/Users/trent/ECE1140-Group2/Group2_TrainSystem -I/Users/trent/Qt/6.2.3/macos/lib/QtWidgets.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtGui.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trent/Qt/6.2.3/macos/lib ../Group2_TrainSystem/system_centraltimer_connector.h -o moc_system_centraltimer_connector.cpp
 
@@ -732,6 +729,7 @@ moc_trackmodel.cpp: ../Group2_TrainSystem/trackmodel.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QVector \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qvector.h \
+		../Group2_TrainSystem/Block.h \
 		../../Qt/6.2.3/macos/libexec/moc
 	/Users/trent/Qt/6.2.3/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=12 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/trent/Qt/6.2.3/macos/mkspecs/macx-clang -I/Users/trent/ECE1140-Group2/Group2_TrainSystem -I/Users/trent/Qt/6.2.3/macos/lib/QtWidgets.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtGui.framework/Headers -I/Users/trent/Qt/6.2.3/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/trent/Qt/6.2.3/macos/lib ../Group2_TrainSystem/trackmodel.h -o moc_trackmodel.cpp
 
@@ -851,11 +849,6 @@ main.o: ../Group2_TrainSystem/main.cpp ../Group2_TrainSystem/system_centraltimer
 		../Group2_TrainSystem/trackmodel.h \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QVector \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qvector.h \
-		../Group2_TrainSystem/Track_controller.h \
-		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QString \
-		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qstring.h \
-		../Group2_TrainSystem/PLC.h \
-		../Group2_TrainSystem/Track_mainwindow.h \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Group2_TrainSystem/main.cpp
@@ -879,11 +872,6 @@ system_centraltimer_connector.o: ../Group2_TrainSystem/system_centraltimer_conne
 		../Group2_TrainSystem/trackmodel.h \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QVector \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qvector.h \
-		../Group2_TrainSystem/Track_controller.h \
-		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QString \
-		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qstring.h \
-		../Group2_TrainSystem/PLC.h \
-		../Group2_TrainSystem/Track_mainwindow.h \
 		ui_system_centraltimer_connector.h \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDate \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
@@ -919,9 +907,16 @@ trackmodel.o: ../Group2_TrainSystem/trackmodel.cpp ../Group2_TrainSystem/trackmo
 		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QVector \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qvector.h \
+		../Group2_TrainSystem/Block.h \
 		ui_trackmodel.h \
 		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QDebug \
-		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QFile \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qfile.h \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/QStringList \
+		../../Qt/6.2.3/macos/lib/QtCore.framework/Headers/qstringlist.h \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../Qt/6.2.3/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trackmodel.o ../Group2_TrainSystem/trackmodel.cpp
 
 yardToDormontTrackModel.o: ../Group2_TrainSystem/yardToDormontTrackModel.cpp ../Group2_TrainSystem/yardToDormontTrackModel.h \

@@ -45,6 +45,7 @@ class Train{
             bool atEndOfBlock = false;
             YardDormontTrackModel trackModel;
             int blocksLeft = 12;
+            bool adSpace = true;    //true = snowpiercer, false = train to busan
 
     Train(int, Block *b);
     //~Train();

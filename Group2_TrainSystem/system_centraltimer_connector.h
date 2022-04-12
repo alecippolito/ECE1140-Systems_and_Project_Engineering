@@ -10,9 +10,9 @@
 #include "Block.h"
 #include "yardToDormontTrackModel.h"
 #include "trackmodel.h"
-#include "Track_controller.h"
-#include "PLC.h"
-#include "Track_mainwindow.h"
+//#include "Track_controller.h"
+//#include "PLC.h"
+//#include "Track_mainwindow.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -72,7 +72,7 @@ private:
     TrainControllerGUI *tcGUI;
     MainWindow *tm;
     YardDormontTrackModel trackModel;
-    TrackModel *realTrackModel;
-    Track_mainwindow *trackController;
+    TrackModel realTrackModel;
+    //sTrack_mainwindow *trackController;
 };
 #endif // SYSTEM_CENTRALTIMER_CONNECTOR_H

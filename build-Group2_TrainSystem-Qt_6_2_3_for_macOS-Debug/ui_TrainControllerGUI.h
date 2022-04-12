@@ -44,6 +44,7 @@ public:
     QPlainTextEdit *kpTextbox;
     QPlainTextEdit *kiTextbox;
     QPushButton *submit;
+    QLabel *statusLabel;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -71,7 +72,7 @@ public:
         lightButton->setGeometry(QRect(20, 230, 221, 41));
         serviceBrake = new QPushButton(centralwidget);
         serviceBrake->setObjectName(QString::fromUtf8("serviceBrake"));
-        serviceBrake->setGeometry(QRect(480, 100, 291, 51));
+        serviceBrake->setGeometry(QRect(480, 110, 261, 51));
         speedLabel = new QLabel(centralwidget);
         speedLabel->setObjectName(QString::fromUtf8("speedLabel"));
         speedLabel->setGeometry(QRect(280, 120, 201, 51));
@@ -101,17 +102,20 @@ public:
         eBrakeButton->setGeometry(QRect(20, 310, 311, 71));
         kpTextbox = new QPlainTextEdit(centralwidget);
         kpTextbox->setObjectName(QString::fromUtf8("kpTextbox"));
-        kpTextbox->setGeometry(QRect(480, 430, 101, 51));
+        kpTextbox->setGeometry(QRect(670, 440, 101, 51));
         kiTextbox = new QPlainTextEdit(centralwidget);
         kiTextbox->setObjectName(QString::fromUtf8("kiTextbox"));
-        kiTextbox->setGeometry(QRect(480, 490, 101, 51));
+        kiTextbox->setGeometry(QRect(670, 500, 101, 51));
         submit = new QPushButton(centralwidget);
         submit->setObjectName(QString::fromUtf8("submit"));
-        submit->setGeometry(QRect(480, 380, 101, 41));
+        submit->setGeometry(QRect(670, 390, 101, 41));
+        statusLabel = new QLabel(centralwidget);
+        statusLabel->setObjectName(QString::fromUtf8("statusLabel"));
+        statusLabel->setGeometry(QRect(20, 460, 621, 81));
         TrainControllerGUI->setCentralWidget(centralwidget);
         menubar = new QMenuBar(TrainControllerGUI);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 800, 19));
         TrainControllerGUI->setMenuBar(menubar);
         statusbar = new QStatusBar(TrainControllerGUI);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -129,7 +133,7 @@ public:
         decSpeed->setText(QCoreApplication::translate("TrainControllerGUI", "Decrease Speed", nullptr));
         doorButton->setText(QCoreApplication::translate("TrainControllerGUI", "Open/Close Door", nullptr));
         lightButton->setText(QCoreApplication::translate("TrainControllerGUI", "Lights On/Off", nullptr));
-        serviceBrake->setText(QCoreApplication::translate("TrainControllerGUI", "Brake", nullptr));
+        serviceBrake->setText(QCoreApplication::translate("TrainControllerGUI", "Service Brake", nullptr));
         speedLabel->setText(QCoreApplication::translate("TrainControllerGUI", " Setpoint Speed", nullptr));
         powerLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Power", nullptr));
         lightStatus->setText(QCoreApplication::translate("TrainControllerGUI", "Light Status: OFF", nullptr));
@@ -141,6 +145,7 @@ public:
         kpTextbox->setPlainText(QCoreApplication::translate("TrainControllerGUI", "Kp", nullptr));
         kiTextbox->setPlainText(QCoreApplication::translate("TrainControllerGUI", "Ki", nullptr));
         submit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
+        statusLabel->setText(QString());
     } // retranslateUi
 
 };
