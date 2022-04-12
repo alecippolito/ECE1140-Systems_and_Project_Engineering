@@ -151,7 +151,6 @@ void TrainControllerGUI :: updateBrake()
     }
     if(tc.getEmergencyBrakeFlag()==true){
         tc.setPowerCommand(0);
-        ui -> eBrakeStatus -> setText("E-Brake Status: ON");
     }
 
 
@@ -176,27 +175,7 @@ void TrainControllerGUI :: startMoving()
 }
 void TrainControllerGUI :: updateStatus()
 {
-    if(tc.getAutomaticMode() == true && tc.getPowerCommand() > 0){
-        ui -> statusLabel -> setText("Train is moving in Automatic Mode");
-    }
-    if(tc.getAutomaticMode() == false && tc.getPowerCommand() > 0){
-        ui -> statusLabel -> setText("Train is moving in Manuel Mode");
-    }
-    if(tc.getServiceBrakeFlag()==true){
-        ui -> statusLabel -> setText("Service Brake Detected");
-    }
-    if(tc.getEmergencyBrakeFlag()==true){
-        ui -> statusLabel -> setText("Emergency Brake Detected");
-    }
-    if(tc.getPassengerEBrake()==true){
-        ui -> statusLabel -> setText("Passenger Emergency Brake Detected");
-    }
-    if(tc.getAuthority()==1){
-        ui -> statusLabel -> setText("Train is close to stop");
-    }
-   if(train->getNextBlock() == nullptr){
-        ui -> statusLabel -> setText("Train is at station");
-    }
+
 }
 int TrainControllerGUI :: getSpeedLimit(){
     return train->getCurrentBlock()->speedLimitKmHr;
