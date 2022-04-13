@@ -2,5 +2,7 @@
     <qresource prefix="/resources">
         <file>greenline.csv</file>
         <file>redline.csv</file>
+        <file>snowpiercer.jpeg</file>
+        <file>traintobusanPoster.jpeg</file>
     </qresource>
 </RCC>

@@ -32,6 +32,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     ctc->show();
     realTrackModel.loadRedLine();
     realTrackModel.loadGreenLine();
+    realTrackModel.parseInfrastructure();
     //trackController = new Track_mainwindow();
     //trackController->show();
 
