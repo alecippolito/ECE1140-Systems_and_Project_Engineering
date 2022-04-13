@@ -12,6 +12,7 @@ struct Train_CTC{
     int dispatchTime;
     int authority;
     double suggestedSpeed;
+    QVector<bool> authorityVector;
 };
 
 //struct for TrackBlocks - the only required data for the CTC
@@ -44,13 +45,13 @@ private slots:
     void on_actionView_Train_Statuses_triggered();
     void receiveTime(int,int);
     void receiveTimeRequest();
-    void receiveDispatchImmediate(bool,int,double);
-    void receiveDispatchSchedule(bool,int,double,int);
+    void receiveDispatchImmediate(bool,int,double,QVector<bool>);
+    void receiveDispatchSchedule(bool,int,double,int,QVector<bool>);
     void receiveBlockStatus(bool,int,int,bool);
 
 signals:
-    void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>);
-    void sendTrainData(int,bool,int, double);
+    void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>, QVector<QVector<bool>>);
+    void sendTrainData(int,bool,int, double, QVector<bool>);
     void sendTime(int,int);
 
 private:
@@ -78,6 +79,8 @@ private:
     QVector<QString> stationNamesGreen;
     QVector<int> stationAuthoritiesRed;
     QVector<int> stationAuthoritiesGreen;
+    QVector<QVector<bool>> stationAuthorityVectorsRed;
+    QVector<QVector<bool>> stationAuthorityVectorsGreen;
     QVector<double> stationDistancesGreen;
     QVector<double> stationDistancesRed;
     QString spaces(int);

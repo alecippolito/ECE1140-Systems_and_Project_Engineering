@@ -14,6 +14,7 @@ release/TrainController.o
 release/Track_controller.o
 release/PLC.o
 release/Track_mainwindow.o
+release/qrc_trainResources.o
 release/moc_ctc_choosetrackline.o
 release/moc_ctc_dispatchtrain.o
 release/moc_ctc_mainwindow.o
