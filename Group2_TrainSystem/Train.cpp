@@ -220,4 +220,7 @@
     {
         return currentBlock;
     }
+    void Train :: setAdSpace(bool newAdSpace){
+        adSpace = newAdSpace;
+    }
 

@@ -46,7 +46,8 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
             dispatchTrain();
     }
     tc.calculatePower();
-    if(train->brakeFailure || train->signalPickupFailure || train->engineFailure || train->passengerBrake)
+    /*
+     * if(train->brakeFailure || train->signalPickupFailure || train->engineFailure || train->passengerBrake)
     {
         tc.setPassengerEBrake(true);
         tc.setPowerCommand(0);
@@ -65,6 +66,17 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
     dispatchTrain();
     updateStatus();
     }
+    */
+    updateSpeed();
+    updatePower();
+    updateDoors();
+    updateLights();
+    updateBrake();
+    updateMode();
+    dispatchTrain();
+    updateStatus();
+    updateAdvertisements();
+    updateTemp();
 }
 }
 // *************************************************
@@ -90,12 +102,14 @@ void TrainControllerGUI :: updatePower()
 
 void TrainControllerGUI :: updateSpeed()
 {
-    double curSpeed = tc.getSetpointSpeed();
+    double curSpeed = tc.getSetpointSpeed() * 0.621371;
+    double comSpeed = tc.getCommandedSpeed() * 0.621371;
     setpointSpeedForModel = curSpeed;
     if(tc.getServiceBrakeFlag()==true || tc.getEmergencyBrakeFlag()==true || tc.getPassengerEBrake()==true ){
         curSpeed = 0;
     }
-    ui -> currentSetpoint -> display(curSpeed);
+    ui -> currentSetpoint -> display(floor(curSpeed));
+    ui -> currentCommanded -> display(floor(comSpeed));
 
     if(tc.getCommandedSpeed() < 40){
         tc.setCommandedSpeed(tc.getCommandedSpeed() + 2);
@@ -144,18 +158,13 @@ void TrainControllerGUI :: updateMode()
 
 void TrainControllerGUI :: updateBrake()
 {
-    tc.setPassengerEBrake(train->brakeFailure);
-    if(tc.getPassengerEBrake() == true){
-        train->setPassengerBrake(true);
-        tc.setPowerCommand(0);
-    }
+
+    tc.setEmergencyBrake(tc.getEmergencyBrakeFlag());
+    tc.setPassengerEBrake(train->passengerBrake);
+
     if(tc.getEmergencyBrakeFlag()==true){
-        tc.setPowerCommand(0);
+        slowTrain();
     }
-
-
-
-
 }
 
 void TrainControllerGUI :: dispatchTrain()
@@ -175,10 +184,55 @@ void TrainControllerGUI :: startMoving()
 }
 void TrainControllerGUI :: updateStatus()
 {
+    // * E brake flag
+    if (tc.getEmergencyBrakeFlag() == false){
+        ui->emergencyBrakeStatus->setStyleSheet("background-color:red");
+    } else {
+        ui->emergencyBrakeStatus->setStyleSheet("background-color:green");
+    }
+    // * Passenger E brake flag
+    if (tc.getPassengerEBrake() == false){
+        ui->passengerEmergencyBrakeStatus->setStyleSheet("background-color:red");
+    } else {
+        ui->passengerEmergencyBrakeStatus->setStyleSheet("background-color:green");
+    }
+    // * Brake Failure
 
+    if (train -> brakeFailure == false){
+        ui->brakeFailureStatus->setStyleSheet("background-color:red");
+    } else {
+        ui->brakeFailureStatus->setStyleSheet("background-color:green");
+    }
+    // * Signal Pickup Failure
+    if (train -> signalPickupFailure == false){
+        ui->signalPickupFailureStatus->setStyleSheet("background-color:red");
+    } else{
+        ui->signalPickupFailureStatus->setStyleSheet("background-color:green");
+    }
+    // * Engine Failure
+    if (train -> engineFailure == false){
+        ui->engineFailureStatus->setStyleSheet("background-color:red");
+    } else{
+        ui->engineFailureStatus->setStyleSheet("background-color:green");
+    }
 }
 int TrainControllerGUI :: getSpeedLimit(){
     return train->getCurrentBlock()->speedLimitKmHr;
+}
+void TrainControllerGUI :: slowTrain()
+{
+    tc.setPowerCommand(0);
+}
+void TrainControllerGUI :: updateAdvertisements(){
+    //true = snowpiercer, false = train to busan
+    if (tc.getAdvertisements() == true){
+        ui->adLabelMovie->setText("Snowpiercer");
+    } else{
+        ui->adLabelMovie->setText("Train to Busan");
+    }
+}
+void TrainControllerGUI :: updateTemp(){
+    ui->currentTemp->display(tc.getTemp());
 }
 
 
@@ -221,14 +275,6 @@ void TrainControllerGUI::on_mode_clicked()
     tc.setAutomaticMode(!tc.getAutomaticMode());
 }
 
-
-void TrainControllerGUI::on_eBrakeButton_clicked()
-{
-    tc.setPowerCommand(0.0);
-    tc.setEmergencyBrake(true);
-    train->setPassengerBrake(true);
-}
-
 void TrainControllerGUI::on_submit_clicked()
 {
     QString kpNum = ui -> kpTextbox -> toPlainText();
@@ -244,3 +290,62 @@ void TrainControllerGUI::receiveTimeDialation(double td)
 {
     tc.setT(td);
 }
+
+void TrainControllerGUI::on_eBrakeButton_clicked()
+{
+    tc.setPowerCommand(0.0);
+    tc.setEmergencyBrake(true);
+}
+
+
+void TrainControllerGUI::on_adButton_clicked()
+{
+    train->setAdSpace(!tc.getAdvertisements());
+    tc.setAdvertisements(!tc.getAdvertisements());
+
+}
+
+
+void TrainControllerGUI::on_incTempButton_clicked()
+{
+    double currentTemp = tc.getTemp();
+    tc.setTemp(currentTemp + 1);
+    train->setTemperature(currentTemp);
+}
+
+
+void TrainControllerGUI::on_decTempButton_clicked()
+{
+    double currentTemp = tc.getTemp();
+    tc.setTemp(currentTemp - 1);
+    train->setTemperature(currentTemp);
+
+}
+
+void TrainControllerGUI::on_announcement1_clicked()
+{
+    tc.setAnnouncement("Announcement 1");
+    train->setAnnouncement(tc.getAnnouncement());
+}
+
+
+void TrainControllerGUI::on_announcement2_clicked()
+{
+    tc.setAnnouncement("Announcement 2");
+    train->setAnnouncement(tc.getAnnouncement());
+}
+
+
+void TrainControllerGUI::on_announcment3_clicked()
+{
+    tc.setAnnouncement("Announcement 3");
+    train->setAnnouncement(tc.getAnnouncement());
+}
+
+
+void TrainControllerGUI::on_announcement4_clicked()
+{
+    tc.setAnnouncement("Announcement 4");
+    train->setAnnouncement(tc.getAnnouncement());
+}
+

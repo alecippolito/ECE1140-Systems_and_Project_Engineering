@@ -142,3 +142,21 @@
         void  TrainController :: setSpeedLimit(double newSpeedLimit){
             speedLimit = newSpeedLimit;
         }
+        bool TrainController :: getAdvertisements(){
+            return adversitement;
+        }
+        void TrainController :: setAdvertisements(bool newAdvertisement){
+            adversitement = newAdvertisement;
+        }
+        double TrainController :: getTemp(){
+            return temp;
+        }
+        void TrainController :: setTemp(double newTemp){
+            temp = newTemp;
+        }
+        std :: string TrainController :: getAnnouncement(){
+            return announcement;
+        }
+        void TrainController :: setAnnouncement(std::string newAnnouncement){
+            announcement = newAnnouncement;
+        }

@@ -62,6 +62,7 @@ class Train{
     void setAvailable(bool);
     void setAnnouncement(std::string);
     void checkBlock();
+    void setAdSpace(bool);
 
     double getCurrentVelocity();
     double getPower();
