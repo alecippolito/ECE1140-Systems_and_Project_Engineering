@@ -682,7 +682,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>snowpiercer.jpeg</pixmap>
+     <pixmap resource="trainResources.qrc">:/resources/snowpiercer.jpeg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -701,7 +701,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>traintobusanPoster.jpeg</pixmap>
+     <pixmap resource="trainResources.qrc">:/resources/traintobusanPoster.jpeg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -720,6 +720,8 @@ font-weight: bold;</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="trainResources.qrc"/>
+ </resources>
  <connections/>
 </ui>
