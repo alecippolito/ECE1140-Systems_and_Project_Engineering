@@ -190,8 +190,14 @@
         trainUI->updatePassengers(trainMetrics->passengers);
         trainUI->updateCrewCount(trainMetrics->crewMembers);
         trainUI->updateWeight(trainMetrics->mass);
+        if(currentBlock->isStation && (currentBlock->stationSide == "Left" || currentBlock->stationSide == "Both"))
+        {
         trainUI->updateLeftDoors(leftDoors);
+        }
+        if(currentBlock->isStation && (currentBlock->stationSide == "Right" || currentBlock->stationSide == "Both"))
+        {
         trainUI->updateRightDoors(rightDoors);
+        }
         trainUI->updateLights(lightsOn);
         trainUI->updateTemperature(temperature);
         trainUI->updateIntercom(announcements);

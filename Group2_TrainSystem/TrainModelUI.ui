@@ -256,7 +256,7 @@
      <item row="7" column="1">
       <widget class="QLabel" name="leftDoorsLabel">
        <property name="text">
-        <string>TextLabel</string>
+        <string>0</string>
        </property>
       </widget>
      </item>
@@ -270,7 +270,7 @@
      <item row="8" column="1">
       <widget class="QLabel" name="rightDoorsLabel">
        <property name="text">
-        <string>TextLabel</string>
+        <string>0</string>
        </property>
       </widget>
      </item>
@@ -589,7 +589,7 @@ font-weight: bold;</string>
      <item row="0" column="1">
       <widget class="QLabel" name="destinationLabel">
        <property name="text">
-        <string>Dormont</string>
+        <string>N/A</string>
        </property>
       </widget>
      </item>
