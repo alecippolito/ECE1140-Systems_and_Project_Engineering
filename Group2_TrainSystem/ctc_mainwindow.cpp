@@ -386,7 +386,6 @@ void CTC_MainWindow::on_previousButton_clicked()
         trainSet--;
     }
 
-
     if (trackSetRed != 0)
     {
         trackSetRed--;
