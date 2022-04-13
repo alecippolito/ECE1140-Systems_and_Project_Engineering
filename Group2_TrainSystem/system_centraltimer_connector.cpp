@@ -60,7 +60,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     QObject::connect(this,SIGNAL(sendTime(int,int)),ctc,SLOT(receiveTime(int,int)));
 
     //testing purposes: receiving a dispatch signal from the CTC
-    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,double)), this, SLOT(receiveDispatchSignal_test(int,bool,int,double)));
+    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,double,QVector<bool>)), this, SLOT(receiveDispatchSignal_test(int,bool,int,double,QVector<bool>)));
 
     //send speed and authority from CTC to Wayside
     //QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,double)), trackController, SLOT(receiveTrainData(int,bool,int,double)));
@@ -71,16 +71,23 @@ System_CentralTimer_Connector::~System_CentralTimer_Connector()
     delete ui;
 }
 
-void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp, bool redline_temp, int authority_temp, double speed_temp)
+void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp, bool redline_temp, int authority_temp, double speed_temp,QVector<bool> authorityVector_temp)
 {
     qDebug() << "Dispatch signal received!";
     qDebug() << "Train Number: " << QString::number(TrainNum_temp);
     qDebug() << (redline_temp == true ? "Line: Red line" : "Line: Green line");
     qDebug() << "Authority: " << QString::number(authority_temp);
     qDebug() << "Suggested speed: " << QString::number(speed_temp);
+    /*
+    for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
+    {
+        qDebug() << QString::number(i+1) << authorityVector_temp[i];
+    }
+    */
     qDebug();
 
     //create a new Train Controller GUI
+
     tcGUI = new TrainControllerGUI();
     tcGUI->show();
     Train *t = new Train(1, trackModel.track[0]);
@@ -89,6 +96,7 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     //connect the time dialation to the train controller
     QObject::connect(this, SIGNAL(sendTimeDialation(double)),tcGUI,SLOT(receiveTimeDialation(double)));
     emit sendTimeDialation(timeDialation);
+
 }
 
 void System_CentralTimer_Connector::updateTime()

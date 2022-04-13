@@ -69,8 +69,8 @@ void CTC_MainWindow::RedLineSelected()
     dp->show();
 
     //send the red line stations to the dispatch window
-    QObject::connect(this, SIGNAL(sendStationData(bool,QVector<double>,QVector<QString>,QVector<int>)),dp,SLOT(receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>)));
-    emit sendStationData(true,stationDistancesRed,stationNamesRed,stationAuthoritiesRed);
+    QObject::connect(this, SIGNAL(sendStationData(bool,QVector<double>,QVector<QString>,QVector<int>,QVector<QVector<bool>>)),dp,SLOT(receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>,QVector<QVector<bool>>)));
+    emit sendStationData(true,stationDistancesRed,stationNamesRed,stationAuthoritiesRed,stationAuthorityVectorsRed);
 
     //send current time to dispatch window
     QObject::connect(this, SIGNAL(sendTime(int,int)), dp, SLOT(updateTimeDisplay(int,int)));
@@ -92,8 +92,8 @@ void CTC_MainWindow::GreenLineSelected()
     dp->show();
 
     //send the green line stations to the dispatch window
-    QObject::connect(this, SIGNAL(sendStationData(bool,QVector<double>,QVector<QString>,QVector<int>)),dp,SLOT(receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>)));
-    emit sendStationData(false,stationDistancesGreen,stationNamesGreen,stationAuthoritiesGreen);
+    QObject::connect(this, SIGNAL(sendStationData(bool,QVector<double>,QVector<QString>,QVector<int>,QVector<QVector<bool>>)),dp,SLOT(receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>,QVector<QVector<bool>>)));
+    emit sendStationData(false,stationDistancesGreen,stationNamesGreen,stationAuthoritiesGreen,stationAuthorityVectorsGreen);
 
     //send current time to dispatch window
     QObject::connect(this, SIGNAL(sendTime(int,int)), dp, SLOT(updateTimeDisplay(int,int)));
@@ -104,11 +104,11 @@ void CTC_MainWindow::GreenLineSelected()
     QObject::connect(this, SIGNAL(sendTime(int,int)),dp, SLOT(receiveSystemTime(int,int)));
 
     //connect the actual dispatch signals
-    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double)), this, SLOT(receiveDispatchImmediate(bool,int,double)));
-    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int)), this, SLOT(receiveDispatchSchedule(bool,int,double,int)));
+    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double,QVector<bool>)), this, SLOT(receiveDispatchImmediate(bool,int,double,QVector<bool>)));
+    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int,QVector<bool>)), this, SLOT(receiveDispatchSchedule(bool,int,double,int,QVector<bool>)));
 }
 
-void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, double sugg_speed_temp)
+void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, double sugg_speed_temp, QVector<bool> authorityVector_temp)
 {
     cl->hide();
 
@@ -116,7 +116,7 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
     if ((redline_temp == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
     {
         TrainNumber++;
-        emit sendTrainData(TrainNumber,redline_temp,auth_temp,sugg_speed_temp);
+        emit sendTrainData(TrainNumber,redline_temp,auth_temp,sugg_speed_temp,authorityVector_temp);
     }
     else
     {
@@ -126,12 +126,13 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
         tempTrain.dispatchTime = 0;     //not needed
         tempTrain.redline = redline_temp;
         tempTrain.suggestedSpeed = sugg_speed_temp;
+        tempTrain.authorityVector = authorityVector_temp;
         TrainQueue.push_back(tempTrain);
     }
 
 }
 
-void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, double sugg_speed_temp, int departTime_temp)
+void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, double sugg_speed_temp, int departTime_temp, QVector<bool> authorityVector_temp)
 {
     cl->hide();
 
@@ -141,6 +142,7 @@ void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, d
     tempTrain.dispatchTime = departTime_temp;
     tempTrain.redline = redline_temp;
     tempTrain.suggestedSpeed = sugg_speed_temp;
+    tempTrain.authorityVector = authorityVector_temp;
     TrainStandby.push_back(tempTrain);
 }
 
@@ -162,6 +164,174 @@ void CTC_MainWindow::initializeTrackVector()
 
     stationDistancesRed = {250,625,1875,2225,2745,3265,3465,4183.2};
     stationAuthoritiesRed = {4,11,16,20,30,40,42,54};
+
+    //define all possible authority routes
+
+    //Green line
+    //start = 151-->63, end of Z = 150
+    QVector<bool> tempAuthority = QVector<bool>(152,false);
+
+    //Pioneer
+    //63 onward, 1,2, 151
+    tempAuthority[0] = true;
+    tempAuthority[1] = true;
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 150; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Edgebrook
+    //63 onward, 1-9
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 150; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    for (unsigned int i = 0; i < 9; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Station
+    //63 onward, 1-16
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 150; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    for (unsigned int i = 0; i < 16; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Whited
+    //63 onward, 1-22
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 150; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    for (unsigned int i = 0; i < 21; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //South Bank
+    //63 onward, 1-31
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 150; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    for (unsigned int i = 0; i < 30; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Central
+    //63 onward, 1-39
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 150; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    for (unsigned int i = 0; i < 38; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Inglewood
+    //63 onward, 1-48
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 150; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    for (unsigned int i = 0; i < 47; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Overbrook
+    //63 onward, 1-57
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 150; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    for (unsigned int i = 0; i < 56; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Glenbury
+    //63-65
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 64; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Dormont
+    //63-73
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 72; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Mt Lebanon
+    //63-77
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 76; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Poplar
+    //63-88
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 87; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //Castle Shannon
+    //63-96
+    tempAuthority = QVector<bool>(152,false);
+    tempAuthority[151] = true;
+    for (unsigned int i = 62; i < 95; i++)
+    {
+        tempAuthority[i] = true;
+    }
+    stationAuthorityVectorsGreen.push_back(tempAuthority);
+
+    //RedLine
+    //TO DO
 
     QVector<QString> BlockNamesRed = {"Red A1","Red A2","Red A3","Red B4","Red B5","Red B6","Red C7","Red C8","Red C9","Red D10","Red D11",
                                       "Red D12","Red E13","Red E14","Red E15","Red F16","Red F17","Red F18","Red F19","Red F20","Red G21","Red G22",
@@ -212,33 +382,33 @@ void CTC_MainWindow::initializeTrackVector()
 void CTC_MainWindow::on_previousButton_clicked()
 {
     if (trainSet != 0)
-        {
-            trainSet--;
-        }
+    {
+        trainSet--;
+    }
 
 
-        if (trackSetRed != 0)
-        {
-            trackSetRed--;
-        }
+    if (trackSetRed != 0)
+    {
+        trackSetRed--;
+    }
 
-        if (trackSetGreen != 0)
-        {
-            trackSetGreen--;
-        }
+    if (trackSetGreen != 0)
+    {
+        trackSetGreen--;
+    }
 
-        if (ui->label->text() == "Train Statuses")
-        {
-            on_actionView_Train_Statuses_triggered();
-        }
-        else if (ui->label->text() == "Red Line Track Block Statuses")
-        {
-            on_actionView_Red_Line_Statuses_triggered();
-        }
-        else if (ui->label->text() == "Green Line Track Block Statuses")
-        {
-            on_actionView_Green_Line_Statuses_triggered();
-        }
+    if (ui->label->text() == "Train Statuses")
+    {
+        on_actionView_Train_Statuses_triggered();
+    }
+    else if (ui->label->text() == "Red Line Track Block Statuses")
+    {
+        on_actionView_Red_Line_Statuses_triggered();
+    }
+    else if (ui->label->text() == "Green Line Track Block Statuses")
+    {
+        on_actionView_Green_Line_Statuses_triggered();
+    }
 }
 
 
@@ -358,7 +528,7 @@ void CTC_MainWindow::checkDispatch()
         if ((TrainQueue[0].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
         {
             TrainNumber++;
-            emit sendTrainData(TrainNumber,TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed);
+            emit sendTrainData(TrainNumber,TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed,TrainQueue[0].authorityVector);
 
             //remove this train from the list, break out of the function
             TrainQueue.removeFirst();
@@ -375,7 +545,7 @@ void CTC_MainWindow::checkDispatch()
             if ((TrainStandby[i].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
             {
                 TrainNumber++;
-                emit sendTrainData(TrainNumber,TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed);
+                emit sendTrainData(TrainNumber,TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed,TrainStandby[i].authorityVector);
 
                 //remove this train from the list, break out of the function
                 TrainStandby.remove(i);
@@ -387,7 +557,6 @@ void CTC_MainWindow::checkDispatch()
             }
         }
     }
-
 }
 
 void CTC_MainWindow::receiveTimeRequest()
