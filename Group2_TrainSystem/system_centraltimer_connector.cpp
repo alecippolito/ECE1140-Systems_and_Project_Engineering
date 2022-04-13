@@ -79,12 +79,12 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     qDebug() << (redline_temp == true ? "Line: Red line" : "Line: Green line");
     qDebug() << "Authority: " << QString::number(authority_temp);
     qDebug() << "Suggested speed: " << QString::number(speed_temp);
-    /*
+
     for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
     {
         qDebug() << QString::number(i+1) << authorityVector_temp[i];
     }
-    */
+
     qDebug();
 
     //create a new Train Controller GUI
