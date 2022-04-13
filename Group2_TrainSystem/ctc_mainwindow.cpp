@@ -190,7 +190,7 @@ void CTC_MainWindow::initializeTrackVector()
     {
         tempAuthority[i] = true;
     }
-    for (unsigned int i = 0; i < 9; i++)
+    for (unsigned int i = 0; i <= 9; i++)
     {
         tempAuthority[i] = true;
     }
@@ -204,7 +204,7 @@ void CTC_MainWindow::initializeTrackVector()
     {
         tempAuthority[i] = true;
     }
-    for (unsigned int i = 0; i < 16; i++)
+    for (unsigned int i = 0; i <= 16; i++)
     {
         tempAuthority[i] = true;
     }
@@ -218,7 +218,7 @@ void CTC_MainWindow::initializeTrackVector()
     {
         tempAuthority[i] = true;
     }
-    for (unsigned int i = 0; i < 21; i++)
+    for (unsigned int i = 0; i <= 21; i++)
     {
         tempAuthority[i] = true;
     }
@@ -232,7 +232,7 @@ void CTC_MainWindow::initializeTrackVector()
     {
         tempAuthority[i] = true;
     }
-    for (unsigned int i = 0; i < 30; i++)
+    for (unsigned int i = 0; i <= 30; i++)
     {
         tempAuthority[i] = true;
     }
@@ -246,7 +246,7 @@ void CTC_MainWindow::initializeTrackVector()
     {
         tempAuthority[i] = true;
     }
-    for (unsigned int i = 0; i < 38; i++)
+    for (unsigned int i = 0; i <= 38; i++)
     {
         tempAuthority[i] = true;
     }
@@ -260,7 +260,7 @@ void CTC_MainWindow::initializeTrackVector()
     {
         tempAuthority[i] = true;
     }
-    for (unsigned int i = 0; i < 47; i++)
+    for (unsigned int i = 0; i <= 47; i++)
     {
         tempAuthority[i] = true;
     }
@@ -274,7 +274,7 @@ void CTC_MainWindow::initializeTrackVector()
     {
         tempAuthority[i] = true;
     }
-    for (unsigned int i = 0; i < 56; i++)
+    for (unsigned int i = 0; i <= 56; i++)
     {
         tempAuthority[i] = true;
     }
@@ -284,7 +284,7 @@ void CTC_MainWindow::initializeTrackVector()
     //63-65
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
-    for (unsigned int i = 62; i < 64; i++)
+    for (unsigned int i = 62; i <= 64; i++)
     {
         tempAuthority[i] = true;
     }
@@ -294,7 +294,7 @@ void CTC_MainWindow::initializeTrackVector()
     //63-73
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
-    for (unsigned int i = 62; i < 72; i++)
+    for (unsigned int i = 62; i <= 72; i++)
     {
         tempAuthority[i] = true;
     }
@@ -304,7 +304,7 @@ void CTC_MainWindow::initializeTrackVector()
     //63-77
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
-    for (unsigned int i = 62; i < 76; i++)
+    for (unsigned int i = 62; i <= 76; i++)
     {
         tempAuthority[i] = true;
     }
@@ -314,7 +314,7 @@ void CTC_MainWindow::initializeTrackVector()
     //63-88
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
-    for (unsigned int i = 62; i < 87; i++)
+    for (unsigned int i = 62; i <= 87; i++)
     {
         tempAuthority[i] = true;
     }
@@ -324,7 +324,7 @@ void CTC_MainWindow::initializeTrackVector()
     //63-96
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
-    for (unsigned int i = 62; i < 95; i++)
+    for (unsigned int i = 62; i <= 95; i++)
     {
         tempAuthority[i] = true;
     }
