@@ -19,7 +19,8 @@ public:
     ~TrackModel();
     void loadRedLine();
     void loadGreenLine();
-    Block *redline[78]; //76 blocks + 2 blocks for yard
+    void parseInfrastructure();
+    Block *redline[77]; //76 blocks + 1 block for yard
     Block *greenline[152];  //150 blocks + 2 blocks for yard
 
 private slots:

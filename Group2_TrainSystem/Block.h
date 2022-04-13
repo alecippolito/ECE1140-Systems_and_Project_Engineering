@@ -10,6 +10,8 @@ class Block {
             std::string section;
             std::string infrastructure;
             std::string stationSide;
+            std::string stationName;
+            std::string switchData;
             bool occupied;
             int blockNumber;
             double blockLength;
@@ -21,8 +23,12 @@ class Block {
             double secondsToTraverseBlock;
             Block *previousBlock, *nextBlock1, *nextBlock2;    //nextBlock2 only if track has 2 choices (Switch is active)
             std::string to, from;
-
-
+            int suggestedSpeed;
+            bool blockStatus;
+            bool isStation;
+            bool isSwitch;
+            bool isRailwayCrossing;
+            bool isUnderground;
 
             Block(int num){
                 blockNumber = num;

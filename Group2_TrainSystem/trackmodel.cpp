@@ -71,7 +71,7 @@ void TrackModel::loadRedLine()
 
     QTextStream stream(&inFile);
 
-    for(int i=0; i<77; i++)     //allocate space for track
+    for(int i=0; i<=76; i++)     //allocate space for track
     {
         redline[i] = new Block(i);
     }
@@ -93,11 +93,21 @@ void TrackModel::loadRedLine()
         redline[numRows]->cumElevation = line.split(',').at(9).toDouble();
         redline[numRows]->secondsToTraverseBlock = line.split(',').at(10).toDouble();
         numRows++;
-        } else { break; }   //break if at 77
+        } else { break; }   //break if at 76
     }
 
     //last two are going to be yard blocks -- TO DO
-
+        redline[76]->lineType = "Red";
+        redline[76]->section = "AA";
+        redline[76]->blockNumber = 77;
+        redline[76]->blockLength = 100;
+        redline[76]->blockGrade = 0;
+        redline[76]->speedLimitKmHr = 50;
+        redline[76]->infrastructure = "";
+        redline[76]->stationSide = "";
+        redline[76]->elevation = 0;
+        redline[76]->cumElevation = 0;
+        redline[76]->secondsToTraverseBlock = 6;
     inFile.close();
 }
 
@@ -113,7 +123,7 @@ void TrackModel::loadGreenLine()
 
     QTextStream stream(&inFile);
 
-    for(int i=0; i<151; i++)     //allocate space for track
+    for(int i=0; i<=151; i++)     //allocate space for track
     {
         greenline[i] = new Block(i);
     }
@@ -140,8 +150,96 @@ void TrackModel::loadGreenLine()
 
     //last two are going to be yard blocks -- TO DO
 
+    greenline[150]->lineType = "Green";
+    greenline[150]->section = "AA";
+    greenline[150]->blockNumber = 151;
+    greenline[150]->blockLength = 100;
+    greenline[150]->blockGrade = 0;
+    greenline[150]->speedLimitKmHr = 50;
+    greenline[150]->infrastructure = "";
+    greenline[150]->stationSide = "";
+    greenline[150]->elevation = 0;
+    greenline[150]->cumElevation = 0;
+    greenline[150]->secondsToTraverseBlock = 6;
+    greenline[151]->lineType = "Green";
+    greenline[151]->section = "AA";
+    greenline[151]->blockNumber = 152;
+    greenline[151]->blockLength = 100;
+    greenline[151]->blockGrade = 0;
+    greenline[151]->speedLimitKmHr = 50;
+    greenline[151]->infrastructure = "";
+    greenline[151]->stationSide = "";
+    greenline[151]->elevation = 0;
+    greenline[151]->cumElevation = 0;
+    greenline[151]->secondsToTraverseBlock = 6;
+
     inFile.close();
 
+}
+
+void TrackModel::parseInfrastructure()
+{
+    //red line
+    for(int i=0; i<76; i++)
+    {
+        if(redline[i]->infrastructure != "")
+        {
+            if(redline[i]->infrastructure.find("UNDERGROUND") != string::npos)
+            {
+                redline[i]->isUnderground = true;
+            }
+            if(redline[i]->infrastructure.find("STATION") != string::npos)
+            {
+                //figure out what station it is
+                string parsedStation = redline[i]->infrastructure.erase(0,8); //STATION:
+                if(redline[i]->isUnderground == true){
+                    parsedStation = parsedStation.substr(0, parsedStation.size()-13);
+                }
+                redline[i]->isStation = true;
+                redline[i]->stationName = parsedStation;
+            }
+            if(redline[i]->infrastructure.find("CROSSING") != std::string::npos)
+            {
+                redline[i]->isRailwayCrossing = true;
+            }
+            if(redline[i]->infrastructure.find("SWITCH") != std::string::npos)
+            {
+                redline[i]->isSwitch = true;
+                redline[i]->switchData = redline[i]->infrastructure;
+            }
+        }
+    }
+
+    //green line
+    for(int i=0; i<151; i++)
+    {
+        if(greenline[i]->infrastructure != "")
+        {
+            if(greenline[i]->infrastructure.find("UNDERGROUND") != string::npos)
+            {
+                greenline[i]->isUnderground = true;
+            }
+            if(greenline[i]->infrastructure.find("STATION") != string::npos)
+            {
+                //figure out what station it is
+                string parsedStation = greenline[i]->infrastructure.erase(0,8); //STATION:
+                if(greenline[i]->isUnderground == true){
+                    parsedStation = parsedStation.substr(0, parsedStation.size()-13);
+                }
+                greenline[i]->isStation = true;
+                greenline[i]->stationName = parsedStation;
+            }
+            if(greenline[i]->infrastructure.find("CROSSING") != std::string::npos)
+            {
+                greenline[i]->isRailwayCrossing = true;
+            }
+            if(greenline[i]->infrastructure.find("SWITCH") != std::string::npos)
+            {
+                greenline[i]->isSwitch = true;
+                greenline[i]->switchData = greenline[i]->infrastructure;
+            }
+        }
+    }
 }
 
 

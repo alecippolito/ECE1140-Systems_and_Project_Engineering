@@ -28,16 +28,9 @@ double TrainPhysics::calculateVelocity()
         force = 0;  //if brakes are on
     }
 
-    if(force < 0)
-    {
-        force = 0;
-    }
-
     //set acceleration w/ limits
     lastAcceleration = acceleration;
     acceleration = force / (mass/2.205);
-    qDebug() << "Force: " << force;
-    qDebug() << "Acceleration: " << acceleration;
     if(acceleration > accelerationLimit)
     {
         acceleration = accelerationLimit;
