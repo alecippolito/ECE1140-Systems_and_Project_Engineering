@@ -11,7 +11,7 @@ struct Train_CTC{
     bool redline;
     int dispatchTime;
     int authority;
-    double suggestedSpeed;
+    QVector<double> suggestedSpeed;
     QVector<bool> authorityVector;
 };
 
@@ -51,7 +51,7 @@ private slots:
 
 signals:
     void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>, QVector<QVector<bool>>);
-    void sendTrainData(int,bool,int, double, QVector<bool>);
+    void sendTrainData(int,bool,int, QVector<double>, QVector<bool>);
     void sendTime(int,int);
 
 private:
