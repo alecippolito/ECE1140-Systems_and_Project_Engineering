@@ -112,11 +112,21 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
 {
     cl->hide();
 
+    //with the calculated suggested speed, turn that into a vector
+    QVector<double> suggestedSpeedVector = QVector<double>(authorityVector_temp.size(),0);
+    for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
+    {
+        if (authorityVector_temp[i] == true)
+        {
+            suggestedSpeedVector[i] = sugg_speed_temp;
+        }
+    }
+
     //check if block outside of yard is open
     if ((redline_temp == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
     {
         TrainNumber++;
-        emit sendTrainData(TrainNumber,redline_temp,auth_temp,sugg_speed_temp,authorityVector_temp);
+        emit sendTrainData(TrainNumber,redline_temp,auth_temp,suggestedSpeedVector,authorityVector_temp);
     }
     else
     {
@@ -125,23 +135,32 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
         tempTrain.authority = auth_temp;
         tempTrain.dispatchTime = 0;     //not needed
         tempTrain.redline = redline_temp;
-        tempTrain.suggestedSpeed = sugg_speed_temp;
+        tempTrain.suggestedSpeed = suggestedSpeedVector;
         tempTrain.authorityVector = authorityVector_temp;
         TrainQueue.push_back(tempTrain);
     }
-
 }
 
 void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, double sugg_speed_temp, int departTime_temp, QVector<bool> authorityVector_temp)
 {
     cl->hide();
 
+    //with the calculated suggested speed, turn that into a vector
+    QVector<double> suggestedSpeedVector = QVector<double>(authorityVector_temp.size(),0);
+    for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
+    {
+        if (authorityVector_temp[i] == true)
+        {
+            suggestedSpeedVector[i] = sugg_speed_temp;
+        }
+    }
+
     //add train to list of trains on standby
     Train_CTC tempTrain;
     tempTrain.authority = auth_temp;
     tempTrain.dispatchTime = departTime_temp;
     tempTrain.redline = redline_temp;
-    tempTrain.suggestedSpeed = sugg_speed_temp;
+    tempTrain.suggestedSpeed = suggestedSpeedVector;
     tempTrain.authorityVector = authorityVector_temp;
     TrainStandby.push_back(tempTrain);
 }

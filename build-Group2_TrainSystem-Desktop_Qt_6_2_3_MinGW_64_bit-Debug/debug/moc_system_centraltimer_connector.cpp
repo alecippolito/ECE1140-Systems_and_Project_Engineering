@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_System_CentralTimer_Connector_t {
-    const uint offsetsAndSize[44];
-    char stringdata0[461];
+    const uint offsetsAndSize[46];
+    char stringdata0[475];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_System_CentralTimer_Connector_t, stringdata0) + ofs), len 
@@ -50,8 +50,9 @@ QT_MOC_LITERAL(319, 20), // "on_SunButton_clicked"
 QT_MOC_LITERAL(340, 29), // "on_ThousandTimesSpeed_clicked"
 QT_MOC_LITERAL(370, 25), // "on_TimeButton_1pm_clicked"
 QT_MOC_LITERAL(396, 26), // "receiveDispatchSignal_test"
-QT_MOC_LITERAL(423, 11), // "QList<bool>"
-QT_MOC_LITERAL(435, 25) // "on_TimeButton_2pm_clicked"
+QT_MOC_LITERAL(423, 13), // "QList<double>"
+QT_MOC_LITERAL(437, 11), // "QList<bool>"
+QT_MOC_LITERAL(449, 25) // "on_TimeButton_2pm_clicked"
 
     },
     "System_CentralTimer_Connector\0sendTime\0"
@@ -65,8 +66,8 @@ QT_MOC_LITERAL(435, 25) // "on_TimeButton_2pm_clicked"
     "on_FriButton_clicked\0on_SatButton_clicked\0"
     "on_SunButton_clicked\0on_ThousandTimesSpeed_clicked\0"
     "on_TimeButton_1pm_clicked\0"
-    "receiveDispatchSignal_test\0QList<bool>\0"
-    "on_TimeButton_2pm_clicked"
+    "receiveDispatchSignal_test\0QList<double>\0"
+    "QList<bool>\0on_TimeButton_2pm_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -104,7 +105,7 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
       17,    0,  151,    2, 0x08,   20 /* Private */,
       18,    0,  152,    2, 0x08,   21 /* Private */,
       19,    5,  153,    2, 0x08,   22 /* Private */,
-      21,    0,  164,    2, 0x08,   28 /* Private */,
+      22,    0,  164,    2, 0x08,   28 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
@@ -126,7 +127,7 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, QMetaType::Double, 0x80000000 | 20,    2,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, 0x80000000 | 20, 0x80000000 | 21,    2,    2,    2,    2,    2,
     QMetaType::Void,
 
        0        // eod
@@ -155,7 +156,7 @@ void System_CentralTimer_Connector::qt_static_metacall(QObject *_o, QMetaObject:
         case 14: _t->on_SunButton_clicked(); break;
         case 15: _t->on_ThousandTimesSpeed_clicked(); break;
         case 16: _t->on_TimeButton_1pm_clicked(); break;
-        case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< QList<bool>(*)>(_a[5]))); break;
+        case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QList<double>(*)>(_a[4])),(*reinterpret_cast< QList<bool>(*)>(_a[5]))); break;
         case 18: _t->on_TimeButton_2pm_clicked(); break;
         default: ;
         }
@@ -167,6 +168,8 @@ void System_CentralTimer_Connector::qt_static_metacall(QObject *_o, QMetaObject:
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 4:
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<bool> >(); break;
+            case 3:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<double> >(); break;
             }
             break;
         }
@@ -204,7 +207,7 @@ const QMetaObject System_CentralTimer_Connector::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_System_CentralTimer_Connector_t
 , QtPrivate::TypeAndForceComplete<System_CentralTimer_Connector, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<double>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,

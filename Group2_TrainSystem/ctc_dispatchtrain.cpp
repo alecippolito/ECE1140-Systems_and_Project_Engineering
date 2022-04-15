@@ -157,23 +157,32 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
         QVector<bool> authVector_temp = returnAuthorityVector();
         bool redline = (stationNames[0] == "Shadyside" ? true : false);
 
-        //emit different signals based on what needs to happen
-        if (ui->DepartureCheck->isChecked() == false)
+        //test for unrealistic speed calculations
+        if (speed_temp > 0 && speed_temp <= 70)
         {
-            emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp);
-        }
-        else
-        {
-            //If the user-entered time matches the system time, train must leave now, else enter data into temporary schedule
-            emit requestSystemTime();
-            if (departTimeMinute == (currentDay*86400 + currentSeconds)/60)
+            //emit different signals based on what needs to happen
+            if (ui->DepartureCheck->isChecked() == false)
             {
                 emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp);
             }
             else
             {
-                emit dispatchSchedule(redline,auth_temp,speed_temp,departTimeMinute,authVector_temp);
+                //If the user-entered time matches the system time, train must leave now, else enter data into temporary schedule
+                emit requestSystemTime();
+                if (departTimeMinute == (currentDay*86400 + currentSeconds)/60)
+                {
+                    emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp);
+                }
+                else
+                {
+                    emit dispatchSchedule(redline,auth_temp,speed_temp,departTimeMinute,authVector_temp);
+                }
             }
+        }
+        else
+        {
+            error->setText("Unrealistic speed calculation! Should be\ngreater than 0 and less than 70.\nYour speed = " + QString::number(speed_temp));
+            error->exec();
         }
         hide();
     }
