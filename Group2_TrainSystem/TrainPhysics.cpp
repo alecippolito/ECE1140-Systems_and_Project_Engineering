@@ -1,5 +1,7 @@
 #include "TrainPhysics.h"
 #include <QDebug>
+#include <cmath>
+#include <ctgmath>
 
 TrainPhysics::TrainPhysics(int num, Block* b)
 {
@@ -16,13 +18,13 @@ double TrainPhysics::calculateVelocity()
 {
     if(currentVelocity > 0) //normal calculation of force if train is moving or neither brake is on
     {
-        force = (power / currentVelocity) - (.098 * (mass/2.205)) /*- (mass * 9.8 * block->getSlope)*/;          //mass to kg
+        double blockAngleDegrees = std::atan((block->blockGrade) / 100);
+        force = (power / currentVelocity) - (9.8 * (mass/2.205) * .01) - ((mass/2.205) * 9.8 * blockAngleDegrees);          //mass to kg
     }
     else if((!serviceBrake && !emergencyBrake) && (power>0))    //if train is stationary and a brake is on
     {
         force = 100000;  //random large amount to start train
     }
-
     else
     {
         force = 0;  //if brakes are on
@@ -49,7 +51,7 @@ double TrainPhysics::calculateVelocity()
         }
         else
         {
-            acceleration = 0;
+            //acceleration = 0;
         }
     }
 
@@ -62,12 +64,11 @@ double TrainPhysics::calculateVelocity()
         }
         else
         {
-            acceleration = 0;
+            //acceleration = 0;
         }
     }
 
-    //get current time
-    //TODO
+    //called every second/equivalent to second for 10x 50x 100x speed
     time = 1;
 
     double totalAcceleration = lastAcceleration + acceleration;
@@ -103,6 +104,7 @@ void TrainPhysics::setPower(double num, double limit)
     {
         currentVelocityMph = limit;
         acceleration = 0;
+        lastVelocity = currentVelocity;
         currentVelocity = currentVelocityMph / 2.23694;
     }
     else

@@ -7,6 +7,7 @@
             trainUI->updateTrain(this);
             trainUI->show();
             currentBlock = b;
+            speedLimitKmHr = currentBlock->speedLimitKmHr;
             b->occupied = true;
             trainMetrics = new TrainPhysics(num, b);       //later add blocks
             nextBlock = trackModel.track[1];      //REPLACE THIS WITH TRACK CONTROLLER
@@ -169,6 +170,7 @@
             atEndOfBlock = false;
             currentBlock->occupied = false;
             currentBlock = nextBlock;
+            speedLimitKmHr = currentBlock->speedLimitKmHr;
             currentBlock->occupied = true;
             trainMetrics->setBlock(currentBlock);
             if(blocksLeft > 0)

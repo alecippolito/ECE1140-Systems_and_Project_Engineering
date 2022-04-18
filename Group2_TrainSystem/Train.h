@@ -46,6 +46,7 @@ class Train{
             YardDormontTrackModel trackModel;
             int blocksLeft = 12;
             bool adSpace = true;    //true = snowpiercer, false = train to busan
+            int speedLimitKmHr;
 
     Train(int, Block *b);
     //~Train();
