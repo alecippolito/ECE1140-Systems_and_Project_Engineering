@@ -42,7 +42,7 @@ private slots:
     void on_SunButton_clicked();
     void on_ThousandTimesSpeed_clicked();
     void on_TimeButton_1pm_clicked();
-    void receiveDispatchSignal_test(int,bool,int,double);
+    void receiveDispatchSignal_test(int,bool,int,QVector<double>,QVector<bool>);
     void on_TimeButton_2pm_clicked();
 
 signals:

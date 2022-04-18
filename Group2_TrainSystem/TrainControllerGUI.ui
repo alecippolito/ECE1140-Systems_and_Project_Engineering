@@ -13,51 +13,65 @@
   <property name="windowTitle">
    <string>TrainControllerGUI</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="incSpeed">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
-      <width>231</width>
+      <y>10</y>
+      <width>61</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Increase Speed</string>
+     <string>+</string>
     </property>
    </widget>
    <widget class="QPushButton" name="decSpeed">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>80</y>
-      <width>231</width>
+      <y>70</y>
+      <width>61</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Decrease Speed</string>
+     <string>-</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLCDNumber" name="currentSetpoint">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>90</x>
       <y>10</y>
-      <width>171</width>
-      <height>111</height>
+      <width>81</width>
+      <height>91</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="doorButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>150</y>
-      <width>231</width>
-      <height>41</height>
+      <x>640</x>
+      <y>70</y>
+      <width>151</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Open/Close Door</string>
@@ -66,11 +80,16 @@
    <widget class="QPushButton" name="lightButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>230</y>
-      <width>221</width>
-      <height>41</height>
+      <x>640</x>
+      <y>10</y>
+      <width>151</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Lights On/Off</string>
@@ -79,11 +98,16 @@
    <widget class="QPushButton" name="serviceBrake">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>110</y>
-      <width>261</width>
-      <height>51</height>
+      <x>20</x>
+      <y>180</y>
+      <width>191</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Service Brake</string>
@@ -92,73 +116,110 @@
    <widget class="QLabel" name="speedLabel">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>120</y>
-      <width>201</width>
-      <height>51</height>
+      <x>90</x>
+      <y>100</y>
+      <width>81</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
     </property>
     <property name="text">
      <string> Setpoint Speed</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLCDNumber" name="currentPower">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>160</y>
-      <width>171</width>
-      <height>101</height>
+      <x>290</x>
+      <y>10</y>
+      <width>81</width>
+      <height>91</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="powerLabel">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>270</y>
-      <width>171</width>
-      <height>31</height>
+      <x>290</x>
+      <y>100</y>
+      <width>81</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Power</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="lightStatus">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>280</y>
-      <width>211</width>
-      <height>31</height>
+      <x>640</x>
+      <y>40</y>
+      <width>151</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Light Status: OFF</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="doorStatus">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>190</y>
-      <width>251</width>
-      <height>31</height>
+      <x>640</x>
+      <y>100</y>
+      <width>151</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Door Staus: CLOSED</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="mode">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>10</y>
-      <width>261</width>
-      <height>51</height>
+      <x>20</x>
+      <y>230</y>
+      <width>191</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Automatic/Manual</string>
@@ -167,50 +228,37 @@
    <widget class="QLabel" name="modeStatus">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>70</y>
-      <width>261</width>
+      <x>20</x>
+      <y>270</y>
+      <width>191</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Mode: Manual</string>
     </property>
-   </widget>
-   <widget class="QLabel" name="eBrakeStatus">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>390</y>
-      <width>311</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>E-Brake Status: OFF</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="eBrakeButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>310</y>
-      <width>311</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>E-Brake</string>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="kpTextbox">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>440</y>
-      <width>101</width>
-      <height>51</height>
+      <x>720</x>
+      <y>460</y>
+      <width>71</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
     </property>
     <property name="plainText">
      <string>Kp</string>
@@ -219,11 +267,16 @@
    <widget class="QPlainTextEdit" name="kiTextbox">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>500</y>
-      <width>101</width>
-      <height>51</height>
+      <x>720</x>
+      <y>510</y>
+      <width>71</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
     </property>
     <property name="plainText">
      <string>Ki</string>
@@ -232,27 +285,524 @@
    <widget class="QPushButton" name="submit">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>390</y>
-      <width>101</width>
+      <x>720</x>
+      <y>410</y>
+      <width>71</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
     </property>
     <property name="text">
      <string>Submit</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
    </widget>
-   <widget class="QLabel" name="statusLabel">
+   <widget class="QGraphicsView" name="emergencyBrakeStatus">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>460</y>
-      <width>621</width>
-      <height>81</height>
+      <y>360</y>
+      <width>31</width>
+      <height>31</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QGraphicsView" name="passengerEmergencyBrakeStatus">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>400</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="brakeFailureStatus">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>440</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="signalPickupFailureStatus">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>480</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="engineFailureStatus">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>520</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="backgroundBrush">
+     <brush brushstyle="NoBrush">
+      <color alpha="255">
+       <red>0</red>
+       <green>170</green>
+       <blue>0</blue>
+      </color>
+     </brush>
+    </property>
+    <property name="foregroundBrush">
+     <brush brushstyle="NoBrush">
+      <color alpha="255">
+       <red>0</red>
+       <green>170</green>
+       <blue>0</blue>
+      </color>
+     </brush>
+    </property>
+   </widget>
+   <widget class="QLabel" name="emergencyBrakeLabel">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>360</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string/>
+     <string>Emergency Brake</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="passengerEmergencyBrakeLabel">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>400</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Passenger Emergency Brake</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="brakeFailureLabel">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>440</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Brake Failure</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="signalPickupFailureLabel">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>480</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Signal Pickup Failure</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="engineFailureLabel">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>520</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Engine Failure</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="currentCommanded">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>10</y>
+      <width>81</width>
+      <height>91</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="commandedSpeedLabel">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>100</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Commanded Speed</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="eBrakeButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>300</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>EMERGENCY BRAKE</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="adButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>130</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Change Advertisement</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="adLabel">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>160</y>
+      <width>171</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Current Advertisement:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="adLabelMovie">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>170</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Snowpeircer</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="currentTemp">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>190</y>
+      <width>51</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="incTempButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>190</y>
+      <width>51</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>+</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="decTempButton">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>190</y>
+      <width>51</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tempLabel">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>250</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Temperature</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="announcementLabel">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>350</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Announcments</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="announcement1">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>390</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="announcement2">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>430</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="announcment3">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>470</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="announcement4">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>520</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>4</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="announcement1Label">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>390</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Train is leaving Station!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="announcement2Label">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>430</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Train is nearing next Station!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="announcement3Label">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>470</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Train is arriving at Station!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="announcement4Label">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>520</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Announcement 4</string>
     </property>
    </widget>
   </widget>

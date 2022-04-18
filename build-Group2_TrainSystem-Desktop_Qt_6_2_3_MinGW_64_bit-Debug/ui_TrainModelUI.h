@@ -75,6 +75,8 @@ public:
     QLabel *label_20;
     QLabel *velocityLabel;
     QLabel *accelerationLabel;
+    QLabel *snowpiercerImage;
+    QLabel *traintobusanImage;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -87,7 +89,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         formLayoutWidget = new QWidget(centralwidget);
         formLayoutWidget->setObjectName(QString::fromUtf8("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(460, 0, 231, 541));
+        formLayoutWidget->setGeometry(QRect(480, 0, 281, 541));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setHorizontalSpacing(50);
@@ -244,7 +246,7 @@ public:
 
         EmergencyBrakeButton = new QPushButton(centralwidget);
         EmergencyBrakeButton->setObjectName(QString::fromUtf8("EmergencyBrakeButton"));
-        EmergencyBrakeButton->setGeometry(QRect(20, 460, 221, 61));
+        EmergencyBrakeButton->setGeometry(QRect(20, 470, 221, 61));
         QPalette palette;
         QBrush brush(QColor(255, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -265,32 +267,32 @@ public:
 "font-weight: bold;"));
         BrakeFailureButton = new QPushButton(centralwidget);
         BrakeFailureButton->setObjectName(QString::fromUtf8("BrakeFailureButton"));
-        BrakeFailureButton->setGeometry(QRect(60, 300, 141, 41));
+        BrakeFailureButton->setGeometry(QRect(60, 320, 141, 41));
         SignalPickupFailureButton = new QPushButton(centralwidget);
         SignalPickupFailureButton->setObjectName(QString::fromUtf8("SignalPickupFailureButton"));
-        SignalPickupFailureButton->setGeometry(QRect(60, 350, 141, 41));
+        SignalPickupFailureButton->setGeometry(QRect(60, 370, 141, 41));
         EngineFailureButton = new QPushButton(centralwidget);
         EngineFailureButton->setObjectName(QString::fromUtf8("EngineFailureButton"));
-        EngineFailureButton->setGeometry(QRect(60, 400, 141, 41));
+        EngineFailureButton->setGeometry(QRect(60, 420, 141, 41));
         BrakeFailureStatusLight = new QGraphicsView(centralwidget);
         BrakeFailureStatusLight->setObjectName(QString::fromUtf8("BrakeFailureStatusLight"));
-        BrakeFailureStatusLight->setGeometry(QRect(280, 310, 20, 21));
+        BrakeFailureStatusLight->setGeometry(QRect(280, 330, 20, 21));
         BrakeFailureStatusLight->setStyleSheet(QString::fromUtf8("color:red;"));
         EngineFailureStatusLight = new QGraphicsView(centralwidget);
         EngineFailureStatusLight->setObjectName(QString::fromUtf8("EngineFailureStatusLight"));
-        EngineFailureStatusLight->setGeometry(QRect(280, 410, 20, 21));
+        EngineFailureStatusLight->setGeometry(QRect(280, 430, 20, 21));
         EngineFailureStatusLight->setStyleSheet(QString::fromUtf8("color:red;"));
         SignalPickupFailureStatusLight = new QGraphicsView(centralwidget);
         SignalPickupFailureStatusLight->setObjectName(QString::fromUtf8("SignalPickupFailureStatusLight"));
-        SignalPickupFailureStatusLight->setGeometry(QRect(280, 360, 20, 21));
+        SignalPickupFailureStatusLight->setGeometry(QRect(280, 380, 20, 21));
         SignalPickupFailureStatusLight->setStyleSheet(QString::fromUtf8("color:red;"));
         EmergencyBrakeStatusLight = new QGraphicsView(centralwidget);
         EmergencyBrakeStatusLight->setObjectName(QString::fromUtf8("EmergencyBrakeStatusLight"));
-        EmergencyBrakeStatusLight->setGeometry(QRect(280, 480, 20, 21));
+        EmergencyBrakeStatusLight->setGeometry(QRect(280, 490, 20, 21));
         EmergencyBrakeStatusLight->setStyleSheet(QString::fromUtf8("color:red;"));
         label_12 = new QLabel(centralwidget);
         label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setGeometry(QRect(270, 270, 51, 16));
+        label_12->setGeometry(QRect(270, 300, 51, 16));
         QFont font;
         font.setPointSize(18);
         font.setBold(false);
@@ -299,7 +301,7 @@ public:
         label_12->setStyleSheet(QString::fromUtf8("font: 18pt \"Times New Roman\";"));
         formLayoutWidget_2 = new QWidget(centralwidget);
         formLayoutWidget_2->setObjectName(QString::fromUtf8("formLayoutWidget_2"));
-        formLayoutWidget_2->setGeometry(QRect(40, 10, 202, 290));
+        formLayoutWidget_2->setGeometry(QRect(21, 10, 221, 290));
         formLayout_2 = new QFormLayout(formLayoutWidget_2);
         formLayout_2->setObjectName(QString::fromUtf8("formLayout_2"));
         formLayout_2->setHorizontalSpacing(30);
@@ -377,6 +379,16 @@ public:
 
         formLayout_2->setWidget(5, QFormLayout::FieldRole, accelerationLabel);
 
+        snowpiercerImage = new QLabel(centralwidget);
+        snowpiercerImage->setObjectName(QString::fromUtf8("snowpiercerImage"));
+        snowpiercerImage->setGeometry(QRect(250, 0, 201, 291));
+        snowpiercerImage->setPixmap(QPixmap(QString::fromUtf8(":/resources/snowpiercer.jpeg")));
+        snowpiercerImage->setScaledContents(true);
+        traintobusanImage = new QLabel(centralwidget);
+        traintobusanImage->setObjectName(QString::fromUtf8("traintobusanImage"));
+        traintobusanImage->setGeometry(QRect(247, -5, 211, 301));
+        traintobusanImage->setPixmap(QPixmap(QString::fromUtf8(":/resources/traintobusanPoster.jpeg")));
+        traintobusanImage->setScaledContents(true);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -413,9 +425,9 @@ public:
         passengerCountLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         crewCountLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         weightLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        leftDoorsLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        leftDoorsLabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         lightsLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        rightDoorsLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        rightDoorsLabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         temperatureLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         intercomLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         EmergencyBrakeButton->setText(QCoreApplication::translate("MainWindow", "EMERGENCY BRAKE", nullptr));
@@ -426,7 +438,7 @@ public:
         label_14->setText(QCoreApplication::translate("MainWindow", "Destination", nullptr));
         label_15->setText(QCoreApplication::translate("MainWindow", "Current Block", nullptr));
         label_16->setText(QCoreApplication::translate("MainWindow", "Next Block", nullptr));
-        destinationLabel->setText(QCoreApplication::translate("MainWindow", "Dormont", nullptr));
+        destinationLabel->setText(QCoreApplication::translate("MainWindow", "N/A", nullptr));
         currentBlockLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         nextBlockLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         label_17->setText(QCoreApplication::translate("MainWindow", "Power", nullptr));
@@ -435,6 +447,8 @@ public:
         label_20->setText(QCoreApplication::translate("MainWindow", "Acceleration", nullptr));
         velocityLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         accelerationLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        snowpiercerImage->setText(QString());
+        traintobusanImage->setText(QString());
     } // retranslateUi
 
 };

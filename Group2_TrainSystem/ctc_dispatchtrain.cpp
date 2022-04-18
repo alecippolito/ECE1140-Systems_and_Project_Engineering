@@ -25,13 +25,14 @@ CTC_DispatchTrain::~CTC_DispatchTrain()
     delete ui;
 }
 
-void CTC_DispatchTrain::receiveStationData(bool redline_temp, QVector<double> distances, QVector<QString> names, QVector<int> authority)
+void CTC_DispatchTrain::receiveStationData(bool redline_temp, QVector<double> distances, QVector<QString> names, QVector<int> authority, QVector<QVector<bool>> authorityVectors)
 {
     //copy the received data into the the UI's internal vectors, and show what line we are using
     redline = redline_temp;
     stationNames = names;
     stationDistances = distances;
     stationAuthorities = authority;
+    stationAuthorityVectors = authorityVectors;
 
     //add the names to the list widget in order for the user to select one of them
     for (unsigned int i = 0; i < stationNames.size(); i++)
@@ -153,24 +154,35 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
         //calculate the authority and suggested speed and send that data back into the main window
         int auth_temp = returnAuthority();
         double speed_temp = returnSuggestedSpeed();
+        QVector<bool> authVector_temp = returnAuthorityVector();
+        bool redline = (stationNames[0] == "Shadyside" ? true : false);
 
-        //emit different signals based on what needs to happen
-        if (ui->DepartureCheck->isChecked() == false)
+        //test for unrealistic speed calculations
+        if (speed_temp > 0 && speed_temp <= 70)
         {
-            emit dispatchImmediate(false,auth_temp,speed_temp);
-        }
-        else
-        {
-            //If the user-entered time matches the system time, train must leave now, else enter data into temporary schedule
-            emit requestSystemTime();
-            if (departTimeMinute == (currentDay*86400 + currentSeconds)/60)
+            //emit different signals based on what needs to happen
+            if (ui->DepartureCheck->isChecked() == false)
             {
-                emit dispatchImmediate(false,auth_temp,speed_temp);
+                emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp);
             }
             else
             {
-                emit dispatchSchedule(false,auth_temp,speed_temp,departTimeMinute);
+                //If the user-entered time matches the system time, train must leave now, else enter data into temporary schedule
+                emit requestSystemTime();
+                if (departTimeMinute == (currentDay*86400 + currentSeconds)/60)
+                {
+                    emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp);
+                }
+                else
+                {
+                    emit dispatchSchedule(redline,auth_temp,speed_temp,departTimeMinute,authVector_temp);
+                }
             }
+        }
+        else
+        {
+            error->setText("Unrealistic speed calculation! Should be\ngreater than 0 and less than 70.\nYour speed = " + QString::number(speed_temp));
+            error->exec();
         }
         hide();
     }
@@ -181,6 +193,11 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
 int CTC_DispatchTrain::returnAuthority()
 {
     return stationAuthorities[ui->StationList->currentRow()];
+}
+
+QVector<bool> CTC_DispatchTrain::returnAuthorityVector()
+{
+    return stationAuthorityVectors[ui->StationList->currentRow()];
 }
 
 double CTC_DispatchTrain::returnSuggestedSpeed()

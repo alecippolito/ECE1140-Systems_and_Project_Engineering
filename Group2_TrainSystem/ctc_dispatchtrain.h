@@ -16,7 +16,7 @@ public:
     ~CTC_DispatchTrain();
 
 private slots:
-    void receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>);
+    void receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>,QVector<QVector<bool>>);
     void on_DepartureCheck_stateChanged(int arg1);
     void on_ArrivalCheck_stateChanged(int arg1);
     void updateTimeDisplay(int,int);
@@ -25,8 +25,8 @@ private slots:
 
 signals:
     void requestSystemTime();
-    void dispatchImmediate(bool,int,double);
-    void dispatchSchedule(bool,int,double,int);
+    void dispatchImmediate(bool,int,double,QVector<bool>);
+    void dispatchSchedule(bool,int,double,int,QVector<bool>);
 
 private:
     Ui::CTC_DispatchTrain *ui;
@@ -34,11 +34,13 @@ private:
     //internal functions
     double returnSuggestedSpeed();
     int returnAuthority();
+    QVector<bool> returnAuthorityVector();
 
     //all vectors and variables
     QVector<QString> stationNames;
     QVector<double> stationDistances;
     QVector<int> stationAuthorities;
+    QVector<QVector<bool>> stationAuthorityVectors;
     bool redline;
     double standardSpeed;
     int currentDay;

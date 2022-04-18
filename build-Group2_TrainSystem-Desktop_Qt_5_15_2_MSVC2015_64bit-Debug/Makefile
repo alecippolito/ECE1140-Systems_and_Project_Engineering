@@ -265,6 +265,7 @@ Makefile: ..\Group2_TrainSystem\Group2_TrainSystem.pro C:\Qt\5.15.2\msvc2015_64\
 		C:\Qt\5.15.2\msvc2015_64\lib\Qt5Core.prl \
 		C:\Qt\5.15.2\msvc2015_64\lib\qtmain.prl \
 		C:\Qt\5.15.2\msvc2015_64\mkspecs\features\build_pass.prf \
+		..\Group2_TrainSystem\trainResources.qrc \
 		C:\Qt\5.15.2\msvc2015_64\lib\Qt5Widgetsd.prl \
 		C:\Qt\5.15.2\msvc2015_64\lib\Qt5Guid.prl \
 		C:\Qt\5.15.2\msvc2015_64\lib\Qt5Cored.prl \
@@ -451,6 +452,7 @@ C:\Qt\5.15.2\msvc2015_64\lib\Qt5Gui.prl:
 C:\Qt\5.15.2\msvc2015_64\lib\Qt5Core.prl:
 C:\Qt\5.15.2\msvc2015_64\lib\qtmain.prl:
 C:\Qt\5.15.2\msvc2015_64\mkspecs\features\build_pass.prf:
+..\Group2_TrainSystem\trainResources.qrc:
 C:\Qt\5.15.2\msvc2015_64\lib\Qt5Widgetsd.prl:
 C:\Qt\5.15.2\msvc2015_64\lib\Qt5Guid.prl:
 C:\Qt\5.15.2\msvc2015_64\lib\Qt5Cored.prl:
