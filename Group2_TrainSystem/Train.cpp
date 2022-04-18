@@ -3,6 +3,11 @@
 
     Train::Train(int num, Block *b)
         {
+            //load track data
+            trackModel.loadGreenLine();
+            trackModel.loadRedLine();
+            trackModel.parseInfrastructure();
+
             trainUI = new MainWindow();
             trainUI->updateTrain(this);
             trainUI->show();
@@ -10,8 +15,26 @@
             speedLimitKmHr = currentBlock->speedLimitKmHr;
             b->occupied = true;
             trainMetrics = new TrainPhysics(num, b);       //later add blocks
-            nextBlock = trackModel.track[1];      //REPLACE THIS WITH TRACK CONTROLLER
-            blocksLeft--;
+            //REPLACE THIS WITH TRACK CONTROLLER
+            if(b->lineType == "Red"){
+                if(b->blockNumber >= 76){ qDebug() << "Can't assign nextBlock, train constructed at end";}
+                                                      else{
+                nextBlock = trackModel.redline[(b->blockNumber)];   //indexed as previous blockNumber bc 0 based indexing
+                blocksLeft = 77 - (b->blockNumber);
+                }
+            }
+            else if(b->lineType == "Green")
+                    {
+                           if(b->blockNumber >= 151){ qDebug() << "Can't assign nextBlock, train constructed at end";}
+                else{
+                            nextBlock = trackModel.greenline[(b->blockNumber)]; //due to indexing nextBlock is indexed are currentBlock's block number
+                            blocksLeft = 152 - (b->blockNumber);
+                }
+                }
+            else{
+                qDebug() <<"ERROR - lineType neither red or green";
+            }
+
             updateUI();
         }
 
@@ -169,9 +192,17 @@
             speedLimitKmHr = currentBlock->speedLimitKmHr;
             currentBlock->occupied = true;
             trainMetrics->setBlock(currentBlock);
+
             if(blocksLeft > 0)
             {
-                nextBlock = trackModel.track[12-blocksLeft];
+                if(currentBlock->lineType == "Red")
+                {
+                    nextBlock = trackModel.redline[77-blocksLeft];
+                }
+                else if(currentBlock->lineType == "Green")
+                {
+                    nextBlock = trackModel.greenline[152-blocksLeft];
+                }
             }
             else
             {

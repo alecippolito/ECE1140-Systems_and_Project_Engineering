@@ -115,7 +115,6 @@ void TrainPhysics::setPower(double num, double limit)
 
     //keep track of where the train is
     double newDist = getDistanceTravelledInBlock();
-    qDebug() << "NewDist: " << newDist;
     atEndOfBlock = false;
 
     if(newDist >= block->blockLength)

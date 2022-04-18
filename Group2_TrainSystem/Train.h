@@ -2,7 +2,8 @@
 #define TRAIN_H
 #include <string>
 #include <chrono>
-#include "yardToDormontTrackModel.h"
+//#include "yardToDormontTrackModel.h"
+#include "trackmodel.h"
 #include "Block.h"
 #include "TrainPhysics.h"
 class MainWindow;
@@ -43,8 +44,8 @@ class Train{
             TrainPhysics *trainMetrics;
             MainWindow *trainUI;
             bool atEndOfBlock = false;
-            YardDormontTrackModel trackModel;
-            int blocksLeft = 12;
+            TrackModel trackModel;
+            int blocksLeft;
             bool adSpace = true;    //true = snowpiercer, false = train to busan
             int speedLimitKmHr;
 

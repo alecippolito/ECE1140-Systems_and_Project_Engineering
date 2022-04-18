@@ -30,9 +30,6 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     //in order for the modules and their UI's to run, execute them here, in the central file constructor
     ctc = new CTC_MainWindow();
     ctc->show();
-    realTrackModel.loadRedLine();
-    realTrackModel.loadGreenLine();
-    realTrackModel.parseInfrastructure();
     //trackController = new Track_mainwindow();
     //trackController->show();
 
@@ -90,12 +87,29 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
 
     qDebug();
 
+    //load track
+    realTrackModel.loadRedLine();
+    realTrackModel.loadGreenLine();
+    realTrackModel.parseInfrastructure();
+
     //create a new Train Controller GUI
 
     tcGUI = new TrainControllerGUI();
     tcGUI->show();
-    Train *t = new Train(1, trackModel.track[0]);
-    tcGUI->setTrain(t);
+
+    if(redline_temp)
+    {
+        qDebug() << "Track made on red line";
+        Train *t = new Train(1, realTrackModel.redline[0]); //redline
+        tcGUI->setTrain(t);
+    }
+    else
+    {
+        qDebug() << "Track made on green line";
+        Train *t = new Train(1, realTrackModel.greenline[0]);
+        tcGUI->setTrain(t);
+    }
+
 
     //connect the time dialation to the train controller
     QObject::connect(this, SIGNAL(sendTimeDialation(double)),tcGUI,SLOT(receiveTimeDialation(double)));

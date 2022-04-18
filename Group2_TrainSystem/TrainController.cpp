@@ -43,9 +43,9 @@
          if(powerCommand>120000){
              powerCommand =120000;
          }
-         qDebug() << "velocity: " << trainVelocity;
-         qDebug() << "setpoint: " << setpointSpeed;
-         qDebug() << "commnded: " << commandedSpeed;
+         //qDebug() << "velocity: " << trainVelocity;
+         //qDebug() << "setpoint: " << setpointSpeed;
+         //qDebug() << "commnded: " << commandedSpeed;
 
         }
 
