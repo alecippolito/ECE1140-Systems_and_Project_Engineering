@@ -128,15 +128,13 @@
     void Train::setFailureEngine(bool f)
     {
         engineFailure = f;
-        trainMetrics->currentVelocity = 0;
-        trainMetrics->setEngineFailure(true);
+        trainMetrics->setEngineFailure(f);
         trainUI->updateEngineFailureStatus(f);
     }
 
     void Train::setFailureSignalPickup(bool f)
     {
         signalPickupFailure = f;
-        trainMetrics->currentVelocity = 0;
         trainMetrics->setSignalPickupFailure(f);
         trainUI->updateSignalPickupFailureStatus(f);
     }
@@ -144,7 +142,6 @@
     void Train::setFailureBrake(bool f)
     {
         brakeFailure = f;
-        trainMetrics->currentVelocity = 0;
         trainMetrics->setBrakeFailure(f);
         trainUI->updateBrakeFailureStatus(f);
     }
@@ -152,7 +149,6 @@
     void Train::setPassengerBrake(bool f)
     {
         passengerBrake = f;
-        trainMetrics->currentVelocity = 0;
         trainMetrics->emergencyBrake = f;
         trainUI->updateEmergencyBrakeStatus(f);
     }
