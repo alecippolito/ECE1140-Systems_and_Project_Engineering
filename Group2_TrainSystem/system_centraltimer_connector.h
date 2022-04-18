@@ -8,7 +8,7 @@
 #include "TrainControllerGUI.h"
 #include "Train.h"
 #include "Block.h"
-#include "yardToDormontTrackModel.h"
+//#include "yardToDormontTrackModel.h"
 #include "trackmodel.h"
 //#include "Track_controller.h"
 //#include "PLC.h"
@@ -71,7 +71,7 @@ private:
 
     TrainControllerGUI *tcGUI;
     MainWindow *tm;
-    YardDormontTrackModel trackModel;
+    //YardDormontTrackModel trackModel;
     TrackModel realTrackModel;
     //sTrack_mainwindow *trackController;
 };

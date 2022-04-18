@@ -1,5 +1,7 @@
 #include "TrainPhysics.h"
 #include <QDebug>
+#include <cmath>
+#include <ctgmath>
 
 TrainPhysics::TrainPhysics(int num, Block* b)
 {
@@ -8,21 +10,20 @@ TrainPhysics::TrainPhysics(int num, Block* b)
     block = b;
     calculateMass();
     calculateVelocity();
-    distanceToBlockEnd = b->getBlockLength();
-
+    lastDist = 0;
 }
 
 double TrainPhysics::calculateVelocity()
 {
     if(currentVelocity > 0) //normal calculation of force if train is moving or neither brake is on
     {
-        force = (power / currentVelocity) - (.098 * (mass/2.205)) /*- (mass * 9.8 * block->getSlope)*/;          //mass to kg
+        double blockAngleDegrees = std::atan((block->blockGrade) / 100);
+        force = (power / currentVelocity) - (9.8 * (mass/2.205) * .01) - ((mass/2.205) * 9.8 * blockAngleDegrees);          //mass to kg, friction coefficient
     }
     else if((!serviceBrake && !emergencyBrake) && (power>0))    //if train is stationary and a brake is on
     {
         force = 100000;  //random large amount to start train
     }
-
     else
     {
         force = 0;  //if brakes are on
@@ -49,7 +50,7 @@ double TrainPhysics::calculateVelocity()
         }
         else
         {
-            acceleration = 0;
+            //acceleration = 0;
         }
     }
 
@@ -62,12 +63,11 @@ double TrainPhysics::calculateVelocity()
         }
         else
         {
-            acceleration = 0;
+            //acceleration = 0;
         }
     }
 
-    //get current time
-    //TODO
+    //called every second/equivalent to second for 10x 50x 100x speed
     time = 1;
 
     double totalAcceleration = lastAcceleration + acceleration;
@@ -103,6 +103,7 @@ void TrainPhysics::setPower(double num, double limit)
     {
         currentVelocityMph = limit;
         acceleration = 0;
+        lastVelocity = currentVelocity;
         currentVelocity = currentVelocityMph / 2.23694;
     }
     else
@@ -113,14 +114,16 @@ void TrainPhysics::setPower(double num, double limit)
     }
 
     //keep track of where the train is
-    double distTravelled = getDistanceTravelledInBlock();
-
+    double newDist = getDistanceTravelledInBlock();
     atEndOfBlock = false;
 
-    if(distTravelled >= block->blockLength)
+    if(newDist >= block->blockLength)
     {
+        newDist = newDist - (block->blockLength);
         atEndOfBlock = true;
     }
+
+    lastDist = newDist;
 
 }
 
@@ -138,16 +141,13 @@ void TrainPhysics::calculateMass()
 double TrainPhysics::getDistanceTravelledInBlock()
 {
     double velocityTotal = lastVelocity + currentVelocity;
-    double distanceTravelled = (block->getBlockLength() - distanceToBlockEnd) + ((time/2) * velocityTotal);
-    distanceToBlockEnd = distanceToBlockEnd - distanceTravelled;
-    qDebug() << "BlockLength: " << block->getBlockLength();
-    qDebug() << "distanceTravelled" << distanceTravelled;
-    return distanceTravelled;
+    double newDist = lastDist + ((time/2) * velocityTotal);
+    return newDist;
 }
 
 double TrainPhysics::getDistanceToBlockEnd()
 {
-    return distanceToBlockEnd;
+    return lastDist;
 }
 
 void TrainPhysics::setEngineFailure(bool b)
@@ -168,5 +168,5 @@ void TrainPhysics::setSignalPickupFailure(bool b)
 void TrainPhysics::setBlock(Block *b)
 {
     block = b;
-    distanceToBlockEnd = b->getBlockLength();
+    lastDist = 0;
 }
