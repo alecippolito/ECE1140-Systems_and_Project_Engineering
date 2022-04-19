@@ -30,8 +30,8 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     //in order for the modules and their UI's to run, execute them here, in the central file constructor
     ctc = new CTC_MainWindow();
     ctc->show();
-    //trackController = new Track_mainwindow();
-    //trackController->show();
+    trackController = new Track_mainwindow();
+    trackController->show();
 
     //initialize the timing variables
     //Timer starts at the CURRENT TIME
@@ -61,7 +61,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), this, SLOT(receiveDispatchSignal_test(int,bool,int,QVector<double>,QVector<bool>)));
 
     //send speed and authority from CTC to Wayside
-    //QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,double)), trackController, SLOT(receiveTrainData(int,bool,int,double)));
+    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), trackController, SLOT(receiveTrainData(int,bool,int,QVector<double>,QVector<bool>)));
 }
 
 System_CentralTimer_Connector::~System_CentralTimer_Connector()
@@ -74,6 +74,8 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     qDebug() << "Dispatch signal received!";
     qDebug() << "Train Number: " << QString::number(TrainNum_temp);
     qDebug() << (redline_temp == true ? "Line: Red line" : "Line: Green line");
+
+    /*
     qDebug() << "Authority: " << QString::number(authority_temp);
     for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
     {
@@ -83,7 +85,7 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
     {
         qDebug() << QString::number(i+1) << authorityVector_temp[i];
-    }
+    }*/
 
     qDebug();
 
