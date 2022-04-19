@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_TrainControllerGUI_t {
     QByteArrayData data[18];
-    char stringdata0[377];
+    char stringdata0[381];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,29 +40,29 @@ QT_MOC_LITERAL(4, 60, 21), // "on_doorButton_clicked"
 QT_MOC_LITERAL(5, 82, 22), // "on_lightButton_clicked"
 QT_MOC_LITERAL(6, 105, 23), // "on_serviceBrake_clicked"
 QT_MOC_LITERAL(7, 129, 15), // "on_mode_clicked"
-QT_MOC_LITERAL(8, 145, 17), // "on_submit_clicked"
-QT_MOC_LITERAL(9, 163, 20), // "receiveTimeDialation"
-QT_MOC_LITERAL(10, 184, 23), // "on_eBrakeButton_clicked"
-QT_MOC_LITERAL(11, 208, 19), // "on_adButton_clicked"
-QT_MOC_LITERAL(12, 228, 24), // "on_incTempButton_clicked"
-QT_MOC_LITERAL(13, 253, 24), // "on_decTempButton_clicked"
-QT_MOC_LITERAL(14, 278, 24), // "on_announcement1_clicked"
-QT_MOC_LITERAL(15, 303, 24), // "on_announcement2_clicked"
-QT_MOC_LITERAL(16, 328, 23), // "on_announcment3_clicked"
-QT_MOC_LITERAL(17, 352, 24) // "on_announcement4_clicked"
+QT_MOC_LITERAL(8, 145, 20), // "receiveTimeDialation"
+QT_MOC_LITERAL(9, 166, 23), // "on_eBrakeButton_clicked"
+QT_MOC_LITERAL(10, 190, 19), // "on_adButton_clicked"
+QT_MOC_LITERAL(11, 210, 24), // "on_incTempButton_clicked"
+QT_MOC_LITERAL(12, 235, 24), // "on_decTempButton_clicked"
+QT_MOC_LITERAL(13, 260, 24), // "on_announcement1_clicked"
+QT_MOC_LITERAL(14, 285, 24), // "on_announcement2_clicked"
+QT_MOC_LITERAL(15, 310, 23), // "on_announcment3_clicked"
+QT_MOC_LITERAL(16, 334, 24), // "on_announcement4_clicked"
+QT_MOC_LITERAL(17, 359, 21) // "on_tempSubmit_clicked"
 
     },
     "TrainControllerGUI\0on_incSpeed_clicked\0"
     "\0on_decSpeed_clicked\0on_doorButton_clicked\0"
     "on_lightButton_clicked\0on_serviceBrake_clicked\0"
-    "on_mode_clicked\0on_submit_clicked\0"
-    "receiveTimeDialation\0on_eBrakeButton_clicked\0"
-    "on_adButton_clicked\0on_incTempButton_clicked\0"
+    "on_mode_clicked\0receiveTimeDialation\0"
+    "on_eBrakeButton_clicked\0on_adButton_clicked\0"
+    "on_incTempButton_clicked\0"
     "on_decTempButton_clicked\0"
     "on_announcement1_clicked\0"
     "on_announcement2_clicked\0"
     "on_announcment3_clicked\0"
-    "on_announcement4_clicked"
+    "on_announcement4_clicked\0on_tempSubmit_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -86,8 +86,8 @@ static const uint qt_meta_data_TrainControllerGUI[] = {
        5,    0,   97,    2, 0x08 /* Private */,
        6,    0,   98,    2, 0x08 /* Private */,
        7,    0,   99,    2, 0x08 /* Private */,
-       8,    0,  100,    2, 0x08 /* Private */,
-       9,    1,  101,    2, 0x08 /* Private */,
+       8,    1,  100,    2, 0x08 /* Private */,
+       9,    0,  103,    2, 0x08 /* Private */,
       10,    0,  104,    2, 0x08 /* Private */,
       11,    0,  105,    2, 0x08 /* Private */,
       12,    0,  106,    2, 0x08 /* Private */,
@@ -104,8 +104,8 @@ static const uint qt_meta_data_TrainControllerGUI[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void, QMetaType::Double,    2,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -130,16 +130,16 @@ void TrainControllerGUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         case 3: _t->on_lightButton_clicked(); break;
         case 4: _t->on_serviceBrake_clicked(); break;
         case 5: _t->on_mode_clicked(); break;
-        case 6: _t->on_submit_clicked(); break;
-        case 7: _t->receiveTimeDialation((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 8: _t->on_eBrakeButton_clicked(); break;
-        case 9: _t->on_adButton_clicked(); break;
-        case 10: _t->on_incTempButton_clicked(); break;
-        case 11: _t->on_decTempButton_clicked(); break;
-        case 12: _t->on_announcement1_clicked(); break;
-        case 13: _t->on_announcement2_clicked(); break;
-        case 14: _t->on_announcment3_clicked(); break;
-        case 15: _t->on_announcement4_clicked(); break;
+        case 6: _t->receiveTimeDialation((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 7: _t->on_eBrakeButton_clicked(); break;
+        case 8: _t->on_adButton_clicked(); break;
+        case 9: _t->on_incTempButton_clicked(); break;
+        case 10: _t->on_decTempButton_clicked(); break;
+        case 11: _t->on_announcement1_clicked(); break;
+        case 12: _t->on_announcement2_clicked(); break;
+        case 13: _t->on_announcment3_clicked(); break;
+        case 14: _t->on_announcement4_clicked(); break;
+        case 15: _t->on_tempSubmit_clicked(); break;
         default: ;
         }
     }

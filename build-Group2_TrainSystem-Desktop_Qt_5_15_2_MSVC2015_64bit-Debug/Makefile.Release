@@ -242,8 +242,10 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_trainResources.cpp
 release\qrc_trainResources.cpp: ..\Group2_TrainSystem\trainResources.qrc \
 		C:\Qt\5.15.2\msvc2015_64\bin\rcc.exe \
+		..\Group2_TrainSystem\traintobusanPoster.jpeg \
 		..\Group2_TrainSystem\greenline.csv \
-		..\Group2_TrainSystem\redline.csv
+		..\Group2_TrainSystem\redline.csv \
+		..\Group2_TrainSystem\snowpiercer.jpeg
 	C:\Qt\5.15.2\msvc2015_64\bin\rcc.exe -name trainResources ..\Group2_TrainSystem\trainResources.qrc -o release\qrc_trainResources.cpp
 
 compiler_moc_predefs_make_all: release\moc_predefs.h

@@ -34,6 +34,7 @@ class TrainController
         bool lightsOn = false;
         bool adversitement = true;
         double temp = 72;
+        double newTemp = 72;
         std :: string announcement = "";
 
 
@@ -80,6 +81,8 @@ class TrainController
         void setAdvertisements(bool);
         double getTemp();
         void setTemp(double);
+        double getNewTemp();
+        void setNewTemp(double);
         std :: string getAnnouncement();
         void setAnnouncement(std :: string);
 };

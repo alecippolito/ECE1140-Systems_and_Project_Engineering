@@ -60,20 +60,16 @@ private slots:
     void on_lightButton_clicked();
     void on_serviceBrake_clicked();
     void on_mode_clicked();
-    void on_submit_clicked();
     void receiveTimeDialation(double);
     void on_eBrakeButton_clicked();
     void on_adButton_clicked();
     void on_incTempButton_clicked();
     void on_decTempButton_clicked();
-
     void on_announcement1_clicked();
-
     void on_announcement2_clicked();
-
     void on_announcment3_clicked();
-
     void on_announcement4_clicked();
+    void on_tempSubmit_clicked();
 
 private:
     // *************************************************
@@ -87,7 +83,7 @@ private:
     int timer;
     bool dispatch = false;
     bool brake = false;
-    int getSpeedLimit();
+    int getSpeed();
 
 protected:
     // *************************************************

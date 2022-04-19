@@ -229,4 +229,7 @@
     void Train :: setAdSpace(bool newAdSpace){
         adSpace = newAdSpace;
     }
-
+    double Train :: getSuggetedSpeed(){
+        double suggestedSpeed = 40; //in kmh
+        return suggestedSpeed;
+    }

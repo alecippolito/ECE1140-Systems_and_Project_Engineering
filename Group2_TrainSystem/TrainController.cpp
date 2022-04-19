@@ -11,7 +11,6 @@
 
 
     void TrainController :: calculatePower(){
-
         double speed = 0;
         // automatic => setpoint = coammanded
         if(automaticMode == true){
@@ -43,11 +42,12 @@
          if(powerCommand>120000){
              powerCommand =120000;
          }
-         qDebug() << "velocity: " << trainVelocity;
-         qDebug() << "setpoint: " << setpointSpeed;
-         qDebug() << "commnded: " << commandedSpeed;
+    }
 
-        }
+
+
+
+
 
         void TrainController :: setPowerCommand(double newPowerCommand){
 			powerCommand = newPowerCommand;
@@ -154,9 +154,16 @@
         void TrainController :: setTemp(double newTemp){
             temp = newTemp;
         }
+        double TrainController :: getNewTemp(){
+            return newTemp;
+        }
+        void TrainController :: setNewTemp(double newTempVal){
+            newTemp = newTempVal;
+        }
         std :: string TrainController :: getAnnouncement(){
             return announcement;
         }
         void TrainController :: setAnnouncement(std::string newAnnouncement){
             announcement = newAnnouncement;
         }
+

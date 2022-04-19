@@ -83,5 +83,7 @@ class Train{
     Block* getNextBlock();
     Block* getCurrentBlock();
 
+    double getSuggetedSpeed();
+
 };
 #endif // TRAIN_H

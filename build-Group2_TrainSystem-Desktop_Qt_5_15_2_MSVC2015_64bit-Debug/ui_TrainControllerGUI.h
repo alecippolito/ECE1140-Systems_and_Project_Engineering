@@ -40,9 +40,6 @@ public:
     QLabel *doorStatus;
     QPushButton *mode;
     QLabel *modeStatus;
-    QPlainTextEdit *kpTextbox;
-    QPlainTextEdit *kiTextbox;
-    QPushButton *submit;
     QGraphicsView *emergencyBrakeStatus;
     QGraphicsView *passengerEmergencyBrakeStatus;
     QGraphicsView *brakeFailureStatus;
@@ -72,6 +69,8 @@ public:
     QLabel *announcement2Label;
     QLabel *announcement3Label;
     QLabel *announcement4Label;
+    QPushButton *tempSubmit;
+    QPlainTextEdit *tempTextbox;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -142,20 +141,6 @@ public:
         modeStatus->setGeometry(QRect(20, 270, 191, 21));
         modeStatus->setFont(font1);
         modeStatus->setAlignment(Qt::AlignCenter);
-        kpTextbox = new QPlainTextEdit(centralwidget);
-        kpTextbox->setObjectName(QString::fromUtf8("kpTextbox"));
-        kpTextbox->setGeometry(QRect(720, 460, 71, 41));
-        kpTextbox->setFont(font1);
-        kiTextbox = new QPlainTextEdit(centralwidget);
-        kiTextbox->setObjectName(QString::fromUtf8("kiTextbox"));
-        kiTextbox->setGeometry(QRect(720, 510, 71, 41));
-        kiTextbox->setFont(font1);
-        submit = new QPushButton(centralwidget);
-        submit->setObjectName(QString::fromUtf8("submit"));
-        submit->setGeometry(QRect(720, 410, 71, 41));
-        submit->setFont(font);
-        submit->setAutoFillBackground(true);
-        submit->setCheckable(true);
         emergencyBrakeStatus = new QGraphicsView(centralwidget);
         emergencyBrakeStatus->setObjectName(QString::fromUtf8("emergencyBrakeStatus"));
         emergencyBrakeStatus->setGeometry(QRect(20, 360, 31, 31));
@@ -236,7 +221,7 @@ public:
         decTempButton->setFont(font);
         tempLabel = new QLabel(centralwidget);
         tempLabel->setObjectName(QString::fromUtf8("tempLabel"));
-        tempLabel->setGeometry(QRect(650, 250, 141, 16));
+        tempLabel->setGeometry(QRect(590, 250, 201, 16));
         tempLabel->setFont(font1);
         tempLabel->setAlignment(Qt::AlignCenter);
         announcementLabel = new QLabel(centralwidget);
@@ -276,6 +261,15 @@ public:
         announcement4Label->setObjectName(QString::fromUtf8("announcement4Label"));
         announcement4Label->setGeometry(QRect(360, 520, 141, 31));
         announcement4Label->setFont(font1);
+        tempSubmit = new QPushButton(centralwidget);
+        tempSubmit->setObjectName(QString::fromUtf8("tempSubmit"));
+        tempSubmit->setGeometry(QRect(590, 230, 51, 20));
+        tempSubmit->setFont(font);
+        tempTextbox = new QPlainTextEdit(centralwidget);
+        tempTextbox->setObjectName(QString::fromUtf8("tempTextbox"));
+        tempTextbox->setGeometry(QRect(590, 190, 51, 41));
+        tempTextbox->setFont(font1);
+        tempTextbox->setBackgroundVisible(false);
         TrainControllerGUI->setCentralWidget(centralwidget);
         menubar = new QMenuBar(TrainControllerGUI);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -304,9 +298,6 @@ public:
         doorStatus->setText(QCoreApplication::translate("TrainControllerGUI", "Door Staus: CLOSED", nullptr));
         mode->setText(QCoreApplication::translate("TrainControllerGUI", "Automatic/Manual", nullptr));
         modeStatus->setText(QCoreApplication::translate("TrainControllerGUI", "Mode: Manual", nullptr));
-        kpTextbox->setPlainText(QCoreApplication::translate("TrainControllerGUI", "Kp", nullptr));
-        kiTextbox->setPlainText(QCoreApplication::translate("TrainControllerGUI", "Ki", nullptr));
-        submit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
         emergencyBrakeLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Emergency Brake", nullptr));
         passengerEmergencyBrakeLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Passenger Emergency Brake", nullptr));
         brakeFailureLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Brake Failure", nullptr));
@@ -328,7 +319,10 @@ public:
         announcement1Label->setText(QCoreApplication::translate("TrainControllerGUI", "Train is leaving Station!", nullptr));
         announcement2Label->setText(QCoreApplication::translate("TrainControllerGUI", "Train is nearing next Station!", nullptr));
         announcement3Label->setText(QCoreApplication::translate("TrainControllerGUI", "Train is arriving at Station!", nullptr));
-        announcement4Label->setText(QCoreApplication::translate("TrainControllerGUI", "Announcement 4", nullptr));
+        announcement4Label->setText(QCoreApplication::translate("TrainControllerGUI", "Train is in Emergency State", nullptr));
+        tempSubmit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
+        tempTextbox->setPlainText(QString());
+        tempTextbox->setPlaceholderText(QCoreApplication::translate("TrainControllerGUI", "Temperature", nullptr));
     } // retranslateUi
 
 };

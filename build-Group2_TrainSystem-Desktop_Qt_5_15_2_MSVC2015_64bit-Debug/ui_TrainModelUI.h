@@ -382,12 +382,12 @@ public:
         snowpiercerImage = new QLabel(centralwidget);
         snowpiercerImage->setObjectName(QString::fromUtf8("snowpiercerImage"));
         snowpiercerImage->setGeometry(QRect(250, 0, 201, 291));
-        snowpiercerImage->setPixmap(QPixmap(QString::fromUtf8("snowpiercer.jpeg")));
+        snowpiercerImage->setPixmap(QPixmap(QString::fromUtf8(":/resources/snowpiercer.jpeg")));
         snowpiercerImage->setScaledContents(true);
         traintobusanImage = new QLabel(centralwidget);
         traintobusanImage->setObjectName(QString::fromUtf8("traintobusanImage"));
         traintobusanImage->setGeometry(QRect(247, -5, 211, 301));
-        traintobusanImage->setPixmap(QPixmap(QString::fromUtf8("traintobusanPoster.jpeg")));
+        traintobusanImage->setPixmap(QPixmap(QString::fromUtf8(":/resources/traintobusanPoster.jpeg")));
         traintobusanImage->setScaledContents(true);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -425,9 +425,9 @@ public:
         passengerCountLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         crewCountLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         weightLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        leftDoorsLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        leftDoorsLabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         lightsLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        rightDoorsLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        rightDoorsLabel->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         temperatureLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         intercomLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         EmergencyBrakeButton->setText(QCoreApplication::translate("MainWindow", "EMERGENCY BRAKE", nullptr));
@@ -438,7 +438,7 @@ public:
         label_14->setText(QCoreApplication::translate("MainWindow", "Destination", nullptr));
         label_15->setText(QCoreApplication::translate("MainWindow", "Current Block", nullptr));
         label_16->setText(QCoreApplication::translate("MainWindow", "Next Block", nullptr));
-        destinationLabel->setText(QCoreApplication::translate("MainWindow", "Dormont", nullptr));
+        destinationLabel->setText(QCoreApplication::translate("MainWindow", "N/A", nullptr));
         currentBlockLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         nextBlockLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         label_17->setText(QCoreApplication::translate("MainWindow", "Power", nullptr));

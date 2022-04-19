@@ -246,66 +246,6 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="kpTextbox">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>460</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>3</pointsize>
-     </font>
-    </property>
-    <property name="plainText">
-     <string>Kp</string>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="kiTextbox">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>510</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>3</pointsize>
-     </font>
-    </property>
-    <property name="plainText">
-     <string>Ki</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="submit">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>410</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>4</pointsize>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>true</bool>
-    </property>
-    <property name="text">
-     <string>Submit</string>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QGraphicsView" name="emergencyBrakeStatus">
     <property name="geometry">
      <rect>
@@ -622,9 +562,9 @@
    <widget class="QLabel" name="tempLabel">
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>590</x>
       <y>250</y>
-      <width>141</width>
+      <width>201</width>
       <height>16</height>
      </rect>
     </property>
@@ -802,7 +742,49 @@
      </font>
     </property>
     <property name="text">
-     <string>Announcement 4</string>
+     <string>Train is in Emergency State</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tempSubmit">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>230</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Submit</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="tempTextbox">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>190</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="plainText">
+     <string/>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>Temperature</string>
     </property>
    </widget>
   </widget>

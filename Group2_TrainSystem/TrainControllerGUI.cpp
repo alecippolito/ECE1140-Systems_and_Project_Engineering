@@ -46,15 +46,17 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
             dispatchTrain();
     }
     tc.calculatePower();
-    /*
-     * if(train->brakeFailure || train->signalPickupFailure || train->engineFailure || train->passengerBrake)
+
+    if(train->brakeFailure || train->signalPickupFailure || train->engineFailure || train->passengerBrake)
     {
         tc.setPassengerEBrake(true);
         tc.setPowerCommand(0);
         tc.setSetpointSpeed(0);
+        slowTrain();
         updatePower();
         updateSpeed();
         updateBrake();
+        updateStatus();
     }
     else{
     updateSpeed();
@@ -65,18 +67,10 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
     updateMode();
     dispatchTrain();
     updateStatus();
-    }
-    */
-    updateSpeed();
-    updatePower();
-    updateDoors();
-    updateLights();
-    updateBrake();
-    updateMode();
-    dispatchTrain();
-    updateStatus();
     updateAdvertisements();
     updateTemp();
+    }
+
 }
 }
 // *************************************************
@@ -90,9 +84,9 @@ void TrainControllerGUI :: setTrain(Train *t)
 
 void TrainControllerGUI :: updatePower()
 {
-    if( train->getNextBlock() == nullptr){
+    /*if( train->getNextBlock() == nullptr){
         tc.setPowerCommand(0);
-    }
+    }*/
     tc.setTrainVelocity(train -> getCurrentVelocity());
     double curPower = tc.getPowerCommand();
     train -> setPower(curPower, setpointSpeedForModel);
@@ -111,7 +105,7 @@ void TrainControllerGUI :: updateSpeed()
     ui -> currentSetpoint -> display(floor(curSpeed));
     ui -> currentCommanded -> display(floor(comSpeed));
 
-    if(tc.getCommandedSpeed() < 40){
+    if(tc.getCommandedSpeed() < getSpeed()){
         tc.setCommandedSpeed(tc.getCommandedSpeed() + 2);
     }
 
@@ -188,12 +182,14 @@ void TrainControllerGUI :: updateStatus()
     if (tc.getEmergencyBrakeFlag() == false){
         ui->emergencyBrakeStatus->setStyleSheet("background-color:red");
     } else {
+        slowTrain();
         ui->emergencyBrakeStatus->setStyleSheet("background-color:green");
     }
     // * Passenger E brake flag
     if (tc.getPassengerEBrake() == false){
         ui->passengerEmergencyBrakeStatus->setStyleSheet("background-color:red");
     } else {
+        slowTrain();
         ui->passengerEmergencyBrakeStatus->setStyleSheet("background-color:green");
     }
     // * Brake Failure
@@ -201,27 +197,32 @@ void TrainControllerGUI :: updateStatus()
     if (train -> brakeFailure == false){
         ui->brakeFailureStatus->setStyleSheet("background-color:red");
     } else {
+        slowTrain();
         ui->brakeFailureStatus->setStyleSheet("background-color:green");
     }
     // * Signal Pickup Failure
     if (train -> signalPickupFailure == false){
         ui->signalPickupFailureStatus->setStyleSheet("background-color:red");
     } else{
+        slowTrain();
         ui->signalPickupFailureStatus->setStyleSheet("background-color:green");
     }
     // * Engine Failure
     if (train -> engineFailure == false){
         ui->engineFailureStatus->setStyleSheet("background-color:red");
     } else{
+        slowTrain();
         ui->engineFailureStatus->setStyleSheet("background-color:green");
     }
 }
-int TrainControllerGUI :: getSpeedLimit(){
-    return train->getCurrentBlock()->speedLimitKmHr;
+int TrainControllerGUI :: getSpeed(){
+    return train->getSuggetedSpeed();
 }
 void TrainControllerGUI :: slowTrain()
 {
     tc.setPowerCommand(0);
+
+
 }
 void TrainControllerGUI :: updateAdvertisements(){
     //true = snowpiercer, false = train to busan
@@ -233,6 +234,16 @@ void TrainControllerGUI :: updateAdvertisements(){
 }
 void TrainControllerGUI :: updateTemp(){
     ui->currentTemp->display(tc.getTemp());
+    if (train->temperature < tc.getNewTemp()){
+        double newTempVal = tc.getTemp()+1;
+        tc.setTemp(newTempVal);
+        train->setTemperature(newTempVal);
+    }
+    if (train->temperature > tc.getNewTemp()){
+        double newTempVal = tc.getTemp()-1;
+        tc.setTemp(newTempVal);
+        train->setTemperature(newTempVal);
+    }
 }
 
 
@@ -275,6 +286,7 @@ void TrainControllerGUI::on_mode_clicked()
     tc.setAutomaticMode(!tc.getAutomaticMode());
 }
 
+/*
 void TrainControllerGUI::on_submit_clicked()
 {
     QString kpNum = ui -> kpTextbox -> toPlainText();
@@ -285,6 +297,7 @@ void TrainControllerGUI::on_submit_clicked()
     tc.setKi(kiVal);
     startMoving();
 }
+*/
 
 void TrainControllerGUI::receiveTimeDialation(double td)
 {
@@ -293,7 +306,7 @@ void TrainControllerGUI::receiveTimeDialation(double td)
 
 void TrainControllerGUI::on_eBrakeButton_clicked()
 {
-    tc.setPowerCommand(0.0);
+    slowTrain();
     tc.setEmergencyBrake(true);
 }
 
@@ -308,44 +321,51 @@ void TrainControllerGUI::on_adButton_clicked()
 
 void TrainControllerGUI::on_incTempButton_clicked()
 {
-    double currentTemp = tc.getTemp();
-    tc.setTemp(currentTemp + 1);
+    double currentTemp = tc.getTemp() + 1;
+    tc.setTemp(currentTemp);
     train->setTemperature(currentTemp);
 }
 
 
 void TrainControllerGUI::on_decTempButton_clicked()
 {
-    double currentTemp = tc.getTemp();
-    tc.setTemp(currentTemp - 1);
+    double currentTemp = tc.getTemp() - 1;
+    tc.setTemp(currentTemp);
     train->setTemperature(currentTemp);
 
 }
 
 void TrainControllerGUI::on_announcement1_clicked()
 {
-    tc.setAnnouncement("Announcement 1");
+    tc.setAnnouncement("Train is leaving Station!");
     train->setAnnouncement(tc.getAnnouncement());
 }
 
 
 void TrainControllerGUI::on_announcement2_clicked()
 {
-    tc.setAnnouncement("Announcement 2");
+    tc.setAnnouncement("Train is nearing next Station!");
     train->setAnnouncement(tc.getAnnouncement());
 }
 
 
 void TrainControllerGUI::on_announcment3_clicked()
 {
-    tc.setAnnouncement("Announcement 3");
+    tc.setAnnouncement("Train is arriving at Station!");
     train->setAnnouncement(tc.getAnnouncement());
 }
 
 
 void TrainControllerGUI::on_announcement4_clicked()
 {
-    tc.setAnnouncement("Announcement 4");
+    tc.setAnnouncement("Train is in Emergency State");
     train->setAnnouncement(tc.getAnnouncement());
+}
+
+void TrainControllerGUI::on_tempSubmit_clicked()
+{
+    QString tempNum = ui->tempTextbox->toPlainText();
+    double tempVal = tempNum.toDouble();
+    tc.setNewTemp(tempVal);
 }
 
