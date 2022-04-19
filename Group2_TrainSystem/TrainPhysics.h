@@ -25,7 +25,7 @@ class TrainPhysics{
         bool brakeFailure = false;
         bool signalPickupFailure = false;
         Block *block;
-        double distanceToBlockEnd;
+        double lastDist;
         bool atEndOfBlock = false;
 
     TrainPhysics(int numCars, Block *block);

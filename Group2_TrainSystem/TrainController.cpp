@@ -36,7 +36,7 @@
 
                 double e_k = speed-trainVelocity;
                 double u_k = u_k_1 + (T/2)*(e_k+e_k_1);
-                powerCommand = kp*e_k+ki*u_k;
+                powerCommand = (kp*e_k)+(ki*u_k);
          }
 
          if(powerCommand>120000){
@@ -166,4 +166,3 @@
         void TrainController :: setAnnouncement(std::string newAnnouncement){
             announcement = newAnnouncement;
         }
-

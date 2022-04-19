@@ -3,14 +3,38 @@
 
     Train::Train(int num, Block *b)
         {
+            //load track data
+            trackModel.loadGreenLine();
+            trackModel.loadRedLine();
+            trackModel.parseInfrastructure();
+
             trainUI = new MainWindow();
             trainUI->updateTrain(this);
             trainUI->show();
             currentBlock = b;
+            speedLimitKmHr = currentBlock->speedLimitKmHr;
             b->occupied = true;
             trainMetrics = new TrainPhysics(num, b);       //later add blocks
-            nextBlock = trackModel.track[1];      //REPLACE THIS WITH TRACK CONTROLLER
-            blocksLeft--;
+            //REPLACE THIS WITH TRACK CONTROLLER
+            if(b->lineType == "Red"){
+                if(b->blockNumber >= 76){ qDebug() << "Can't assign nextBlock, train constructed at end";}
+                                                      else{
+                nextBlock = trackModel.redline[(b->blockNumber)];   //indexed as previous blockNumber bc 0 based indexing
+                blocksLeft = 77 - (b->blockNumber);
+                }
+            }
+            else if(b->lineType == "Green")
+                    {
+                           if(b->blockNumber >= 151){ qDebug() << "Can't assign nextBlock, train constructed at end";}
+                else{
+                            nextBlock = trackModel.greenline[(b->blockNumber)]; //due to indexing nextBlock is indexed are currentBlock's block number
+                            blocksLeft = 152 - (b->blockNumber);
+                }
+                }
+            else{
+                qDebug() <<"ERROR - lineType neither red or green";
+            }
+
             updateUI();
         }
 
@@ -127,15 +151,13 @@
     void Train::setFailureEngine(bool f)
     {
         engineFailure = f;
-        trainMetrics->currentVelocity = 0;
-        trainMetrics->setEngineFailure(true);
+        trainMetrics->setEngineFailure(f);
         trainUI->updateEngineFailureStatus(f);
     }
 
     void Train::setFailureSignalPickup(bool f)
     {
         signalPickupFailure = f;
-        trainMetrics->currentVelocity = 0;
         trainMetrics->setSignalPickupFailure(f);
         trainUI->updateSignalPickupFailureStatus(f);
     }
@@ -143,7 +165,6 @@
     void Train::setFailureBrake(bool f)
     {
         brakeFailure = f;
-        trainMetrics->currentVelocity = 0;
         trainMetrics->setBrakeFailure(f);
         trainUI->updateBrakeFailureStatus(f);
     }
@@ -151,7 +172,6 @@
     void Train::setPassengerBrake(bool f)
     {
         passengerBrake = f;
-        trainMetrics->currentVelocity = 0;
         trainMetrics->emergencyBrake = f;
         trainUI->updateEmergencyBrakeStatus(f);
     }
@@ -169,11 +189,20 @@
             atEndOfBlock = false;
             currentBlock->occupied = false;
             currentBlock = nextBlock;
+            speedLimitKmHr = currentBlock->speedLimitKmHr;
             currentBlock->occupied = true;
             trainMetrics->setBlock(currentBlock);
+
             if(blocksLeft > 0)
             {
-                nextBlock = trackModel.track[12-blocksLeft];
+                if(currentBlock->lineType == "Red")
+                {
+                    nextBlock = trackModel.redline[77-blocksLeft];
+                }
+                else if(currentBlock->lineType == "Green")
+                {
+                    nextBlock = trackModel.greenline[152-blocksLeft];
+                }
             }
             else
             {

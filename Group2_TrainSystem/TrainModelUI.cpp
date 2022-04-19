@@ -27,22 +27,42 @@ void MainWindow::updateTrain(Train *t)
 
 void MainWindow::on_BrakeFailureButton_clicked()
 {
+    if(train->brakeFailure == false){
     train->setFailureBrake(true);
+    }
+    else{
+        train->setFailureBrake(false);
+    }
 }
 
 void MainWindow::on_EngineFailureButton_clicked()
 {
+    if(train->engineFailure == false){
     train->setFailureEngine(true);
+    }
+    else{
+        train->setFailureEngine(false);
+    }
 }
 
 void MainWindow::on_SignalPickupFailureButton_clicked()
 {
+    if(train->signalPickupFailure == false){
     train->setFailureSignalPickup(true);
+    }
+    else{
+        train->setFailureSignalPickup(false);
+    }
 }
 
 void MainWindow::on_EmergencyBrakeButton_clicked()
 {
+    if(train->passengerBrake == false){
     train->setPassengerBrake(true);
+    }
+    else{
+        train->setPassengerBrake(false);
+    }
 }
 
 
