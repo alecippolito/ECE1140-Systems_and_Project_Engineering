@@ -6,13 +6,18 @@
 #include "ctc_choosetrackline.h"
 #include "ctc_dispatchtrain.h"
 
-//struct for the Train - how train values are stored inside the CTC for display
+//struct for the Train - how train values are stored inside the CTC for display, and to hold values for dispatch signals
 struct Train_CTC{
     bool redline;
     int dispatchTime;
     int authority;
     QVector<double> suggestedSpeed;
     QVector<bool> authorityVector;
+    QTime arrivalTime;
+    QString nextStation;
+    QString destination;
+    int currentBlock;
+    int TrainNumber;
 };
 
 //struct for TrackBlocks - the only required data for the CTC
@@ -45,9 +50,10 @@ private slots:
     void on_actionView_Train_Statuses_triggered();
     void receiveTime(int,int);
     void receiveTimeRequest();
-    void receiveDispatchImmediate(bool,int,double,QVector<bool>);
-    void receiveDispatchSchedule(bool,int,double,int,QVector<bool>);
+    void receiveDispatchImmediate(bool,int,double,QVector<bool>,QTime,QString);
+    void receiveDispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString);
     void receiveBlockStatus(bool,int,int,bool);
+    void updateTrainDisplay();
 
 signals:
     void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>, QVector<QVector<bool>>);
@@ -68,7 +74,7 @@ private:
     CTC_DispatchTrain *dp;
 
     //all internal variables and vectors
-    QVector<Train_CTC> TrainVector;
+    QVector<Train_CTC> TrainsDispatched;
     QVector<Train_CTC> TrainSchedule;
     QVector<Train_CTC> TrainStandby;
     QVector<Train_CTC> TrainQueue;

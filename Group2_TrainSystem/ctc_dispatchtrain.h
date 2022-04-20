@@ -2,6 +2,8 @@
 #define CTC_DISPATCHTRAIN_H
 
 #include <QDialog>
+#include <QTime>
+
 
 namespace Ui {
 class CTC_DispatchTrain;
@@ -25,8 +27,8 @@ private slots:
 
 signals:
     void requestSystemTime();
-    void dispatchImmediate(bool,int,double,QVector<bool>);
-    void dispatchSchedule(bool,int,double,int,QVector<bool>);
+    void dispatchImmediate(bool,int,double,QVector<bool>,QTime,QString);
+    void dispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString);
 
 private:
     Ui::CTC_DispatchTrain *ui;
