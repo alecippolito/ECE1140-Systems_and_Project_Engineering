@@ -91,6 +91,8 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     realTrackModel.loadRedLine();
     realTrackModel.loadGreenLine();
     realTrackModel.parseInfrastructure();
+    realTrackModel.updateUI();
+    realTrackModel.show();
 
     //create a new Train Controller GUI
 

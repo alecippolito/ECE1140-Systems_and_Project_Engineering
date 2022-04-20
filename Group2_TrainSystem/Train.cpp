@@ -1,6 +1,7 @@
 #include "Train.h"
 #include "TrainModelUI.h"
 
+//constructor initialized with numcars and a block it starts on
     Train::Train(int num, Block *b)
         {
             //load track data
@@ -8,30 +9,43 @@
             trackModel.loadRedLine();
             trackModel.parseInfrastructure();
 
+            //initialize UI
             trainUI = new MainWindow();
             trainUI->updateTrain(this);
             trainUI->show();
+
+            //set current block
             currentBlock = b;
             speedLimitKmHr = currentBlock->speedLimitKmHr;
             b->occupied = true;
-            trainMetrics = new TrainPhysics(num, b);       //later add blocks
-            //REPLACE THIS WITH TRACK CONTROLLER
-            if(b->lineType == "Red"){
-                if(b->blockNumber >= 76){ qDebug() << "Can't assign nextBlock, train constructed at end";}
-                                                      else{
+
+            //initialize train physics
+            trainMetrics = new TrainPhysics(num, b);
+
+            //REPLACE THIS WITH TRACK CONTROLLER IF ONE IS MADE
+            if(b->lineType == "Red")
+                {
+                if(b->blockNumber >= 76)
+                    {
+                        qDebug() << "Can't assign nextBlock, train constructed at end";
+                    }
+                else
+                    {
                 nextBlock = trackModel.redline[(b->blockNumber)];   //indexed as previous blockNumber bc 0 based indexing
                 blocksLeft = 77 - (b->blockNumber);
-                }
+                    }
             }
             else if(b->lineType == "Green")
                     {
                            if(b->blockNumber >= 151){ qDebug() << "Can't assign nextBlock, train constructed at end";}
-                else{
+                    else
+                    {
                             nextBlock = trackModel.greenline[(b->blockNumber)]; //due to indexing nextBlock is indexed are currentBlock's block number
                             blocksLeft = 152 - (b->blockNumber);
+                    }
                 }
-                }
-            else{
+            else
+            {
                 qDebug() <<"ERROR - lineType neither red or green";
             }
 
@@ -47,13 +61,16 @@
     }
     */
 
+    //set power of train car based on power and speed limit from train controller
     void Train::setPower(double p, double limit)
     {
+        //check block first to see if at end of route, update whether at end of block after setting getting new speed from power
         checkBlock();
-        if(blocksLeft >= 0){
-        trainMetrics->setPower(p, limit);
-        currentVelocity = trainMetrics->getVelocity();
-        atEndOfBlock = trainMetrics->atEndOfBlock;
+        if(blocksLeft >= 0)
+        {
+            trainMetrics->setPower(p, limit);
+            currentVelocity = trainMetrics->getVelocity();
+            atEndOfBlock = trainMetrics->atEndOfBlock;
         }
 
         updateUI();
@@ -181,8 +198,10 @@
         trainMetrics->setBlock(b);
     }
 
+    //check block uses data from the track block and the number of blocks left in the track model array to know how many it has left before the end of the route
     void Train::checkBlock()
     {
+        //update block data if at end of block but not end of route
         if(atEndOfBlock == true && blocksLeft > 0)
         {
             blocksLeft--;
@@ -193,6 +212,7 @@
             currentBlock->occupied = true;
             trainMetrics->setBlock(currentBlock);
 
+            //check after new blocksLeft decrement that not at end of route yet, and get nextBlock if not
             if(blocksLeft > 0)
             {
                 if(currentBlock->lineType == "Red")
@@ -206,6 +226,7 @@
             }
             else
             {
+                //end of route, no next block
                 nextBlock = nullptr;
             }
             updateUI();
@@ -214,27 +235,30 @@
 
     void Train::updateUI()
     {
+        //update all UI based on train car/train physics information
         trainUI->updateNumCars(trainMetrics->numCars);
         trainUI->updateLength(trainMetrics->length);
         trainUI->updatePassengers(trainMetrics->passengers);
         trainUI->updateCrewCount(trainMetrics->crewMembers);
         trainUI->updateWeight(trainMetrics->mass);
+        //check which side of doors should open at this station
         if(currentBlock->isStation && (currentBlock->stationSide == "Left" || currentBlock->stationSide == "Both"))
         {
-        trainUI->updateLeftDoors(leftDoors);
+            trainUI->updateLeftDoors(leftDoors);
         }
         if(currentBlock->isStation && (currentBlock->stationSide == "Right" || currentBlock->stationSide == "Both"))
         {
-        trainUI->updateRightDoors(rightDoors);
+            trainUI->updateRightDoors(rightDoors);
         }
         trainUI->updateLights(lightsOn);
         trainUI->updateTemperature(temperature);
         trainUI->updateIntercom(announcements);
         trainUI->updateDestination(destination);
         trainUI->updateCurrentBlock(trainMetrics->block);
+        //dont try to show nextBlock if there is no next block
         if(nextBlock != nullptr)
         {
-        trainUI->updateNextBlock(nextBlock);
+            trainUI->updateNextBlock(nextBlock);
         }
         trainUI->updatePower(trainMetrics->power);
         trainUI->updateVelocity(trainMetrics->currentVelocity);
@@ -255,6 +279,7 @@
     {
         return currentBlock;
     }
+
     void Train :: setAdSpace(bool newAdSpace){
         adSpace = newAdSpace;
     }
