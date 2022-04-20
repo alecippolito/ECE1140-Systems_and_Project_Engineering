@@ -28,6 +28,9 @@ CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
     QFont font("Consolas",9);
     ui->label->setFont(font);
     ui->label_2->setFont(font);
+
+    //make a connection to make sure the view Trains function works properly
+    QObject::connect(this, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), this, SLOT(updateTrainDisplay()));
 }
 
 CTC_MainWindow::~CTC_MainWindow()
@@ -81,8 +84,8 @@ void CTC_MainWindow::RedLineSelected()
     QObject::connect(this, SIGNAL(sendTime(int,int)),dp, SLOT(receiveSystemTime(int,int)));
 
     //connect the actual dispatch signals
-    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double)), this, SLOT(receiveDispatchImmediate(bool,int,double)));
-    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int)), this, SLOT(receiveDispatchSchedule(bool,int,double,int)));
+    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double,QVector<bool>,QTime,QString)), this, SLOT(receiveDispatchImmediate(bool,int,double,QVector<bool>,QTime,QString)));
+    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString)), this, SLOT(receiveDispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString)));
 }
 
 void CTC_MainWindow::GreenLineSelected()
@@ -104,11 +107,11 @@ void CTC_MainWindow::GreenLineSelected()
     QObject::connect(this, SIGNAL(sendTime(int,int)),dp, SLOT(receiveSystemTime(int,int)));
 
     //connect the actual dispatch signals
-    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double,QVector<bool>)), this, SLOT(receiveDispatchImmediate(bool,int,double,QVector<bool>)));
-    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int,QVector<bool>)), this, SLOT(receiveDispatchSchedule(bool,int,double,int,QVector<bool>)));
+    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double,QVector<bool>,QTime,QString)), this, SLOT(receiveDispatchImmediate(bool,int,double,QVector<bool>,QTime,QString)));
+    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString)), this, SLOT(receiveDispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString)));
 }
 
-void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, double sugg_speed_temp, QVector<bool> authorityVector_temp)
+void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, double sugg_speed_temp, QVector<bool> authorityVector_temp, QTime arrivalTime_temp, QString destination_temp)
 {
     cl->hide();
 
@@ -122,26 +125,33 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
         }
     }
 
+    Train_CTC tempTrain;
+    tempTrain.authority = auth_temp;
+    tempTrain.dispatchTime = 0;     //not needed
+    tempTrain.redline = redline_temp;
+    tempTrain.suggestedSpeed = suggestedSpeedVector;
+    tempTrain.authorityVector = authorityVector_temp;
+    tempTrain.currentBlock = (redline_temp == true ? 77 : 152);
+    tempTrain.nextStation = (redline_temp == true ? "Glenbury" : "Shadyside");
+    tempTrain.destination = destination_temp;
+    tempTrain.arrivalTime = arrivalTime_temp;
+
     //check if block outside of yard is open
-    if ((redline_temp == true ? TrackVectorRed[0].open : TrackVectorGreen[1].open) == true)
+    if ((redline_temp == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
     {
         TrainNumber++;
+        tempTrain.TrainNumber = TrainNumber;
+        TrainsDispatched.push_back(tempTrain);
         emit sendTrainData(TrainNumber,redline_temp,auth_temp,suggestedSpeedVector,authorityVector_temp);
     }
     else
     {
         //if it isn't, add train to the queue, wait for next opportunity
-        Train_CTC tempTrain;
-        tempTrain.authority = auth_temp;
-        tempTrain.dispatchTime = 0;     //not needed
-        tempTrain.redline = redline_temp;
-        tempTrain.suggestedSpeed = suggestedSpeedVector;
-        tempTrain.authorityVector = authorityVector_temp;
         TrainQueue.push_back(tempTrain);
     }
 }
 
-void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, double sugg_speed_temp, int departTime_temp, QVector<bool> authorityVector_temp)
+void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, double sugg_speed_temp, int departTime_temp, QVector<bool> authorityVector_temp, QTime arrivalTime_temp, QString destination_temp)
 {
     cl->hide();
 
@@ -162,6 +172,10 @@ void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, d
     tempTrain.redline = redline_temp;
     tempTrain.suggestedSpeed = suggestedSpeedVector;
     tempTrain.authorityVector = authorityVector_temp;
+    tempTrain.currentBlock = (redline_temp == true ? 77 : 152);
+    tempTrain.nextStation = (redline_temp == true ? "Glenbury" : "Shadyside");
+    tempTrain.arrivalTime = arrivalTime_temp;
+    tempTrain.destination = destination_temp;
     TrainStandby.push_back(tempTrain);
 }
 
@@ -429,10 +443,9 @@ void CTC_MainWindow::on_previousButton_clicked()
     }
 }
 
-
 void CTC_MainWindow::on_NextButton_clicked()
 {
-    if (setSize*(trainSet+1) <= TrainVector.size()-1)
+    if (setSize*(trainSet+1) <= TrainsDispatched.size()-1)
     {
         trainSet++;
     }
@@ -461,7 +474,6 @@ void CTC_MainWindow::on_NextButton_clicked()
     }
 }
 
-
 void CTC_MainWindow::on_actionView_Green_Line_Statuses_triggered()
 {
     //display all Tracks Blocks/ Stations and their statuses as a string on the GUI screen
@@ -485,7 +497,6 @@ void CTC_MainWindow::on_actionView_Green_Line_Statuses_triggered()
     ui->previousButton->setVisible(true);
     ui->NextButton->setVisible(true);
 }
-
 
 void CTC_MainWindow::on_actionView_Red_Line_Statuses_triggered()
 {
@@ -512,12 +523,36 @@ void CTC_MainWindow::on_actionView_Red_Line_Statuses_triggered()
     ui->NextButton->setVisible(true);
 }
 
+void CTC_MainWindow::updateTrainDisplay()
+{
+    if (ui->label->text() == "Dispatched Trains")
+    {
+        on_actionView_Train_Statuses_triggered();
+    }
+}
 
 void CTC_MainWindow::on_actionView_Train_Statuses_triggered()
 {
+    //Display the values of the trains you have dispatched by looping through a vector of dispatch Train values
 
+    QString displayString = "Train Number    Line    Current Block    Next Station               Destination                Arrival Time    \n";
+    //16,8,17,27,27,16
+
+    for (unsigned int i = 0; i < TrainsDispatched.size(); i++)
+    {
+        displayString += QString::number(TrainsDispatched[i].TrainNumber) + spaces(16-QString::number(TrainsDispatched[i].TrainNumber).size());
+        displayString += (TrainsDispatched[i].redline == true ? "Red" : "Green") + spaces(8 - (TrainsDispatched[i].redline == true ? 3 : 5));
+        displayString += QString::number(TrainsDispatched[i].currentBlock) + spaces(17 - QString::number(TrainsDispatched[i].currentBlock).size());
+        displayString += TrainsDispatched[i].nextStation + spaces(27 - TrainsDispatched[i].nextStation.size());
+        displayString += TrainsDispatched[i].destination + spaces(27 - TrainsDispatched[i].destination.size());
+        displayString += TrainsDispatched[i].arrivalTime.toString("hh:mm A") + "\n";
+    }
+
+    ui->label->setText("Dispatched Trains");
+    ui->label_2->setText(displayString);
+    ui->previousButton->setVisible(true);
+    ui->NextButton->setVisible(true);
 }
-
 
 QString CTC_MainWindow::spaces(int num)
 {
@@ -546,7 +581,9 @@ void CTC_MainWindow::checkDispatch()
         if ((TrainQueue[0].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
         {
             TrainNumber++;
-            emit sendTrainData(TrainNumber,TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed,TrainQueue[0].authorityVector);
+            TrainQueue[0].TrainNumber = TrainNumber;
+            TrainsDispatched.push_back(TrainQueue[0]);
+            emit sendTrainData(TrainQueue[0].TrainNumber,TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed,TrainQueue[0].authorityVector);
 
             //remove this train from the list, break out of the function
             TrainQueue.removeFirst();
@@ -563,6 +600,8 @@ void CTC_MainWindow::checkDispatch()
             if ((TrainStandby[i].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
             {
                 TrainNumber++;
+                TrainStandby[i].TrainNumber = TrainNumber;
+                TrainsDispatched.push_back(TrainStandby[i]);
                 emit sendTrainData(TrainNumber,TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed,TrainStandby[i].authorityVector);
 
                 //remove this train from the list, break out of the function
@@ -581,7 +620,6 @@ void CTC_MainWindow::receiveTimeRequest()
 {
     emit sendTime(currentDay,currentSecondsSinceMidnight);
 }
-
 
 //slot to receive the data about the track block from wayside - update internal TrackBlockVector
 //input - data about SINGLE trackblock

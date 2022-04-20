@@ -163,7 +163,7 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
             //emit different signals based on what needs to happen
             if (ui->DepartureCheck->isChecked() == false)
             {
-                emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp);
+                emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp,ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
             }
             else
             {
@@ -171,11 +171,11 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
                 emit requestSystemTime();
                 if (departTimeMinute == (currentDay*86400 + currentSeconds)/60)
                 {
-                    emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp);
+                    emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp,ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
                 }
                 else
                 {
-                    emit dispatchSchedule(redline,auth_temp,speed_temp,departTimeMinute,authVector_temp);
+                    emit dispatchSchedule(redline,auth_temp,speed_temp,departTimeMinute,authVector_temp,ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
                 }
             }
         }
