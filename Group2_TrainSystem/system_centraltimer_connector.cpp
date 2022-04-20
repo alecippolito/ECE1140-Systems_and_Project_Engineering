@@ -102,13 +102,13 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     if(redline_temp)
     {
         qDebug() << "Track made on red line";
-        Train *t = new Train(1, realTrackModel.redline[0]); //redline
+        Train *t = new Train(1, realTrackModel.redline[0], &realTrackModel); //redline
         tcGUI->setTrain(t);
     }
     else
     {
         qDebug() << "Track made on green line";
-        Train *t = new Train(1, realTrackModel.greenline[0]);
+        Train *t = new Train(1, realTrackModel.greenline[0], &realTrackModel);
         tcGUI->setTrain(t);
     }
 

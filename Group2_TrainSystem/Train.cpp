@@ -2,12 +2,10 @@
 #include "TrainModelUI.h"
 
 //constructor initialized with numcars and a block it starts on
-    Train::Train(int num, Block *b)
+    Train::Train(int num, Block *b, TrackModel *trackModelPtr)
         {
             //load track data
-            trackModel.loadGreenLine();
-            trackModel.loadRedLine();
-            trackModel.parseInfrastructure();
+            trackModel = trackModelPtr;
 
             //initialize UI
             trainUI = new MainWindow();
@@ -17,7 +15,7 @@
             //set current block
             currentBlock = b;
             speedLimitKmHr = currentBlock->speedLimitKmHr;
-            b->occupied = true;
+            currentBlock->occupied = true;
 
             //initialize train physics
             trainMetrics = new TrainPhysics(num, b);
@@ -31,7 +29,7 @@
                     }
                 else
                     {
-                nextBlock = trackModel.redline[(b->blockNumber)];   //indexed as previous blockNumber bc 0 based indexing
+                nextBlock = trackModel->redline[(b->blockNumber)];   //indexed as previous blockNumber bc 0 based indexing
                 blocksLeft = 77 - (b->blockNumber);
                     }
             }
@@ -40,7 +38,7 @@
                            if(b->blockNumber >= 151){ qDebug() << "Can't assign nextBlock, train constructed at end";}
                     else
                     {
-                            nextBlock = trackModel.greenline[(b->blockNumber)]; //due to indexing nextBlock is indexed are currentBlock's block number
+                            nextBlock = trackModel->greenline[(b->blockNumber)]; //due to indexing nextBlock is indexed are currentBlock's block number
                             blocksLeft = 152 - (b->blockNumber);
                     }
                 }
@@ -210,6 +208,8 @@
             currentBlock = nextBlock;
             speedLimitKmHr = currentBlock->speedLimitKmHr;
             currentBlock->occupied = true;
+            qDebug() << "Current Block Number: " << currentBlock->blockNumber;
+            qDebug() << "Current Block Occupancy: " << currentBlock->occupied;
             trainMetrics->setBlock(currentBlock);
 
             //check after new blocksLeft decrement that not at end of route yet, and get nextBlock if not
@@ -217,11 +217,11 @@
             {
                 if(currentBlock->lineType == "Red")
                 {
-                    nextBlock = trackModel.redline[77-blocksLeft];
+                    nextBlock = trackModel->redline[77-blocksLeft];
                 }
                 else if(currentBlock->lineType == "Green")
                 {
-                    nextBlock = trackModel.greenline[152-blocksLeft];
+                    nextBlock = trackModel->greenline[152-blocksLeft];
                 }
             }
             else

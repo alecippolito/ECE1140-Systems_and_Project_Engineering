@@ -85,9 +85,9 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>100</y>
+     <y>90</y>
      <width>251</width>
-     <height>331</height>
+     <height>361</height>
     </rect>
    </property>
    <property name="sizeAdjustPolicy">
@@ -152,6 +152,11 @@
    <row>
     <property name="text">
      <string>Seconds to Traverse Block</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>Occupancy</string>
     </property>
    </row>
    <column>

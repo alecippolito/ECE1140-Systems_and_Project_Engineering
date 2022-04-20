@@ -301,7 +301,7 @@ void TrackModel::on_blockNumberSpinBox_valueChanged(int arg1)
             ui->blockNumberSpinBox->setValue(77);
         }
     }
-    qDebug() << "Block index: " << arg1 - 1;
+
     if(greenLineBlockInfoShowing)   //if green line showing
     {
         QTableWidgetItem *lineItem = new QTableWidgetItem();
@@ -337,6 +337,9 @@ void TrackModel::on_blockNumberSpinBox_valueChanged(int arg1)
         QTableWidgetItem *secondItem = new QTableWidgetItem();
         secondItem->setText(QString::number(greenline[arg1-1]->secondsToTraverseBlock));
         ui->tableWidget->setItem(10,0, secondItem);
+        QTableWidgetItem *occupancyItem = new QTableWidgetItem();
+        occupancyItem->setText(QString::number(greenline[arg1-1]->occupied));
+        ui->tableWidget->setItem(11,0, occupancyItem);
     }
     else
     {
