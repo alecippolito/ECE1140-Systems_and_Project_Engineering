@@ -12,7 +12,7 @@ class Block {
             std::string stationSide;
             std::string stationName;
             std::string switchData;
-            bool occupied;
+            bool occupied = false;
             int blockNumber;
             double blockLength;
             double blockGrade;
