@@ -14,6 +14,7 @@ debug/TrainController.o
 debug/Track_controller.o
 debug/PLC.o
 debug/Track_mainwindow.o
+debug/qrc_trainResources.o
 debug/moc_ctc_choosetrackline.o
 debug/moc_ctc_dispatchtrain.o
 debug/moc_ctc_mainwindow.o

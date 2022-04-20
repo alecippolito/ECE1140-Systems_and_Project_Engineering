@@ -2,7 +2,8 @@
 #define TRAIN_H
 #include <string>
 #include <chrono>
-#include "yardToDormontTrackModel.h"
+//#include "yardToDormontTrackModel.h"
+#include "trackmodel.h"
 #include "Block.h"
 #include "TrainPhysics.h"
 class MainWindow;
@@ -28,7 +29,7 @@ class Train{
             double decelerationLimit = -1.2;
             double velocityLimit = 70;
             double temperature = 72.0;
-            std::string destination = "Dormont";
+            std::string destination;
             std::string announcements;
             bool leftDoors; //true = open, false = closed
             bool rightDoors;
@@ -43,11 +44,12 @@ class Train{
             TrainPhysics *trainMetrics;
             MainWindow *trainUI;
             bool atEndOfBlock = false;
-            YardDormontTrackModel trackModel;
-            int blocksLeft = 12;
+            TrackModel *trackModel;
+            int blocksLeft;
             bool adSpace = true;    //true = snowpiercer, false = train to busan
+            int speedLimitKmHr;
 
-    Train(int, Block *b);
+    Train(int, Block *b, TrackModel *trackModelPtr);
     //~Train();
     void updateUI();
     void setPower(double, double);
@@ -62,6 +64,7 @@ class Train{
     void setAvailable(bool);
     void setAnnouncement(std::string);
     void checkBlock();
+    void setAdSpace(bool);
 
     double getCurrentVelocity();
     double getPower();

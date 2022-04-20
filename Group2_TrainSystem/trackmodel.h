@@ -5,10 +5,11 @@
 #include <QVector>
 #include "Block.h"
 
-
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class TrackModel;
 }
+QT_END_NAMESPACE
 
 class TrackModel : public QDialog
 {
@@ -20,12 +21,18 @@ public:
     void loadRedLine();
     void loadGreenLine();
     void parseInfrastructure();
+    void updateUI();
     Block *redline[77]; //76 blocks + 1 block for yard
     Block *greenline[152];  //150 blocks + 2 blocks for yard
+    bool greenLineBlockInfoShowing = true;  //default true, toggled with UI button
 
 private slots:
     void changeOccupancy(bool, int, int);    //bool - which track line to go to, int - for track number, int - new occupancy
     void changeStatuses(bool, int, bool);      //bool - which track line to go to, int - for track number, bool - open or not
+
+    void on_pushButton_clicked();
+
+    void on_blockNumberSpinBox_valueChanged(int arg1);
 
 signals:
     void sendOccupancy(bool, int, int);       //bool, red track line or not, int - track number, int - occupancy

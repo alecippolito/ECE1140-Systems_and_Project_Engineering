@@ -32,6 +32,9 @@ class TrainController
         bool passengerEBrakeEnabled = false;
         bool doorsOpen = false;
         bool lightsOn = false;
+        bool adversitement = true;
+        double temp = 72;
+        std :: string announcement = "";
 
 
     public:
@@ -73,7 +76,12 @@ class TrainController
         void setT(int);
         double getSpeedLimit();
         void setSpeedLimit(double);
-
+        bool getAdvertisements();
+        void setAdvertisements(bool);
+        double getTemp();
+        void setTemp(double);
+        std :: string getAnnouncement();
+        void setAnnouncement(std :: string);
 };
 
 #endif

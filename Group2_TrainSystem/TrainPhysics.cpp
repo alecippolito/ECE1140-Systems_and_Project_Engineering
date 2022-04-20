@@ -1,6 +1,9 @@
 #include "TrainPhysics.h"
 #include <QDebug>
+#include <cmath>
+#include <ctgmath>
 
+//constructor initializes physics class with number of cars and a current block pointer for Newton calculations
 TrainPhysics::TrainPhysics(int num, Block* b)
 {
     numCars = num;
@@ -8,21 +11,21 @@ TrainPhysics::TrainPhysics(int num, Block* b)
     block = b;
     calculateMass();
     calculateVelocity();
-    distanceToBlockEnd = b->getBlockLength();
-
+    lastDist = 0;
 }
 
+//calculateVelocity calculates and returns the current train velocity from the newly updated power (it gets called in setPower) and other train metrics
 double TrainPhysics::calculateVelocity()
 {
     if(currentVelocity > 0) //normal calculation of force if train is moving or neither brake is on
     {
-        force = (power / currentVelocity) - (.098 * (mass/2.205)) /*- (mass * 9.8 * block->getSlope)*/;          //mass to kg
+        double blockAngleDegrees = std::atan((block->blockGrade) / 100);
+        force = (power / currentVelocity) - (9.8 * (mass/2.205) * .01) - ((mass/2.205) * 9.8 * blockAngleDegrees);          //mass to kg, friction coefficient
     }
     else if((!serviceBrake && !emergencyBrake) && (power>0))    //if train is stationary and a brake is on
     {
         force = 100000;  //random large amount to start train
     }
-
     else
     {
         force = 0;  //if brakes are on
@@ -49,7 +52,7 @@ double TrainPhysics::calculateVelocity()
         }
         else
         {
-            acceleration = 0;
+            //acceleration = 0;
         }
     }
 
@@ -62,20 +65,26 @@ double TrainPhysics::calculateVelocity()
         }
         else
         {
-            acceleration = 0;
+            //acceleration = 0;
         }
     }
 
-    //get current time
-    //TODO
+    //called every second/equivalent to second for 10x 50x 100x speed
     time = 1;
 
     double totalAcceleration = lastAcceleration + acceleration;
     double newVelocity = currentVelocity + ((time/2) * totalAcceleration);
 
+    //physical velocity limits in mph
     double newVelocityMph = newVelocity * 2.23694;
-    if(newVelocityMph < 0) { newVelocityMph = 0;}
-    if(newVelocityMph > 70) { newVelocityMph = 70;}
+    if(newVelocityMph < 0)
+    {
+        newVelocityMph = 0;
+    }
+    if(newVelocityMph > 70)
+    {
+        newVelocityMph = 70;
+    }
 
     newVelocity = newVelocityMph / 2.23694;
     return newVelocity;
@@ -87,6 +96,8 @@ double TrainPhysics::getVelocity()
     return currentVelocity;
 }
 
+//set power takes power and a speed limit as an input and uses this new power to calculate the train metrics, including the new currentVelocity and the new acceleration
+//it also calls the function to check how far into the block the train currently is
 void TrainPhysics::setPower(double num, double limit)
 {
     if(engineFailure)
@@ -95,7 +106,7 @@ void TrainPhysics::setPower(double num, double limit)
     }
     else
     {
-    power = num;
+        power = num;
     }
 
     double currentVelocityMph = currentVelocity * 2.23694;
@@ -103,24 +114,27 @@ void TrainPhysics::setPower(double num, double limit)
     {
         currentVelocityMph = limit;
         acceleration = 0;
+        lastVelocity = currentVelocity;
         currentVelocity = currentVelocityMph / 2.23694;
     }
     else
     {
-    double v = calculateVelocity();
-    lastVelocity = currentVelocity;
-    currentVelocity = v;
+        double v = calculateVelocity();
+        lastVelocity = currentVelocity;
+        currentVelocity = v;
     }
 
     //keep track of where the train is
-    double distTravelled = getDistanceTravelledInBlock();
-
+    double newDist = getDistanceTravelledInBlock();
     atEndOfBlock = false;
 
-    if(distTravelled >= block->blockLength)
+    if(newDist >= block->blockLength)
     {
+        newDist = newDist - (block->blockLength);
         atEndOfBlock = true;
     }
+
+    lastDist = newDist;
 
 }
 
@@ -135,19 +149,17 @@ void TrainPhysics::calculateMass()
     mass += (numCars * 113400); //flexity car weight in lbs
 }
 
+//getDistanceTravelledInBlock calculates and returns the new distance travelled in the current block, used to check if the next block should be moved into by the train
 double TrainPhysics::getDistanceTravelledInBlock()
 {
     double velocityTotal = lastVelocity + currentVelocity;
-    double distanceTravelled = (block->getBlockLength() - distanceToBlockEnd) + ((time/2) * velocityTotal);
-    distanceToBlockEnd = distanceToBlockEnd - distanceTravelled;
-    qDebug() << "BlockLength: " << block->getBlockLength();
-    qDebug() << "distanceTravelled" << distanceTravelled;
-    return distanceTravelled;
+    double newDist = lastDist + ((time/2) * velocityTotal);
+    return newDist;
 }
 
 double TrainPhysics::getDistanceToBlockEnd()
 {
-    return distanceToBlockEnd;
+    return lastDist;
 }
 
 void TrainPhysics::setEngineFailure(bool b)
@@ -168,5 +180,5 @@ void TrainPhysics::setSignalPickupFailure(bool b)
 void TrainPhysics::setBlock(Block *b)
 {
     block = b;
-    distanceToBlockEnd = b->getBlockLength();
+    lastDist = 0;
 }

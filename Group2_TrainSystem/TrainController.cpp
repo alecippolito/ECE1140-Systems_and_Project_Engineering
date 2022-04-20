@@ -37,15 +37,15 @@
 
                 double e_k = speed-trainVelocity;
                 double u_k = u_k_1 + (T/2)*(e_k+e_k_1);
-                powerCommand = kp*e_k+ki*u_k;
+                powerCommand = (kp*e_k)+(ki*u_k);
          }
 
          if(powerCommand>120000){
              powerCommand =120000;
          }
-         qDebug() << "velocity: " << trainVelocity;
-         qDebug() << "setpoint: " << setpointSpeed;
-         qDebug() << "commnded: " << commandedSpeed;
+         //qDebug() << "velocity: " << trainVelocity;
+         //qDebug() << "setpoint: " << setpointSpeed;
+         //qDebug() << "commnded: " << commandedSpeed;
 
         }
 
@@ -141,4 +141,22 @@
         }
         void  TrainController :: setSpeedLimit(double newSpeedLimit){
             speedLimit = newSpeedLimit;
+        }
+        bool TrainController :: getAdvertisements(){
+            return adversitement;
+        }
+        void TrainController :: setAdvertisements(bool newAdvertisement){
+            adversitement = newAdvertisement;
+        }
+        double TrainController :: getTemp(){
+            return temp;
+        }
+        void TrainController :: setTemp(double newTemp){
+            temp = newTemp;
+        }
+        std :: string TrainController :: getAnnouncement(){
+            return announcement;
+        }
+        void TrainController :: setAnnouncement(std::string newAnnouncement){
+            announcement = newAnnouncement;
         }

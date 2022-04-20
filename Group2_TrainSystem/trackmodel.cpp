@@ -16,7 +16,10 @@ TrackModel::TrackModel(QWidget *parent) :
     ui(new Ui::TrackModel)
 {
     ui->setupUi(this);
-    Q_INIT_RESOURCE(trainResources);
+    Q_INIT_RESOURCE(trainResources);    //resources folder contains csv folders
+    //set status light colors for UI
+    ui->greenLineStatusLight->setStyleSheet("background-color: green");
+    ui->redLineStatusLight->setStyleSheet("background-color: red");
 }
 
 TrackModel::~TrackModel()
@@ -56,6 +59,7 @@ void TrackModel::changeStatuses(bool redline, int blockNumber, bool newStatus)
     }
 }
 
+//load red line onto array of blocks from the redline.csv file
 void TrackModel::loadRedLine()
 {
     //QFileInfo().setFile("redline.csv");
@@ -93,10 +97,13 @@ void TrackModel::loadRedLine()
         redline[numRows]->cumElevation = line.split(',').at(9).toDouble();
         redline[numRows]->secondsToTraverseBlock = line.split(',').at(10).toDouble();
         numRows++;
-        } else { break; }   //break if at 76
+        }   else
+            {
+                break;
+            }   //break if at 76
     }
 
-    //last two are going to be yard blocks -- TO DO
+        //last is yard block
         redline[76]->lineType = "Red";
         redline[76]->section = "AA";
         redline[76]->blockNumber = 77;
@@ -111,6 +118,7 @@ void TrackModel::loadRedLine()
     inFile.close();
 }
 
+//load green line onto array of blocks from the greenline.csv file
 void TrackModel::loadGreenLine()
 {
     QFile inFile(":/resources/greenline.csv");
@@ -145,10 +153,14 @@ void TrackModel::loadGreenLine()
         greenline[numRows]->cumElevation = line.split(',').at(9).toDouble();
         greenline[numRows]->secondsToTraverseBlock = line.split(',').at(10).toDouble();
         numRows++;
-        } else { break; }   //break if at 77
+        }   else
+            {
+                break;
+            }   //break if at 77
     }
 
-    //last two are going to be yard blocks -- TO DO
+
+    //last two are yard blocks
 
     greenline[150]->lineType = "Green";
     greenline[150]->section = "AA";
@@ -177,6 +189,7 @@ void TrackModel::loadGreenLine()
 
 }
 
+//parse infrastructure parses the "Infrastructure" column of the redline/greenline csv files to check for what infrastructure criteria it meets (station, switches, underground tracks, or railway crossings)
 void TrackModel::parseInfrastructure()
 {
     //red line
@@ -243,4 +256,135 @@ void TrackModel::parseInfrastructure()
 }
 
 
+
+//toggle green/redline
+void TrackModel::on_pushButton_clicked()
+{
+    if(greenLineBlockInfoShowing)   //if greenline showing, toggle to show red
+    {
+        ui->greenLineStatusLight->setStyleSheet("background-color: red");
+        ui->redLineStatusLight->setStyleSheet("background-color: green");
+        greenLineBlockInfoShowing = false;
+        updateUI();
+    }
+    else    //if redline showing, toggle to show green
+    {
+        ui->greenLineStatusLight->setStyleSheet("background-color: green");
+        ui->redLineStatusLight->setStyleSheet("background-color: red");
+        greenLineBlockInfoShowing = true;
+        updateUI();
+    }
+}
+
+
+void TrackModel::on_blockNumberSpinBox_valueChanged(int arg1)
+{
+    //number restraints for minimum and then line-specific maximums
+    if(arg1 <= 0)
+    {
+        arg1 = 1;
+        ui->blockNumberSpinBox->setValue(1);
+    }
+    if(greenLineBlockInfoShowing)
+    {
+        if(arg1 > 152)
+        {
+            arg1 = 152;
+            ui->blockNumberSpinBox->setValue(152);
+        }
+    }
+    else
+    {
+        if(arg1 > 77)
+        {
+            arg1 = 77;
+            ui->blockNumberSpinBox->setValue(77);
+        }
+    }
+
+    if(greenLineBlockInfoShowing)   //if green line showing
+    {
+        QTableWidgetItem *lineItem = new QTableWidgetItem();
+        lineItem->setText(QString::fromStdString(greenline[arg1-1]->lineType));
+        ui->tableWidget->setItem(0,0, lineItem);
+        QTableWidgetItem *secItem = new QTableWidgetItem();
+        secItem->setText(QString::fromStdString(greenline[arg1-1]->section));
+        ui->tableWidget->setItem(1,0, secItem);
+        QTableWidgetItem *numItem = new QTableWidgetItem();
+        numItem->setText(QString::number(greenline[arg1-1]->blockNumber));
+        ui->tableWidget->setItem(2,0, numItem);
+        QTableWidgetItem *lengthItem = new QTableWidgetItem();
+        lengthItem->setText(QString::number(greenline[arg1-1]->blockLength));
+        ui->tableWidget->setItem(3,0, lengthItem);
+        QTableWidgetItem *gradeItem = new QTableWidgetItem();
+        gradeItem->setText(QString::number(greenline[arg1-1]->blockGrade));
+        ui->tableWidget->setItem(4,0, gradeItem);
+        QTableWidgetItem *speedItem = new QTableWidgetItem();
+        speedItem->setText(QString::number(greenline[arg1-1]->speedLimitKmHr));
+        ui->tableWidget->setItem(5,0, speedItem);
+        QTableWidgetItem *infraItem = new QTableWidgetItem();
+        infraItem->setText(QString::fromStdString(greenline[arg1-1]->infrastructure));
+        ui->tableWidget->setItem(6,0, infraItem);
+        QTableWidgetItem *stationItem = new QTableWidgetItem();
+        stationItem->setText(QString::fromStdString(greenline[arg1-1]->stationSide));
+        ui->tableWidget->setItem(7,0, stationItem);
+        QTableWidgetItem *elItem = new QTableWidgetItem();
+        elItem->setText(QString::number(greenline[arg1-1]->elevation));
+        ui->tableWidget->setItem(8,0, elItem);
+        QTableWidgetItem *cumElItem = new QTableWidgetItem();
+        cumElItem->setText(QString::number(greenline[arg1-1]->cumElevation));
+        ui->tableWidget->setItem(9,0, cumElItem);
+        QTableWidgetItem *secondItem = new QTableWidgetItem();
+        secondItem->setText(QString::number(greenline[arg1-1]->secondsToTraverseBlock));
+        ui->tableWidget->setItem(10,0, secondItem);
+        QTableWidgetItem *occupancyItem = new QTableWidgetItem();
+        occupancyItem->setText(QString::number(greenline[arg1-1]->occupied));
+        ui->tableWidget->setItem(11,0, occupancyItem);
+    }
+    else
+    {
+        QTableWidgetItem *lineItem = new QTableWidgetItem();
+        lineItem->setText(QString::fromStdString(redline[arg1-1]->lineType));
+        ui->tableWidget->setItem(0,0, lineItem);
+        QTableWidgetItem *secItem = new QTableWidgetItem();
+        secItem->setText(QString::fromStdString(redline[arg1-1]->section));
+        ui->tableWidget->setItem(1,0, secItem);
+        QTableWidgetItem *numItem = new QTableWidgetItem();
+        numItem->setText(QString::number(redline[arg1-1]->blockNumber));
+        ui->tableWidget->setItem(2,0, numItem);
+        QTableWidgetItem *lengthItem = new QTableWidgetItem();
+        lengthItem->setText(QString::number(redline[arg1-1]->blockLength));
+        ui->tableWidget->setItem(3,0, lengthItem);
+        QTableWidgetItem *gradeItem = new QTableWidgetItem();
+        gradeItem->setText(QString::number(redline[arg1-1]->blockGrade));
+        ui->tableWidget->setItem(4,0, gradeItem);
+        QTableWidgetItem *speedItem = new QTableWidgetItem();
+        speedItem->setText(QString::number(redline[arg1-1]->speedLimitKmHr));
+        ui->tableWidget->setItem(5,0, speedItem);
+        QTableWidgetItem *infraItem = new QTableWidgetItem();
+        infraItem->setText(QString::fromStdString(redline[arg1-1]->infrastructure));
+        ui->tableWidget->setItem(6,0, infraItem);
+        QTableWidgetItem *stationItem = new QTableWidgetItem();
+        stationItem->setText(QString::fromStdString(redline[arg1-1]->stationSide));
+        ui->tableWidget->setItem(7,0, stationItem);
+        QTableWidgetItem *elItem = new QTableWidgetItem();
+        elItem->setText(QString::number(redline[arg1-1]->elevation));
+        ui->tableWidget->setItem(8,0, elItem);
+        QTableWidgetItem *cumElItem = new QTableWidgetItem();
+        cumElItem->setText(QString::number(redline[arg1-1]->cumElevation));
+        ui->tableWidget->setItem(9,0, cumElItem);
+        QTableWidgetItem *secondItem = new QTableWidgetItem();
+        secondItem->setText(QString::number(redline[arg1-1]->secondsToTraverseBlock));
+        ui->tableWidget->setItem(10,0, secondItem);
+        QTableWidgetItem *occupancyItem = new QTableWidgetItem();
+        occupancyItem->setText(QString::number(redline[arg1-1]->occupied));
+        ui->tableWidget->setItem(11,0, occupancyItem);
+    }
+}
+
+void TrackModel::updateUI()
+{
+    on_blockNumberSpinBox_valueChanged(1);
+    ui->blockNumberSpinBox->setValue(1);
+}
 
