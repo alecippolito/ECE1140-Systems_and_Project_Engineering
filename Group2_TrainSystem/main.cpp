@@ -10,6 +10,4 @@ int main(int argc, char *argv[])
     System_CentralTimer_Connector w;
     w.show();
     return a.exec();
-
-    //yerrrr
 }
