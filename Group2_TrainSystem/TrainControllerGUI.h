@@ -49,6 +49,7 @@ public:
     void slowTrain();
     void updateTemp();
     void setTrain(Train *t);
+    void setPaused(bool);
 
 private slots:
     // *************************************************
@@ -88,6 +89,8 @@ private:
     bool dispatch = false;
     bool brake = false;
     int getSpeedLimit();
+    bool isPaused = false;
+
 
 protected:
     // *************************************************

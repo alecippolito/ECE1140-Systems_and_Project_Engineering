@@ -11,7 +11,6 @@
 
 
     void TrainController :: calculatePower(){
-
         double speed = 0;
         // automatic => setpoint = coammanded
         if(automaticMode == true){
@@ -46,8 +45,7 @@
          //qDebug() << "velocity: " << trainVelocity;
          //qDebug() << "setpoint: " << setpointSpeed;
          //qDebug() << "commnded: " << commandedSpeed;
-
-        }
+            }
 
         void TrainController :: setPowerCommand(double newPowerCommand){
 			powerCommand = newPowerCommand;

@@ -45,6 +45,8 @@ private slots:
     void receiveDispatchSignal_test(int,bool,int,QVector<double>,QVector<bool>);
     void on_TimeButton_2pm_clicked();
 
+    void on_pausePlayButton_clicked();
+
 signals:
     void sendTime(int,int);
     void sendTimeUpdate(int);
@@ -65,6 +67,7 @@ private:
     int secondsInWeek;
     double timeDialation;
     QVector<QString> days;
+    bool isPaused = false;
 
     //internal functions
     void displayDateTime();

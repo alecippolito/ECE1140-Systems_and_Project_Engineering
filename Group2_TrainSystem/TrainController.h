@@ -36,7 +36,6 @@ class TrainController
         double temp = 72;
         std :: string announcement = "";
 
-
     public:
     // *************************************************
     //              Calculating
