@@ -252,3 +252,22 @@ void System_CentralTimer_Connector::on_TimeButton_2pm_clicked()
     displayDateTime();
     emit sendTime(day,secondsInDay);
 }
+
+void System_CentralTimer_Connector::on_pausePlayButton_clicked()
+{
+    if(isPaused == false)
+    {
+        isPaused = true;
+        timer->stop();
+        tcGUI->setPaused(true);
+        ui->pausePlayButton->setText("Play");
+    }
+    else
+    {
+        isPaused = false;
+        timer->start();
+        tcGUI->setPaused(false);
+        ui->pausePlayButton->setText("Pause");
+    }
+}
+

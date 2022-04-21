@@ -41,6 +41,7 @@ TrainControllerGUI::~TrainControllerGUI()
 
 void TrainControllerGUI :: timerEvent(QTimerEvent *event)
 {
+    if(!isPaused){
     if(train != nullptr){
     if (dispatch == false){
             dispatchTrain();
@@ -77,6 +78,7 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
     updateStatus();
     updateAdvertisements();
     updateTemp();
+    }
 }
 }
 // *************************************************
@@ -349,3 +351,7 @@ void TrainControllerGUI::on_announcement4_clicked()
     train->setAnnouncement(tc.getAnnouncement());
 }
 
+void TrainControllerGUI::setPaused(bool b)
+{
+    isPaused = b;
+}
