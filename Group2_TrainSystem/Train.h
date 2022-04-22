@@ -3,7 +3,8 @@
 #include <string>
 #include <chrono>
 //#include "yardToDormontTrackModel.h"
-#include "trackmodel.h"
+//#include "trackmodel.h"
+#include "mockWayside.h"
 #include "Block.h"
 #include "TrainPhysics.h"
 class MainWindow;
@@ -44,12 +45,14 @@ class Train{
             TrainPhysics *trainMetrics;
             MainWindow *trainUI;
             bool atEndOfBlock = false;
-            TrackModel *trackModel;
+            Route *route;
             int blocksLeft;
             bool adSpace = true;    //true = snowpiercer, false = train to busan
             int speedLimitKmHr;
+            int whichRouteUsed;
+            int currentRouteIndex = 0;
 
-    Train(int, Block *b, TrackModel *trackModelPtr);
+    Train(int, int, bool, Block*[]);
     //~Train();
     void updateUI();
     void setPower(double, double);

@@ -2,44 +2,49 @@
 #include "TrainModelUI.h"
 
 //constructor initialized with numcars and a block it starts on
-    Train::Train(int num, Block *b, TrackModel *trackModelPtr)
+    Train::Train(int num, int whichRoute, bool isGreenline, Block* trackModel[])
         {
             //load track data
-            trackModel = trackModelPtr;
+            Route *r = new Route(whichRoute, isGreenline, trackModel);
+            route = r;
+            whichRouteUsed = whichRoute;
 
             //initialize UI
             trainUI = new MainWindow();
             trainUI->updateTrain(this);
             trainUI->show();
 
-            //set current block
-            currentBlock = b;
+            //set current block to first block
+            currentBlock = route->getNextBlock(whichRoute, currentRouteIndex);
             speedLimitKmHr = currentBlock->speedLimitKmHr;
             currentBlock->occupied = true;
+            currentRouteIndex++;
 
             //initialize train physics
-            trainMetrics = new TrainPhysics(num, b);
+            trainMetrics = new TrainPhysics(num, currentBlock);
 
             //REPLACE THIS WITH TRACK CONTROLLER IF ONE IS MADE
-            if(b->lineType == "Red")
+            if(currentBlock->lineType == "Red")
                 {
-                if(b->blockNumber >= 76)
+                if(currentBlock->blockNumber >= 76)
                     {
                         qDebug() << "Can't assign nextBlock, train constructed at end";
                     }
                 else
                     {
-                nextBlock = trackModel->redline[(b->blockNumber)];   //indexed as previous blockNumber bc 0 based indexing
-                blocksLeft = 77 - (b->blockNumber);
+                nextBlock = route->getNextBlock(whichRoute, currentRouteIndex);   //indexed as previous blockNumber bc 0 based indexing
+                currentRouteIndex++;
+                //blocksLeft = 77 - (b->blockNumber);
                     }
             }
-            else if(b->lineType == "Green")
+            else if(currentBlock->lineType == "Green")
                     {
-                           if(b->blockNumber >= 151){ qDebug() << "Can't assign nextBlock, train constructed at end";}
+                           if(currentBlock->blockNumber >= 151){ qDebug() << "Can't assign nextBlock, train constructed at end";}
                     else
                     {
-                            nextBlock = trackModel->greenline[(b->blockNumber)]; //due to indexing nextBlock is indexed are currentBlock's block number
-                            blocksLeft = 152 - (b->blockNumber);
+                            nextBlock = route->getNextBlock(whichRoute, currentRouteIndex); //due to indexing nextBlock is indexed are currentBlock's block number
+                            currentRouteIndex++;
+                            //blocksLeft = 152 - (b->blockNumber);
                     }
                 }
             else
@@ -199,8 +204,24 @@
     //check block uses data from the track block and the number of blocks left in the track model array to know how many it has left before the end of the route
     void Train::checkBlock()
     {
+        if(atEndOfBlock)
+        {
+
+            atEndOfBlock = false;
+            currentBlock->occupied = false;
+            currentBlock = nextBlock;
+            speedLimitKmHr = currentBlock->speedLimitKmHr;
+            currentBlock->occupied = true;
+            trainMetrics->setBlock(currentBlock);
+
+            if(currentBlock->blockNumber != 57){ //then reached end of route
+            //get next block, if greenline and at 57 then reached end of route
+            nextBlock = route->getNextBlock(whichRouteUsed, currentRouteIndex);
+            currentRouteIndex++;
+            }
+        }
         //update block data if at end of block but not end of route
-        if(atEndOfBlock == true && blocksLeft > 0)
+        /*if(atEndOfBlock == true && blocksLeft > 0)
         {
             blocksLeft--;
             atEndOfBlock = false;
@@ -231,6 +252,7 @@
             }
             updateUI();
         }
+        */
     }
 
     void Train::updateUI()
