@@ -10,6 +10,7 @@
 #include "../../Group2_TrainSystem/system_centraltimer_connector.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
+#include <QtCore/QVector>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'system_centraltimer_connector.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -22,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_System_CentralTimer_Connector_t {
-    QByteArrayData data[21];
-    char stringdata0[449];
+    QByteArrayData data[23];
+    char stringdata0[479];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -52,7 +53,9 @@ QT_MOC_LITERAL(16, 319, 20), // "on_SunButton_clicked"
 QT_MOC_LITERAL(17, 340, 29), // "on_ThousandTimesSpeed_clicked"
 QT_MOC_LITERAL(18, 370, 25), // "on_TimeButton_1pm_clicked"
 QT_MOC_LITERAL(19, 396, 26), // "receiveDispatchSignal_test"
-QT_MOC_LITERAL(20, 423, 25) // "on_TimeButton_2pm_clicked"
+QT_MOC_LITERAL(20, 423, 15), // "QVector<double>"
+QT_MOC_LITERAL(21, 439, 13), // "QVector<bool>"
+QT_MOC_LITERAL(22, 453, 25) // "on_TimeButton_2pm_clicked"
 
     },
     "System_CentralTimer_Connector\0sendTime\0"
@@ -66,8 +69,8 @@ QT_MOC_LITERAL(20, 423, 25) // "on_TimeButton_2pm_clicked"
     "on_FriButton_clicked\0on_SatButton_clicked\0"
     "on_SunButton_clicked\0on_ThousandTimesSpeed_clicked\0"
     "on_TimeButton_1pm_clicked\0"
-    "receiveDispatchSignal_test\0"
-    "on_TimeButton_2pm_clicked"
+    "receiveDispatchSignal_test\0QVector<double>\0"
+    "QVector<bool>\0on_TimeButton_2pm_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -104,8 +107,8 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
       16,    0,  131,    2, 0x08 /* Private */,
       17,    0,  132,    2, 0x08 /* Private */,
       18,    0,  133,    2, 0x08 /* Private */,
-      19,    4,  134,    2, 0x08 /* Private */,
-      20,    0,  143,    2, 0x08 /* Private */,
+      19,    5,  134,    2, 0x08 /* Private */,
+      22,    0,  145,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
@@ -127,7 +130,7 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, QMetaType::Double,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, 0x80000000 | 20, 0x80000000 | 21,    2,    2,    2,    2,    2,
     QMetaType::Void,
 
        0        // eod
@@ -156,9 +159,22 @@ void System_CentralTimer_Connector::qt_static_metacall(QObject *_o, QMetaObject:
         case 14: _t->on_SunButton_clicked(); break;
         case 15: _t->on_ThousandTimesSpeed_clicked(); break;
         case 16: _t->on_TimeButton_1pm_clicked(); break;
-        case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4]))); break;
+        case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QVector<double>(*)>(_a[4])),(*reinterpret_cast< QVector<bool>(*)>(_a[5]))); break;
         case 18: _t->on_TimeButton_2pm_clicked(); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 17:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 4:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QVector<bool> >(); break;
+            case 3:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QVector<double> >(); break;
+            }
+            break;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
@@ -220,7 +236,7 @@ int System_CentralTimer_Connector::qt_metacall(QMetaObject::Call _c, int _id, vo
         _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 19)
-            *reinterpret_cast<int*>(_a[0]) = -1;
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 19;
     }
     return _id;

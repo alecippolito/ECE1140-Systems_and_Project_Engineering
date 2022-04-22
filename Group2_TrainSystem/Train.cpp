@@ -1,6 +1,6 @@
 #include "Train.h"
 #include "TrainModelUI.h"
-
+#include <QDebug>
     Train::Train(int num, Block *b)
         {
             //load track data

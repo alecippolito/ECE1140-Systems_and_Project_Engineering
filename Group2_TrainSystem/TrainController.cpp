@@ -32,9 +32,8 @@
                 }
                 if(trainVelocity<0){
                 trainVelocity = 0;
-                }
-
-                double e_k = speed-trainVelocity;
+                }             
+                double e_k = speed-trainVelocity*3.6;
                 double u_k = u_k_1 + (T/2)*(e_k+e_k_1);
                 powerCommand = (kp*e_k)+(ki*u_k);
          }
@@ -43,11 +42,6 @@
              powerCommand =120000;
          }
     }
-
-
-
-
-
 
         void TrainController :: setPowerCommand(double newPowerCommand){
 			powerCommand = newPowerCommand;
@@ -135,6 +129,9 @@
 		}
         void TrainController :: setT(int newT){
             T = newT;
+        }
+        int TrainController :: getT(){
+            return T;
         }
         double TrainController :: getSpeedLimit(){
             return speedLimit;

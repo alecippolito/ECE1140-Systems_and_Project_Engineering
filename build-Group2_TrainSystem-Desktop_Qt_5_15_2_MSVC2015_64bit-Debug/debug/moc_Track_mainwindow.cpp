@@ -10,6 +10,7 @@
 #include "../../Group2_TrainSystem/Track_mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
+#include <QtCore/QVector>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Track_mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -22,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Track_mainwindow_t {
-    QByteArrayData data[3];
-    char stringdata0[35];
+    QByteArrayData data[5];
+    char stringdata0[65];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,10 +35,13 @@ static const qt_meta_stringdata_Track_mainwindow_t qt_meta_stringdata_Track_main
     {
 QT_MOC_LITERAL(0, 0, 16), // "Track_mainwindow"
 QT_MOC_LITERAL(1, 17, 16), // "receiveTrainData"
-QT_MOC_LITERAL(2, 34, 0) // ""
+QT_MOC_LITERAL(2, 34, 0), // ""
+QT_MOC_LITERAL(3, 35, 15), // "QVector<double>"
+QT_MOC_LITERAL(4, 51, 13) // "QVector<bool>"
 
     },
-    "Track_mainwindow\0receiveTrainData\0"
+    "Track_mainwindow\0receiveTrainData\0\0"
+    "QVector<double>\0QVector<bool>"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,10 +59,10 @@ static const uint qt_meta_data_Track_mainwindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    4,   19,    2, 0x08 /* Private */,
+       1,    5,   19,    2, 0x08 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, QMetaType::Double,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, 0x80000000 | 3, 0x80000000 | 4,    2,    2,    2,    2,    2,
 
        0        // eod
 };
@@ -69,8 +73,21 @@ void Track_mainwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         auto *_t = static_cast<Track_mainwindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->receiveTrainData((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4]))); break;
+        case 0: _t->receiveTrainData((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QVector<double>(*)>(_a[4])),(*reinterpret_cast< QVector<bool>(*)>(_a[5]))); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 0:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 4:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QVector<bool> >(); break;
+            case 3:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QVector<double> >(); break;
+            }
+            break;
         }
     }
 }
@@ -109,7 +126,7 @@ int Track_mainwindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 1)
-            *reinterpret_cast<int*>(_a[0]) = -1;
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 1;
     }
     return _id;

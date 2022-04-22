@@ -75,6 +75,7 @@ class TrainController
         bool getLightsOn();
         void setHeadlightsOn(bool);
         void setT(int);
+        int getT();
         double getSpeedLimit();
         void setSpeedLimit(double);
         bool getAdvertisements();

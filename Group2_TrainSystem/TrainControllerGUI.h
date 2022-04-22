@@ -38,17 +38,13 @@ public:
     // *************************************************
     void updatePower();
     void updateSpeed();
-    void updateDoors();
-    void updateLights();
-    void updateMode();
     void updateBrake();
     void updateStatus();
-    void updateAdvertisements();
     void dispatchTrain();
     void startMoving();
-    void slowTrain();
-    void updateTemp();
+    void updateTrain();
     void setTrain(Train *t);
+    void getInfo();
 
 private slots:
     // *************************************************
@@ -71,6 +67,8 @@ private slots:
     void on_announcement4_clicked();
     void on_tempSubmit_clicked();
 
+    void on_kpkiSubmit_clicked();
+
 private:
     // *************************************************
     //              Generated Instance
@@ -83,7 +81,6 @@ private:
     int timer;
     bool dispatch = false;
     bool brake = false;
-    int getSpeed();
 
 protected:
     // *************************************************

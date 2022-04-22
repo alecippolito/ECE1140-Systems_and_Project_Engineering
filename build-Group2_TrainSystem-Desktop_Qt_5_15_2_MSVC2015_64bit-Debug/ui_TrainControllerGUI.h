@@ -71,6 +71,13 @@ public:
     QLabel *announcement4Label;
     QPushButton *tempSubmit;
     QPlainTextEdit *tempTextbox;
+    QLCDNumber *currentAuthority;
+    QLabel *authorityLabel;
+    QPlainTextEdit *kpTextbox;
+    QPlainTextEdit *kiTextbox;
+    QLabel *kpLabel;
+    QLabel *kpLabel_2;
+    QPushButton *kpkiSubmit;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -270,6 +277,34 @@ public:
         tempTextbox->setGeometry(QRect(590, 190, 51, 41));
         tempTextbox->setFont(font1);
         tempTextbox->setBackgroundVisible(false);
+        currentAuthority = new QLCDNumber(centralwidget);
+        currentAuthority->setObjectName(QString::fromUtf8("currentAuthority"));
+        currentAuthority->setGeometry(QRect(390, 10, 81, 91));
+        authorityLabel = new QLabel(centralwidget);
+        authorityLabel->setObjectName(QString::fromUtf8("authorityLabel"));
+        authorityLabel->setGeometry(QRect(390, 100, 81, 16));
+        authorityLabel->setFont(font1);
+        authorityLabel->setAlignment(Qt::AlignCenter);
+        kpTextbox = new QPlainTextEdit(centralwidget);
+        kpTextbox->setObjectName(QString::fromUtf8("kpTextbox"));
+        kpTextbox->setGeometry(QRect(580, 430, 51, 41));
+        kpTextbox->setFont(font1);
+        kiTextbox = new QPlainTextEdit(centralwidget);
+        kiTextbox->setObjectName(QString::fromUtf8("kiTextbox"));
+        kiTextbox->setGeometry(QRect(580, 480, 51, 41));
+        kiTextbox->setFont(font1);
+        kpLabel = new QLabel(centralwidget);
+        kpLabel->setObjectName(QString::fromUtf8("kpLabel"));
+        kpLabel->setGeometry(QRect(640, 440, 151, 16));
+        kpLabel->setFont(font1);
+        kpLabel_2 = new QLabel(centralwidget);
+        kpLabel_2->setObjectName(QString::fromUtf8("kpLabel_2"));
+        kpLabel_2->setGeometry(QRect(640, 490, 141, 16));
+        kpLabel_2->setFont(font1);
+        kpkiSubmit = new QPushButton(centralwidget);
+        kpkiSubmit->setObjectName(QString::fromUtf8("kpkiSubmit"));
+        kpkiSubmit->setGeometry(QRect(640, 530, 80, 21));
+        kpkiSubmit->setFont(font);
         TrainControllerGUI->setCentralWidget(centralwidget);
         menubar = new QMenuBar(TrainControllerGUI);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -323,6 +358,10 @@ public:
         tempSubmit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
         tempTextbox->setPlainText(QString());
         tempTextbox->setPlaceholderText(QCoreApplication::translate("TrainControllerGUI", "Temperature", nullptr));
+        authorityLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Authority", nullptr));
+        kpLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Kp (suggested 250)", nullptr));
+        kpLabel_2->setText(QCoreApplication::translate("TrainControllerGUI", "Ki (suggested 250)", nullptr));
+        kpkiSubmit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
     } // retranslateUi
 
 };
