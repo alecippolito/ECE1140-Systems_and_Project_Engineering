@@ -44,12 +44,12 @@ class Train{
             TrainPhysics *trainMetrics;
             MainWindow *trainUI;
             bool atEndOfBlock = false;
-            TrackModel trackModel;
+            TrackModel *trackModel;
             int blocksLeft;
             bool adSpace = true;    //true = snowpiercer, false = train to busan
             int speedLimitKmHr;
 
-    Train(int, Block *b);
+    Train(int, Block *b, TrackModel *trackModelPtr);
     //~Train();
     void updateUI();
     void setPower(double, double);

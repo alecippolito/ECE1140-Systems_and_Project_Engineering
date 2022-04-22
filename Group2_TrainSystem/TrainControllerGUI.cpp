@@ -41,6 +41,8 @@ TrainControllerGUI::~TrainControllerGUI()
 
 void TrainControllerGUI :: timerEvent(QTimerEvent *event)
 {
+    if(!isPaused){
+    if(train != nullptr){
     if (dispatch == false){
             dispatchTrain();
     }
@@ -332,23 +334,26 @@ void TrainControllerGUI::on_announcement4_clicked()
     tc.setAnnouncement("Train is in Emergency State");
     train->setAnnouncement(tc.getAnnouncement());
 }
+            void TrainControllerGUI::on_tempSubmit_clicked()
+            {
+                QString tempNum = ui->tempTextbox->toPlainText();
+                double tempVal = tempNum.toDouble();
+                tc.setNewTemp(tempVal);
+            }
 
-void TrainControllerGUI::on_tempSubmit_clicked()
+
+            void TrainControllerGUI::on_kpkiSubmit_clicked()
+            {
+                QString kpNum = ui -> kpTextbox -> toPlainText();
+                QString kiNum = ui -> kiTextbox -> toPlainText();
+                double kpVal = kpNum.toDouble();
+                double kiVal = kiNum.toDouble();
+                tc.setKp(kpVal);
+                tc.setKi(kiVal);
+                startMoving();
+            }
+
+void TrainControllerGUI::setPaused(bool b)
 {
-    QString tempNum = ui->tempTextbox->toPlainText();
-    double tempVal = tempNum.toDouble();
-    tc.setNewTemp(tempVal);
+    isPaused = b;
 }
-
-
-void TrainControllerGUI::on_kpkiSubmit_clicked()
-{
-    QString kpNum = ui -> kpTextbox -> toPlainText();
-    QString kiNum = ui -> kiTextbox -> toPlainText();
-    double kpVal = kpNum.toDouble();
-    double kiVal = kiNum.toDouble();
-    tc.setKp(kpVal);
-    tc.setKi(kiVal);
-    startMoving();
-}
-

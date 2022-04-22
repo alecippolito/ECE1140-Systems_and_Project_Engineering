@@ -45,6 +45,7 @@ public:
     void updateTrain();
     void setTrain(Train *t);
     void getInfo();
+    void setPaused(bool);
 
 private slots:
     // *************************************************
@@ -81,6 +82,9 @@ private:
     int timer;
     bool dispatch = false;
     bool brake = false;
+    int getSpeedLimit();
+    bool isPaused = false;
+
 
 protected:
     // *************************************************

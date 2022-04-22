@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //default "false" colors for the failure/emergency brake status lights
     ui->BrakeFailureStatusLight->setStyleSheet("background-color:red");
     ui->EngineFailureStatusLight->setStyleSheet("background-color:red");
     ui->SignalPickupFailureStatusLight->setStyleSheet("background-color:red");
@@ -24,48 +25,57 @@ void MainWindow::updateTrain(Train *t)
     train = t;
 }
 
+//failure/emergency brake buttons, able to be toggled
 
 void MainWindow::on_BrakeFailureButton_clicked()
 {
-    if(train->brakeFailure == false){
-    train->setFailureBrake(true);
+    if(train->brakeFailure == false)
+    {
+        train->setFailureBrake(true);
     }
-    else{
+    else
+    {
         train->setFailureBrake(false);
     }
 }
 
 void MainWindow::on_EngineFailureButton_clicked()
 {
-    if(train->engineFailure == false){
-    train->setFailureEngine(true);
+    if(train->engineFailure == false)
+    {
+        train->setFailureEngine(true);
     }
-    else{
+    else
+    {
         train->setFailureEngine(false);
     }
 }
 
 void MainWindow::on_SignalPickupFailureButton_clicked()
 {
-    if(train->signalPickupFailure == false){
-    train->setFailureSignalPickup(true);
+    if(train->signalPickupFailure == false)
+    {
+        train->setFailureSignalPickup(true);
     }
-    else{
+    else
+    {
         train->setFailureSignalPickup(false);
     }
 }
 
 void MainWindow::on_EmergencyBrakeButton_clicked()
 {
-    if(train->passengerBrake == false){
-    train->setPassengerBrake(true);
+    if(train->passengerBrake == false)
+    {
+        train->setPassengerBrake(true);
     }
-    else{
+    else
+    {
         train->setPassengerBrake(false);
     }
 }
 
-
+//Label updating functions, called from the train car to keep UI stats accurate
 
 void MainWindow::updateNumCars(int num)
 {
@@ -151,7 +161,7 @@ void MainWindow::updateBrakeFailureStatus(bool f)
 {
     if(f == false)
     {
-    ui->BrakeFailureStatusLight->setStyleSheet("background-color:red");     //SET COLOR TO GREEN/RED
+        ui->BrakeFailureStatusLight->setStyleSheet("background-color:red");     //SET COLOR TO GREEN/RED
     }
     else
     {
@@ -163,7 +173,7 @@ void MainWindow::updateSignalPickupFailureStatus(bool f)
 {
     if(f == false)
     {
-    ui->SignalPickupFailureStatusLight->setStyleSheet("background-color:red");     //SET COLOR TO GREEN/RED
+        ui->SignalPickupFailureStatusLight->setStyleSheet("background-color:red");     //SET COLOR TO GREEN/RED
     }
     else
     {
@@ -175,7 +185,7 @@ void MainWindow::updateEngineFailureStatus(bool f)
 {
     if(f == false)
     {
-    ui->EngineFailureStatusLight->setStyleSheet("background-color:red");     //SET COLOR TO GREEN/RED
+        ui->EngineFailureStatusLight->setStyleSheet("background-color:red");     //SET COLOR TO GREEN/RED
     }
     else
     {
@@ -187,7 +197,7 @@ void MainWindow::updateEmergencyBrakeStatus(bool f)
 {
     if(f == false)
     {
-    ui->EmergencyBrakeStatusLight->setStyleSheet("background-color:red");     //SET COLOR TO GREEN/RED
+        ui->EmergencyBrakeStatusLight->setStyleSheet("background-color:red");     //SET COLOR TO GREEN/RED
     }
     else
     {

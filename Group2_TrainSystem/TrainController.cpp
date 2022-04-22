@@ -32,7 +32,7 @@
                 }
                 if(trainVelocity<0){
                 trainVelocity = 0;
-                }             
+                }
                 double e_k = speed-trainVelocity*3.6;
                 double u_k = u_k_1 + (T/2)*(e_k+e_k_1);
                 powerCommand = (kp*e_k)+(ki*u_k);
