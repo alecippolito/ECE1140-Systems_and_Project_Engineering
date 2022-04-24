@@ -450,6 +450,10 @@ debug/moc_ctc_dispatchtrain.cpp: ../Group2_TrainSystem/ctc_dispatchtrain.h \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QSizeF \
 		D:/Qt/6.2.3/mingw_64/include/QtGui/QTransform \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qnativeinterface.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QTime \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qdatetime.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcalendar.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qlocale.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.2.3/mingw_64/bin/moc.exe
 	D:\Qt\6.2.3\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/username/Documents/ECE1140-Group2/build-Group2_TrainSystem-Desktop_Qt_6_2_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.2.3/mingw_64/mkspecs/win32-g++ -IC:/Users/username/Documents/ECE1140-Group2/Group2_TrainSystem -ID:/Qt/6.2.3/mingw_64/include -ID:/Qt/6.2.3/mingw_64/include/QtWidgets -ID:/Qt/6.2.3/mingw_64/include/QtGui -ID:/Qt/6.2.3/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw900_64/x86_64-w64-mingw32/include ..\Group2_TrainSystem\ctc_dispatchtrain.h -o debug\moc_ctc_dispatchtrain.cpp
@@ -743,6 +747,10 @@ debug/moc_system_centraltimer_connector.cpp: ../Group2_TrainSystem/system_centra
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qvector.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
+		../Group2_TrainSystem/Track_controller.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QString \
+		../Group2_TrainSystem/PLC.h \
+		../Group2_TrainSystem/Track_mainwindow.h \
 		debug/moc_predefs.h \
 		D:/Qt/6.2.3/mingw_64/bin/moc.exe
 	D:\Qt\6.2.3\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/username/Documents/ECE1140-Group2/build-Group2_TrainSystem-Desktop_Qt_6_2_3_MinGW_64_bit-Debug/debug/moc_predefs.h -ID:/Qt/6.2.3/mingw_64/mkspecs/win32-g++ -IC:/Users/username/Documents/ECE1140-Group2/Group2_TrainSystem -ID:/Qt/6.2.3/mingw_64/include -ID:/Qt/6.2.3/mingw_64/include/QtWidgets -ID:/Qt/6.2.3/mingw_64/include/QtGui -ID:/Qt/6.2.3/mingw_64/include/QtCore -I. -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -ID:/Qt/Tools/mingw900_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -ID:/Qt/Tools/mingw900_64/x86_64-w64-mingw32/include ..\Group2_TrainSystem\system_centraltimer_connector.h -o debug\moc_system_centraltimer_connector.cpp
@@ -1646,6 +1654,10 @@ debug/ctc_dispatchtrain.o: ../Group2_TrainSystem/ctc_dispatchtrain.cpp ../Group2
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QSizeF \
 		D:/Qt/6.2.3/mingw_64/include/QtGui/QTransform \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qnativeinterface.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QTime \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qdatetime.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qcalendar.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/qlocale.h \
 		ui_ctc_dispatchtrain.h \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QMessageBox \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qmessagebox.h \
@@ -1947,6 +1959,10 @@ debug/main.o: ../Group2_TrainSystem/main.cpp ../Group2_TrainSystem/system_centra
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qvector.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
+		../Group2_TrainSystem/Track_controller.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QString \
+		../Group2_TrainSystem/PLC.h \
+		../Group2_TrainSystem/Track_mainwindow.h \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/QApplication \
 		D:/Qt/6.2.3/mingw_64/include/QtWidgets/qapplication.h \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qcoreapplication.h \
@@ -2115,6 +2131,10 @@ debug/system_centraltimer_connector.o: ../Group2_TrainSystem/system_centraltimer
 		D:/Qt/6.2.3/mingw_64/include/QtCore/qvector.h \
 		../Group2_TrainSystem/Block.h \
 		../Group2_TrainSystem/TrainPhysics.h \
+		../Group2_TrainSystem/Track_controller.h \
+		D:/Qt/6.2.3/mingw_64/include/QtCore/QString \
+		../Group2_TrainSystem/PLC.h \
+		../Group2_TrainSystem/Track_mainwindow.h \
 		ui_system_centraltimer_connector.h \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QDate \
 		D:/Qt/6.2.3/mingw_64/include/QtCore/QDebug \
