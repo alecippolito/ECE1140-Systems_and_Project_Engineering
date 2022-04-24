@@ -26,8 +26,8 @@ CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
 
     //you WILL set the font to Consolas
     QFont font("Consolas",9);
-    ui->label->setFont(font);
-    ui->label_2->setFont(font);
+    ui->DataLabel->setFont(font);
+    ui->Data->setFont(font);
 
     //make a connection to make sure the view Trains function works properly
     QObject::connect(this, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), this, SLOT(updateTrainDisplay()));
@@ -76,16 +76,21 @@ void CTC_MainWindow::RedLineSelected()
     emit sendStationData(true,stationDistancesRed,stationNamesRed,stationAuthoritiesRed,stationAuthorityVectorsRed);
 
     //send current time to dispatch window
-    QObject::connect(this, SIGNAL(sendTime(int,int)), dp, SLOT(updateTimeDisplay(int,int)));
-    emit sendTime(currentDay,currentSecondsSinceMidnight);
+    QObject::connect(this, SIGNAL(sendInitialTime(int,int)), dp, SLOT(updateTimeDisplay(int,int)));
+    emit sendInitialTime(currentDay,currentSecondsSinceMidnight);
 
     //if the dispatch window needs it, send the current time
     QObject::connect(dp, SIGNAL(requestSystemTime()), this, SLOT(receiveTimeRequest()));
     QObject::connect(this, SIGNAL(sendTime(int,int)),dp, SLOT(receiveSystemTime(int,int)));
 
     //connect the actual dispatch signals
-    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double,QVector<bool>,QTime,QString)), this, SLOT(receiveDispatchImmediate(bool,int,double,QVector<bool>,QTime,QString)));
-    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString)), this, SLOT(receiveDispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString)));
+    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double,QVector<bool>,int,QTime,QString)), this, SLOT(receiveDispatchImmediate(bool,int,double,QVector<bool>,int,QTime,QString)));
+    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int,QVector<bool>,int,QTime,QString)), this, SLOT(receiveDispatchSchedule(bool,int,double,int,QVector<bool>,int,QTime,QString)));
+    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,QVector<bool>,int,QTime,int,QTime,QString)), this, SLOT(receiveDispatchSchedule(bool,int,double,QVector<bool>,int,QTime,int,QTime,QString)));
+
+    //connect the signals for requesting and receiving the system mode
+    QObject::connect(dp, SIGNAL(requestCTCMode()), this, SLOT(receiveModeRequest()));
+    QObject::connect(this, SIGNAL(sendCTCmode(bool)), dp, SLOT(receiveCTCMode(bool)));
 }
 
 void CTC_MainWindow::GreenLineSelected()
@@ -99,19 +104,24 @@ void CTC_MainWindow::GreenLineSelected()
     emit sendStationData(false,stationDistancesGreen,stationNamesGreen,stationAuthoritiesGreen,stationAuthorityVectorsGreen);
 
     //send current time to dispatch window
-    QObject::connect(this, SIGNAL(sendTime(int,int)), dp, SLOT(updateTimeDisplay(int,int)));
-    emit sendTime(currentDay,currentSecondsSinceMidnight);
+    QObject::connect(this, SIGNAL(sendInitialTime(int,int)), dp, SLOT(updateTimeDisplay(int,int)));
+    emit sendInitialTime(currentDay,currentSecondsSinceMidnight);
 
     //if the dispatch window needs it, send the current time
     QObject::connect(dp, SIGNAL(requestSystemTime()), this, SLOT(receiveTimeRequest()));
     QObject::connect(this, SIGNAL(sendTime(int,int)),dp, SLOT(receiveSystemTime(int,int)));
 
     //connect the actual dispatch signals
-    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double,QVector<bool>,QTime,QString)), this, SLOT(receiveDispatchImmediate(bool,int,double,QVector<bool>,QTime,QString)));
-    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString)), this, SLOT(receiveDispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString)));
+    QObject::connect(dp, SIGNAL(dispatchImmediate(bool,int,double,QVector<bool>,int,QTime,QString)), this, SLOT(receiveDispatchImmediate(bool,int,double,QVector<bool>,int,QTime,QString)));
+    QObject::connect(dp, SIGNAL(dispatchStandby(bool,int,double,int,QVector<bool>,int,QTime,QString)), this, SLOT(receiveDispatchStandby(bool,int,double,int,QVector<bool>,int,QTime,QString)));
+    QObject::connect(dp, SIGNAL(dispatchSchedule(bool,int,double,QVector<bool>,int,QTime,int,QTime,QString)), this, SLOT(receiveDispatchSchedule(bool,int,double,QVector<bool>,int,QTime,int,QTime,QString)));
+
+    //connect the signals for requesting and receiving the system mode
+    QObject::connect(dp, SIGNAL(requestCTCMode()), this, SLOT(receiveModeRequest()));
+    QObject::connect(this, SIGNAL(sendCTCmode(bool)), dp, SLOT(receiveCTCMode(bool)));
 }
 
-void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, double sugg_speed_temp, QVector<bool> authorityVector_temp, QTime arrivalTime_temp, QString destination_temp)
+void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, double sugg_speed_temp, QVector<bool> authorityVector_temp, int arrivalDate_temp, QTime arrivalTime_temp, QString destination_temp)
 {
     cl->hide();
 
@@ -134,6 +144,7 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
     tempTrain.currentBlock = (redline_temp == true ? 77 : 152);
     tempTrain.nextStation = (redline_temp == true ? "Glenbury" : "Shadyside");
     tempTrain.destination = destination_temp;
+    tempTrain.ArriveDay = days[arrivalDate_temp];
     tempTrain.arrivalTime = arrivalTime_temp;
 
     //check if block outside of yard is open
@@ -151,7 +162,7 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
     }
 }
 
-void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, double sugg_speed_temp, int departTime_temp, QVector<bool> authorityVector_temp, QTime arrivalTime_temp, QString destination_temp)
+void CTC_MainWindow::receiveDispatchStandby(bool redline_temp, int auth_temp, double sugg_speed_temp, int departTime_temp, QVector<bool> authorityVector_temp,int arrivalDate_temp, QTime arrivalTime_temp, QString destination_temp)
 {
     cl->hide();
 
@@ -175,6 +186,7 @@ void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int auth_temp, d
     tempTrain.currentBlock = (redline_temp == true ? 77 : 152);
     tempTrain.nextStation = (redline_temp == true ? "Glenbury" : "Shadyside");
     tempTrain.arrivalTime = arrivalTime_temp;
+    tempTrain.ArriveDay = days[arrivalDate_temp];
     tempTrain.destination = destination_temp;
     TrainStandby.push_back(tempTrain);
 }
@@ -429,15 +441,15 @@ void CTC_MainWindow::on_previousButton_clicked()
         trackSetGreen--;
     }
 
-    if (ui->label->text() == "Train Statuses")
+    if (ui->DataLabel->text() == "Train Statuses")
     {
         on_actionView_Train_Statuses_triggered();
     }
-    else if (ui->label->text() == "Red Line Track Block Statuses")
+    else if (ui->DataLabel->text() == "Red Line Track Block Statuses")
     {
         on_actionView_Red_Line_Statuses_triggered();
     }
-    else if (ui->label->text() == "Green Line Track Block Statuses")
+    else if (ui->DataLabel->text() == "Green Line Track Block Statuses")
     {
         on_actionView_Green_Line_Statuses_triggered();
     }
@@ -460,15 +472,15 @@ void CTC_MainWindow::on_NextButton_clicked()
         trackSetGreen++;
     }
 
-    if (ui->label->text() == "Train Statuses")
+    if (ui->DataLabel->text() == "Train Statuses")
     {
         on_actionView_Train_Statuses_triggered();
     }
-    else if (ui->label->text() == "Red Line Track Block Statuses")
+    else if (ui->DataLabel->text() == "Red Line Track Block Statuses")
     {
         on_actionView_Red_Line_Statuses_triggered();
     }
-    else if (ui->label->text() == "Green Line Track Block Statuses")
+    else if (ui->DataLabel->text() == "Green Line Track Block Statuses")
     {
         on_actionView_Green_Line_Statuses_triggered();
     }
@@ -492,8 +504,8 @@ void CTC_MainWindow::on_actionView_Green_Line_Statuses_triggered()
     }
 
 
-    ui->label->setText("Green Line Track Block Statuses");
-    ui->label_2->setText(TrackString);
+    ui->DataLabel->setText("Green Line Track Block Statuses");
+    ui->Data->setText(TrackString);
     ui->previousButton->setVisible(true);
     ui->NextButton->setVisible(true);
 }
@@ -517,15 +529,15 @@ void CTC_MainWindow::on_actionView_Red_Line_Statuses_triggered()
     }
 
 
-    ui->label->setText("Red Line Track Block Statuses");
-    ui->label_2->setText(TrackString);
+    ui->DataLabel->setText("Red Line Track Block Statuses");
+    ui->Data->setText(TrackString);
     ui->previousButton->setVisible(true);
     ui->NextButton->setVisible(true);
 }
 
 void CTC_MainWindow::updateTrainDisplay()
 {
-    if (ui->label->text() == "Dispatched Trains")
+    if (ui->DataLabel->text() == "Dispatched Trains")
     {
         on_actionView_Train_Statuses_triggered();
     }
@@ -535,8 +547,8 @@ void CTC_MainWindow::on_actionView_Train_Statuses_triggered()
 {
     //Display the values of the trains you have dispatched by looping through a vector of dispatch Train values
 
-    QString displayString = "Train Number    Line    Current Block    Next Station               Destination                Arrival Time    \n";
-    //16,8,17,27,27,16
+    QString displayString = "Train Number    Line    Current Block    Next Station               Destination                Arrival Date    Arrival Time    \n";
+    //16,8,17,27,27,16,16
 
     for (unsigned int i = 0; i < TrainsDispatched.size(); i++)
     {
@@ -545,11 +557,12 @@ void CTC_MainWindow::on_actionView_Train_Statuses_triggered()
         displayString += QString::number(TrainsDispatched[i].currentBlock) + spaces(17 - QString::number(TrainsDispatched[i].currentBlock).size());
         displayString += TrainsDispatched[i].nextStation + spaces(27 - TrainsDispatched[i].nextStation.size());
         displayString += TrainsDispatched[i].destination + spaces(27 - TrainsDispatched[i].destination.size());
+        displayString += TrainsDispatched[i].ArriveDay + spaces(16-TrainsDispatched[i].ArriveDay.size());
         displayString += TrainsDispatched[i].arrivalTime.toString("hh:mm A") + "\n";
     }
 
-    ui->label->setText("Dispatched Trains");
-    ui->label_2->setText(displayString);
+    ui->DataLabel->setText("Dispatched Trains");
+    ui->Data->setText(displayString);
     ui->previousButton->setVisible(true);
     ui->NextButton->setVisible(true);
 }
@@ -587,7 +600,7 @@ void CTC_MainWindow::checkDispatch()
 
             //remove this train from the list, break out of the function
             TrainQueue.removeFirst();
-            return;
+            //return;
         }
     }
 
@@ -606,7 +619,7 @@ void CTC_MainWindow::checkDispatch()
 
                 //remove this train from the list, break out of the function
                 TrainStandby.remove(i);
-                return;
+                //return;
             }
             else
             {
@@ -614,6 +627,31 @@ void CTC_MainWindow::checkDispatch()
             }
         }
     }
+
+    //finally, (lowest priority) loop through trains in the schedule, only in automatic mode
+    if (ui->actionAutomatic->isChecked() == true)
+    {
+        for (unsigned int i = 0; i < TrainSchedule.size(); i++)
+        {
+            if (tempMinute == TrainSchedule[i].dispatchTime)
+            {
+                if (TrainSchedule[i].dispatched == false)
+                {
+                    if ((TrainSchedule[i].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
+                    {
+                        TrainsDispatched.push_back(TrainSchedule[i]);
+                        emit sendTrainData(TrainSchedule[i].TrainNumber,TrainSchedule[i].redline,TrainSchedule[i].authority,TrainSchedule[i].suggestedSpeed,TrainSchedule[i].authorityVector);
+                        TrainSchedule[i].dispatched = true;
+                    }
+                    else
+                    {
+                        TrainQueue.push_back(TrainSchedule[i]);
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 void CTC_MainWindow::receiveTimeRequest()
@@ -636,5 +674,88 @@ void CTC_MainWindow::receiveBlockStatus(bool redline_temp, int trackNumber, int 
         TrackVectorGreen[trackNumber].occupancy = occupancy_temp;
         TrackVectorGreen[trackNumber].open = open_temp;
     }
+}
+
+void CTC_MainWindow::on_actionView_Schedule_triggered()
+{
+    //view the list of scheduled trains
+    //Display the values of the trains you have dispatched by looping through a vector of dispatch Train values
+
+    QString displayString = "Train Number    Line    Departure Day    Departure Time    Arrival Day    Arrival Time    Destination                \n";
+    //16,8,17,18,15,16,27
+
+    for (unsigned int i = 0; i < TrainSchedule.size(); i++)
+    {
+        displayString += QString::number(TrainSchedule[i].TrainNumber) + spaces(16-QString::number(TrainSchedule[i].TrainNumber).size());
+        displayString += (TrainSchedule[i].redline == true ? "Red" : "Green") + spaces(8 - (TrainSchedule[i].redline == true ? 3 : 5));
+        displayString += TrainSchedule[i].DepartDay + spaces(17-TrainSchedule[i].DepartDay.size());
+        displayString += TrainSchedule[i].departureTime.toString("hh:mm A") + spaces(18-TrainSchedule[i].departureTime.toString("hh:mm A").size());
+        displayString += TrainSchedule[i].ArriveDay + spaces(15-TrainSchedule[i].ArriveDay.size());
+        displayString += TrainSchedule[i].arrivalTime.toString("hh:mm A") + spaces(16-TrainSchedule[i].arrivalTime.toString("hh:mm A").size());
+        displayString += TrainSchedule[i].destination + spaces(27 - TrainSchedule[i].destination.size()) + "\n";
+    }
+
+    ui->DataLabel->setText("Train Schedule");
+    ui->Data->setText(displayString);
+    ui->previousButton->setVisible(true);
+    ui->NextButton->setVisible(true);
+}
+
+void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, int departTimeMinute_temp, double speed_temp, QVector<bool> authorityVector_temp,int arriveDate_temp, QTime arrivalTime_temp,int departDate_temp, QTime departTime_temp, QString destination_temp)
+{
+    cl->hide();
+
+    //with the calculated suggested speed, turn that into a vector
+    QVector<double> suggestedSpeedVector = QVector<double>(authorityVector_temp.size(),0);
+    for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
+    {
+        if (authorityVector_temp[i] == true)
+        {
+            suggestedSpeedVector[i] = speed_temp;
+        }
+    }
+
+    //convert the minute for departure time in the week to a QTime variable
+
+    //add train to list of trains on standby
+    Train_CTC tempTrain;
+    TrainNumber++;
+    tempTrain.TrainNumber = TrainNumber;
+    tempTrain.dispatchTime = departTimeMinute_temp;
+    tempTrain.redline = redline_temp;
+    tempTrain.suggestedSpeed = suggestedSpeedVector;
+    tempTrain.authorityVector = authorityVector_temp;
+    tempTrain.currentBlock = (redline_temp == true ? 77 : 152);
+    tempTrain.nextStation = (redline_temp == true ? "Glenbury" : "Shadyside");
+    tempTrain.arrivalTime = arrivalTime_temp;
+    tempTrain.destination = destination_temp;
+    tempTrain.departureTime = departTime_temp;
+    tempTrain.ArriveDay = days[arriveDate_temp];
+    tempTrain.DepartDay = days[departDate_temp];
+    tempTrain.dispatched = false;
+    TrainSchedule.push_back(tempTrain);
+
+    //if the user is already viewing the train schedule, update the list
+    if (ui->DataLabel->text() == "Train Schedule")
+    {
+        on_actionView_Schedule_triggered();
+    }
+}
+
+void CTC_MainWindow::on_actionManual_triggered()
+{
+    ui->actionAutomatic->setChecked(false);
+    ui->CTCModeLabel->setText("Manual Mode");
+}
+
+void CTC_MainWindow::on_actionAutomatic_triggered()
+{
+    ui->actionManual->setChecked(false);
+    ui->CTCModeLabel->setText("Automatic Mode");
+}
+
+void CTC_MainWindow::receiveModeRequest()
+{
+    emit sendCTCmode(ui->actionManual->isChecked());
 }
 

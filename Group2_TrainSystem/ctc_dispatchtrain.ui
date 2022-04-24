@@ -188,7 +188,7 @@
   <widget class="QPushButton" name="DispatchButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>120</x>
      <y>430</y>
      <width>93</width>
      <height>29</height>
@@ -222,6 +222,19 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ScheduleButton">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>430</y>
+     <width>121</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add to Schedule</string>
    </property>
   </widget>
  </widget>
