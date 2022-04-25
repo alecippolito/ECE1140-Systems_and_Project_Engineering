@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_TrackModel_t {
-    QByteArrayData data[10];
-    char stringdata0[136];
+    QByteArrayData data[13];
+    char stringdata0[198];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,13 +42,18 @@ QT_MOC_LITERAL(5, 59, 12), // "sendStatuses"
 QT_MOC_LITERAL(6, 72, 18), // "sendStatusesVector"
 QT_MOC_LITERAL(7, 91, 13), // "QVector<bool>"
 QT_MOC_LITERAL(8, 105, 15), // "changeOccupancy"
-QT_MOC_LITERAL(9, 121, 14) // "changeStatuses"
+QT_MOC_LITERAL(9, 121, 14), // "changeStatuses"
+QT_MOC_LITERAL(10, 136, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(11, 158, 34), // "on_blockNumberSpinBox_valueCh..."
+QT_MOC_LITERAL(12, 193, 4) // "arg1"
 
     },
     "TrackModel\0sendOccupancy\0\0sendOccupancyVector\0"
     "QVector<int>\0sendStatuses\0sendStatusesVector\0"
     "QVector<bool>\0changeOccupancy\0"
-    "changeStatuses"
+    "changeStatuses\0on_pushButton_clicked\0"
+    "on_blockNumberSpinBox_valueChanged\0"
+    "arg1"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +63,7 @@ static const uint qt_meta_data_TrackModel[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,14 +71,16 @@ static const uint qt_meta_data_TrackModel[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    3,   44,    2, 0x06 /* Public */,
-       3,    1,   51,    2, 0x06 /* Public */,
-       5,    3,   54,    2, 0x06 /* Public */,
-       6,    1,   61,    2, 0x06 /* Public */,
+       1,    3,   54,    2, 0x06 /* Public */,
+       3,    1,   61,    2, 0x06 /* Public */,
+       5,    3,   64,    2, 0x06 /* Public */,
+       6,    1,   71,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    3,   64,    2, 0x08 /* Private */,
-       9,    3,   71,    2, 0x08 /* Private */,
+       8,    3,   74,    2, 0x08 /* Private */,
+       9,    3,   81,    2, 0x08 /* Private */,
+      10,    0,   88,    2, 0x08 /* Private */,
+      11,    1,   89,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Int,    2,    2,    2,
@@ -84,6 +91,8 @@ static const uint qt_meta_data_TrackModel[] = {
  // slots: parameters
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Int,    2,    2,    2,
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Bool,    2,    2,    2,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   12,
 
        0        // eod
 };
@@ -100,6 +109,8 @@ void TrackModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->sendStatusesVector((*reinterpret_cast< QVector<bool>(*)>(_a[1]))); break;
         case 4: _t->changeOccupancy((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         case 5: _t->changeStatuses((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3]))); break;
+        case 6: _t->on_pushButton_clicked(); break;
+        case 7: _t->on_blockNumberSpinBox_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -182,13 +193,13 @@ int TrackModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }

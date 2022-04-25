@@ -67,7 +67,6 @@ private slots:
     void on_announcment3_clicked();
     void on_announcement4_clicked();
     void on_tempSubmit_clicked();
-
     void on_kpkiSubmit_clicked();
 
 private:
@@ -84,7 +83,6 @@ private:
     bool brake = false;
     int getSpeedLimit();
     bool isPaused = false;
-
 
 protected:
     // *************************************************

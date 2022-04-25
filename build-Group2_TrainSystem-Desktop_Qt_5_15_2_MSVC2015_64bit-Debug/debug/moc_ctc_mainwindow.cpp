@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CTC_MainWindow_t {
-    QByteArrayData data[23];
-    char stringdata0[479];
+    QByteArrayData data[24];
+    char stringdata0[498];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -55,7 +55,8 @@ QT_MOC_LITERAL(18, 380, 11), // "receiveTime"
 QT_MOC_LITERAL(19, 392, 18), // "receiveTimeRequest"
 QT_MOC_LITERAL(20, 411, 24), // "receiveDispatchImmediate"
 QT_MOC_LITERAL(21, 436, 23), // "receiveDispatchSchedule"
-QT_MOC_LITERAL(22, 460, 18) // "receiveBlockStatus"
+QT_MOC_LITERAL(22, 460, 18), // "receiveBlockStatus"
+QT_MOC_LITERAL(23, 479, 18) // "updateTrainDisplay"
 
     },
     "CTC_MainWindow\0sendStationData\0\0"
@@ -71,7 +72,8 @@ QT_MOC_LITERAL(22, 460, 18) // "receiveBlockStatus"
     "on_actionView_Train_Statuses_triggered\0"
     "receiveTime\0receiveTimeRequest\0"
     "receiveDispatchImmediate\0"
-    "receiveDispatchSchedule\0receiveBlockStatus"
+    "receiveDispatchSchedule\0receiveBlockStatus\0"
+    "updateTrainDisplay"
 };
 #undef QT_MOC_LITERAL
 
@@ -81,7 +83,7 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -89,24 +91,25 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    5,   94,    2, 0x06 /* Public */,
-       7,    5,  105,    2, 0x06 /* Public */,
-       9,    2,  116,    2, 0x06 /* Public */,
+       1,    5,   99,    2, 0x06 /* Public */,
+       7,    5,  110,    2, 0x06 /* Public */,
+       9,    2,  121,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      10,    0,  121,    2, 0x08 /* Private */,
-      11,    0,  122,    2, 0x08 /* Private */,
-      12,    0,  123,    2, 0x08 /* Private */,
-      13,    0,  124,    2, 0x08 /* Private */,
-      14,    0,  125,    2, 0x08 /* Private */,
-      15,    0,  126,    2, 0x08 /* Private */,
-      16,    0,  127,    2, 0x08 /* Private */,
-      17,    0,  128,    2, 0x08 /* Private */,
-      18,    2,  129,    2, 0x08 /* Private */,
-      19,    0,  134,    2, 0x08 /* Private */,
-      20,    4,  135,    2, 0x08 /* Private */,
-      21,    5,  144,    2, 0x08 /* Private */,
-      22,    4,  155,    2, 0x08 /* Private */,
+      10,    0,  126,    2, 0x08 /* Private */,
+      11,    0,  127,    2, 0x08 /* Private */,
+      12,    0,  128,    2, 0x08 /* Private */,
+      13,    0,  129,    2, 0x08 /* Private */,
+      14,    0,  130,    2, 0x08 /* Private */,
+      15,    0,  131,    2, 0x08 /* Private */,
+      16,    0,  132,    2, 0x08 /* Private */,
+      17,    0,  133,    2, 0x08 /* Private */,
+      18,    2,  134,    2, 0x08 /* Private */,
+      19,    0,  139,    2, 0x08 /* Private */,
+      20,    6,  140,    2, 0x08 /* Private */,
+      21,    7,  153,    2, 0x08 /* Private */,
+      22,    4,  168,    2, 0x08 /* Private */,
+      23,    0,  177,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool, 0x80000000 | 3, 0x80000000 | 4, 0x80000000 | 5, 0x80000000 | 6,    2,    2,    2,    2,    2,
@@ -124,9 +127,10 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, 0x80000000 | 8,    2,    2,    2,    2,
-    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, QMetaType::Int, 0x80000000 | 8,    2,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, 0x80000000 | 8, QMetaType::QTime, QMetaType::QString,    2,    2,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, QMetaType::Int, 0x80000000 | 8, QMetaType::QTime, QMetaType::QString,    2,    2,    2,    2,    2,    2,    2,
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Int, QMetaType::Bool,    2,    2,    2,    2,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -150,9 +154,10 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 10: _t->on_actionView_Train_Statuses_triggered(); break;
         case 11: _t->receiveTime((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 12: _t->receiveTimeRequest(); break;
-        case 13: _t->receiveDispatchImmediate((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< QVector<bool>(*)>(_a[4]))); break;
-        case 14: _t->receiveDispatchSchedule((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QVector<bool>(*)>(_a[5]))); break;
+        case 13: _t->receiveDispatchImmediate((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< QVector<bool>(*)>(_a[4])),(*reinterpret_cast< QTime(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
+        case 14: _t->receiveDispatchSchedule((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QVector<bool>(*)>(_a[5])),(*reinterpret_cast< QTime(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7]))); break;
         case 15: _t->receiveBlockStatus((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
+        case 16: _t->updateTrainDisplay(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -250,13 +255,13 @@ int CTC_MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 17;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 17;
     }
     return _id;
 }

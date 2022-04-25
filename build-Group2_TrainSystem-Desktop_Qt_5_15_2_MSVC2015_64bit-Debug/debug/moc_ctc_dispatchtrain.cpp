@@ -79,21 +79,21 @@ static const uint qt_meta_data_CTC_DispatchTrain[] = {
 
  // signals: name, argc, parameters, tag, flags
        1,    0,   59,    2, 0x06 /* Public */,
-       3,    4,   60,    2, 0x06 /* Public */,
-       5,    5,   69,    2, 0x06 /* Public */,
+       3,    6,   60,    2, 0x06 /* Public */,
+       5,    7,   73,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    5,   80,    2, 0x08 /* Private */,
-      11,    1,   91,    2, 0x08 /* Private */,
-      13,    1,   94,    2, 0x08 /* Private */,
-      14,    2,   97,    2, 0x08 /* Private */,
-      15,    2,  102,    2, 0x08 /* Private */,
-      16,    0,  107,    2, 0x08 /* Private */,
+       6,    5,   88,    2, 0x08 /* Private */,
+      11,    1,   99,    2, 0x08 /* Private */,
+      13,    1,  102,    2, 0x08 /* Private */,
+      14,    2,  105,    2, 0x08 /* Private */,
+      15,    2,  110,    2, 0x08 /* Private */,
+      16,    0,  115,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, 0x80000000 | 4,    2,    2,    2,    2,
-    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, QMetaType::Int, 0x80000000 | 4,    2,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, 0x80000000 | 4, QMetaType::QTime, QMetaType::QString,    2,    2,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Double, QMetaType::Int, 0x80000000 | 4, QMetaType::QTime, QMetaType::QString,    2,    2,    2,    2,    2,    2,    2,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Bool, 0x80000000 | 7, 0x80000000 | 8, 0x80000000 | 9, 0x80000000 | 10,    2,    2,    2,    2,    2,
@@ -113,8 +113,8 @@ void CTC_DispatchTrain::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->requestSystemTime(); break;
-        case 1: _t->dispatchImmediate((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< QVector<bool>(*)>(_a[4]))); break;
-        case 2: _t->dispatchSchedule((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QVector<bool>(*)>(_a[5]))); break;
+        case 1: _t->dispatchImmediate((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< QVector<bool>(*)>(_a[4])),(*reinterpret_cast< QTime(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
+        case 2: _t->dispatchSchedule((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QVector<bool>(*)>(_a[5])),(*reinterpret_cast< QTime(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7]))); break;
         case 3: _t->receiveStationData((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< QVector<double>(*)>(_a[2])),(*reinterpret_cast< QVector<QString>(*)>(_a[3])),(*reinterpret_cast< QVector<int>(*)>(_a[4])),(*reinterpret_cast< QVector<QVector<bool> >(*)>(_a[5]))); break;
         case 4: _t->on_DepartureCheck_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->on_ArrivalCheck_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
@@ -164,14 +164,14 @@ void CTC_DispatchTrain::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
             }
         }
         {
-            using _t = void (CTC_DispatchTrain::*)(bool , int , double , QVector<bool> );
+            using _t = void (CTC_DispatchTrain::*)(bool , int , double , QVector<bool> , QTime , QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CTC_DispatchTrain::dispatchImmediate)) {
                 *result = 1;
                 return;
             }
         }
         {
-            using _t = void (CTC_DispatchTrain::*)(bool , int , double , int , QVector<bool> );
+            using _t = void (CTC_DispatchTrain::*)(bool , int , double , int , QVector<bool> , QTime , QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&CTC_DispatchTrain::dispatchSchedule)) {
                 *result = 2;
                 return;
@@ -227,16 +227,16 @@ void CTC_DispatchTrain::requestSystemTime()
 }
 
 // SIGNAL 1
-void CTC_DispatchTrain::dispatchImmediate(bool _t1, int _t2, double _t3, QVector<bool> _t4)
+void CTC_DispatchTrain::dispatchImmediate(bool _t1, int _t2, double _t3, QVector<bool> _t4, QTime _t5, QString _t6)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t6))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
-void CTC_DispatchTrain::dispatchSchedule(bool _t1, int _t2, double _t3, int _t4, QVector<bool> _t5)
+void CTC_DispatchTrain::dispatchSchedule(bool _t1, int _t2, double _t3, int _t4, QVector<bool> _t5, QTime _t6, QString _t7)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t6))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t7))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP

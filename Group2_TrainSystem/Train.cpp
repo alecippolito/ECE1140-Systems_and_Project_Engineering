@@ -1,5 +1,6 @@
 #include "Train.h"
 #include "TrainModelUI.h"
+#include <QDebug>
 
 //constructor initialized with numcars and a block it starts on
     Train::Train(int num, Block *b, TrackModel *trackModelPtr)

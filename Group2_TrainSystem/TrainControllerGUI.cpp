@@ -42,17 +42,20 @@ TrainControllerGUI::~TrainControllerGUI()
 void TrainControllerGUI :: timerEvent(QTimerEvent *event)
 {
     if(!isPaused){
-    if(train != nullptr){
-    if (dispatch == false){
-            dispatchTrain();
+        if(train != nullptr){
+            if (dispatch == false){
+                    dispatchTrain();
+            }
+
+            tc.calculatePower();
+            updatePower();
+            getInfo(); // Update Authority and Velocity (Commanded Speed)
+            updateBrake();
+            updateSpeed(); // Updates Setpoint Speed and Commanded Speed
+            updateStatus(); // Updates Train Mode and All Emergency States
+            updateTrain(); // Updates Advertisements, Doors, Lights and Temperture
+        }
     }
-    tc.calculatePower();
-    updatePower();
-    getInfo(); // Update Authority and Velocity (Commanded Speed)
-    updateBrake();
-    updateSpeed(); // Updates Setpoint Speed and Commanded Speed
-    updateStatus(); // Updates Train Mode and All Emergency States
-    updateTrain(); // Updates Advertisements, Doors, Lights and Temperture
 }
 // *************************************************
 //              Added Public
@@ -102,8 +105,8 @@ void TrainControllerGUI :: updateBrake()
 void TrainControllerGUI :: dispatchTrain()
 {
     if (tc.getAutomaticMode()==1){
-        tc.setKi(225); // Our default ki
-        tc.setKp(225); // Our defult kp
+        tc.setKi(225 * 1000); // Our default ki
+        tc.setKp(225 * 1000); // Our defult kp
         startMoving();
     }
     dispatch = true;
@@ -119,6 +122,18 @@ void TrainControllerGUI :: startMoving()
 
 void TrainControllerGUI :: updateStatus()
 {
+    ui -> incSpeed -> setDisabled(tc.getAutomaticMode());
+    ui -> decSpeed -> setDisabled(tc.getAutomaticMode());
+    ui -> lightButton -> setDisabled(tc.getAutomaticMode());
+    ui -> doorButton -> setDisabled(tc.getAutomaticMode());
+    ui -> adButton -> setDisabled(tc.getAutomaticMode());
+    ui -> tempSubmit -> setDisabled(tc.getAutomaticMode());
+    ui -> announcement1Label -> setDisabled(tc.getAutomaticMode());
+    ui -> announcement2Label -> setDisabled(tc.getAutomaticMode());
+    ui -> announcement3Label -> setDisabled(tc.getAutomaticMode());
+    ui -> announcement4Label -> setDisabled(tc.getAutomaticMode());
+    ui -> eBrakeButton -> setDisabled(tc.getAutomaticMode());
+    ui ->serviceBrake -> setDisabled(tc.getAutomaticMode());
     // Train Mode
     bool currentModeStatus = tc.getAutomaticMode();
     if(currentModeStatus == 0){
@@ -280,7 +295,7 @@ void TrainControllerGUI::receiveTimeDialation(double td)
 void TrainControllerGUI::on_eBrakeButton_clicked()
 {
     tc.setPowerCommand(0);
-    tc.setEmergencyBrake(true);
+    tc.setEmergencyBrake(!tc.getEmergencyBrakeFlag());
 }
 
 
@@ -334,25 +349,24 @@ void TrainControllerGUI::on_announcement4_clicked()
     tc.setAnnouncement("Train is in Emergency State");
     train->setAnnouncement(tc.getAnnouncement());
 }
-            void TrainControllerGUI::on_tempSubmit_clicked()
-            {
-                QString tempNum = ui->tempTextbox->toPlainText();
-                double tempVal = tempNum.toDouble();
-                tc.setNewTemp(tempVal);
-            }
+void TrainControllerGUI::on_tempSubmit_clicked()
+{
+    QString tempNum = ui->tempTextbox->toPlainText();
+    double tempVal = tempNum.toDouble();
+    tc.setNewTemp(tempVal);
+}
 
 
-            void TrainControllerGUI::on_kpkiSubmit_clicked()
-            {
-                QString kpNum = ui -> kpTextbox -> toPlainText();
-                QString kiNum = ui -> kiTextbox -> toPlainText();
-                double kpVal = kpNum.toDouble();
-                double kiVal = kiNum.toDouble();
-                tc.setKp(kpVal);
-                tc.setKi(kiVal);
-                startMoving();
-            }
-
+void TrainControllerGUI::on_kpkiSubmit_clicked()
+{
+    QString kpNum = ui -> kpTextbox -> toPlainText();
+    QString kiNum = ui -> kiTextbox -> toPlainText();
+    double kpVal = kpNum.toDouble();
+    double kiVal = kiNum.toDouble();
+    tc.setKp(kpVal);
+    tc.setKi(kiVal);
+    startMoving();
+}
 void TrainControllerGUI::setPaused(bool b)
 {
     isPaused = b;
