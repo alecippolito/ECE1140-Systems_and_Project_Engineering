@@ -57,7 +57,7 @@ private slots:
 
 signals:
     void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>, QVector<QVector<bool>>);
-    void sendTrainData(int,bool,int, QVector<double>, QVector<bool>);
+    void sendTrainData(int,bool,int, QVector<double>, QVector<bool>, QString);
     void sendTime(int,int);
 
 private:

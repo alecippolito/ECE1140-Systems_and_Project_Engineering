@@ -20,7 +20,7 @@ class TrainPhysics{
         double force = 0;
         int passengers = 100;
         int crewMembers = 20;
-        double time = 1;
+        double time = .1;
         bool engineFailure = false;
         bool brakeFailure = false;
         bool signalPickupFailure = false;

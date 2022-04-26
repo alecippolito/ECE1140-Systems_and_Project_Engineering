@@ -25,10 +25,10 @@ void Route::allocateMemoryForRoutesAndParseGreenline(Block *trackModel[])
             stationGreenline[i] = new Block(i);
             whitedGreenline[i] = new Block(i);
 
-            pioneerGreenline[i] = trackModel[pioneerBlockNumbers[i]];
-            edgebrookGreenline[i] = trackModel[edgebrookBlockNumbers[i]];
-            stationGreenline[i] = trackModel[stationBlockNumbers[i]];
-            whitedGreenline[i] = trackModel[whitedBlockNumbers[i]];
+            pioneerGreenline[i] = trackModel[pioneerBlockNumbers[i]-1];
+            edgebrookGreenline[i] = trackModel[edgebrookBlockNumbers[i]-1];
+            stationGreenline[i] = trackModel[stationBlockNumbers[i]-1];
+            whitedGreenline[i] = trackModel[whitedBlockNumbers[i]-1];
         }
     }
 
@@ -43,12 +43,12 @@ void Route::allocateMemoryForRoutesAndParseGreenline(Block *trackModel[])
             glenburyGreenline[i] = new Block(i);
             dormontGreenline[i] = new Block(i);
 
-            southbankGreenline[i] = trackModel[southbankBlockNumbers[i]];
-            centralGreenline[i] = trackModel[centralBlockNumbers[i]];
-            inglewoodGreenline[i] = trackModel[inglewoodBlockNumbers[i]];
-            overbrookGreenline[i] = trackModel[overbrookBlockNumbers[i]];
-            glenburyGreenline[i] = trackModel[glenburyBlockNumbers[i]];
-            dormontGreenline[i] = trackModel[dormontBlockNumbers[i]];
+            southbankGreenline[i] = trackModel[southbankBlockNumbers[i]-1];
+            centralGreenline[i] = trackModel[centralBlockNumbers[i]-1];
+            inglewoodGreenline[i] = trackModel[inglewoodBlockNumbers[i]-1];
+            overbrookGreenline[i] = trackModel[overbrookBlockNumbers[i]-1];
+            glenburyGreenline[i] = trackModel[glenburyBlockNumbers[i]-1];
+            dormontGreenline[i] = trackModel[dormontBlockNumbers[i]-1];
         }
     }
 
@@ -60,9 +60,9 @@ void Route::allocateMemoryForRoutesAndParseGreenline(Block *trackModel[])
             poplarGreenline[i] = new Block(i);
             castleShannonGreenline[i] = new Block(i);
 
-            mtLebanonGreenline[i] = trackModel[mtLebanonBlockNumbers[i]];
-            poplarGreenline[i] = trackModel[poplarBlockNumbers[i]];
-            castleShannonGreenline[i] = trackModel[castleShannonBlockNumbers[i]];
+            mtLebanonGreenline[i] = trackModel[mtLebanonBlockNumbers[i]-1];
+            poplarGreenline[i] = trackModel[poplarBlockNumbers[i]-1];
+            castleShannonGreenline[i] = trackModel[castleShannonBlockNumbers[i]-1];
         }
     }
 }

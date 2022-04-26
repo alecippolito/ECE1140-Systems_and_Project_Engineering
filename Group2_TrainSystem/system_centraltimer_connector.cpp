@@ -6,6 +6,9 @@
 #include <QDebug>
 #include <QTimer>
 
+//helper function to find route
+int findRoute(QString);
+
 //Central Timer and connector class
 //All modules are created in this class; signals/slots between modules are connected here
 
@@ -58,7 +61,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     QObject::connect(this,SIGNAL(sendTime(int,int)),ctc,SLOT(receiveTime(int,int)));
 
     //testing purposes: receiving a dispatch signal from the CTC
-    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), this, SLOT(receiveDispatchSignal_test(int,bool,int,QVector<double>,QVector<bool>)));
+    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>, QString)), this, SLOT(receiveDispatchSignal_test(int,bool,int,QVector<double>,QVector<bool>, QString)));
 
     //send speed and authority from CTC to Wayside
     QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), trackController, SLOT(receiveTrainData(int,bool,int,QVector<double>,QVector<bool>)));
@@ -69,7 +72,7 @@ System_CentralTimer_Connector::~System_CentralTimer_Connector()
     delete ui;
 }
 
-void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp, bool redline_temp, int authority_temp, QVector<double> speed_temp,QVector<bool> authorityVector_temp)
+void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp, bool redline_temp, int authority_temp, QVector<double> speed_temp,QVector<bool> authorityVector_temp, QString trainDestination)
 {
     qDebug() << "Dispatch signal received!";
     qDebug() << "Train Number: " << QString::number(TrainNum_temp);
@@ -96,21 +99,23 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     realTrackModel.updateUI();
     realTrackModel.show();
 
-    //create a new Train Controller GUI
+    //find station number for routing
+    int routeNum = findRoute(trainDestination);
 
+    //create a new Train Controller GUI
     tcGUI = new TrainControllerGUI();
     tcGUI->show();
 
     if(redline_temp)
     {
         qDebug() << "Track made on red line";
-        Train *t = new Train(1, realTrackModel.redline[0], &realTrackModel); //redline
+        Train *t = new Train(1, routeNum, !redline_temp, realTrackModel.redline, trainDestination); //redline
         tcGUI->setTrain(t);
     }
     else
     {
         qDebug() << "Track made on green line";
-        Train *t = new Train(1, realTrackModel.greenline[0], &realTrackModel);
+        Train *t = new Train(1, routeNum, !redline_temp, realTrackModel.greenline, trainDestination);
         tcGUI->setTrain(t);
     }
 
@@ -269,5 +274,67 @@ void System_CentralTimer_Connector::on_pausePlayButton_clicked()
         tcGUI->setPaused(false);
         ui->pausePlayButton->setText("Pause");
     }
+}
+
+int findRoute(QString destination)
+{
+    if(destination == "Pioneer")
+    {
+        return 1;
+    }
+    else if(destination == "Edgebrook")
+    {
+        return 2;
+    }
+    else if(destination == "Station")
+    {
+        return 3;
+    }
+    else if(destination == "Whited")
+    {
+        return 4;
+    }
+    else if(destination == "South bank")
+    {
+        return 5;
+    }
+    else if(destination == "Central")
+    {
+        return 6;
+    }
+    else if(destination == "Inglewood")
+    {
+        return 7;
+    }
+    else if(destination == "Overbrook")
+    {
+        return 8;
+    }
+    else if(destination == "Glenbury")
+    {
+        return 9;
+    }
+    else if(destination == "Dormont")
+    {
+        return 10;
+    }
+    else if(destination == "Mt. Lebanon")
+    {
+        return 11;
+    }
+    else if(destination == "Poplar")
+    {
+        return 12;
+    }
+    else if(destination == "Castle Shannon")
+    {
+        return 13;
+    }
+    else
+    {
+        qDebug() <<"ERROR: Invalid destination:" + destination;
+        return 1;
+    }
+
 }
 

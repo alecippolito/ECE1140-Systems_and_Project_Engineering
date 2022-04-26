@@ -35,7 +35,7 @@ class Train{
             bool leftDoors; //true = open, false = closed
             bool rightDoors;
             bool lightsOn;
-            bool available;
+            bool available = true;
             Block *currentBlock;
             Block *nextBlock;
             bool engineFailure = false;
@@ -46,13 +46,13 @@ class Train{
             MainWindow *trainUI;
             bool atEndOfBlock = false;
             Route *route;
-            int blocksLeft;
+            int blocksLeft = 10;  //arbitrary number > 0
             bool adSpace = true;    //true = snowpiercer, false = train to busan
             int speedLimitKmHr;
             int whichRouteUsed;
             int currentRouteIndex = 0;
 
-    Train(int, int, bool, Block*[]);
+    Train(int, int, bool, Block*[], QString);
     //~Train();
     void updateUI();
     void setPower(double, double);

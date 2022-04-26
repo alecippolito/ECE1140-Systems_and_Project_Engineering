@@ -1,8 +1,9 @@
 #include "Train.h"
 #include "TrainModelUI.h"
+#include <QString>
 
 //constructor initialized with numcars and a block it starts on
-    Train::Train(int num, int whichRoute, bool isGreenline, Block* trackModel[])
+    Train::Train(int num, int whichRoute, bool isGreenline, Block* trackModel[], QString trainDestination)
         {
             //load track data
             Route *r = new Route(whichRoute, isGreenline, trackModel);
@@ -25,33 +26,23 @@
 
             //REPLACE THIS WITH TRACK CONTROLLER IF ONE IS MADE
             if(currentBlock->lineType == "Red")
-                {
-                if(currentBlock->blockNumber >= 76)
-                    {
-                        qDebug() << "Can't assign nextBlock, train constructed at end";
-                    }
-                else
-                    {
+            {
                 nextBlock = route->getNextBlock(whichRoute, currentRouteIndex);   //indexed as previous blockNumber bc 0 based indexing
                 currentRouteIndex++;
                 //blocksLeft = 77 - (b->blockNumber);
-                    }
             }
             else if(currentBlock->lineType == "Green")
-                    {
-                           if(currentBlock->blockNumber >= 151){ qDebug() << "Can't assign nextBlock, train constructed at end";}
-                    else
-                    {
+                    {               
                             nextBlock = route->getNextBlock(whichRoute, currentRouteIndex); //due to indexing nextBlock is indexed are currentBlock's block number
                             currentRouteIndex++;
                             //blocksLeft = 152 - (b->blockNumber);
                     }
-                }
             else
             {
-                qDebug() <<"ERROR - lineType neither red or green";
+                qDebug() << "ERROR - lineType neither red or green, lineType: ";
             }
 
+            destination = trainDestination.toStdString();
             updateUI();
         }
 
@@ -69,12 +60,12 @@
     {
         //check block first to see if at end of route, update whether at end of block after setting getting new speed from power
         checkBlock();
-        if(blocksLeft >= 0)
-        {
+        //if(blocksLeft >= 0)
+        //{
             trainMetrics->setPower(p, limit);
             currentVelocity = trainMetrics->getVelocity();
             atEndOfBlock = trainMetrics->atEndOfBlock;
-        }
+        //}
 
         updateUI();
         //if(blocksLeft == 0)
@@ -204,7 +195,7 @@
     //check block uses data from the track block and the number of blocks left in the track model array to know how many it has left before the end of the route
     void Train::checkBlock()
     {
-        if(atEndOfBlock)
+        if(atEndOfBlock && available)   //if atEndOfBlock and train available (not in yard)
         {
 
             atEndOfBlock = false;
@@ -214,11 +205,16 @@
             currentBlock->occupied = true;
             trainMetrics->setBlock(currentBlock);
 
-            if(currentBlock->blockNumber != 57){ //then reached end of route
-            //get next block, if greenline and at 57 then reached end of route
-            nextBlock = route->getNextBlock(whichRouteUsed, currentRouteIndex);
-            currentRouteIndex++;
+            if(currentBlock->blockNumber == 57 && currentBlock->lineType == "Green") //if the currentBlock is the yard block
+            {
+                   available = false;
+                   nextBlock = nullptr;
             }
+            else{
+                    //get next block, if greenline and at 57 then reached end of route
+                    nextBlock = route->getNextBlock(whichRouteUsed, currentRouteIndex);
+                    currentRouteIndex++;
+                }
         }
         //update block data if at end of block but not end of route
         /*if(atEndOfBlock == true && blocksLeft > 0)

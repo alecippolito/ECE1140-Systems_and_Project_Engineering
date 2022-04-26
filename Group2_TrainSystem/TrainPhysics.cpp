@@ -69,9 +69,6 @@ double TrainPhysics::calculateVelocity()
         }
     }
 
-    //called every second/equivalent to second for 10x 50x 100x speed
-    time = 1;
-
     double totalAcceleration = lastAcceleration + acceleration;
     double newVelocity = currentVelocity + ((time/2) * totalAcceleration);
 
