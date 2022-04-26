@@ -30,7 +30,7 @@ CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
     ui->Data->setFont(font);
 
     //make a connection to make sure the view Trains function works properly
-    QObject::connect(this, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), this, SLOT(updateTrainDisplay()));
+    QObject::connect(this, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>, QString)), this, SLOT(updateTrainDisplay()));
 }
 
 CTC_MainWindow::~CTC_MainWindow()
@@ -153,7 +153,7 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, int auth_temp, 
         TrainNumber++;
         tempTrain.TrainNumber = TrainNumber;
         TrainsDispatched.push_back(tempTrain);
-        emit sendTrainData(TrainNumber,redline_temp,auth_temp,suggestedSpeedVector,authorityVector_temp);
+        emit sendTrainData(TrainNumber,redline_temp,auth_temp,suggestedSpeedVector,authorityVector_temp, destination_temp);
     }
     else
     {
@@ -596,7 +596,7 @@ void CTC_MainWindow::checkDispatch()
             TrainNumber++;
             TrainQueue[0].TrainNumber = TrainNumber;
             TrainsDispatched.push_back(TrainQueue[0]);
-            emit sendTrainData(TrainQueue[0].TrainNumber,TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed,TrainQueue[0].authorityVector);
+            emit sendTrainData(TrainQueue[0].TrainNumber,TrainQueue[0].redline,TrainQueue[0].authority,TrainQueue[0].suggestedSpeed,TrainQueue[0].authorityVector, TrainQueue[0].destination);
 
             //remove this train from the list, break out of the function
             TrainQueue.removeFirst();
@@ -615,7 +615,7 @@ void CTC_MainWindow::checkDispatch()
                 TrainNumber++;
                 TrainStandby[i].TrainNumber = TrainNumber;
                 TrainsDispatched.push_back(TrainStandby[i]);
-                emit sendTrainData(TrainNumber,TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed,TrainStandby[i].authorityVector);
+                emit sendTrainData(TrainNumber,TrainStandby[i].redline,TrainStandby[i].authority,TrainStandby[i].suggestedSpeed,TrainStandby[i].authorityVector,TrainStandby[i].destination);
 
                 //remove this train from the list, break out of the function
                 TrainStandby.remove(i);

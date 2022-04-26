@@ -13,6 +13,7 @@ SOURCES += \
     ctc_dispatchtrain.cpp \
     ctc_mainwindow.cpp \
     main.cpp \
+    mockWayside.cpp \
     system_centraltimer_connector.cpp \
     TrainModelUI.cpp \
     trackmodel.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     ctc_choosetrackline.h \
     ctc_dispatchtrain.h \
     ctc_mainwindow.h \
+    mockWayside.h \
     system_centraltimer_connector.h \
     TrainModelUI.h \
     Train.h \

@@ -3,7 +3,8 @@
 #include <string>
 #include <chrono>
 //#include "yardToDormontTrackModel.h"
-#include "trackmodel.h"
+//#include "trackmodel.h"
+#include "mockWayside.h"
 #include "Block.h"
 #include "TrainPhysics.h"
 class MainWindow;
@@ -34,7 +35,7 @@ class Train{
             bool leftDoors; //true = open, false = closed
             bool rightDoors;
             bool lightsOn;
-            bool available;
+            bool available = true;
             Block *currentBlock;
             Block *nextBlock;
             bool engineFailure = false;
@@ -44,12 +45,14 @@ class Train{
             TrainPhysics *trainMetrics;
             MainWindow *trainUI;
             bool atEndOfBlock = false;
-            TrackModel *trackModel;
-            int blocksLeft;
+            Route *route;
+            int blocksLeft = 10;  //arbitrary number > 0
             bool adSpace = true;    //true = snowpiercer, false = train to busan
             int speedLimitKmHr;
+            int whichRouteUsed;
+            int currentRouteIndex = 0;
 
-    Train(int, Block *b, TrackModel *trackModelPtr);
+    Train(int, int, bool, Block*[], QString);
     //~Train();
     void updateUI();
     void setPower(double, double);
