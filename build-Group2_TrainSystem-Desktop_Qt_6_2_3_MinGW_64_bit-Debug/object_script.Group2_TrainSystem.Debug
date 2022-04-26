@@ -2,6 +2,7 @@ debug/ctc_choosetrackline.o
 debug/ctc_dispatchtrain.o
 debug/ctc_mainwindow.o
 debug/main.o
+debug/mockWayside.o
 debug/system_centraltimer_connector.o
 debug/TrainModelUI.o
 debug/trackmodel.o

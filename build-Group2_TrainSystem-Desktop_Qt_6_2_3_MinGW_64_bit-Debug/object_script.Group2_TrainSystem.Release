@@ -2,6 +2,7 @@ release/ctc_choosetrackline.o
 release/ctc_dispatchtrain.o
 release/ctc_mainwindow.o
 release/main.o
+release/mockWayside.o
 release/system_centraltimer_connector.o
 release/TrainModelUI.o
 release/trackmodel.o
