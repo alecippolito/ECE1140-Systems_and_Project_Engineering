@@ -29,8 +29,14 @@ private slots:
 
 signals:
     void requestSystemTime();
+
+    //bool = redline, QVector<double> = suggestedSpeed vector, QTime = arrival Time, QString = station name
     void dispatchImmediate(bool,int,double,QVector<bool>,int,QTime,QString);
+
+    //bool = redline, QVector<double> = suggestedSpeed vector, int = departure Time MINUTE, QTime = arrival Time, QString = station name
     void dispatchStandby(bool,int,double,int,QVector<bool>,int,QTime,QString);
+
+    //bool = redline, QVector<double> = suggestedSpeed vector, int = depart day, QTime = depart time, int = arrive day, QTime = arrive time, QString = station name
     void dispatchSchedule(bool,int,double,QVector<bool>,int,QTime,int,QTime,QString);
     void requestCTCMode();
 

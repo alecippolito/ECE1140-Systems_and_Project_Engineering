@@ -22,6 +22,7 @@ struct Train_CTC{
     int currentBlock;
     int TrainNumber;
     bool dispatched;    //used for trains in schedule
+    int progressIndex;  //used for dynamic authority routing
 };
 
 //struct for TrackBlocks - the only required data for the CTC
@@ -110,6 +111,11 @@ private:
     int currentDay;
     int currentSecondsSinceMidnight;
     int TrainNumber;
+
+    //all authority between stations
+    QVector<QVector<bool>> authorityBetweenStations;
+    QVector<QString> nextStations;
+    QVector<int> nextStationBlock;
 };
 
 #endif // CTC_MAINWINDOW_H

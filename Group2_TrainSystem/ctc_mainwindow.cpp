@@ -217,7 +217,7 @@ void CTC_MainWindow::initializeTrackVector()
     QVector<bool> tempAuthority = QVector<bool>(152,false);
 
     //Pioneer
-    //63 onward, 1,2, 151
+    //
     tempAuthority[0] = true;
     tempAuthority[1] = true;
     tempAuthority[151] = true;
@@ -242,7 +242,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Station
-    //63 onward, 1-16
+    //21-16
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i < 150; i++)
@@ -256,7 +256,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Whited
-    //63 onward, 1-22
+    //142-150, 29-22
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i < 150; i++)
@@ -284,7 +284,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Central
-    //63 onward, 1-39
+    //133-141
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i < 150; i++)
@@ -298,7 +298,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Inglewood
-    //63 onward, 1-48
+    //124-132
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i < 150; i++)
@@ -312,7 +312,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Overbrook
-    //63 onward, 1-57
+    //97-123
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i < 150; i++)
@@ -326,7 +326,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Glenbury
-    //63-65
+    //152,63,64,65
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i <= 64; i++)
@@ -336,7 +336,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Dormont
-    //63-73
+    //66 to 73
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i <= 72; i++)
@@ -346,7 +346,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Mt Lebanon
-    //63-77
+    //74-77
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i <= 76; i++)
@@ -356,7 +356,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Poplar
-    //63-88
+    //78-88
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i <= 87; i++)
@@ -366,7 +366,7 @@ void CTC_MainWindow::initializeTrackVector()
     stationAuthorityVectorsGreen.push_back(tempAuthority);
 
     //Castle Shannon
-    //63-96
+    //89-96
     tempAuthority = QVector<bool>(152,false);
     tempAuthority[151] = true;
     for (unsigned int i = 62; i <= 95; i++)
@@ -422,6 +422,248 @@ void CTC_MainWindow::initializeTrackVector()
         tempTrack.open = true;
         TrackVectorGreen.push_back(tempTrack);
     }
+
+
+
+    //new functionality - all authorities between stations in GREEN LINE
+
+    //1). yard to glebury - 152 --> 63-65
+    //2). glenbury to dormont = 66-73
+    //3). dormont to mt lebanon - 74-77
+    //4). mt lebanon to poplar - 78-88
+    //5). poplar to castle shannon = 89-96
+    //6). castle shannon to dormont = 97-105
+    //7). dormont to glenbury = 106-114
+    //8). glenbury to overbrook = 115-123
+    //9). overbrook to inglewood = 124-132
+    //10). inglewood to central = 133-141
+    //11). central to whited = 142-150 --> 29-22
+    //12). whited to station = 21-16
+    //13). station to edgebrook = 15-9
+    //14). edgebrook to pioneer = 8-2
+    //15). pioneer to station = 1 --> 13-16
+    //16). station to whited = 17-22
+    //17). whited to south bank = 23-31
+    //18). south bank to central = 32-39
+    //19). central to inglewood = 40-48
+    //20). inglewood to overbrook = 49-57
+    //21). overbrook to yard = 151
+
+    //authority vectors in this vector will be the process listed above
+    QVector<bool> tempAuthorityVector = QVector<bool>(152,false);
+
+    //step 1
+    tempAuthorityVector[151] = true;
+    for (unsigned int i = 62; i < 65; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Glenbury");
+    nextStationBlock.push_back(64);
+
+    //step 2
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 65; i < 73; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Dormont");
+    nextStationBlock.push_back(72);
+
+    //step 3
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 73; i < 77; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Mt. Lebanon");
+    nextStationBlock.push_back(76);
+
+
+    //step 4
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 77; i < 88; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Poplar");
+    nextStationBlock.push_back(87);
+
+    //step 5
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 88; i < 96; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Castle Shannon");
+    nextStationBlock.push_back(95);
+
+    //step 6
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 96; i < 105; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Dormont");
+    nextStationBlock.push_back(104);
+
+    //step 7
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 105; i < 114; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Glenbury");
+    nextStationBlock.push_back(113);
+
+    //step 8
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 114; i < 123; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Overbrook");
+    nextStationBlock.push_back(122);
+
+    //step 9
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 123; i < 132; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Inglewood");
+    nextStationBlock.push_back(131);
+
+    //step 10
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 132; i < 141; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Central");
+    nextStationBlock.push_back(140);
+
+    //step 11
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 141; i < 149; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    for (unsigned int i = 21; i < 29; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Whited");
+    nextStationBlock.push_back(21);
+
+    //step 12
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 15; i < 21; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Station");
+    nextStationBlock.push_back(15);
+
+    //step 13
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 8; i < 15; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Edgebrook");
+    nextStationBlock.push_back(8);
+
+    //step 14
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 1; i < 8; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Pioneer");
+    nextStationBlock.push_back(1);
+
+    //step 15
+    tempAuthorityVector = QVector<bool>(152,false);
+    tempAuthorityVector[0] = true;
+    for (unsigned int i = 12; i < 16; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Station");
+    nextStationBlock.push_back(15);
+
+    //step 16
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 16; i < 22; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Whited");
+    nextStationBlock.push_back(21);
+
+    //step 17
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 22; i < 31; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("South Bank");
+    nextStationBlock.push_back(30);
+
+    //step 18
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 31; i < 39; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Central");
+    nextStationBlock.push_back(38);
+
+    //step 19
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 39; i < 48; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Inglewood");
+    nextStationBlock.push_back(47);
+
+    //step 20
+    tempAuthorityVector = QVector<bool>(152,false);
+    for (unsigned int i = 48; i < 57; i++)
+    {
+        tempAuthorityVector[i] = true;
+    }
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Overbrook");
+    nextStationBlock.push_back(56);
+
+    //step 21
+    tempAuthorityVector = QVector<bool>(152,false);
+    tempAuthorityVector[150] = true;
+    authorityBetweenStations.push_back(tempAuthorityVector);
+    nextStations.push_back("Yard");
+    //nextStationBlock.push_back(64);
 }
 
 void CTC_MainWindow::on_previousButton_clicked()
@@ -640,7 +882,7 @@ void CTC_MainWindow::checkDispatch()
                     if ((TrainSchedule[i].redline == true ? TrackVectorRed[76].open : TrackVectorGreen[151].open) == true)
                     {
                         TrainsDispatched.push_back(TrainSchedule[i]);
-                        emit sendTrainData(TrainSchedule[i].TrainNumber,TrainSchedule[i].redline,TrainSchedule[i].authority,TrainSchedule[i].suggestedSpeed,TrainSchedule[i].authorityVector);
+                        emit sendTrainData(TrainSchedule[i].TrainNumber,TrainSchedule[i].redline,TrainSchedule[i].authority,TrainSchedule[i].suggestedSpeed,TrainSchedule[i].authorityVector,TrainSchedule[i].destination);
                         TrainSchedule[i].dispatched = true;
                     }
                     else
@@ -651,7 +893,6 @@ void CTC_MainWindow::checkDispatch()
             }
         }
     }
-
 }
 
 void CTC_MainWindow::receiveTimeRequest()

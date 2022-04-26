@@ -42,6 +42,7 @@ public:
     QPushButton *ThousandTimesSpeed;
     QPushButton *TimeButton_1pm;
     QPushButton *TimeButton_2pm;
+    QPushButton *pausePlayButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -58,6 +59,7 @@ public:
         TenTimesSpeed = new QPushButton(centralwidget);
         TenTimesSpeed->setObjectName(QString::fromUtf8("TenTimesSpeed"));
         TenTimesSpeed->setGeometry(QRect(490, 220, 201, 29));
+        TenTimesSpeed->setAutoDefault(false);
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(90, 110, 63, 20));
@@ -209,10 +211,14 @@ public:
         TimeButton_2pm = new QPushButton(centralwidget);
         TimeButton_2pm->setObjectName(QString::fromUtf8("TimeButton_2pm"));
         TimeButton_2pm->setGeometry(QRect(410, 410, 61, 29));
+        pausePlayButton = new QPushButton(centralwidget);
+        pausePlayButton->setObjectName(QString::fromUtf8("pausePlayButton"));
+        pausePlayButton->setGeometry(QRect(340, 250, 111, 41));
+        pausePlayButton->setAutoDefault(false);
         System_CentralTimer_Connector->setCentralWidget(centralwidget);
         menubar = new QMenuBar(System_CentralTimer_Connector);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 22));
         System_CentralTimer_Connector->setMenuBar(menubar);
         statusbar = new QStatusBar(System_CentralTimer_Connector);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -244,6 +250,7 @@ public:
         ThousandTimesSpeed->setText(QCoreApplication::translate("System_CentralTimer_Connector", "1000x speed", nullptr));
         TimeButton_1pm->setText(QCoreApplication::translate("System_CentralTimer_Connector", "1:00pm", nullptr));
         TimeButton_2pm->setText(QCoreApplication::translate("System_CentralTimer_Connector", "2:00pm", nullptr));
+        pausePlayButton->setText(QCoreApplication::translate("System_CentralTimer_Connector", "Pause", nullptr));
     } // retranslateUi
 
 };
