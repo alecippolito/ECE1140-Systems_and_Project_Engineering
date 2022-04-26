@@ -34,7 +34,7 @@
                 trainVelocity = 0;
                 }
                 double e_k = speed-trainVelocity*3.6;
-                double u_k = u_k_1 + (T/2)*(e_k+e_k_1);
+                double u_k = u_k_1 + (1/2)*(e_k+e_k_1);
                 powerCommand = (kp*e_k)+(ki*u_k);
          }
 
@@ -157,9 +157,9 @@
         void TrainController :: setNewTemp(double newTempVal){
             newTemp = newTempVal;
         }
-        std :: string TrainController :: getAnnouncement(){
-            return announcement;
+        std :: string TrainController :: getStation(){
+            return station;
         }
-        void TrainController :: setAnnouncement(std::string newAnnouncement){
-            announcement = newAnnouncement;
+        void TrainController :: setStation(std::string newStation){
+            station = newStation;
         }

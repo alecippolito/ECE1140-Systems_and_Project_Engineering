@@ -19,13 +19,14 @@ class TrainController
         double ki;
         double e_k_1 = 0; // for first itteration of the power calculation
         double u_k_1 = 0; // for first itteration of the power calculation
-        double T = 1; // Tx speed
+        double T = 100; // Tx speed
         double commandedSpeed = 0;
         double setpointSpeed = 0;
         double speedLimit = 30;
         double trainVelocity; // for power calculation
         double trainSpeed; // for power calculation
-        double authority = 0;
+        double authority = 1;
+        std :: string station = "TEST STATION";
         bool automaticMode = true;
         bool serviceBrakeEnabled = false;
         bool emergencyBrakeEnabled = false;
@@ -35,7 +36,6 @@ class TrainController
         bool adversitement = true;
         double temp = 72;
         double newTemp = 72;
-        std :: string announcement = "";
 
     public:
     // *************************************************
@@ -68,6 +68,8 @@ class TrainController
         bool getPassengerEBrake();
         void setAuthority(double);
         double getAuthority();
+        void setStation(std :: string);
+        std :: string getStation();
 		void setDoorsOpen(bool);
         bool getDoorsOpen();
         void setLightsOn(bool);
@@ -83,8 +85,6 @@ class TrainController
         void setTemp(double);
         double getNewTemp();
         void setNewTemp(double);
-        std :: string getAnnouncement();
-        void setAnnouncement(std :: string);
-};
+        };
 
 #endif

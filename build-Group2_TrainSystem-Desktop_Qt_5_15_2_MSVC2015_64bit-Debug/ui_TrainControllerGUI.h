@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
@@ -61,14 +62,6 @@ public:
     QPushButton *decTempButton;
     QLabel *tempLabel;
     QLabel *announcementLabel;
-    QPushButton *announcement1;
-    QPushButton *announcement2;
-    QPushButton *announcment3;
-    QPushButton *announcement4;
-    QLabel *announcement1Label;
-    QLabel *announcement2Label;
-    QLabel *announcement3Label;
-    QLabel *announcement4Label;
     QPushButton *tempSubmit;
     QPlainTextEdit *tempTextbox;
     QLCDNumber *currentAuthority;
@@ -78,6 +71,14 @@ public:
     QLabel *kpLabel;
     QLabel *kpLabel_2;
     QPushButton *kpkiSubmit;
+    QFrame *line;
+    QFrame *line_2;
+    QFrame *line_3;
+    QFrame *line_4;
+    QLabel *announcmentMessage;
+    QLabel *announcmentStation;
+    QLabel *trainNumLabel;
+    QLabel *trainNumVal;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -233,41 +234,9 @@ public:
         tempLabel->setAlignment(Qt::AlignCenter);
         announcementLabel = new QLabel(centralwidget);
         announcementLabel->setObjectName(QString::fromUtf8("announcementLabel"));
-        announcementLabel->setGeometry(QRect(350, 350, 151, 31));
+        announcementLabel->setGeometry(QRect(310, 430, 151, 31));
         announcementLabel->setFont(font);
         announcementLabel->setAlignment(Qt::AlignCenter);
-        announcement1 = new QPushButton(centralwidget);
-        announcement1->setObjectName(QString::fromUtf8("announcement1"));
-        announcement1->setGeometry(QRect(320, 390, 31, 31));
-        announcement1->setFont(font);
-        announcement2 = new QPushButton(centralwidget);
-        announcement2->setObjectName(QString::fromUtf8("announcement2"));
-        announcement2->setGeometry(QRect(320, 430, 31, 31));
-        announcement2->setFont(font);
-        announcment3 = new QPushButton(centralwidget);
-        announcment3->setObjectName(QString::fromUtf8("announcment3"));
-        announcment3->setGeometry(QRect(320, 470, 31, 31));
-        announcment3->setFont(font);
-        announcement4 = new QPushButton(centralwidget);
-        announcement4->setObjectName(QString::fromUtf8("announcement4"));
-        announcement4->setGeometry(QRect(320, 520, 31, 31));
-        announcement4->setFont(font);
-        announcement1Label = new QLabel(centralwidget);
-        announcement1Label->setObjectName(QString::fromUtf8("announcement1Label"));
-        announcement1Label->setGeometry(QRect(360, 390, 141, 31));
-        announcement1Label->setFont(font1);
-        announcement2Label = new QLabel(centralwidget);
-        announcement2Label->setObjectName(QString::fromUtf8("announcement2Label"));
-        announcement2Label->setGeometry(QRect(360, 430, 141, 31));
-        announcement2Label->setFont(font1);
-        announcement3Label = new QLabel(centralwidget);
-        announcement3Label->setObjectName(QString::fromUtf8("announcement3Label"));
-        announcement3Label->setGeometry(QRect(360, 470, 141, 31));
-        announcement3Label->setFont(font1);
-        announcement4Label = new QLabel(centralwidget);
-        announcement4Label->setObjectName(QString::fromUtf8("announcement4Label"));
-        announcement4Label->setGeometry(QRect(360, 520, 141, 31));
-        announcement4Label->setFont(font1);
         tempSubmit = new QPushButton(centralwidget);
         tempSubmit->setObjectName(QString::fromUtf8("tempSubmit"));
         tempSubmit->setGeometry(QRect(590, 230, 51, 20));
@@ -287,24 +256,64 @@ public:
         authorityLabel->setAlignment(Qt::AlignCenter);
         kpTextbox = new QPlainTextEdit(centralwidget);
         kpTextbox->setObjectName(QString::fromUtf8("kpTextbox"));
-        kpTextbox->setGeometry(QRect(580, 430, 51, 41));
+        kpTextbox->setGeometry(QRect(600, 420, 51, 41));
         kpTextbox->setFont(font1);
         kiTextbox = new QPlainTextEdit(centralwidget);
         kiTextbox->setObjectName(QString::fromUtf8("kiTextbox"));
-        kiTextbox->setGeometry(QRect(580, 480, 51, 41));
+        kiTextbox->setGeometry(QRect(600, 470, 51, 41));
         kiTextbox->setFont(font1);
         kpLabel = new QLabel(centralwidget);
         kpLabel->setObjectName(QString::fromUtf8("kpLabel"));
-        kpLabel->setGeometry(QRect(640, 440, 151, 16));
+        kpLabel->setGeometry(QRect(660, 430, 131, 20));
         kpLabel->setFont(font1);
         kpLabel_2 = new QLabel(centralwidget);
         kpLabel_2->setObjectName(QString::fromUtf8("kpLabel_2"));
-        kpLabel_2->setGeometry(QRect(640, 490, 141, 16));
+        kpLabel_2->setGeometry(QRect(660, 480, 131, 16));
         kpLabel_2->setFont(font1);
         kpkiSubmit = new QPushButton(centralwidget);
         kpkiSubmit->setObjectName(QString::fromUtf8("kpkiSubmit"));
-        kpkiSubmit->setGeometry(QRect(640, 530, 80, 21));
+        kpkiSubmit->setGeometry(QRect(610, 520, 161, 21));
         kpkiSubmit->setFont(font);
+        line = new QFrame(centralwidget);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setGeometry(QRect(580, 400, 211, 20));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        line_2 = new QFrame(centralwidget);
+        line_2->setObjectName(QString::fromUtf8("line_2"));
+        line_2->setGeometry(QRect(570, 410, 20, 141));
+        line_2->setFrameShape(QFrame::VLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+        line_3 = new QFrame(centralwidget);
+        line_3->setObjectName(QString::fromUtf8("line_3"));
+        line_3->setGeometry(QRect(580, 540, 211, 20));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+        line_4 = new QFrame(centralwidget);
+        line_4->setObjectName(QString::fromUtf8("line_4"));
+        line_4->setGeometry(QRect(780, 410, 20, 141));
+        line_4->setFrameShape(QFrame::VLine);
+        line_4->setFrameShadow(QFrame::Sunken);
+        announcmentMessage = new QLabel(centralwidget);
+        announcmentMessage->setObjectName(QString::fromUtf8("announcmentMessage"));
+        announcmentMessage->setGeometry(QRect(310, 460, 151, 41));
+        announcmentMessage->setFont(font);
+        announcmentMessage->setAlignment(Qt::AlignCenter);
+        announcmentStation = new QLabel(centralwidget);
+        announcmentStation->setObjectName(QString::fromUtf8("announcmentStation"));
+        announcmentStation->setGeometry(QRect(310, 500, 151, 31));
+        announcmentStation->setFont(font);
+        announcmentStation->setAlignment(Qt::AlignCenter);
+        trainNumLabel = new QLabel(centralwidget);
+        trainNumLabel->setObjectName(QString::fromUtf8("trainNumLabel"));
+        trainNumLabel->setGeometry(QRect(550, 300, 91, 16));
+        trainNumLabel->setFont(font);
+        trainNumLabel->setAlignment(Qt::AlignCenter);
+        trainNumVal = new QLabel(centralwidget);
+        trainNumVal->setObjectName(QString::fromUtf8("trainNumVal"));
+        trainNumVal->setGeometry(QRect(650, 300, 41, 16));
+        trainNumVal->setFont(font);
+        trainNumVal->setAlignment(Qt::AlignCenter);
         TrainControllerGUI->setCentralWidget(centralwidget);
         menubar = new QMenuBar(TrainControllerGUI);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -347,14 +356,6 @@ public:
         decTempButton->setText(QCoreApplication::translate("TrainControllerGUI", "-", nullptr));
         tempLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Temperature", nullptr));
         announcementLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Announcments", nullptr));
-        announcement1->setText(QCoreApplication::translate("TrainControllerGUI", "1", nullptr));
-        announcement2->setText(QCoreApplication::translate("TrainControllerGUI", "2", nullptr));
-        announcment3->setText(QCoreApplication::translate("TrainControllerGUI", "3", nullptr));
-        announcement4->setText(QCoreApplication::translate("TrainControllerGUI", "4", nullptr));
-        announcement1Label->setText(QCoreApplication::translate("TrainControllerGUI", "Train is leaving Station!", nullptr));
-        announcement2Label->setText(QCoreApplication::translate("TrainControllerGUI", "Train is nearing next Station!", nullptr));
-        announcement3Label->setText(QCoreApplication::translate("TrainControllerGUI", "Train is arriving at Station!", nullptr));
-        announcement4Label->setText(QCoreApplication::translate("TrainControllerGUI", "Train is in Emergency State", nullptr));
         tempSubmit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
         tempTextbox->setPlainText(QString());
         tempTextbox->setPlaceholderText(QCoreApplication::translate("TrainControllerGUI", "Temperature", nullptr));
@@ -362,6 +363,10 @@ public:
         kpLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Kp (suggested 250)", nullptr));
         kpLabel_2->setText(QCoreApplication::translate("TrainControllerGUI", "Ki (suggested 250)", nullptr));
         kpkiSubmit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
+        announcmentMessage->setText(QCoreApplication::translate("TrainControllerGUI", "\"Arriving at\"", nullptr));
+        announcmentStation->setText(QCoreApplication::translate("TrainControllerGUI", "\"Station 1\"", nullptr));
+        trainNumLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Train Number:", nullptr));
+        trainNumVal->setText(QCoreApplication::translate("TrainControllerGUI", "1", nullptr));
     } // retranslateUi
 
 };

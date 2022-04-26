@@ -62,10 +62,6 @@ private slots:
     void on_adButton_clicked();
     void on_incTempButton_clicked();
     void on_decTempButton_clicked();
-    void on_announcement1_clicked();
-    void on_announcement2_clicked();
-    void on_announcment3_clicked();
-    void on_announcement4_clicked();
     void on_tempSubmit_clicked();
     void on_kpkiSubmit_clicked();
 
@@ -83,13 +79,15 @@ private:
     bool brake = false;
     int getSpeedLimit();
     bool isPaused = false;
+    int trainNum;
+    void getTrainNum(int);
 
-protected:
+// protected:
+public:
     // *************************************************
     //              Timer Event Function
     // *************************************************
     void timerEvent(QTimerEvent *Event) override;
-
 
 };
 #endif // TRAINCONTROLLERGUI_H

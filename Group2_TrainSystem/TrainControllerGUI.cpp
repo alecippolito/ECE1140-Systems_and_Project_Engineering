@@ -26,12 +26,13 @@ TrainControllerGUI::TrainControllerGUI(QWidget *parent)
 {
 
      ui->setupUi(this);
-     timer = startTimer(1000);
+     // timer = startTimer(1000);
+
 }
 
 TrainControllerGUI::~TrainControllerGUI()
 {
-    killTimer(timer);
+    // killTimer(timer);
     delete ui;
 }
 
@@ -46,7 +47,6 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
             if (dispatch == false){
                     dispatchTrain();
             }
-
             tc.calculatePower();
             updatePower();
             getInfo(); // Update Authority and Velocity (Commanded Speed)
@@ -122,18 +122,29 @@ void TrainControllerGUI :: startMoving()
 
 void TrainControllerGUI :: updateStatus()
 {
+    // DIisable Buttons in Automatic Mode
     ui -> incSpeed -> setDisabled(tc.getAutomaticMode());
     ui -> decSpeed -> setDisabled(tc.getAutomaticMode());
     ui -> lightButton -> setDisabled(tc.getAutomaticMode());
     ui -> doorButton -> setDisabled(tc.getAutomaticMode());
     ui -> adButton -> setDisabled(tc.getAutomaticMode());
     ui -> tempSubmit -> setDisabled(tc.getAutomaticMode());
-    ui -> announcement1Label -> setDisabled(tc.getAutomaticMode());
-    ui -> announcement2Label -> setDisabled(tc.getAutomaticMode());
-    ui -> announcement3Label -> setDisabled(tc.getAutomaticMode());
-    ui -> announcement4Label -> setDisabled(tc.getAutomaticMode());
     ui -> eBrakeButton -> setDisabled(tc.getAutomaticMode());
-    ui ->serviceBrake -> setDisabled(tc.getAutomaticMode());
+    ui -> serviceBrake -> setDisabled(tc.getAutomaticMode());
+
+    // Announcments
+    // tc.setStation(train->getStation());
+    std :: string message = "";
+    if(tc.getAuthority() == 0){
+        message = "Arriving at : ";
+        ui ->announcmentMessage -> setText(QString::fromStdString(message));
+    } else {
+        message = "Next Station: ";
+        ui ->announcmentMessage -> setText(QString::fromStdString(message));
+    }
+    ui ->announcmentStation -> setText(QString::fromStdString(tc.getStation()));
+    train->setAnnouncement(message + tc.getStation());
+
     // Train Mode
     bool currentModeStatus = tc.getAutomaticMode();
     if(currentModeStatus == 0){
@@ -143,7 +154,11 @@ void TrainControllerGUI :: updateStatus()
         ui -> modeStatus -> setText("Mode: Automatic");
     }
 
-    // Emergency brake flag
+    // Train Number
+    ui -> trainNumVal -> setText(QString::number(trainNum));
+
+
+     // Emergency brake flag
     if (tc.getEmergencyBrakeFlag() == false){
         ui->emergencyBrakeStatus->setStyleSheet("background-color:red");
     } else {
@@ -242,9 +257,9 @@ void TrainControllerGUI :: updateTrain(){
 void TrainControllerGUI :: getInfo(){
    ui->currentAuthority->display(tc.getAuthority());
    // figure out a way to get authority
-   // tc.setAuthority();
-   // figure out a way to set commanded speed
-   // tc.setCommndedSpeed();
+   // tc.setAuthority(train->getAuthority());
+   // figure out a way to set Commanded Speed
+   // tc.setCommndedSpeed(train->getVelocity);
 }
 
 
@@ -323,32 +338,7 @@ void TrainControllerGUI::on_decTempButton_clicked()
 
 }
 
-void TrainControllerGUI::on_announcement1_clicked()
-{
-    tc.setAnnouncement("Train is leaving Station!");
-    train->setAnnouncement(tc.getAnnouncement());
-}
 
-
-void TrainControllerGUI::on_announcement2_clicked()
-{
-    tc.setAnnouncement("Train is nearing next Station!");
-    train->setAnnouncement(tc.getAnnouncement());
-}
-
-
-void TrainControllerGUI::on_announcment3_clicked()
-{
-    tc.setAnnouncement("Train is arriving at Station!");
-    train->setAnnouncement(tc.getAnnouncement());
-}
-
-
-void TrainControllerGUI::on_announcement4_clicked()
-{
-    tc.setAnnouncement("Train is in Emergency State");
-    train->setAnnouncement(tc.getAnnouncement());
-}
 void TrainControllerGUI::on_tempSubmit_clicked()
 {
     QString tempNum = ui->tempTextbox->toPlainText();
@@ -370,4 +360,7 @@ void TrainControllerGUI::on_kpkiSubmit_clicked()
 void TrainControllerGUI::setPaused(bool b)
 {
     isPaused = b;
+}
+void TrainControllerGUI::getTrainNum(int num){
+    trainNum = num;
 }

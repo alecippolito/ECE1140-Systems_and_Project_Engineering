@@ -97,6 +97,7 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     realTrackModel.show();
 
     //create a new Train Controller GUI
+    // tcGUI = new TrainControllerGUI(TrainNum_temp);
 
     tcGUI = new TrainControllerGUI();
     tcGUI->show();
@@ -127,8 +128,9 @@ void System_CentralTimer_Connector::updateTime()
     //and it adds 1 to the date value
     day = (secondsInDay == 86399 ? (day == 6 ? 0 : day + 1) : day);
     secondsInDay = (secondsInDay+1)%86400;
-
-
+    if(tcGUI != NULL){
+    tcGUI->timerEvent(NULL);
+       }
     emit sendTime(day,secondsInDay);
     emit sendTimeUpdate(timeDialation);
 
