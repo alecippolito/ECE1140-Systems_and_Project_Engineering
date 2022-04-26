@@ -13,11 +13,15 @@ struct Train_CTC{
     int authority;
     QVector<double> suggestedSpeed;
     QVector<bool> authorityVector;
+    QString DepartDay;
+    QString ArriveDay;
     QTime arrivalTime;
+    QTime departureTime;
     QString nextStation;
     QString destination;
     int currentBlock;
     int TrainNumber;
+    bool dispatched;    //used for trains in schedule
 };
 
 //struct for TrackBlocks - the only required data for the CTC
@@ -50,15 +54,22 @@ private slots:
     void on_actionView_Train_Statuses_triggered();
     void receiveTime(int,int);
     void receiveTimeRequest();
-    void receiveDispatchImmediate(bool,int,double,QVector<bool>,QTime,QString);
-    void receiveDispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString);
+    void receiveDispatchImmediate(bool,int,double,QVector<bool>,int,QTime,QString);
+    void receiveDispatchStandby(bool,int,double,int,QVector<bool>,int,QTime,QString);
     void receiveBlockStatus(bool,int,int,bool);
     void updateTrainDisplay();
+    void on_actionView_Schedule_triggered();
+    void receiveDispatchSchedule(bool,int,double,QVector<bool>,int,QTime,int,QTime,QString);
+    void on_actionManual_triggered();
+    void on_actionAutomatic_triggered();
+    void receiveModeRequest();
 
 signals:
     void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>, QVector<QVector<bool>>);
     void sendTrainData(int,bool,int, QVector<double>, QVector<bool>, QString);
     void sendTime(int,int);
+    void sendInitialTime(int,int);
+    void sendCTCmode(bool);
 
 private:
     //internal functions
@@ -85,8 +96,8 @@ private:
     QVector<QString> stationNamesGreen;
     QVector<int> stationAuthoritiesRed;
     QVector<int> stationAuthoritiesGreen;
-    QVector<QVector<bool>> stationAuthorityVectorsRed;
-    QVector<QVector<bool>> stationAuthorityVectorsGreen;
+    QVector<QVector<bool> > stationAuthorityVectorsRed;
+    QVector<QVector<bool> > stationAuthorityVectorsGreen;
     QVector<double> stationDistancesGreen;
     QVector<double> stationDistancesRed;
     QString spaces(int);

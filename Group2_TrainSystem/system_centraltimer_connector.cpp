@@ -119,7 +119,6 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
         tcGUI->setTrain(t);
     }
 
-
     //connect the time dialation to the train controller
     QObject::connect(this, SIGNAL(sendTimeDialation(double)),tcGUI,SLOT(receiveTimeDialation(double)));
     emit sendTimeDialation(timeDialation);

@@ -24,11 +24,15 @@ private slots:
     void updateTimeDisplay(int,int);
     void receiveSystemTime(int,int);
     void on_DispatchButton_clicked();
+    void on_ScheduleButton_clicked();
+    void receiveCTCMode(bool);
 
 signals:
     void requestSystemTime();
-    void dispatchImmediate(bool,int,double,QVector<bool>,QTime,QString);
-    void dispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString);
+    void dispatchImmediate(bool,int,double,QVector<bool>,int,QTime,QString);
+    void dispatchStandby(bool,int,double,int,QVector<bool>,int,QTime,QString);
+    void dispatchSchedule(bool,int,double,QVector<bool>,int,QTime,int,QTime,QString);
+    void requestCTCMode();
 
 private:
     Ui::CTC_DispatchTrain *ui;
@@ -48,6 +52,8 @@ private:
     int currentDay;
     int currentSeconds;
     int departTimeMinute;
+    int arriveTimeMinute;
+    bool manualMode;
 };
 
 #endif // CTC_DISPATCHTRAIN_H
