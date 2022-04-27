@@ -18,7 +18,7 @@ public:
     ~CTC_DispatchTrain();
 
 private slots:
-    void receiveStationData(bool,QVector<double>,QVector<QString>,QVector<int>,QVector<QVector<bool>>);
+    void receiveStationData(bool,QVector<double>,QVector<QString>);
     void on_DepartureCheck_stateChanged(int arg1);
     void on_ArrivalCheck_stateChanged(int arg1);
     void updateTimeDisplay(int,int);
@@ -30,14 +30,14 @@ private slots:
 signals:
     void requestSystemTime();
 
-    //bool = redline, QVector<double> = suggestedSpeed vector, QTime = arrival Time, QString = station name
-    void dispatchImmediate(bool,int,double,QVector<bool>,int,QTime,QString);
+    //bool = redline, double = suggestedSpeed,int = arrival day QTime = arrival Time, QString = station name
+    void dispatchImmediate(bool,double,int,QTime,QString);
 
-    //bool = redline, QVector<double> = suggestedSpeed vector, int = departure Time MINUTE, QTime = arrival Time, QString = station name
-    void dispatchStandby(bool,int,double,int,QVector<bool>,int,QTime,QString);
+    //bool = redline, double = suggestedSpeed, int = departure Time MINUTE,int = arrival day, QTime = arrival Time, QString = station name
+    void dispatchStandby(bool,double,int,int,QTime,QString);
 
-    //bool = redline, QVector<double> = suggestedSpeed vector, int = depart day, QTime = depart time, int = arrive day, QTime = arrive time, QString = station name
-    void dispatchSchedule(bool,int,double,QVector<bool>,int,QTime,int,QTime,QString);
+    //bool = redline, double = suggestedSpeed,int = depart Time MINUTE, int = arrival day, QTime = arrival time, int = departure day, QTime = departure time, QString = station name
+    void dispatchSchedule(bool,double,int,int,QTime,int,QTime,QString);
     void requestCTCMode();
 
 private:
@@ -45,10 +45,10 @@ private:
 
     //internal functions
     double returnSuggestedSpeed();
-    int returnAuthority();
-    QVector<bool> returnAuthorityVector();
+    //QVector<double> createSpeedVector(double);
 
     //all vectors and variables
+    //QVector<double> speedVectorBase;
     QVector<QString> stationNames;
     QVector<double> stationDistances;
     QVector<int> stationAuthorities;

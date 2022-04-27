@@ -19,6 +19,8 @@ CTC_DispatchTrain::CTC_DispatchTrain(QWidget *parent) :
     currentSeconds = 0;
     departTimeMinute = 0;
 
+    //define the speed vector bases
+
 }
 
 CTC_DispatchTrain::~CTC_DispatchTrain()
@@ -26,14 +28,13 @@ CTC_DispatchTrain::~CTC_DispatchTrain()
     delete ui;
 }
 
-void CTC_DispatchTrain::receiveStationData(bool redline_temp, QVector<double> distances, QVector<QString> names, QVector<int> authority, QVector<QVector<bool>> authorityVectors)
+void CTC_DispatchTrain::receiveStationData(bool redline_temp, QVector<double> distances, QVector<QString> names)
 {
     //copy the received data into the the UI's internal vectors, and show what line we are using
     redline = redline_temp;
     stationNames = names;
     stationDistances = distances;
-    stationAuthorities = authority;
-    stationAuthorityVectors = authorityVectors;
+    //speedVectorBase = speedBase;
 
     //add the names to the list widget in order for the user to select one of them
     for (unsigned int i = 0; i < stationNames.size(); i++)
@@ -156,10 +157,7 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
     {
         //passed the tests
         //calculate the authority and suggested speed and send that data back into the main window
-        int auth_temp = returnAuthority();
         double speed_temp = returnSuggestedSpeed();
-        QVector<bool> authVector_temp = returnAuthorityVector();
-        bool redline = (stationNames[0] == "Shadyside" ? true : false);
 
         //test for unrealistic speed calculations
         if (speed_temp > 0 && speed_temp <= 70)
@@ -167,21 +165,20 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
             //emit different signals based on what needs to happen
             if (ui->DepartureCheck->isChecked() == false && ui->ArrivalCheck->isChecked() == true)
             {
-                emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
+                emit dispatchImmediate(redline,speed_temp,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
             }
             else if (ui->DepartureCheck->isChecked() == true && ui->ArrivalCheck->isChecked() == false)
             {
                 //need to calculate our own custom arrival date and time
-
                 //If the user-entered time matches the system time, train must leave now, else enter data into temporary schedule
                 emit requestSystemTime();
                 if (departTimeMinute == (currentDay*86400 + currentSeconds)/60)
                 {
-                    emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp,qFloor(arriveTimeMinute/1440),QTime::fromMSecsSinceStartOfDay((arriveTimeMinute%1440)*60000),stationNames[ui->StationList->currentRow()]);
+                    emit dispatchImmediate(redline,speed_temp,qFloor(arriveTimeMinute/1440),QTime::fromMSecsSinceStartOfDay((arriveTimeMinute%1440)*60000),stationNames[ui->StationList->currentRow()]);
                 }
                 else
                 {
-                    emit dispatchStandby(redline,auth_temp,speed_temp,departTimeMinute,authVector_temp,qFloor(arriveTimeMinute/1440),QTime::fromMSecsSinceStartOfDay((arriveTimeMinute%1440)*60000),stationNames[ui->StationList->currentRow()]);
+                    emit dispatchStandby(redline,speed_temp,departTimeMinute,qFloor(arriveTimeMinute/1440),QTime::fromMSecsSinceStartOfDay((arriveTimeMinute%1440)*60000),stationNames[ui->StationList->currentRow()]);
                 }
             }
             else
@@ -190,11 +187,11 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
                 emit requestSystemTime();
                 if (departTimeMinute == (currentDay*86400 + currentSeconds)/60)
                 {
-                    emit dispatchImmediate(redline,auth_temp,speed_temp,authVector_temp,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
+                    emit dispatchImmediate(redline,speed_temp,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
                 }
                 else
                 {
-                    emit dispatchStandby(redline,auth_temp,speed_temp,departTimeMinute,authVector_temp,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
+                    emit dispatchStandby(redline,speed_temp,departTimeMinute,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
                 }
             }
         }
@@ -207,16 +204,6 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
     }
 
     delete error;
-}
-
-int CTC_DispatchTrain::returnAuthority()
-{
-    return stationAuthorities[ui->StationList->currentRow()];
-}
-
-QVector<bool> CTC_DispatchTrain::returnAuthorityVector()
-{
-    return stationAuthorityVectors[ui->StationList->currentRow()];
 }
 
 double CTC_DispatchTrain::returnSuggestedSpeed()
@@ -254,9 +241,9 @@ double CTC_DispatchTrain::returnSuggestedSpeed()
     {
         return 0;
     }
-
     return (distance/1000)/(totalTime/3600);   //return the Km/Hr
 }
+
 
 
 void CTC_DispatchTrain::on_ScheduleButton_clicked()
@@ -292,14 +279,12 @@ void CTC_DispatchTrain::on_ScheduleButton_clicked()
         //passed the tests
         //calculate the authority and suggested speed and send that data back into the main window
         double speed_temp = returnSuggestedSpeed();
-        QVector<bool> authVector_temp = returnAuthorityVector();
-        bool redline = (stationNames[0] == "Shadyside" ? true : false);
-
 
         //test for unrealistic speed calculations
         if (speed_temp > 0 && speed_temp <= 70)
         {
-            emit dispatchSchedule(redline,departTimeMinute,speed_temp,authVector_temp,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),ui->DepartDate->currentIndex(),ui->DepartTime->time(),stationNames[ui->StationList->currentRow()]);
+            //emit dispatchSchedule(redline,departTimeMinute,speed_temp,authVector_temp,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),ui->DepartDate->currentIndex(),ui->DepartTime->time(),stationNames[ui->StationList->currentRow()]);
+            emit dispatchSchedule(redline,speed_temp,departTimeMinute,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),ui->DepartDate->currentIndex(),ui->DepartTime->time(),stationNames[ui->StationList->currentRow()]);
         }
         else
         {
