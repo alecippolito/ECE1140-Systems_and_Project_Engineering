@@ -7,7 +7,7 @@
 #include <QTimer>
 
 //helper function to find route
-int findRoute(QString);
+int findRoute(QString, bool);
 
 //Central Timer and connector class
 //All modules are created in this class; signals/slots between modules are connected here
@@ -100,7 +100,7 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     realTrackModel.show();
 
     //find station number for routing
-    int routeNum = findRoute(trainDestination);
+    int routeNum = findRoute(trainDestination, redline_temp);
 
     //create a new Train Controller GUI
     tcGUI = new TrainControllerGUI();
@@ -276,64 +276,111 @@ void System_CentralTimer_Connector::on_pausePlayButton_clicked()
     }
 }
 
-int findRoute(QString destination)
+int findRoute(QString destination, bool isRedline)
 {
-    if(destination == "Pioneer")
+    if(!isRedline)  //is greenline
     {
-        return 1;
+        if(destination == "Pioneer")
+        {
+            return 1;
+        }
+        else if(destination == "Edgebrook")
+        {
+            return 2;
+        }
+        else if(destination == "Station")
+        {
+            return 3;
+        }
+        else if(destination == "Whited")
+        {
+            return 4;
+        }
+        else if(destination == "South bank")
+        {
+            return 5;
+        }
+        else if(destination == "Central")
+        {
+            return 6;
+        }
+        else if(destination == "Inglewood")
+        {
+            return 7;
+        }
+        else if(destination == "Overbrook")
+        {
+            return 8;
+        }
+        else if(destination == "Glenbury")
+        {
+            return 9;
+        }
+        else if(destination == "Dormont")
+        {
+            return 10;
+        }
+        else if(destination == "Mt. Lebanon")
+        {
+            return 11;
+        }
+        else if(destination == "Poplar")
+        {
+            return 12;
+        }
+        else if(destination == "Castle Shannon")
+        {
+            return 13;
+        }
+        else
+        {
+            qDebug() <<"ERROR: Invalid destination:" + destination;
+            return 1;
+        }
     }
-    else if(destination == "Edgebrook")
+    else    //is redline
     {
-        return 2;
-    }
-    else if(destination == "Station")
-    {
-        return 3;
-    }
-    else if(destination == "Whited")
-    {
-        return 4;
-    }
-    else if(destination == "South bank")
-    {
-        return 5;
-    }
-    else if(destination == "Central")
-    {
-        return 6;
-    }
-    else if(destination == "Inglewood")
-    {
-        return 7;
-    }
-    else if(destination == "Overbrook")
-    {
-        return 8;
-    }
-    else if(destination == "Glenbury")
-    {
-        return 9;
-    }
-    else if(destination == "Dormont")
-    {
-        return 10;
-    }
-    else if(destination == "Mt. Lebanon")
-    {
-        return 11;
-    }
-    else if(destination == "Poplar")
-    {
-        return 12;
-    }
-    else if(destination == "Castle Shannon")
-    {
-        return 13;
-    }
-    else
-    {
-        qDebug() <<"ERROR: Invalid destination:" + destination;
-        return 1;
+        if(destination == "Shadyside")
+        {
+            return 14;
+        }
+        else if(destination == "Herron Ave")
+        {
+            return 15;
+        }
+        else if(destination == "Swissville")
+        {
+            return 16;
+        }
+        else if(destination == "Penn station")
+        {
+            return 17;
+        }
+        else if(destination == "Steel Plaza")
+        {
+            return 18;
+        }
+        else if(destination == "First Ave")
+        {
+            return 19;
+        }
+        else if(destination == "Station Square")
+        {
+            return 20;
+        }
+        else if(destination == "South Hills Junction")
+        {
+            return 21;
+        }
+        else if(destination == "Herron Ave")
+        {
+            return 22;
+        }
+        else
+        {
+            qDebug() <<"ERROR: Invalid destination:" + destination;
+            return 1;
+        }
     }
 
 }

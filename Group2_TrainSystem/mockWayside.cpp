@@ -3,21 +3,21 @@
 
 Route::Route(int whichStation, bool isGreenline, Block *trackModel[])
 {
-    stationNumGreenline = whichStation;
+    stationNum = whichStation;
     if(isGreenline)
     {
         allocateMemoryForRoutesAndParseGreenline(trackModel);
     }
     else
     {
-
+        allocateMemoryForRoutesAndParseRedline(trackModel);
     }
 }
 
 void Route::allocateMemoryForRoutesAndParseGreenline(Block *trackModel[])
 {
     //pioneer, edgebrook, station, whited
-    if(stationNumGreenline == 1 || stationNumGreenline == 2 || stationNumGreenline == 3 || stationNumGreenline == 4){
+    if(stationNum == 1 || stationNum == 2 || stationNum == 3 || stationNum == 4){
         for(int i=0; i<138; i++)
         {
             pioneerGreenline[i] = new Block(i);
@@ -32,7 +32,7 @@ void Route::allocateMemoryForRoutesAndParseGreenline(Block *trackModel[])
         }
     }
 
-    if(stationNumGreenline == 5 || stationNumGreenline == 6 || stationNumGreenline == 7 || stationNumGreenline == 8 || stationNumGreenline == 9 || stationNumGreenline == 10){
+    if(stationNum == 5 || stationNum == 6 || stationNum == 7 || stationNum == 8 || stationNum == 9 || stationNum == 10){
         //southbank, central, inglewood, overbrook, glenbury, dormont
         for(int i=0; i<93; i++)
         {
@@ -52,7 +52,7 @@ void Route::allocateMemoryForRoutesAndParseGreenline(Block *trackModel[])
         }
     }
 
-    if(stationNumGreenline == 11 || stationNumGreenline == 12 || stationNumGreenline == 13){
+    if(stationNum == 11 || stationNum == 12 || stationNum == 13){
         //mtLebanon, poplar, castleShannon
         for(int i=0; i<117; i++)
         {
@@ -63,6 +63,82 @@ void Route::allocateMemoryForRoutesAndParseGreenline(Block *trackModel[])
             mtLebanonGreenline[i] = trackModel[mtLebanonBlockNumbers[i]-1];
             poplarGreenline[i] = trackModel[poplarBlockNumbers[i]-1];
             castleShannonGreenline[i] = trackModel[castleShannonBlockNumbers[i]-1];
+        }
+    }
+}
+
+void Route::allocateMemoryForRoutesAndParseRedline(Block *trackModel[])
+{
+    //shadyside
+    if(stationNum == 14){
+        for(int i=0; i<7; i++)
+        {
+            shadysideRedline[i] = new Block(i);
+
+            shadysideRedline[i] = trackModel[shadysideBlockNumbers[i]-1];
+        }
+    }
+    //herron ave
+    if(stationNum == 15){
+        for(int i=0; i<17; i++)
+        {
+            herronAveRedline[i] = new Block(i);
+
+            herronAveRedline[i] = trackModel[herronAveBlockNumbers[i]-1];
+        }
+    }
+    //swissville
+    if(stationNum == 16){
+        for(int i=0; i<27; i++)
+        {
+            swissvilleRedline[i] = new Block(i);
+
+            swissvilleRedline[i] = trackModel[swissvilleBlockNumbers[i]-1];
+        }
+    }
+    //penn station
+    if(stationNum == 17){
+        for(int i=0; i<35; i++)
+        {
+            pennStationRedline[i] = new Block(i);
+
+            pennStationRedline[i] = trackModel[pennStationBlockNumbers[i]-1];
+        }
+    }
+    //steel plaza
+    if(stationNum == 18){
+        for(int i=0; i<55; i++)
+        {
+            steelPlazaRedline[i] = new Block(i);
+
+            steelPlazaRedline[i] = trackModel[steelPlazaBlockNumbers[i]-1];
+        }
+    }
+    //first ave
+    if(stationNum == 19){
+        for(int i=0; i<75; i++)
+        {
+            firstAveRedline[i] = new Block(i);
+
+            firstAveRedline[i] = trackModel[firstAveBlockNumbers[i]-1];
+        }
+    }
+    //station square
+    if(stationNum == 20){
+        for(int i=0; i<81; i++)
+        {
+            stationSquareRedline[i] = new Block(i);
+
+            stationSquareRedline[i] = trackModel[stationSquareBlockNumbers[i]-1];
+        }
+    }
+    //south hills junction
+    if(stationNum == 21){
+        for(int i=0; i<105; i++)
+        {
+            southHillsJunctionRedline[i] = new Block(i);
+
+            southHillsJunctionRedline[i] = trackModel[southHillsJunctionBlockNumbers[i]-1];
         }
     }
 }
@@ -121,6 +197,38 @@ Block* Route::getNextBlock(int stationNumber, int index)
     else if(stationNumber ==13)
     {
         return castleShannonGreenline[index];
+    }
+    else if(stationNumber ==14)
+    {
+        return shadysideRedline[index];
+    }
+    else if(stationNumber ==15)
+    {
+        return herronAveRedline[index];
+    }
+    else if(stationNumber ==16)
+    {
+        return swissvilleRedline[index];
+    }
+    else if(stationNumber ==17)
+    {
+        return pennStationRedline[index];
+    }
+    else if(stationNumber ==18)
+    {
+        return steelPlazaRedline[index];
+    }
+    else if(stationNumber ==19)
+    {
+        return firstAveRedline[index];
+    }
+    else if(stationNumber ==20)
+    {
+        return stationSquareRedline[index];
+    }
+    else if(stationNumber ==21)
+    {
+        return southHillsJunctionRedline[index];
     }
     else{
         qDebug() << "ERROR: INVALID STATION NUMBER ";
