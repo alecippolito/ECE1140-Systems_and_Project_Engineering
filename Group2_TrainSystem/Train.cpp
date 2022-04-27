@@ -197,24 +197,29 @@
     {
         if(atEndOfBlock && available)   //if atEndOfBlock and train available (not in yard)
         {
-
             atEndOfBlock = false;
             currentBlock->occupied = false;
             currentBlock = nextBlock;
-            speedLimitKmHr = currentBlock->speedLimitKmHr;
-            currentBlock->occupied = true;
-            trainMetrics->setBlock(currentBlock);
-
-            if(currentBlock->blockNumber == 57 && currentBlock->lineType == "Green") //if the currentBlock is the yard block
+            if((currentBlock->blockNumber == 57 && currentBlock->lineType == "Green") || (currentBlock->blockNumber == 77 && currentBlock->lineType == "Red")) //if the currentBlock is the yard block
             {
                    available = false;
                    nextBlock = nullptr;
+                   //shut down train
+                   trainUI->hide();
+                   delete this;
             }
             else{
                     //get next block, if greenline and at 57 then reached end of route
                     nextBlock = route->getNextBlock(whichRouteUsed, currentRouteIndex);
                     currentRouteIndex++;
                 }
+
+            speedLimitKmHr = currentBlock->speedLimitKmHr;
+            currentBlock->occupied = true;
+            trainMetrics->setBlock(currentBlock);
+
+
+
         }
         //update block data if at end of block but not end of route
         /*if(atEndOfBlock == true && blocksLeft > 0)
