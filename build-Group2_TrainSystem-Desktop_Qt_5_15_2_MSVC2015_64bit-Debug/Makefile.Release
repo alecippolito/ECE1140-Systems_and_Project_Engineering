@@ -471,6 +471,8 @@ release\moc_ctc_dispatchtrain.cpp: ..\Group2_TrainSystem\ctc_dispatchtrain.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTime \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdatetime.h \
 		release\moc_predefs.h \
 		C:\Qt\5.15.2\msvc2015_64\bin\moc.exe
 	C:\Qt\5.15.2\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/ajipp/OneDrive/Documents/GitHub/ECE1140-Group2/build-Group2_TrainSystem-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.2/msvc2015_64/mkspecs/win32-msvc -IC:/Users/ajipp/OneDrive/Documents/GitHub/ECE1140-Group2/Group2_TrainSystem -IC:/Qt/5.15.2/msvc2015_64/include -IC:/Qt/5.15.2/msvc2015_64/include/QtWidgets -IC:/Qt/5.15.2/msvc2015_64/include/QtGui -IC:/Qt/5.15.2/msvc2015_64/include/QtANGLE -IC:/Qt/5.15.2/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\Group2_TrainSystem\ctc_dispatchtrain.h -o release\moc_ctc_dispatchtrain.cpp
@@ -709,11 +711,14 @@ release\moc_system_centraltimer_connector.cpp: ..\Group2_TrainSystem\system_cent
 		..\Group2_TrainSystem\TrainControllerGUI.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
-		..\Group2_TrainSystem\Block.h \
-		..\Group2_TrainSystem\TrainPhysics.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
+		..\Group2_TrainSystem\Block.h \
+		..\Group2_TrainSystem\TrainPhysics.h \
+		..\Group2_TrainSystem\Track_controller.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
+		..\Group2_TrainSystem\PLC.h \
+		..\Group2_TrainSystem\Track_mainwindow.h \
 		release\moc_predefs.h \
 		C:\Qt\5.15.2\msvc2015_64\bin\moc.exe
 	C:\Qt\5.15.2\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/ajipp/OneDrive/Documents/GitHub/ECE1140-Group2/build-Group2_TrainSystem-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.2/msvc2015_64/mkspecs/win32-msvc -IC:/Users/ajipp/OneDrive/Documents/GitHub/ECE1140-Group2/Group2_TrainSystem -IC:/Qt/5.15.2/msvc2015_64/include -IC:/Qt/5.15.2/msvc2015_64/include/QtWidgets -IC:/Qt/5.15.2/msvc2015_64/include/QtGui -IC:/Qt/5.15.2/msvc2015_64/include/QtANGLE -IC:/Qt/5.15.2/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\Group2_TrainSystem\system_centraltimer_connector.h -o release\moc_system_centraltimer_connector.cpp
@@ -842,7 +847,9 @@ release\moc_TrainModelUI.cpp: ..\Group2_TrainSystem\TrainModelUI.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmessagebox.h \
 		..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
+		..\Group2_TrainSystem\trackmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
 		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
 		release\moc_predefs.h \
@@ -958,7 +965,10 @@ release\moc_TrainControllerGUI.cpp: ..\Group2_TrainSystem\TrainControllerGUI.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
+		..\Group2_TrainSystem\trackmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
 		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
 		release\moc_predefs.h \
@@ -1471,6 +1481,8 @@ release\ctc_dispatchtrain.obj: ..\Group2_TrainSystem\ctc_dispatchtrain.cpp ..\Gr
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTime \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdatetime.h \
 		ui_ctc_dispatchtrain.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVariant \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
@@ -1511,7 +1523,6 @@ release\ctc_dispatchtrain.obj: ..\Group2_TrainSystem\ctc_dispatchtrain.cpp ..\Gr
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qpushbutton.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QTimeEdit \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdatetimeedit.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdatetime.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcalendar.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmessagebox.h \
@@ -1778,11 +1789,14 @@ release\main.obj: ..\Group2_TrainSystem\main.cpp ..\Group2_TrainSystem\system_ce
 		..\Group2_TrainSystem\TrainControllerGUI.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
-		..\Group2_TrainSystem\Block.h \
-		..\Group2_TrainSystem\TrainPhysics.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
+		..\Group2_TrainSystem\Block.h \
+		..\Group2_TrainSystem\TrainPhysics.h \
+		..\Group2_TrainSystem\Track_controller.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
+		..\Group2_TrainSystem\PLC.h \
+		..\Group2_TrainSystem\Track_mainwindow.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qapplication.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreapplication.h \
@@ -1908,11 +1922,14 @@ release\system_centraltimer_connector.obj: ..\Group2_TrainSystem\system_centralt
 		..\Group2_TrainSystem\TrainControllerGUI.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
-		..\Group2_TrainSystem\Block.h \
-		..\Group2_TrainSystem\TrainPhysics.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
+		..\Group2_TrainSystem\Block.h \
+		..\Group2_TrainSystem\TrainPhysics.h \
+		..\Group2_TrainSystem\Track_controller.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
+		..\Group2_TrainSystem\PLC.h \
+		..\Group2_TrainSystem\Track_mainwindow.h \
 		ui_system_centraltimer_connector.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVariant \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
@@ -2066,7 +2083,9 @@ release\TrainModelUI.obj: ..\Group2_TrainSystem\TrainModelUI.cpp ..\Group2_Train
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmessagebox.h \
 		..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
+		..\Group2_TrainSystem\trackmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
 		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
 		ui_TrainModelUI.h \
@@ -2218,9 +2237,42 @@ release\trackmodel.obj: ..\Group2_TrainSystem\trackmodel.cpp ..\Group2_TrainSyst
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qinputmethod.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QGraphicsView \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgraphicsview.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpainter.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpen.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qscrollarea.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgraphicsscene.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QHeaderView \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qheaderview.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qvalidator.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qregularexpression.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qslider.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qstyle.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabbar.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qrubberband.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QLabel \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlabel.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QPushButton \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qpushbutton.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractbutton.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QSpinBox \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qspinbox.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QTableWidget \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtablewidget.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtableview.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QFile \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QStringList \
@@ -2231,12 +2283,9 @@ release\yardToDormontTrackModel.obj: ..\Group2_TrainSystem\yardToDormontTrackMod
 		..\Group2_TrainSystem\Block.h
 
 release\Train.obj: ..\Group2_TrainSystem\Train.cpp ..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
-		..\Group2_TrainSystem\Block.h \
-		..\Group2_TrainSystem\TrainPhysics.h \
-		..\Group2_TrainSystem\TrainModelUI.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
-		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmainwindow.h \
+		..\Group2_TrainSystem\trackmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgetsglobal.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtguiglobal.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qglobal.h \
@@ -2339,6 +2388,12 @@ release\Train.obj: ..\Group2_TrainSystem\Train.cpp ..\Group2_TrainSystem\Train.h
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
+		..\Group2_TrainSystem\Block.h \
+		..\Group2_TrainSystem\TrainPhysics.h \
+		..\Group2_TrainSystem\TrainModelUI.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmainwindow.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
@@ -2353,10 +2408,10 @@ release\Train.obj: ..\Group2_TrainSystem\Train.cpp ..\Group2_TrainSystem\Train.h
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qfiledialog.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdir.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qfileinfo.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTextStream \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMessageBox \
-		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmessagebox.h
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug
 
 release\Block.obj: ..\Group2_TrainSystem\Block.cpp ..\Group2_TrainSystem\Block.h
 
@@ -2537,7 +2592,10 @@ release\TrainControllerGUI.obj: ..\Group2_TrainSystem\TrainControllerGUI.cpp ..\
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
+		..\Group2_TrainSystem\trackmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
 		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
 		ui_TrainControllerGUI.h \
@@ -2549,6 +2607,8 @@ release\TrainControllerGUI.obj: ..\Group2_TrainSystem\TrainControllerGUI.cpp ..\
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qinputmethod.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QFrame \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qframe.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QGraphicsView \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgraphicsview.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpainter.h \
@@ -2556,7 +2616,6 @@ release\TrainControllerGUI.obj: ..\Group2_TrainSystem\TrainControllerGUI.cpp ..\
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpen.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qscrollarea.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qframe.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qgraphicsscene.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QLCDNumber \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qlcdnumber.h \
@@ -2593,12 +2652,11 @@ release\TrainControllerGUI.obj: ..\Group2_TrainSystem\TrainControllerGUI.cpp ..\
 
 release\TrainController.obj: ..\Group2_TrainSystem\TrainController.cpp ..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
-		..\Group2_TrainSystem\yardToDormontTrackModel.h \
-		..\Group2_TrainSystem\Block.h \
-		..\Group2_TrainSystem\TrainPhysics.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdebug.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qalgorithms.h \
+		..\Group2_TrainSystem\trackmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtguiglobal.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qglobal.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qconfig.h \
@@ -2620,20 +2678,28 @@ release\TrainController.obj: ..\Group2_TrainSystem\TrainController.cpp ..\Group2
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmutex.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qnumeric.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qversiontagging.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtgui-config.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qwidget.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstring.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qchar.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qiterator.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbytearray.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qrefcount.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qarraydata.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qhashfunctions.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstring.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbytearray.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qnamespace.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringliteral.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringview.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qhashfunctions.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qpair.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qvector.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcontainertools_impl.h \
@@ -2642,25 +2708,59 @@ release\TrainController.obj: ..\Group2_TrainSystem\TrainController.cpp ..\Group2
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringlist.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qregexp.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringmatcher.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmap.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtextstream.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qiodevice.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobject.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreevent.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qscopedpointer.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmetatype.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobject_impl.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qlocale.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmargins.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpaintdevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qrect.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsize.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpalette.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qcolor.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qrgb.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qrgba64.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qbrush.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qmatrix.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpolygon.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qregion.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdatastream.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qline.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtransform.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qimage.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpixelformat.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpixmap.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsharedpointer.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qfont.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qfontinfo.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qcursor.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qkeysequence.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qevent.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qlocale.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qset.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcontiguouscache.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsharedpointer.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsharedpointer_impl.h
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qurl.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qurlquery.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qfile.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qfiledevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector2d.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
+		..\Group2_TrainSystem\Block.h \
+		..\Group2_TrainSystem\TrainPhysics.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug
 
 release\Track_controller.obj: ..\Group2_TrainSystem\Track_controller.cpp ..\Group2_TrainSystem\Track_controller.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \

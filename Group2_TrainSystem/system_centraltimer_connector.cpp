@@ -97,11 +97,13 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     realTrackModel.show();
 
     //create a new Train Controller GUI
-    // tcGUI = new TrainControllerGUI(TrainNum_temp);
 
-    tcGUI = new TrainControllerGUI();
+
+
+    tcGUI = new TrainControllerGUI(TrainNum_temp);
+
+    // tcGUI = new TrainControllerGUI();
     tcGUI->show();
-
     if(redline_temp)
     {
         qDebug() << "Track made on red line";
@@ -113,9 +115,7 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
         qDebug() << "Track made on green line";
         Train *t = new Train(1, realTrackModel.greenline[0], &realTrackModel);
         tcGUI->setTrain(t);
-    }
-
-
+   }
     //connect the time dialation to the train controller
     QObject::connect(this, SIGNAL(sendTimeDialation(double)),tcGUI,SLOT(receiveTimeDialation(double)));
     emit sendTimeDialation(timeDialation);

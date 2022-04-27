@@ -9,6 +9,7 @@
 //              Added Includes
 // *************************************************
 #include "Train.h"
+#include <QTimer>
 
 
 class TrainController
@@ -23,8 +24,7 @@ class TrainController
         double commandedSpeed = 0;
         double setpointSpeed = 0;
         double speedLimit = 30;
-        double trainVelocity; // for power calculation
-        double trainSpeed; // for power calculation
+        double trainVelocity;
         double authority = 1;
         std :: string station = "TEST STATION";
         bool automaticMode = true;
@@ -36,12 +36,14 @@ class TrainController
         bool adversitement = true;
         double temp = 72;
         double newTemp = 72;
-
+        int trainNum = 0;
+        QTimer timer;
     public:
     // *************************************************
     //              Calculating
     // *************************************************
         void calculatePower();
+        void stationStop();
 
     // *************************************************
     //              Sets and Gets

@@ -137,7 +137,7 @@
    <widget class="QLCDNumber" name="currentPower">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>390</x>
       <y>10</y>
       <width>81</width>
       <height>91</height>
@@ -147,7 +147,7 @@
    <widget class="QLabel" name="powerLabel">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>390</x>
       <y>100</y>
       <width>81</width>
       <height>21</height>
@@ -643,20 +643,20 @@
      <string>Temperature</string>
     </property>
    </widget>
-   <widget class="QLCDNumber" name="currentAuthority">
+   <widget class="QLCDNumber" name="currentVelocity">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>290</x>
       <y>10</y>
       <width>81</width>
       <height>91</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="authorityLabel">
+   <widget class="QLabel" name="velocityLabel">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>290</x>
       <y>100</y>
       <width>81</width>
       <height>16</height>
@@ -668,7 +668,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Authority</string>
+     <string>Speed</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -888,7 +888,38 @@
      </font>
     </property>
     <property name="text">
-     <string>1</string>
+     <string>&quot;1&quot;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="currentAuthority">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>10</y>
+      <width>81</width>
+      <height>91</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="currentAuthorityLabel">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>100</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>3</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Authority</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

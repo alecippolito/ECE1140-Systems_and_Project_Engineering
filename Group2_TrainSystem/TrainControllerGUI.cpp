@@ -20,19 +20,18 @@
 // *************************************************
 //              Public
 // *************************************************
-TrainControllerGUI::TrainControllerGUI(QWidget *parent)
+TrainControllerGUI::TrainControllerGUI(int newTrainNum, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::TrainControllerGUI)
 {
 
      ui->setupUi(this);
-     // timer = startTimer(1000);
+     trainNum = newTrainNum;
 
 }
 
 TrainControllerGUI::~TrainControllerGUI()
 {
-    // killTimer(timer);
     delete ui;
 }
 
@@ -68,9 +67,6 @@ void TrainControllerGUI :: setTrain(Train *t)
 
 void TrainControllerGUI :: updatePower()
 {
-    tc.setTrainVelocity(train->getCurrentVelocity());
-   // display CURRENT SPEED on UI
-
     double curPower = tc.getPowerCommand();
     train -> setPower(curPower, setpointSpeedForModel);
     ui -> currentPower -> display(curPower);
@@ -122,7 +118,7 @@ void TrainControllerGUI :: startMoving()
 
 void TrainControllerGUI :: updateStatus()
 {
-    // DIisable Buttons in Automatic Mode
+    // Disable Buttons in Automatic Mode
     ui -> incSpeed -> setDisabled(tc.getAutomaticMode());
     ui -> decSpeed -> setDisabled(tc.getAutomaticMode());
     ui -> lightButton -> setDisabled(tc.getAutomaticMode());
@@ -172,6 +168,7 @@ void TrainControllerGUI :: updateStatus()
     } else {
         tc.setPowerCommand(0);
         ui->passengerEmergencyBrakeStatus->setStyleSheet("background-color:green");
+        tc.setEmergencyBrake(true);
     }
 
     // Brake Failure
@@ -181,6 +178,7 @@ void TrainControllerGUI :: updateStatus()
     } else {
         tc.setPowerCommand(0);
         ui->brakeFailureStatus->setStyleSheet("background-color:green");
+        tc.setEmergencyBrake(true);
     }
 
     // Signal Pickup Failure
@@ -189,6 +187,7 @@ void TrainControllerGUI :: updateStatus()
     } else{
         tc.setPowerCommand(0);
         ui->signalPickupFailureStatus->setStyleSheet("background-color:green");
+        tc.setEmergencyBrake(true);
     }
 
     // Engine Failure
@@ -197,6 +196,7 @@ void TrainControllerGUI :: updateStatus()
     } else{
         tc.setPowerCommand(0);
         ui->engineFailureStatus->setStyleSheet("background-color:green");
+        tc.setEmergencyBrake(true);
     }
 }
 
@@ -255,12 +255,15 @@ void TrainControllerGUI :: updateTrain(){
 
 // UNCOMMENT WHEN YOU GET AUTHORITY AND STUFF
 void TrainControllerGUI :: getInfo(){
-   ui->currentAuthority->display(tc.getAuthority());
-   // figure out a way to get authority
-   // tc.setAuthority(train->getAuthority());
-   // figure out a way to set Commanded Speed
-   // tc.setCommndedSpeed(train->getVelocity);
-}
+    // figure out a way to get authority
+    // tc.setAuthority(train->getAuthority());
+    ui -> currentAuthority->display(tc.getAuthority());
+    // figure out a way to set Commanded Speed
+    // tc.setCommndedSpeed(train->getVelocity());
+    // figure out a way to get velocity
+    tc.setTrainVelocity(train->getSpeed());
+    ui -> currentVelocity->display(tc.getTrainVelocity());
+    }
 
 
 // *************************************************
@@ -361,6 +364,4 @@ void TrainControllerGUI::setPaused(bool b)
 {
     isPaused = b;
 }
-void TrainControllerGUI::getTrainNum(int num){
-    trainNum = num;
-}
+

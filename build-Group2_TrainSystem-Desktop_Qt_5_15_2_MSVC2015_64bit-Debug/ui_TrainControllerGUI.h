@@ -64,8 +64,8 @@ public:
     QLabel *announcementLabel;
     QPushButton *tempSubmit;
     QPlainTextEdit *tempTextbox;
-    QLCDNumber *currentAuthority;
-    QLabel *authorityLabel;
+    QLCDNumber *currentVelocity;
+    QLabel *velocityLabel;
     QPlainTextEdit *kpTextbox;
     QPlainTextEdit *kiTextbox;
     QLabel *kpLabel;
@@ -79,6 +79,8 @@ public:
     QLabel *announcmentStation;
     QLabel *trainNumLabel;
     QLabel *trainNumVal;
+    QLCDNumber *currentAuthority;
+    QLabel *currentAuthorityLabel;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -124,10 +126,10 @@ public:
         speedLabel->setAlignment(Qt::AlignCenter);
         currentPower = new QLCDNumber(centralwidget);
         currentPower->setObjectName(QString::fromUtf8("currentPower"));
-        currentPower->setGeometry(QRect(290, 10, 81, 91));
+        currentPower->setGeometry(QRect(390, 10, 81, 91));
         powerLabel = new QLabel(centralwidget);
         powerLabel->setObjectName(QString::fromUtf8("powerLabel"));
-        powerLabel->setGeometry(QRect(290, 100, 81, 21));
+        powerLabel->setGeometry(QRect(390, 100, 81, 21));
         powerLabel->setFont(font1);
         powerLabel->setAlignment(Qt::AlignCenter);
         lightStatus = new QLabel(centralwidget);
@@ -246,14 +248,14 @@ public:
         tempTextbox->setGeometry(QRect(590, 190, 51, 41));
         tempTextbox->setFont(font1);
         tempTextbox->setBackgroundVisible(false);
-        currentAuthority = new QLCDNumber(centralwidget);
-        currentAuthority->setObjectName(QString::fromUtf8("currentAuthority"));
-        currentAuthority->setGeometry(QRect(390, 10, 81, 91));
-        authorityLabel = new QLabel(centralwidget);
-        authorityLabel->setObjectName(QString::fromUtf8("authorityLabel"));
-        authorityLabel->setGeometry(QRect(390, 100, 81, 16));
-        authorityLabel->setFont(font1);
-        authorityLabel->setAlignment(Qt::AlignCenter);
+        currentVelocity = new QLCDNumber(centralwidget);
+        currentVelocity->setObjectName(QString::fromUtf8("currentVelocity"));
+        currentVelocity->setGeometry(QRect(290, 10, 81, 91));
+        velocityLabel = new QLabel(centralwidget);
+        velocityLabel->setObjectName(QString::fromUtf8("velocityLabel"));
+        velocityLabel->setGeometry(QRect(290, 100, 81, 16));
+        velocityLabel->setFont(font1);
+        velocityLabel->setAlignment(Qt::AlignCenter);
         kpTextbox = new QPlainTextEdit(centralwidget);
         kpTextbox->setObjectName(QString::fromUtf8("kpTextbox"));
         kpTextbox->setGeometry(QRect(600, 420, 51, 41));
@@ -314,6 +316,14 @@ public:
         trainNumVal->setGeometry(QRect(650, 300, 41, 16));
         trainNumVal->setFont(font);
         trainNumVal->setAlignment(Qt::AlignCenter);
+        currentAuthority = new QLCDNumber(centralwidget);
+        currentAuthority->setObjectName(QString::fromUtf8("currentAuthority"));
+        currentAuthority->setGeometry(QRect(490, 10, 81, 91));
+        currentAuthorityLabel = new QLabel(centralwidget);
+        currentAuthorityLabel->setObjectName(QString::fromUtf8("currentAuthorityLabel"));
+        currentAuthorityLabel->setGeometry(QRect(490, 100, 81, 21));
+        currentAuthorityLabel->setFont(font1);
+        currentAuthorityLabel->setAlignment(Qt::AlignCenter);
         TrainControllerGUI->setCentralWidget(centralwidget);
         menubar = new QMenuBar(TrainControllerGUI);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -359,14 +369,15 @@ public:
         tempSubmit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
         tempTextbox->setPlainText(QString());
         tempTextbox->setPlaceholderText(QCoreApplication::translate("TrainControllerGUI", "Temperature", nullptr));
-        authorityLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Authority", nullptr));
+        velocityLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Speed", nullptr));
         kpLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Kp (suggested 250)", nullptr));
         kpLabel_2->setText(QCoreApplication::translate("TrainControllerGUI", "Ki (suggested 250)", nullptr));
         kpkiSubmit->setText(QCoreApplication::translate("TrainControllerGUI", "Submit", nullptr));
         announcmentMessage->setText(QCoreApplication::translate("TrainControllerGUI", "\"Arriving at\"", nullptr));
         announcmentStation->setText(QCoreApplication::translate("TrainControllerGUI", "\"Station 1\"", nullptr));
         trainNumLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Train Number:", nullptr));
-        trainNumVal->setText(QCoreApplication::translate("TrainControllerGUI", "1", nullptr));
+        trainNumVal->setText(QCoreApplication::translate("TrainControllerGUI", "\"1\"", nullptr));
+        currentAuthorityLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Authority", nullptr));
     } // retranslateUi
 
 };

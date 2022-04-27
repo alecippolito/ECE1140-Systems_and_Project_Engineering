@@ -7,7 +7,11 @@
 //              Includes
 // *************************************************
 #include "TrainController.h"
+#include <QDate>
+#include <QTime>
 #include <QDebug>
+#include <QTimer>
+#include <QObject>
 
 
     void TrainController :: calculatePower(){
@@ -41,7 +45,29 @@
          if(powerCommand>120000){
              powerCommand =120000;
          }
+         if (authority <= 0) {
+                 powerCommand = 0.0;
+         }
+         stationStop();
     }
+
+    void TrainController :: stationStop(){
+        double tempPower = powerCommand;
+        // if current block is station
+        // set power to 0
+        // if at station
+        if(trainVelocity == 0) {// & next block has authority == NULL
+            timer.start(30000);
+            doorsOpen = true;
+        }
+        if(!timer.isActive()){
+            powerCommand = tempPower;
+            doorsOpen = false;
+        }
+    }
+
+
+
 
         void TrainController :: setPowerCommand(double newPowerCommand){
 			powerCommand = newPowerCommand;
@@ -163,3 +189,4 @@
         void TrainController :: setStation(std::string newStation){
             station = newStation;
         }
+

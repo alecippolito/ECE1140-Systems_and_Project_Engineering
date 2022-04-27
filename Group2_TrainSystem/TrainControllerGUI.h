@@ -26,7 +26,7 @@ public:
     // *************************************************
     //              Generated
     // *************************************************
-    TrainControllerGUI(QWidget *parent = nullptr);
+    TrainControllerGUI(int newTrainNum, QWidget *parent = nullptr);
     ~TrainControllerGUI();
     // *************************************************
     //              Added Instances
@@ -79,9 +79,7 @@ private:
     bool brake = false;
     int getSpeedLimit();
     bool isPaused = false;
-    int trainNum;
-    void getTrainNum(int);
-
+    int trainNum = 0;
 // protected:
 public:
     // *************************************************
