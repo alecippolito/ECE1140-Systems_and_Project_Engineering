@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>821</width>
+    <width>914</width>
     <height>656</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>CTC main window</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="DataLabel">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -27,12 +27,12 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="Data">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>100</y>
-      <width>751</width>
+      <width>851</width>
       <height>431</height>
      </rect>
     </property>
@@ -59,7 +59,7 @@
    <widget class="QPushButton" name="NextButton">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>780</x>
       <y>570</y>
       <width>93</width>
       <height>29</height>
@@ -72,7 +72,7 @@
    <widget class="QLabel" name="TimeStatement">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>760</x>
       <y>10</y>
       <width>101</width>
       <height>20</height>
@@ -85,7 +85,7 @@
    <widget class="QLabel" name="DayLabel">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>760</x>
       <y>30</y>
       <width>101</width>
       <height>20</height>
@@ -98,7 +98,7 @@
    <widget class="QLabel" name="TimeLabel">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>760</x>
       <y>50</y>
       <width>63</width>
       <height>20</height>
@@ -108,13 +108,26 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="CTCModeLabel">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>10</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Manual Mode</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>821</width>
+     <width>914</width>
      <height>26</height>
     </rect>
    </property>
@@ -137,10 +150,11 @@
     <addaction name="actionView_Green_Line_Statuses"/>
     <addaction name="actionView_Red_Line_Statuses"/>
     <addaction name="actionView_Train_Statuses"/>
+    <addaction name="actionView_Schedule"/>
    </widget>
-   <widget class="QMenu" name="menuSchedule">
+   <widget class="QMenu" name="menuMode">
     <property name="title">
-     <string>Schedule</string>
+     <string>Mode</string>
     </property>
     <addaction name="actionManual"/>
     <addaction name="actionAutomatic"/>
@@ -148,7 +162,7 @@
    <addaction name="menuEdit_Track"/>
    <addaction name="menuDispatch"/>
    <addaction name="menuView"/>
-   <addaction name="menuSchedule"/>
+   <addaction name="menuMode"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen_Close_Track">
@@ -157,11 +171,20 @@
    </property>
   </action>
   <action name="actionManual">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Manual</string>
    </property>
   </action>
   <action name="actionAutomatic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Automatic</string>
    </property>
@@ -184,6 +207,11 @@
   <action name="actionView_Train_Statuses">
    <property name="text">
     <string>View Train Statuses</string>
+   </property>
+  </action>
+  <action name="actionView_Schedule">
+   <property name="text">
+    <string>View Schedule</string>
    </property>
   </action>
  </widget>
