@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_TrackModel_t {
-    const uint offsetsAndSize[20];
-    char stringdata0[132];
+    const uint offsetsAndSize[26];
+    char stringdata0[194];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_TrackModel_t, stringdata0) + ofs), len 
@@ -39,12 +39,18 @@ QT_MOC_LITERAL(57, 12), // "sendStatuses"
 QT_MOC_LITERAL(70, 18), // "sendStatusesVector"
 QT_MOC_LITERAL(89, 11), // "QList<bool>"
 QT_MOC_LITERAL(101, 15), // "changeOccupancy"
-QT_MOC_LITERAL(117, 14) // "changeStatuses"
+QT_MOC_LITERAL(117, 14), // "changeStatuses"
+QT_MOC_LITERAL(132, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(154, 34), // "on_blockNumberSpinBox_valueCh..."
+QT_MOC_LITERAL(189, 4) // "arg1"
 
     },
     "TrackModel\0sendOccupancy\0\0sendOccupancyVector\0"
     "QList<int>\0sendStatuses\0sendStatusesVector\0"
-    "QList<bool>\0changeOccupancy\0changeStatuses"
+    "QList<bool>\0changeOccupancy\0changeStatuses\0"
+    "on_pushButton_clicked\0"
+    "on_blockNumberSpinBox_valueChanged\0"
+    "arg1"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +60,7 @@ static const uint qt_meta_data_TrackModel[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,14 +68,16 @@ static const uint qt_meta_data_TrackModel[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,   50,    2, 0x06,    1 /* Public */,
-       3,    1,   57,    2, 0x06,    5 /* Public */,
-       5,    3,   60,    2, 0x06,    7 /* Public */,
-       6,    1,   67,    2, 0x06,   11 /* Public */,
+       1,    3,   62,    2, 0x06,    1 /* Public */,
+       3,    1,   69,    2, 0x06,    5 /* Public */,
+       5,    3,   72,    2, 0x06,    7 /* Public */,
+       6,    1,   79,    2, 0x06,   11 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       8,    3,   70,    2, 0x08,   13 /* Private */,
-       9,    3,   77,    2, 0x08,   17 /* Private */,
+       8,    3,   82,    2, 0x08,   13 /* Private */,
+       9,    3,   89,    2, 0x08,   17 /* Private */,
+      10,    0,   96,    2, 0x08,   21 /* Private */,
+      11,    1,   97,    2, 0x08,   22 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Int,    2,    2,    2,
@@ -80,6 +88,8 @@ static const uint qt_meta_data_TrackModel[] = {
  // slots: parameters
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Int,    2,    2,    2,
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Bool,    2,    2,    2,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   12,
 
        0        // eod
 };
@@ -96,6 +106,8 @@ void TrackModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->sendStatusesVector((*reinterpret_cast< QList<bool>(*)>(_a[1]))); break;
         case 4: _t->changeOccupancy((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
         case 5: _t->changeStatuses((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3]))); break;
+        case 6: _t->on_pushButton_clicked(); break;
+        case 7: _t->on_blockNumberSpinBox_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -157,7 +169,7 @@ const QMetaObject TrackModel::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_TrackModel_t
 , QtPrivate::TypeAndForceComplete<TrackModel, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<int>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 >,
@@ -184,13 +196,13 @@ int TrackModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }

@@ -3,51 +3,46 @@
 #include <QDebug>
 
 //constructor initialized with numcars and a block it starts on
-    Train::Train(int num, Block *b, TrackModel *trackModelPtr)
+    Train::Train(int num, int whichRoute, bool isGreenline, Block* trackModel[], QString trainDestination)
         {
             //load track data
-            trackModel = trackModelPtr;
+            Route *r = new Route(whichRoute, isGreenline, trackModel);
+            route = r;
+            whichRouteUsed = whichRoute;
 
             //initialize UI
             trainUI = new MainWindow();
             trainUI->updateTrain(this);
             trainUI->show();
 
-            //set current block
-            currentBlock = b;
+            //set current block to first block
+            currentBlock = route->getNextBlock(whichRoute, currentRouteIndex);
             speedLimitKmHr = currentBlock->speedLimitKmHr;
             currentBlock->occupied = true;
+            currentRouteIndex++;
 
             //initialize train physics
-            trainMetrics = new TrainPhysics(num, b);
+            trainMetrics = new TrainPhysics(num, currentBlock);
 
             //REPLACE THIS WITH TRACK CONTROLLER IF ONE IS MADE
-            if(b->lineType == "Red")
-                {
-                if(b->blockNumber >= 76)
-                    {
-                        qDebug() << "Can't assign nextBlock, train constructed at end";
-                    }
-                else
-                    {
-                nextBlock = trackModel->redline[(b->blockNumber)];   //indexed as previous blockNumber bc 0 based indexing
-                blocksLeft = 77 - (b->blockNumber);
-                    }
+            if(currentBlock->lineType == "Red")
+            {
+                nextBlock = route->getNextBlock(whichRoute, currentRouteIndex);   //indexed as previous blockNumber bc 0 based indexing
+                currentRouteIndex++;
+                //blocksLeft = 77 - (b->blockNumber);
             }
-            else if(b->lineType == "Green")
+            else if(currentBlock->lineType == "Green")
                     {
-                           if(b->blockNumber >= 151){ qDebug() << "Can't assign nextBlock, train constructed at end";}
-                    else
-                    {
-                            nextBlock = trackModel->greenline[(b->blockNumber)]; //due to indexing nextBlock is indexed are currentBlock's block number
-                            blocksLeft = 152 - (b->blockNumber);
+                            nextBlock = route->getNextBlock(whichRoute, currentRouteIndex); //due to indexing nextBlock is indexed are currentBlock's block number
+                            currentRouteIndex++;
+                            //blocksLeft = 152 - (b->blockNumber);
                     }
-                }
             else
             {
-                qDebug() <<"ERROR - lineType neither red or green";
+                qDebug() << "ERROR - lineType neither red or green, lineType: ";
             }
 
+            destination = trainDestination.toStdString();
             updateUI();
         }
 
@@ -65,12 +60,12 @@
     {
         //check block first to see if at end of route, update whether at end of block after setting getting new speed from power
         checkBlock();
-        if(blocksLeft >= 0)
-        {
+        //if(blocksLeft >= 0)
+        //{
             trainMetrics->setPower(p, limit);
             currentVelocity = trainMetrics->getVelocity();
             atEndOfBlock = trainMetrics->atEndOfBlock;
-        }
+        //}
 
         updateUI();
         //if(blocksLeft == 0)
@@ -200,8 +195,34 @@
     //check block uses data from the track block and the number of blocks left in the track model array to know how many it has left before the end of the route
     void Train::checkBlock()
     {
+        if(atEndOfBlock && available)   //if atEndOfBlock and train available (not in yard)
+        {
+            atEndOfBlock = false;
+            currentBlock->occupied = false;
+            currentBlock = nextBlock;
+            if((currentBlock->blockNumber == 57 && currentBlock->lineType == "Green") || (currentBlock->blockNumber == 77 && currentBlock->lineType == "Red")) //if the currentBlock is the yard block
+            {
+                   available = false;
+                   nextBlock = nullptr;
+                   //shut down train
+                   trainUI->hide();
+                   delete this;
+            }
+            else{
+                    //get next block, if greenline and at 57 then reached end of route
+                    nextBlock = route->getNextBlock(whichRouteUsed, currentRouteIndex);
+                    currentRouteIndex++;
+                }
+
+            speedLimitKmHr = currentBlock->speedLimitKmHr;
+            currentBlock->occupied = true;
+            trainMetrics->setBlock(currentBlock);
+
+
+
+        }
         //update block data if at end of block but not end of route
-        if(atEndOfBlock == true && blocksLeft > 0)
+        /*if(atEndOfBlock == true && blocksLeft > 0)
         {
             blocksLeft--;
             atEndOfBlock = false;
@@ -232,6 +253,7 @@
             }
             updateUI();
         }
+        */
     }
 
     void Train::updateUI()

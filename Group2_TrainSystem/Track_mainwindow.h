@@ -28,7 +28,7 @@ private:
     int timer;
 
 private slots:
-    void receiveTrainData(int,bool,int,QVector<double>,QVector<bool>);
+    void receiveTrainData(QVector<bool>,QVector<double>);
 protected:
         void timerEvent(QTimerEvent *Event) override;
 

@@ -20,7 +20,12 @@ double TrainPhysics::calculateVelocity()
     if(currentVelocity > 0) //normal calculation of force if train is moving or neither brake is on
     {
         double blockAngleDegrees = std::atan((block->blockGrade) / 100);
+        if(engineFailure)
+        {
+            power = 0;
+        }
         force = (power / currentVelocity) - (9.8 * (mass/2.205) * .01) - ((mass/2.205) * 9.8 * blockAngleDegrees);          //mass to kg, friction coefficient
+
     }
     else if((!serviceBrake && !emergencyBrake) && (power>0))    //if train is stationary and a brake is on
     {
@@ -42,6 +47,11 @@ double TrainPhysics::calculateVelocity()
     if(!emergencyBrake && acceleration < decelerationLimitServiceBrake)
     {
         acceleration = decelerationLimitServiceBrake;
+    }
+    if((engineFailure || signalPickupFailure || brakeFailure) && currentVelocity > 0)
+    {
+        emergencyBrake = true;
+        acceleration = decelerationLimitEmergencyBrake;
     }
 
     if(serviceBrake)
@@ -68,9 +78,6 @@ double TrainPhysics::calculateVelocity()
             //acceleration = 0;
         }
     }
-
-    //called every second/equivalent to second for 10x 50x 100x speed
-    time = 1;
 
     double totalAcceleration = lastAcceleration + acceleration;
     double newVelocity = currentVelocity + ((time/2) * totalAcceleration);

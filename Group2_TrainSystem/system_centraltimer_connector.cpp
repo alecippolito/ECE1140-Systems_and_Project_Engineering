@@ -6,6 +6,9 @@
 #include <QDebug>
 #include <QTimer>
 
+//helper function to find route
+int findRoute(QString, bool);
+
 //Central Timer and connector class
 //All modules are created in this class; signals/slots between modules are connected here
 
@@ -58,10 +61,10 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     QObject::connect(this,SIGNAL(sendTime(int,int)),ctc,SLOT(receiveTime(int,int)));
 
     //testing purposes: receiving a dispatch signal from the CTC
-    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), this, SLOT(receiveDispatchSignal_test(int,bool,int,QVector<double>,QVector<bool>)));
+    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,QString)), this, SLOT(receiveDispatchSignal_test(int,bool,QString)));
 
     //send speed and authority from CTC to Wayside
-    QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,int,QVector<double>,QVector<bool>)), trackController, SLOT(receiveTrainData(int,bool,int,QVector<double>,QVector<bool>)));
+    QObject::connect(ctc, SIGNAL(sendAuthAndSpeed(QVector<bool>,QVector<double>)), trackController, SLOT(receiveTrainData(QVector<bool>,QVector<double>)));
 }
 
 System_CentralTimer_Connector::~System_CentralTimer_Connector()
@@ -69,24 +72,12 @@ System_CentralTimer_Connector::~System_CentralTimer_Connector()
     delete ui;
 }
 
-void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp, bool redline_temp, int authority_temp, QVector<double> speed_temp,QVector<bool> authorityVector_temp)
+void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp, bool redline_temp, QString trainDestination)
 {
     qDebug() << "Dispatch signal received!";
     qDebug() << "Train Number: " << QString::number(TrainNum_temp);
     qDebug() << (redline_temp == true ? "Line: Red line" : "Line: Green line");
-
-    /*
-    qDebug() << "Authority: " << QString::number(authority_temp);
-    for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
-    {
-        qDebug() << QString::number(i+1) << speed_temp[i];
-    }
-
-    for (unsigned int i = 0; i < authorityVector_temp.size(); i++)
-    {
-        qDebug() << QString::number(i+1) << authorityVector_temp[i];
-    }*/
-
+    qDebug() << "Destination: " << trainDestination;
     qDebug();
 
     //load track
@@ -96,7 +87,8 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     realTrackModel.updateUI();
     realTrackModel.show();
 
-    //create a new Train Controller GUI
+    //find station number for routing
+    int routeNum = findRoute(trainDestination, redline_temp);
 
 
 
@@ -107,15 +99,16 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     if(redline_temp)
     {
         qDebug() << "Track made on red line";
-        Train *t = new Train(1, realTrackModel.redline[0], &realTrackModel); //redline
+        Train *t = new Train(1, routeNum, !redline_temp, realTrackModel.redline, trainDestination); //redline
         tcGUI->setTrain(t);
     }
     else
     {
         qDebug() << "Track made on green line";
-        Train *t = new Train(1, realTrackModel.greenline[0], &realTrackModel);
+        Train *t = new Train(1, routeNum, !redline_temp, realTrackModel.greenline, trainDestination);
         tcGUI->setTrain(t);
-   }
+    }
+
     //connect the time dialation to the train controller
     QObject::connect(this, SIGNAL(sendTimeDialation(double)),tcGUI,SLOT(receiveTimeDialation(double)));
     emit sendTimeDialation(timeDialation);
@@ -273,3 +266,111 @@ void System_CentralTimer_Connector::on_pausePlayButton_clicked()
     }
 }
 
+int findRoute(QString destination, bool isRedline)
+{
+    if(!isRedline)  //is greenline
+    {
+        if(destination == "Pioneer")
+        {
+            return 1;
+        }
+        else if(destination == "Edgebrook")
+        {
+            return 2;
+        }
+        else if(destination == "Station")
+        {
+            return 3;
+        }
+        else if(destination == "Whited")
+        {
+            return 4;
+        }
+        else if(destination == "South bank")
+        {
+            return 5;
+        }
+        else if(destination == "Central")
+        {
+            return 6;
+        }
+        else if(destination == "Inglewood")
+        {
+            return 7;
+        }
+        else if(destination == "Overbrook")
+        {
+            return 8;
+        }
+        else if(destination == "Glenbury")
+        {
+            return 9;
+        }
+        else if(destination == "Dormont")
+        {
+            return 10;
+        }
+        else if(destination == "Mt. Lebanon")
+        {
+            return 11;
+        }
+        else if(destination == "Poplar")
+        {
+            return 12;
+        }
+        else if(destination == "Castle Shannon")
+        {
+            return 13;
+        }
+        else
+        {
+            qDebug() <<"ERROR: Invalid destination:" + destination;
+            return 1;
+        }
+    }
+    else    //is redline
+    {
+        if(destination == "Shadyside")
+        {
+            return 14;
+        }
+        else if(destination == "Herron Ave")
+        {
+            return 15;
+        }
+        else if(destination == "Swissville")
+        {
+            return 16;
+        }
+        else if(destination == "Penn station")
+        {
+            return 17;
+        }
+        else if(destination == "Steel Plaza")
+        {
+            return 18;
+        }
+        else if(destination == "First Ave")
+        {
+            return 19;
+        }
+        else if(destination == "Station Square")
+        {
+            return 20;
+        }
+        else if(destination == "South Hills Junction")
+        {
+            return 21;
+        }
+        else if(destination == "Herron Ave")
+        {
+            return 22;
+        }
+        else
+        {
+            qDebug() <<"ERROR: Invalid destination:" + destination;
+            return 1;
+        }
+    }
+
+}

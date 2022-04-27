@@ -9,15 +9,23 @@
 //struct for the Train - how train values are stored inside the CTC for display, and to hold values for dispatch signals
 struct Train_CTC{
     bool redline;
-    int dispatchTime;
+    int dispatchTimeMinute;
     int authority;
-    QVector<double> suggestedSpeed;
+    double suggestedSpeed;
     QVector<bool> authorityVector;
+    QVector<QVector<double>> suggestedSpeedVectors;
+    QString DepartDay;
+    QString ArriveDay;
     QTime arrivalTime;
+    QTime departureTime;
     QString nextStation;
+    int nextStationBlock;
     QString destination;
     int currentBlock;
     int TrainNumber;
+    bool dispatched;    //used for trains in schedule
+    int progressIndex;  //used for dynamic authority routing
+
 };
 
 //struct for TrackBlocks - the only required data for the CTC
@@ -50,15 +58,35 @@ private slots:
     void on_actionView_Train_Statuses_triggered();
     void receiveTime(int,int);
     void receiveTimeRequest();
-    void receiveDispatchImmediate(bool,int,double,QVector<bool>,QTime,QString);
-    void receiveDispatchSchedule(bool,int,double,int,QVector<bool>,QTime,QString);
+    void receiveDispatchImmediate(bool,double,int,QTime,QString);
+    void receiveDispatchStandby(bool,double,int,int,QTime,QString);
     void receiveBlockStatus(bool,int,int,bool);
     void updateTrainDisplay();
+    void on_actionView_Schedule_triggered();
+    void receiveDispatchSchedule(bool,double,int,int,QTime,int,QTime,QString);
+    void on_actionManual_triggered();
+    void on_actionAutomatic_triggered();
+    void receiveModeRequest();
 
 signals:
-    void sendStationData(bool,QVector<double>, QVector<QString>, QVector<int>, QVector<QVector<bool>>);
-    void sendTrainData(int,bool,int, QVector<double>, QVector<bool>);
+    //bool = redline, QVector<double> = station distances from yard, QVector<QString> = station names
+    void sendStationData(bool,QVector<double>,QVector<QString>);
+
+    //signal to create new instance of train controller and train model
+    //int = train number, bool = redline, QString = station name
+    void sendTrainData(int,bool,QString);
+
+    //signal sending authority and speed to wayside
+    void sendAuthAndSpeed(QVector<bool>,QVector<double>);
+
+    //send time to dispatch UI - day, then second within day
     void sendTime(int,int);
+
+    //same as send time, except it is run in the beginning
+    void sendInitialTime(int,int);
+
+    //used to send data about whether or not CTC is in manual mode
+    void sendCTCmode(bool);
 
 private:
     //internal functions
@@ -85,8 +113,8 @@ private:
     QVector<QString> stationNamesGreen;
     QVector<int> stationAuthoritiesRed;
     QVector<int> stationAuthoritiesGreen;
-    QVector<QVector<bool>> stationAuthorityVectorsRed;
-    QVector<QVector<bool>> stationAuthorityVectorsGreen;
+    QVector<QVector<bool> > stationAuthorityVectorsRed;
+    QVector<QVector<bool> > stationAuthorityVectorsGreen;
     QVector<double> stationDistancesGreen;
     QVector<double> stationDistancesRed;
     QString spaces(int);
@@ -99,6 +127,16 @@ private:
     int currentDay;
     int currentSecondsSinceMidnight;
     int TrainNumber;
+
+    //all authority between stations
+    QVector<QVector<bool>> authorityBetweenStationsGreen;
+    QVector<QString> nextStationsGreen;
+    QVector<int> nextStationBlockGreen;
+    QVector<QVector<bool>> authorityBetweenStationsRed;
+    QVector<QString> nextStationsRed;
+    QVector<int> nextStationBlockRed;
+    QVector<QVector<double>> speedBaseVectorGreen;
+    QVector<QVector<double>> speedBasedVectorRed;
 };
 
 #endif // CTC_MAINWINDOW_H

@@ -364,4 +364,3 @@ void TrainControllerGUI::setPaused(bool b)
 {
     isPaused = b;
 }
-
