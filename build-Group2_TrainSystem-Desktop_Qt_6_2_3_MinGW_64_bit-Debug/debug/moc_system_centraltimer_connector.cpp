@@ -10,7 +10,6 @@
 #include "../../Group2_TrainSystem/system_centraltimer_connector.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
-#include <QtCore/QList>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'system_centraltimer_connector.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
@@ -23,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_System_CentralTimer_Connector_t {
-    const uint offsetsAndSize[48];
-    char stringdata0[502];
+    const uint offsetsAndSize[44];
+    char stringdata0[476];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_System_CentralTimer_Connector_t, stringdata0) + ofs), len 
@@ -50,10 +49,8 @@ QT_MOC_LITERAL(319, 20), // "on_SunButton_clicked"
 QT_MOC_LITERAL(340, 29), // "on_ThousandTimesSpeed_clicked"
 QT_MOC_LITERAL(370, 25), // "on_TimeButton_1pm_clicked"
 QT_MOC_LITERAL(396, 26), // "receiveDispatchSignal_test"
-QT_MOC_LITERAL(423, 13), // "QList<double>"
-QT_MOC_LITERAL(437, 11), // "QList<bool>"
-QT_MOC_LITERAL(449, 25), // "on_TimeButton_2pm_clicked"
-QT_MOC_LITERAL(475, 26) // "on_pausePlayButton_clicked"
+QT_MOC_LITERAL(423, 25), // "on_TimeButton_2pm_clicked"
+QT_MOC_LITERAL(449, 26) // "on_pausePlayButton_clicked"
 
     },
     "System_CentralTimer_Connector\0sendTime\0"
@@ -67,8 +64,8 @@ QT_MOC_LITERAL(475, 26) // "on_pausePlayButton_clicked"
     "on_FriButton_clicked\0on_SatButton_clicked\0"
     "on_SunButton_clicked\0on_ThousandTimesSpeed_clicked\0"
     "on_TimeButton_1pm_clicked\0"
-    "receiveDispatchSignal_test\0QList<double>\0"
-    "QList<bool>\0on_TimeButton_2pm_clicked\0"
+    "receiveDispatchSignal_test\0"
+    "on_TimeButton_2pm_clicked\0"
     "on_pausePlayButton_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -106,9 +103,9 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
       16,    0,  156,    2, 0x08,   19 /* Private */,
       17,    0,  157,    2, 0x08,   20 /* Private */,
       18,    0,  158,    2, 0x08,   21 /* Private */,
-      19,    6,  159,    2, 0x08,   22 /* Private */,
-      22,    0,  172,    2, 0x08,   29 /* Private */,
-      23,    0,  173,    2, 0x08,   30 /* Private */,
+      19,    3,  159,    2, 0x08,   22 /* Private */,
+      20,    0,  166,    2, 0x08,   26 /* Private */,
+      21,    0,  167,    2, 0x08,   27 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
@@ -130,7 +127,7 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, 0x80000000 | 20, 0x80000000 | 21, QMetaType::QString,    2,    2,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString,    2,    2,    2,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -160,23 +157,10 @@ void System_CentralTimer_Connector::qt_static_metacall(QObject *_o, QMetaObject:
         case 14: _t->on_SunButton_clicked(); break;
         case 15: _t->on_ThousandTimesSpeed_clicked(); break;
         case 16: _t->on_TimeButton_1pm_clicked(); break;
-        case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QList<double>(*)>(_a[4])),(*reinterpret_cast< QList<bool>(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6]))); break;
+        case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 18: _t->on_TimeButton_2pm_clicked(); break;
         case 19: _t->on_pausePlayButton_clicked(); break;
         default: ;
-        }
-    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        switch (_id) {
-        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 17:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 4:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<bool> >(); break;
-            case 3:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<double> >(); break;
-            }
-            break;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
@@ -212,7 +196,7 @@ const QMetaObject System_CentralTimer_Connector::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_System_CentralTimer_Connector_t
 , QtPrivate::TypeAndForceComplete<System_CentralTimer_Connector, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<double>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -244,7 +228,7 @@ int System_CentralTimer_Connector::qt_metacall(QMetaObject::Call _c, int _id, vo
         _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 20)
-            qt_static_metacall(this, _c, _id, _a);
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
         _id -= 20;
     }
     return _id;
