@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CTC_ChangeSwitches</class>
+ <widget class="QDialog" name="CTC_ChangeSwitches">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>440</width>
+    <height>324</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Change Switches</string>
+  </property>
+  <widget class="QComboBox" name="LineBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>110</y>
+     <width>80</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Red</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Green</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="LineLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>90</y>
+     <width>63</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Line</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="SwitchLocationBox">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>110</y>
+     <width>80</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="SwitchLabel">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>90</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Switch Location</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="DestinationBox">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>110</y>
+     <width>80</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="DestinationLabel">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>90</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Switch Destination</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SwitchStateButton">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>210</y>
+     <width>151</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Change Switch State</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

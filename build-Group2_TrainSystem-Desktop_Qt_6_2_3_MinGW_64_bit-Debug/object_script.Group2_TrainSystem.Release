@@ -1,6 +1,8 @@
+release/ctc_changeswitches.o
 release/ctc_choosetrackline.o
 release/ctc_dispatchtrain.o
 release/ctc_mainwindow.o
+release/ctc_openclosetrack.o
 release/main.o
 release/mockWayside.o
 release/system_centraltimer_connector.o
@@ -16,9 +18,11 @@ release/Track_controller.o
 release/PLC.o
 release/Track_mainwindow.o
 release/qrc_trainResources.o
+release/moc_ctc_changeswitches.o
 release/moc_ctc_choosetrackline.o
 release/moc_ctc_dispatchtrain.o
 release/moc_ctc_mainwindow.o
+release/moc_ctc_openclosetrack.o
 release/moc_system_centraltimer_connector.o
 release/moc_TrainModelUI.o
 release/moc_TrainControllerGUI.o
