@@ -31,7 +31,7 @@ CTC_OpenCloseTrack::~CTC_OpenCloseTrack()
 //signal is emitted containing all required data
 void CTC_OpenCloseTrack::on_ChangeTrackButton_clicked()
 {
-    emit sendUpdatedTrackBlock(ui->LineNameBox->currentIndex() == 0 ? true : false,ui->BlockNumberBox->currentIndex(),ui->OpenCloseBox->currentIndex() == 0 ? true : false);
+    emit sendUpdatedTrackBlock(ui->LineNameBox->currentIndex() == 0 ? true : false,ui->BlockNumberBox->currentIndex()+1,ui->OpenCloseBox->currentIndex() == 0 ? true : false);
 }
 
 //internal slot - activated when the user changes the line name

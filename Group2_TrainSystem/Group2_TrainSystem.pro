@@ -14,6 +14,7 @@ SOURCES += \
     ctc_dispatchtrain.cpp \
     ctc_mainwindow.cpp \
     ctc_openclosetrack.cpp \
+    ctc_testui.cpp \
     main.cpp \
     mockWayside.cpp \
     system_centraltimer_connector.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     ctc_dispatchtrain.h \
     ctc_mainwindow.h \
     ctc_openclosetrack.h \
+    ctc_testui.h \
     mockWayside.h \
     system_centraltimer_connector.h \
     TrainModelUI.h \
@@ -55,6 +57,7 @@ FORMS += \
     ctc_dispatchtrain.ui \
     ctc_mainwindow.ui \
     ctc_openclosetrack.ui \
+    ctc_testui.ui \
     system_centraltimer_connector.ui \
     TrainModelUI.ui \
     TrainControllerGUI.ui \

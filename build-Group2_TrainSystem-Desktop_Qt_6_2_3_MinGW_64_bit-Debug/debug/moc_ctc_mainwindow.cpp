@@ -23,8 +23,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CTC_MainWindow_t {
-    const uint offsetsAndSize[70];
-    char stringdata0[774];
+    const uint offsetsAndSize[74];
+    char stringdata0[814];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_CTC_MainWindow_t, stringdata0) + ofs), len 
@@ -64,7 +64,9 @@ QT_MOC_LITERAL(639, 18), // "receiveModeRequest"
 QT_MOC_LITERAL(658, 35), // "on_actionOpen_Close_Track_tri..."
 QT_MOC_LITERAL(694, 16), // "receiveTrackEdit"
 QT_MOC_LITERAL(711, 42), // "on_actionChange_Switch_Locati..."
-QT_MOC_LITERAL(754, 19) // "receiveSwitchUpdate"
+QT_MOC_LITERAL(754, 19), // "receiveSwitchUpdate"
+QT_MOC_LITERAL(774, 18), // "receiveOccupancies"
+QT_MOC_LITERAL(793, 20) // "receiveTrackStatuses"
 
     },
     "CTC_MainWindow\0sendStationData\0\0"
@@ -90,7 +92,8 @@ QT_MOC_LITERAL(754, 19) // "receiveSwitchUpdate"
     "on_actionOpen_Close_Track_triggered\0"
     "receiveTrackEdit\0"
     "on_actionChange_Switch_Locations_triggered\0"
-    "receiveSwitchUpdate"
+    "receiveSwitchUpdate\0receiveOccupancies\0"
+    "receiveTrackStatuses"
 };
 #undef QT_MOC_LITERAL
 
@@ -100,7 +103,7 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      31,   14, // methods
+      33,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -108,39 +111,41 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
        8,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,  200,    2, 0x06,    1 /* Public */,
-       4,    3,  207,    2, 0x06,    5 /* Public */,
-       5,    3,  214,    2, 0x06,    9 /* Public */,
-       7,    2,  221,    2, 0x06,   13 /* Public */,
-       8,    2,  226,    2, 0x06,   16 /* Public */,
-       9,    1,  231,    2, 0x06,   19 /* Public */,
-      10,    3,  234,    2, 0x06,   21 /* Public */,
-      11,    3,  241,    2, 0x06,   25 /* Public */,
+       1,    3,  212,    2, 0x06,    1 /* Public */,
+       4,    3,  219,    2, 0x06,    5 /* Public */,
+       5,    3,  226,    2, 0x06,    9 /* Public */,
+       7,    2,  233,    2, 0x06,   13 /* Public */,
+       8,    2,  238,    2, 0x06,   16 /* Public */,
+       9,    1,  243,    2, 0x06,   19 /* Public */,
+      10,    3,  246,    2, 0x06,   21 /* Public */,
+      11,    3,  253,    2, 0x06,   25 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      12,    0,  248,    2, 0x08,   29 /* Private */,
-      13,    0,  249,    2, 0x08,   30 /* Private */,
-      14,    0,  250,    2, 0x08,   31 /* Private */,
-      15,    0,  251,    2, 0x08,   32 /* Private */,
-      16,    0,  252,    2, 0x08,   33 /* Private */,
-      17,    0,  253,    2, 0x08,   34 /* Private */,
-      18,    0,  254,    2, 0x08,   35 /* Private */,
-      19,    0,  255,    2, 0x08,   36 /* Private */,
-      20,    2,  256,    2, 0x08,   37 /* Private */,
-      21,    0,  261,    2, 0x08,   40 /* Private */,
-      22,    5,  262,    2, 0x08,   41 /* Private */,
-      23,    6,  273,    2, 0x08,   47 /* Private */,
-      24,    4,  286,    2, 0x08,   54 /* Private */,
-      25,    0,  295,    2, 0x08,   59 /* Private */,
-      26,    0,  296,    2, 0x08,   60 /* Private */,
-      27,    8,  297,    2, 0x08,   61 /* Private */,
-      28,    0,  314,    2, 0x08,   70 /* Private */,
-      29,    0,  315,    2, 0x08,   71 /* Private */,
-      30,    0,  316,    2, 0x08,   72 /* Private */,
-      31,    0,  317,    2, 0x08,   73 /* Private */,
-      32,    3,  318,    2, 0x08,   74 /* Private */,
-      33,    0,  325,    2, 0x08,   78 /* Private */,
-      34,    3,  326,    2, 0x08,   79 /* Private */,
+      12,    0,  260,    2, 0x08,   29 /* Private */,
+      13,    0,  261,    2, 0x08,   30 /* Private */,
+      14,    0,  262,    2, 0x08,   31 /* Private */,
+      15,    0,  263,    2, 0x08,   32 /* Private */,
+      16,    0,  264,    2, 0x08,   33 /* Private */,
+      17,    0,  265,    2, 0x08,   34 /* Private */,
+      18,    0,  266,    2, 0x08,   35 /* Private */,
+      19,    0,  267,    2, 0x08,   36 /* Private */,
+      20,    2,  268,    2, 0x08,   37 /* Private */,
+      21,    0,  273,    2, 0x08,   40 /* Private */,
+      22,    5,  274,    2, 0x08,   41 /* Private */,
+      23,    6,  285,    2, 0x08,   47 /* Private */,
+      24,    4,  298,    2, 0x08,   54 /* Private */,
+      25,    0,  307,    2, 0x08,   59 /* Private */,
+      26,    0,  308,    2, 0x08,   60 /* Private */,
+      27,    8,  309,    2, 0x08,   61 /* Private */,
+      28,    0,  326,    2, 0x08,   70 /* Private */,
+      29,    0,  327,    2, 0x08,   71 /* Private */,
+      30,    0,  328,    2, 0x08,   72 /* Private */,
+      31,    0,  329,    2, 0x08,   73 /* Private */,
+      32,    3,  330,    2, 0x08,   74 /* Private */,
+      33,    0,  337,    2, 0x08,   78 /* Private */,
+      34,    3,  338,    2, 0x08,   79 /* Private */,
+      35,    2,  345,    2, 0x08,   83 /* Private */,
+      36,    2,  350,    2, 0x08,   86 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool, 0x80000000 | 3, QMetaType::QStringList,    2,    2,    2,
@@ -176,6 +181,8 @@ static const uint qt_meta_data_CTC_MainWindow[] = {
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Bool,    2,    2,    2,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool, QMetaType::Int, QMetaType::Int,    2,    2,    2,
+    QMetaType::Void, 0x80000000 | 6, 0x80000000 | 6,    2,    2,
+    QMetaType::Void, 0x80000000 | 6, 0x80000000 | 6,    2,    2,
 
        0        // eod
 };
@@ -217,6 +224,8 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 28: _t->receiveTrackEdit((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3]))); break;
         case 29: _t->on_actionChange_Switch_Locations_triggered(); break;
         case 30: _t->receiveSwitchUpdate((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 31: _t->receiveOccupancies((*reinterpret_cast< QList<bool>(*)>(_a[1])),(*reinterpret_cast< QList<bool>(*)>(_a[2]))); break;
+        case 32: _t->receiveTrackStatuses((*reinterpret_cast< QList<bool>(*)>(_a[1])),(*reinterpret_cast< QList<bool>(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -236,6 +245,22 @@ void CTC_MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<bool> >(); break;
             case 2:
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<double> >(); break;
+            }
+            break;
+        case 31:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 1:
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<bool> >(); break;
+            }
+            break;
+        case 32:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 1:
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<bool> >(); break;
             }
             break;
         }
@@ -308,7 +333,7 @@ const QMetaObject CTC_MainWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_CTC_MainWindow_t
 , QtPrivate::TypeAndForceComplete<CTC_MainWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<double>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<QString>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<double>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QTime, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QTime, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QTime, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QTime, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QTime, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QTime, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QTime, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<QTime, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>
 
 
 >,
@@ -335,13 +360,13 @@ int CTC_MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 31)
+        if (_id < 33)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 31;
+        _id -= 33;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 31)
+        if (_id < 33)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 31;
+        _id -= 33;
     }
     return _id;
 }

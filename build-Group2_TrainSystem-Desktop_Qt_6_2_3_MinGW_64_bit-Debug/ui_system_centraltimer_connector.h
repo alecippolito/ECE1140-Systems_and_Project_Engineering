@@ -43,6 +43,7 @@ public:
     QPushButton *TimeButton_1pm;
     QPushButton *TimeButton_2pm;
     QPushButton *pausePlayButton;
+    QPushButton *CTCTestUIButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -215,10 +216,13 @@ public:
         pausePlayButton->setObjectName(QString::fromUtf8("pausePlayButton"));
         pausePlayButton->setGeometry(QRect(340, 250, 111, 41));
         pausePlayButton->setAutoDefault(false);
+        CTCTestUIButton = new QPushButton(centralwidget);
+        CTCTestUIButton->setObjectName(QString::fromUtf8("CTCTestUIButton"));
+        CTCTestUIButton->setGeometry(QRect(630, 10, 141, 29));
         System_CentralTimer_Connector->setCentralWidget(centralwidget);
         menubar = new QMenuBar(System_CentralTimer_Connector);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         System_CentralTimer_Connector->setMenuBar(menubar);
         statusbar = new QStatusBar(System_CentralTimer_Connector);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -251,6 +255,7 @@ public:
         TimeButton_1pm->setText(QCoreApplication::translate("System_CentralTimer_Connector", "1:00pm", nullptr));
         TimeButton_2pm->setText(QCoreApplication::translate("System_CentralTimer_Connector", "2:00pm", nullptr));
         pausePlayButton->setText(QCoreApplication::translate("System_CentralTimer_Connector", "Pause", nullptr));
+        CTCTestUIButton->setText(QCoreApplication::translate("System_CentralTimer_Connector", "Open CTC Test UI", nullptr));
     } // retranslateUi
 
 };

@@ -59,6 +59,9 @@ void CTC_MainWindow::receiveTime(int day_temp, int secondsSinceMidnight_temp)
     checkNextBlocks();
 }
 
+//internal slot - runs when the Dispatch Train button from the menu is pressed
+//no inputs/outputs
+//runs the Choose Track Line UI
 void CTC_MainWindow::on_actionDispatch_Train_triggered()
 {
     //call a choose line window
@@ -73,6 +76,9 @@ void CTC_MainWindow::on_actionDispatch_Train_triggered()
 
 }
 
+//internal slot - runs when the user selects "Red Line" in the Choose Track Line UI
+//no inputs/outputs
+//shows the dispatch UI, makes the required connections
 void CTC_MainWindow::RedLineSelected()
 {
     //call a new dispatch window
@@ -101,6 +107,9 @@ void CTC_MainWindow::RedLineSelected()
     QObject::connect(this, SIGNAL(sendCTCmode(bool)), dp, SLOT(receiveCTCMode(bool)));
 }
 
+//internal slot - runs when the user selects "Green Line" in the Choose Track Line UI
+//no inputs/outputs
+//shows the dispatch UI, makes the required connections
 void CTC_MainWindow::GreenLineSelected()
 {
     //call a new dispatch window
@@ -129,6 +138,9 @@ void CTC_MainWindow::GreenLineSelected()
     QObject::connect(this, SIGNAL(sendCTCmode(bool)), dp, SLOT(receiveCTCMode(bool)));
 }
 
+//internal slot - runs when the Dispatch UI sends a "dispatch immediate" signal - meaning the train should leave right now
+//inputs - which line the train is on, a suggested speed value, an arrival day, an arrival time, and the destination
+//intializes all required variables for a train - including all the suggested speed vectors it will send
 void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, double sugg_speed_temp, int arrivalDate_temp, QTime arrivalTime_temp, QString destination_temp)
 {
     cl->hide();
@@ -198,6 +210,9 @@ void CTC_MainWindow::receiveDispatchImmediate(bool redline_temp, double sugg_spe
     }
 }
 
+//internal slot - runs when the Dispatch UI sends a "Dispatch Standy" signal - meaning the train will dispatch at a future time
+//inputs - which line the train is on, a suggested speed value, the depart time in minutes since 12:00am Monday, an arrival date, an arrival time, and a destination
+//initializes the values for the train, and adds the given values, including vectors of suggested speed
 void CTC_MainWindow::receiveDispatchStandby(bool redline_temp, double sugg_speed_temp, int departTime_temp,int arrivalDate_temp, QTime arrivalTime_temp, QString destination_temp)
 {
     cl->hide();
@@ -251,6 +266,10 @@ void CTC_MainWindow::receiveDispatchStandby(bool redline_temp, double sugg_speed
     TrainStandby.push_back(tempTrain);
 }
 
+//this function will run in the constructor
+//no inputs and outputs
+//initialized the station names and distances, the block names, the routes (in terms of block numbers, authority, and suggested speed values)
+// as well as the occupancy and status vectors for the track blocks
 void CTC_MainWindow::initializeTrackVector()
 {
     //go through every block and station in the Pittsburgh RED LINE rail system
@@ -316,8 +335,6 @@ void CTC_MainWindow::initializeTrackVector()
 
 
     //define the route that the train will take in the green line - a vector of track block indexes
-
-    QVector<int> greenRoute;
     greenRoute.push_back(152);
     for (unsigned int i = 63; i <= 100; i++)
     {
@@ -800,6 +817,9 @@ void CTC_MainWindow::initializeTrackVector()
     redTrackOpenClose = QVector<bool>(77,false);
 }
 
+//internal slot - runs when the user presses the "Previous" button
+//no inputs/outputs
+//navigates through the lists of the track blocks/ dispatched trains / train schedule
 void CTC_MainWindow::on_previousButton_clicked()
 {
     if (trainSet != 0)
@@ -831,6 +851,9 @@ void CTC_MainWindow::on_previousButton_clicked()
     }
 }
 
+//internal slot - runs when the user presses the "Next" button
+//no inputs/outputs
+//navigates through the lists of the track blocks/ dispatched trains / train schedule
 void CTC_MainWindow::on_NextButton_clicked()
 {
     if (setSize*(trainSet+1) <= TrainsDispatched.size()-1)
@@ -862,6 +885,9 @@ void CTC_MainWindow::on_NextButton_clicked()
     }
 }
 
+//internal slot - runs when the user selects the "View Green Line Statuses" button
+//no inputs/outputs
+//Views the names, occupancies, and statuses(open/closed) of the green line
 void CTC_MainWindow::on_actionView_Green_Line_Statuses_triggered()
 {
     //display all Tracks Blocks/ Stations and their statuses as a string on the GUI screen
@@ -886,6 +912,9 @@ void CTC_MainWindow::on_actionView_Green_Line_Statuses_triggered()
     ui->NextButton->setVisible(true);
 }
 
+//internal slot - runs when the user selects the "View Red Line Statuses" button
+//no inputs/outputs
+//Views the names, occupancies, and statuses(open/closed) of the red line
 void CTC_MainWindow::on_actionView_Red_Line_Statuses_triggered()
 {
     //display all Tracks Blocks/ Stations and their statuses as a string on the GUI screen
@@ -911,6 +940,9 @@ void CTC_MainWindow::on_actionView_Red_Line_Statuses_triggered()
     ui->NextButton->setVisible(true);
 }
 
+//internal slot - activated when a dispatch signal is emitted
+//no inputs/outputs
+//if the user is currently viewing the statuses of the Dispatched Trains, re-run it so that it updates
 void CTC_MainWindow::updateTrainDisplay()
 {
     if (ui->DataLabel->text() == "Dispatched Trains")
@@ -919,6 +951,10 @@ void CTC_MainWindow::updateTrainDisplay()
     }
 }
 
+//internal slot - runs when the user selects the "View Train Statuses" button
+//no inputs/outputs
+//shows the data on the train itself (Train Number, which line its on, the Estimated Arrival Time, and its destination)
+// also shows the current status (current block, its next station
 void CTC_MainWindow::on_actionView_Train_Statuses_triggered()
 {
     //Display the values of the trains you have dispatched by looping through a vector of dispatch Train values
@@ -943,6 +979,11 @@ void CTC_MainWindow::on_actionView_Train_Statuses_triggered()
     ui->NextButton->setVisible(true);
 }
 
+//internal function - used for the displaying track and train statuses
+//inputs: number of spaces
+//outputs: a string of spaces
+//this function takes the number of spaces specified from the view Track/Train functions, and outputs a string of all spaces of length
+//  equal to the specified number
 QString CTC_MainWindow::spaces(int num)
 {
     QString temp = "";
@@ -953,6 +994,9 @@ QString CTC_MainWindow::spaces(int num)
     return temp;
 }
 
+//internal function - runs when the CTC receives a new time value
+//no inputs/outputs
+//displays the day of the week and the time, accurate down to the second
 void CTC_MainWindow::displayTime()
 {
     //display the time on the central timer module
@@ -960,6 +1004,10 @@ void CTC_MainWindow::displayTime()
     ui->TimeLabel->setText(QTime::fromMSecsSinceStartOfDay(currentSecondsSinceMidnight*1000).toString("h:mm:ss A"));
 }
 
+//internal function - runs when the time is updated
+//no inputs/outputs
+//check if it needs to dispatch any trains - they will dispatch if they match the current time.
+// if in automatic mode, it will also dispatch trains on the schedule if the times match.
 void CTC_MainWindow::checkDispatch()
 {
     //loop through all track vectors and dispatch one of them
@@ -1032,6 +1080,10 @@ void CTC_MainWindow::checkDispatch()
     }
 }
 
+//internal slot - runs when the Dispatch UI needs the current time (sends a request signal)
+//no inputs/outputs
+//if the Dispatch UI sends a request signal for the current time, the main window will respond with the current time by
+// sending its own signal to the Dispatch UI
 void CTC_MainWindow::receiveTimeRequest()
 {
     emit sendTime(currentDay,currentSecondsSinceMidnight);
@@ -1040,6 +1092,7 @@ void CTC_MainWindow::receiveTimeRequest()
 //slot to receive the data about the track block from wayside - update internal TrackBlockVector
 //input - data about SINGLE trackblock
 //no outputs
+//takes data about a specific block and updates its values
 void CTC_MainWindow::receiveBlockStatus(bool redline_temp, int trackNumber, int occupancy_temp, bool open_temp)
 {
     if (redline_temp == true)
@@ -1054,6 +1107,9 @@ void CTC_MainWindow::receiveBlockStatus(bool redline_temp, int trackNumber, int 
     }
 }
 
+//internal slot - runs when the user selects the "View Schedule" button in the menu
+//no inputs/outputs
+//shows the train schedule - which line it will dispatch to, its dispatch date/time, arrival date/time, and destination
 void CTC_MainWindow::on_actionView_Schedule_triggered()
 {
     //view the list of scheduled trains
@@ -1079,6 +1135,10 @@ void CTC_MainWindow::on_actionView_Schedule_triggered()
     ui->NextButton->setVisible(true);
 }
 
+//internal slot - runs when the Dispatch UI sends a signal to add to the Schedule
+//inputs - which line the train is on, its suggested speed, the depart time in minutes, the arrival day, the arrival time, the departure date, the departure time, and the destination
+//no outputs
+//initializes the train data values (including defining its suggested speed vectors), and adds the train to the schedule
 void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, double speed_temp, int departTimeMinute_temp,int arriveDate_temp, QTime arrivalTime_temp,int departDate_temp, QTime departTime_temp, QString destination_temp)
 {
     cl->hide();
@@ -1143,18 +1203,27 @@ void CTC_MainWindow::receiveDispatchSchedule(bool redline_temp, double speed_tem
     }
 }
 
+//internal slot - runs when the user selects the Manual Mode button
+//no inputs/outputs
+//switches to manual mode
 void CTC_MainWindow::on_actionManual_triggered()
 {
     ui->actionAutomatic->setChecked(false);
     ui->CTCModeLabel->setText("Manual Mode");
 }
 
+//internal slot - runs when the user selects the Manual Mode button
+//no inputs/outputs
+//switches to automatic mode
 void CTC_MainWindow::on_actionAutomatic_triggered()
 {
     ui->actionManual->setChecked(false);
     ui->CTCModeLabel->setText("Automatic Mode");
 }
 
+//internal slot - runs when the Dispatch UI/ Edit Switch UI need to know the current CTC mode
+//no inputs/outputs
+//responds with a signal specifying the mode that they will both receive
 void CTC_MainWindow::receiveModeRequest()
 {
     emit sendCTCmode(ui->actionManual->isChecked());
@@ -1173,12 +1242,11 @@ void CTC_MainWindow::checkNextBlocks()
             //redline
             if (TrainsDispatched[i].currentBlock != 76 && TrainsDispatched[i].progressIndex != 0)
             {
-                if (redTrackOccupancies[TrainsDispatched[i].routeIndex+1] == true)
+                if (redTrackOccupancies[redRoute[TrainsDispatched[i].routeIndex+1]-1] == true)
                 {
                     //train has moved forward
                     TrainsDispatched[i].routeIndex++;
                     TrainsDispatched[i].currentBlock = redRoute[TrainsDispatched[i].routeIndex];
-                    //redTrackOccupancies[TrainsDispatched[i].routeIndex-1] = false;
 
                     //test if its now at a station
                     if (TrainsDispatched[i].currentBlock-1 == TrainsDispatched[i].nextStationBlock)
@@ -1188,6 +1256,11 @@ void CTC_MainWindow::checkNextBlocks()
                         TrainsDispatched[i].nextStationBlock = nextStationBlockRed[TrainsDispatched[i].progressIndex];
                         emit sendAuthAndSpeed(TrainsDispatched[i].redline,authorityBetweenStationsGreen[TrainsDispatched[i].progressIndex],TrainsDispatched[i].suggestedSpeedVectors[TrainsDispatched[i].progressIndex]);
                     }
+
+                    if (ui->DataLabel->text() == "Dispatched Trains")
+                    {
+                        on_actionView_Train_Statuses_triggered();
+                    }
                 }
             }
         }
@@ -1196,12 +1269,11 @@ void CTC_MainWindow::checkNextBlocks()
             //green line
             if (TrainsDispatched[i].currentBlock != 151)
             {
-                if (greenTrackOccupancies[TrainsDispatched[i].routeIndex+1] == true)
+                if (greenTrackOccupancies[greenRoute[TrainsDispatched[i].routeIndex+1]-1] == true)
                 {
                     //train has moved forward
                     TrainsDispatched[i].routeIndex++;
                     TrainsDispatched[i].currentBlock = greenRoute[TrainsDispatched[i].routeIndex];
-                    //greenTrackOccupancies[TrainsDispatched[i].routeIndex-1] = false;
 
                     //test if its now at a station
                     if (TrainsDispatched[i].currentBlock-1 == TrainsDispatched[i].nextStationBlock)
@@ -1212,6 +1284,11 @@ void CTC_MainWindow::checkNextBlocks()
 
                         //emit new authority
                         emit sendAuthAndSpeed(TrainsDispatched[i].redline,authorityBetweenStationsGreen[TrainsDispatched[i].progressIndex],TrainsDispatched[i].suggestedSpeedVectors[TrainsDispatched[i].progressIndex]);
+                    }
+
+                    if (ui->DataLabel->text() == "Dispatched Trains")
+                    {
+                        on_actionView_Train_Statuses_triggered();
                     }
                 }
             }
@@ -1260,5 +1337,39 @@ void CTC_MainWindow::receiveSwitchUpdate(bool line, int switchLocationNum, int s
 {
     cs->close();
     emit sendSwitchEditCommand(line,switchLocationNum, switchConnectionLocationNum);
+}
+
+//internal slot - activated when either the wayside or Test UI sends occupancies
+//inputs - occupancies for green line, occupancies for red line
+void CTC_MainWindow::receiveOccupancies(QVector<bool> greenLine, QVector<bool> redLine)
+{
+    greenTrackOccupancies = greenLine;
+    redTrackOccupancies = redLine;
+
+    if (ui->DataLabel->text() == "Green Line Track Block Statuses")
+    {
+        on_actionView_Green_Line_Statuses_triggered();
+    }
+    else if (ui->DataLabel->text() == "Red Line Track Block Statuses")
+    {
+        on_actionView_Red_Line_Statuses_triggered();
+    }
+}
+
+//internal slot - activated when either the wayside or Test UI sends track statuses
+//inputs - occupancies for green line, occupancies for red line
+void CTC_MainWindow::receiveTrackStatuses(QVector<bool> greenLine, QVector<bool> redLine)
+{
+    greenTrackOpenClose = greenLine;
+    redTrackOpenClose = redLine;
+
+    if (ui->DataLabel->text() == "Green Line Track Block Statuses")
+    {
+        on_actionView_Green_Line_Statuses_triggered();
+    }
+    else if (ui->DataLabel->text() == "Red Line Track Block Statuses")
+    {
+        on_actionView_Red_Line_Statuses_triggered();
+    }
 }
 
