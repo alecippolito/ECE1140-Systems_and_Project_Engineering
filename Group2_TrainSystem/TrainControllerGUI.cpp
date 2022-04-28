@@ -46,6 +46,12 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
             if (dispatch == false){
                     dispatchTrain();
             }
+            if(train->available == false)
+            {
+                //delete ui;
+                tcAvailable = false;
+            }
+            else{
             tc.calculatePower();
             updatePower();
             getInfo(); // Update Authority and Velocity (Commanded Speed)
@@ -53,6 +59,7 @@ void TrainControllerGUI :: timerEvent(QTimerEvent *event)
             updateSpeed(); // Updates Setpoint Speed and Commanded Speed
             updateStatus(); // Updates Train Mode and All Emergency States
             updateTrain(); // Updates Advertisements, Doors, Lights and Temperture
+            }
         }
     }
 }
@@ -71,6 +78,7 @@ void TrainControllerGUI :: updatePower()
     train -> setPower(curPower, setpointSpeedForModel);
     ui -> currentPower -> display(curPower);
 }
+
 
 
 void TrainControllerGUI :: updateSpeed()
@@ -262,7 +270,7 @@ void TrainControllerGUI :: getInfo(){
     // tc.setCommndedSpeed(train->getVelocity());
     // figure out a way to get velocity
     tc.setTrainVelocity(train->getSpeed());
-    ui -> currentVelocity->display(tc.getTrainVelocity());
+    ui -> currentVelocity->display(tc.getTrainVelocity() * 2.23694);
     }
 
 

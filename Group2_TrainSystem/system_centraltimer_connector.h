@@ -29,6 +29,7 @@ public:
 
 private slots:
     void updateTime();
+    void updateTrainTime();
     void on_OneTimesSpeed_clicked();
     void on_TenTimesSpeed_clicked();
     void on_SixtyTimesSpeed_clicked();
@@ -59,6 +60,7 @@ private:
 
     //pointer to a QTimer class
     QTimer *timer;
+    QTimer *trainTimer;
 
     //variables in order to keep track of the time
     int day;
@@ -67,6 +69,7 @@ private:
     double timeDialation;
     QVector<QString> days;
     bool isPaused = false;
+    int tcCalled = 0;
 
     //internal functions
     void displayDateTime();

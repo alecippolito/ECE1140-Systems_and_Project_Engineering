@@ -16,59 +16,63 @@ Route::Route(int whichStation, bool isGreenline, Block *trackModel[])
 
 void Route::allocateMemoryForRoutesAndParseGreenline(Block *trackModel[])
 {
-    //pioneer, edgebrook, station, whited
-    if(stationNum == 1 || stationNum == 2 || stationNum == 3 || stationNum == 4){
+        //initialize
         for(int i=0; i<138; i++)
         {
             pioneerGreenline[i] = new Block(i);
             edgebrookGreenline[i] = new Block(i);
             stationGreenline[i] = new Block(i);
             whitedGreenline[i] = new Block(i);
-
-            pioneerGreenline[i] = trackModel[pioneerBlockNumbers[i]-1];
-            edgebrookGreenline[i] = trackModel[edgebrookBlockNumbers[i]-1];
-            stationGreenline[i] = trackModel[stationBlockNumbers[i]-1];
-            whitedGreenline[i] = trackModel[whitedBlockNumbers[i]-1];
-        }
-    }
-
-    if(stationNum == 5 || stationNum == 6 || stationNum == 7 || stationNum == 8 || stationNum == 9 || stationNum == 10){
-        //southbank, central, inglewood, overbrook, glenbury, dormont
-        for(int i=0; i<93; i++)
-        {
             southbankGreenline[i] = new Block(i);
             centralGreenline[i] = new Block(i);
             inglewoodGreenline[i] = new Block(i);
             overbrookGreenline[i] = new Block(i);
             glenburyGreenline[i] = new Block(i);
             dormontGreenline[i] = new Block(i);
-
-            southbankGreenline[i] = trackModel[southbankBlockNumbers[i]-1];
-            centralGreenline[i] = trackModel[centralBlockNumbers[i]-1];
-            inglewoodGreenline[i] = trackModel[inglewoodBlockNumbers[i]-1];
-            overbrookGreenline[i] = trackModel[overbrookBlockNumbers[i]-1];
-            glenburyGreenline[i] = trackModel[glenburyBlockNumbers[i]-1];
-            dormontGreenline[i] = trackModel[dormontBlockNumbers[i]-1];
-        }
-    }
-
-    if(stationNum == 11 || stationNum == 12 || stationNum == 13){
-        //mtLebanon, poplar, castleShannon
-        for(int i=0; i<117; i++)
-        {
             mtLebanonGreenline[i] = new Block(i);
             poplarGreenline[i] = new Block(i);
             castleShannonGreenline[i] = new Block(i);
 
-            mtLebanonGreenline[i] = trackModel[mtLebanonBlockNumbers[i]-1];
-            poplarGreenline[i] = trackModel[poplarBlockNumbers[i]-1];
-            castleShannonGreenline[i] = trackModel[castleShannonBlockNumbers[i]-1];
+            pioneerGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            edgebrookGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            stationGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            whitedGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            southbankGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            centralGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            inglewoodGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            overbrookGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            glenburyGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            dormontGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            mtLebanonGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            poplarGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
+            castleShannonGreenline[i] = trackModel[greenlineBlockNumbers[i]-1];
         }
-    }
 }
 
 void Route::allocateMemoryForRoutesAndParseRedline(Block *trackModel[])
 {
+
+    for(int i=0; i<103; i++)
+    {
+        shadysideRedline[i] = new Block(i);
+        herronAveRedline[i] = new Block(i);
+        swissvilleRedline[i] = new Block(i);
+        pennStationRedline[i] = new Block(i);
+        steelPlazaRedline[i] = new Block(i);
+        firstAveRedline[i] = new Block(i);
+        stationSquareRedline[i] = new Block(i);
+        southHillsJunctionRedline[i] = new Block(i);
+
+        shadysideRedline[i] = trackModel[redlineBlockNumbers[i]-1];
+        herronAveRedline[i] = trackModel[redlineBlockNumbers[i]-1];
+        swissvilleRedline[i] = trackModel[redlineBlockNumbers[i]-1];
+        pennStationRedline[i] = trackModel[redlineBlockNumbers[i]-1];
+        steelPlazaRedline[i] = trackModel[redlineBlockNumbers[i]-1];
+        firstAveRedline[i] = trackModel[redlineBlockNumbers[i]-1];
+        stationSquareRedline[i] = trackModel[redlineBlockNumbers[i]-1];
+        southHillsJunctionRedline[i] = trackModel[redlineBlockNumbers[i]-1];
+    }
+    /*
     //shadyside
     if(stationNum == 14){
         for(int i=0; i<7; i++)
@@ -141,6 +145,7 @@ void Route::allocateMemoryForRoutesAndParseRedline(Block *trackModel[])
             southHillsJunctionRedline[i] = trackModel[southHillsJunctionBlockNumbers[i]-1];
         }
     }
+    */
 }
 
 

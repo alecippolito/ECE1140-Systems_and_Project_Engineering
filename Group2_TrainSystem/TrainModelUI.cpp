@@ -144,17 +144,17 @@ void MainWindow::updateNextBlock(Block *b)
 
 void MainWindow::updatePower(double p)
 {
-    ui->powerLabel->setText(QString::number(p));
+    ui->powerLabel->setText(QString::number(p, 'f', 2));
 }
 
 void MainWindow::updateVelocity(double v)
 {
-    ui->velocityLabel->setText(QString::number(v * 2.23694) + "mph");
+    ui->velocityLabel->setText(QString::number(v * 2.23694, 'f', 2) + "mph");
 }
 
 void MainWindow::updateAcceleration(double a)
 {
-    ui->accelerationLabel->setText(QString::number(a) + "m/s^2");
+    ui->accelerationLabel->setText(QString::number(a, 'f', 2) + "m/s^2");
 }
 
 void MainWindow::updateBrakeFailureStatus(bool f)
