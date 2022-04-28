@@ -93,6 +93,7 @@ void TrainControllerGUI :: updateSpeed()
 
     // Commanded Speed
     double commandedSpeed = tc.getCommandedSpeed() * 0.621371;
+    setpointSpeedForModel = setpointSpeed;
     // ui -> currentCommanded -> display(floor(commandedSpeed));
     ui -> currentCommanded -> display(commandedSpeed);
 
