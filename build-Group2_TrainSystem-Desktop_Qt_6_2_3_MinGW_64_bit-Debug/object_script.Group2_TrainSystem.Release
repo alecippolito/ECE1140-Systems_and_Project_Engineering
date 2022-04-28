@@ -3,6 +3,7 @@ release/ctc_choosetrackline.o
 release/ctc_dispatchtrain.o
 release/ctc_mainwindow.o
 release/ctc_openclosetrack.o
+release/ctc_testui.o
 release/main.o
 release/mockWayside.o
 release/system_centraltimer_connector.o
@@ -23,6 +24,7 @@ release/moc_ctc_choosetrackline.o
 release/moc_ctc_dispatchtrain.o
 release/moc_ctc_mainwindow.o
 release/moc_ctc_openclosetrack.o
+release/moc_ctc_testui.o
 release/moc_system_centraltimer_connector.o
 release/moc_TrainModelUI.o
 release/moc_TrainControllerGUI.o

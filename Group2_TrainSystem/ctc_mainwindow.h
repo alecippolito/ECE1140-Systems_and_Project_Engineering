@@ -73,6 +73,8 @@ private slots:
     void receiveTrackEdit(bool,int,bool);
     void on_actionChange_Switch_Locations_triggered();
     void receiveSwitchUpdate(bool,int,int);
+    void receiveOccupancies(QVector<bool>,QVector<bool>);
+    void receiveTrackStatuses(QVector<bool>,QVector<bool>);
 
 signals:
     //bool = redline, QVector<double> = station distances from yard, QVector<QString> = station names
