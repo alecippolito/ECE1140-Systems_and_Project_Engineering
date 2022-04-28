@@ -13,7 +13,7 @@ CTC_DispatchTrain::CTC_DispatchTrain(QWidget *parent) :
     ui->setupUi(this);
 
     //initialize dispatch Train UI
-    standardSpeed = 10; //40 Km/Hr
+    standardSpeed = 20; //40 Km/Hr
     ui->DepartureCheck->setChecked(true);
     ui->ArrivalCheck->setChecked(true);
     currentDay = 0;
@@ -221,13 +221,13 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
                     emit dispatchStandby(redline,speed_temp,departTimeMinute,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),stationNames[ui->StationList->currentRow()]);
                 }
             }
+            hide();
         }
         else
         {
             error->setText("Unrealistic speed calculation! Should be\ngreater than 0 and less than 70.\nYour speed = " + QString::number(speed_temp) + " Km/Hr");
             error->exec();
         }
-        hide();
     }
 
     delete error;
@@ -272,6 +272,8 @@ double CTC_DispatchTrain::returnSuggestedSpeed()
     {
         return 0;
     }
+    totalTime = totalTime - 30*(ui->StationList->currentRow()+1);
+
     return (distance/1000)/(totalTime/3600);   //return the Km/Hr
 }
 
@@ -319,13 +321,13 @@ void CTC_DispatchTrain::on_ScheduleButton_clicked()
         {
             //emit dispatchSchedule(redline,departTimeMinute,speed_temp,authVector_temp,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),ui->DepartDate->currentIndex(),ui->DepartTime->time(),stationNames[ui->StationList->currentRow()]);
             emit dispatchSchedule(redline,speed_temp,departTimeMinute,ui->ArriveDate->currentIndex(),ui->ArrivalTime->time(),ui->DepartDate->currentIndex(),ui->DepartTime->time(),stationNames[ui->StationList->currentRow()]);
+            hide();
         }
         else
         {
             error->setText("Unrealistic speed calculation! Should be\ngreater than 0 and less than 70.\nYour speed = " + QString::number(speed_temp) + " Km/Hr");
             error->exec();
         }
-        hide();
     }
 
     delete error;

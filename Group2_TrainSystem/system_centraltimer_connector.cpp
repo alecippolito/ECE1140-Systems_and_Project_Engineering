@@ -84,11 +84,16 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     ui->TimeButton_2pm->setVisible(false);
 }
 
+//central timer destructor
 System_CentralTimer_Connector::~System_CentralTimer_Connector()
 {
     delete ui;
 }
 
+//internal slot - runs when the CTC sends a dispatch signal
+//inputs - the train number, which line its on, and its destination
+//no outputs
+//after receiving a dispatch signal from the CTC, the track model data will be parsed, and a new Train Model and Train Controller UI will be generated
 void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp, bool redline_temp, QString trainDestination)
 {
     qDebug() << "Dispatch signal received!";
@@ -131,6 +136,7 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     emit sendTimeDialation(timeDialation);
 }
 
+//internal slot - runs when the first timer variable hits zero
 void System_CentralTimer_Connector::updateTime()
 {
     //there are 86400 seconds in a day. Add 1 to the seconds value, if it exceeds that number, reset it back to 0,
