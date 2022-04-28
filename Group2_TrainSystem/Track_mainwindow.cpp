@@ -109,10 +109,10 @@ void Track_mainwindow::update_PLC()
 
 
 //signal to receive speed and authority
-void Track_mainwindow::receiveTrainData( QVector<bool> AuthorityVector_temp,QVector<double> speedVector_temp)
+void Track_mainwindow::receiveTrainData(bool redline_temp, QVector<bool> AuthorityVector_temp,QVector<double> speedVector_temp)
 {
     qDebug() << "Authority and speed received from CTC!";
-
+    qDebug() << (redline_temp == true ? "Red line" : "Green line");
 
     for (unsigned int i = 0; i < AuthorityVector_temp.size(); i++)
     {

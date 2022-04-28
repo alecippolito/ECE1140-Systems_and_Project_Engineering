@@ -56,10 +56,10 @@ static const uint qt_meta_data_Track_mainwindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   20,    2, 0x08,    1 /* Private */,
+       1,    3,   20,    2, 0x08,    1 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 4,    2,    2,
+    QMetaType::Void, QMetaType::Bool, 0x80000000 | 3, 0x80000000 | 4,    2,    2,    2,
 
        0        // eod
 };
@@ -70,7 +70,7 @@ void Track_mainwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         auto *_t = static_cast<Track_mainwindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->receiveTrainData((*reinterpret_cast< QList<bool>(*)>(_a[1])),(*reinterpret_cast< QList<double>(*)>(_a[2]))); break;
+        case 0: _t->receiveTrainData((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< QList<bool>(*)>(_a[2])),(*reinterpret_cast< QList<double>(*)>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -79,9 +79,9 @@ void Track_mainwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 0:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<bool> >(); break;
             case 1:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<bool> >(); break;
+            case 2:
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QList<double> >(); break;
             }
             break;
@@ -97,7 +97,7 @@ const QMetaObject Track_mainwindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_Track_mainwindow_t
 , QtPrivate::TypeAndForceComplete<Track_mainwindow, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<double>, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<bool>, std::false_type>, QtPrivate::TypeAndForceComplete<QVector<double>, std::false_type>
 
 
 >,
