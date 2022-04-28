@@ -25,7 +25,7 @@ struct Train_CTC{
     int TrainNumber;
     bool dispatched;    //used for trains in schedule
     int progressIndex;  //used for dynamic authority routing
-
+    int routeIndex;     //used for dynamic authority routing
 };
 
 //struct for TrackBlocks - the only required data for the CTC
@@ -77,7 +77,7 @@ signals:
     void sendTrainData(int,bool,QString);
 
     //signal sending authority and speed to wayside
-    void sendAuthAndSpeed(QVector<bool>,QVector<double>);
+    void sendAuthAndSpeed(bool,QVector<bool>,QVector<double>);
 
     //send time to dispatch UI - day, then second within day
     void sendTime(int,int);
@@ -95,6 +95,8 @@ private:
     void dispatchTrain();
     void displayTime();
     void updateTrainVector(int,bool,QTime,int,double,int,QString);
+    void checkNextBlocks();
+    QString spaces(int);
 
     //initializing all sub UI's
     Ui::CTC_MainWindow *ui;
@@ -117,8 +119,12 @@ private:
     QVector<QVector<bool> > stationAuthorityVectorsGreen;
     QVector<double> stationDistancesGreen;
     QVector<double> stationDistancesRed;
-    QString spaces(int);
     QVector<QString> days;
+    QVector<bool> redTrackOccupancies;
+    QVector<bool> greenTrackOccupancies;
+    QVector<bool> redTrackOpenClose;
+    QVector<bool> greenTrackOpenClose;
+
     int number;
     int trainSet;
     int trackSetRed;
@@ -137,6 +143,8 @@ private:
     QVector<int> nextStationBlockRed;
     QVector<QVector<double>> speedBaseVectorGreen;
     QVector<QVector<double>> speedBasedVectorRed;
+    QVector<int> greenRoute;
+    QVector<int> redRoute;
 };
 
 #endif // CTC_MAINWINDOW_H
