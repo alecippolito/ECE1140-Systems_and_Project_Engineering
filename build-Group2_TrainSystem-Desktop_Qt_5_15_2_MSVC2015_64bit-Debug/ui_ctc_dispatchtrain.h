@@ -36,6 +36,7 @@ public:
     QPushButton *DispatchButton;
     QLabel *LeaveNowLabel;
     QLabel *LeaveAtSSLabel;
+    QPushButton *ScheduleButton;
 
     void setupUi(QDialog *CTC_DispatchTrain)
     {
@@ -85,13 +86,16 @@ public:
         StationList->setGeometry(QRect(100, 210, 256, 192));
         DispatchButton = new QPushButton(CTC_DispatchTrain);
         DispatchButton->setObjectName(QString::fromUtf8("DispatchButton"));
-        DispatchButton->setGeometry(QRect(180, 430, 93, 29));
+        DispatchButton->setGeometry(QRect(120, 430, 93, 29));
         LeaveNowLabel = new QLabel(CTC_DispatchTrain);
         LeaveNowLabel->setObjectName(QString::fromUtf8("LeaveNowLabel"));
         LeaveNowLabel->setGeometry(QRect(60, 170, 141, 20));
         LeaveAtSSLabel = new QLabel(CTC_DispatchTrain);
         LeaveAtSSLabel->setObjectName(QString::fromUtf8("LeaveAtSSLabel"));
         LeaveAtSSLabel->setGeometry(QRect(260, 170, 141, 20));
+        ScheduleButton = new QPushButton(CTC_DispatchTrain);
+        ScheduleButton->setObjectName(QString::fromUtf8("ScheduleButton"));
+        ScheduleButton->setGeometry(QRect(220, 430, 121, 29));
 
         retranslateUi(CTC_DispatchTrain);
 
@@ -124,6 +128,7 @@ public:
         DispatchButton->setText(QCoreApplication::translate("CTC_DispatchTrain", "Dispatch", nullptr));
         LeaveNowLabel->setText(QString());
         LeaveAtSSLabel->setText(QString());
+        ScheduleButton->setText(QCoreApplication::translate("CTC_DispatchTrain", "Add to Schedule", nullptr));
     } // retranslateUi
 
 };

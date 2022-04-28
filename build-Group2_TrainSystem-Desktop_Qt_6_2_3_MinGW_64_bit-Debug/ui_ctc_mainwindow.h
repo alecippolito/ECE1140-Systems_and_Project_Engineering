@@ -33,6 +33,7 @@ public:
     QAction *actionView_Red_Line_Statuses;
     QAction *actionView_Train_Statuses;
     QAction *actionView_Schedule;
+    QAction *actionChange_Switch_Locations;
     QWidget *centralwidget;
     QLabel *DataLabel;
     QLabel *Data;
@@ -47,6 +48,7 @@ public:
     QMenu *menuDispatch;
     QMenu *menuView;
     QMenu *menuMode;
+    QMenu *menuSwitches;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *CTC_MainWindow)
@@ -73,6 +75,8 @@ public:
         actionView_Train_Statuses->setObjectName(QString::fromUtf8("actionView_Train_Statuses"));
         actionView_Schedule = new QAction(CTC_MainWindow);
         actionView_Schedule->setObjectName(QString::fromUtf8("actionView_Schedule"));
+        actionChange_Switch_Locations = new QAction(CTC_MainWindow);
+        actionChange_Switch_Locations->setObjectName(QString::fromUtf8("actionChange_Switch_Locations"));
         centralwidget = new QWidget(CTC_MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         DataLabel = new QLabel(centralwidget);
@@ -112,6 +116,8 @@ public:
         menuView->setObjectName(QString::fromUtf8("menuView"));
         menuMode = new QMenu(menubar);
         menuMode->setObjectName(QString::fromUtf8("menuMode"));
+        menuSwitches = new QMenu(menubar);
+        menuSwitches->setObjectName(QString::fromUtf8("menuSwitches"));
         CTC_MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(CTC_MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -121,6 +127,7 @@ public:
         menubar->addAction(menuDispatch->menuAction());
         menubar->addAction(menuView->menuAction());
         menubar->addAction(menuMode->menuAction());
+        menubar->addAction(menuSwitches->menuAction());
         menuEdit_Track->addAction(actionOpen_Close_Track);
         menuDispatch->addAction(actionDispatch_Train);
         menuView->addAction(actionView_Green_Line_Statuses);
@@ -129,6 +136,7 @@ public:
         menuView->addAction(actionView_Schedule);
         menuMode->addAction(actionManual);
         menuMode->addAction(actionAutomatic);
+        menuSwitches->addAction(actionChange_Switch_Locations);
 
         retranslateUi(CTC_MainWindow);
 
@@ -146,6 +154,7 @@ public:
         actionView_Red_Line_Statuses->setText(QCoreApplication::translate("CTC_MainWindow", "View Red Line Statuses", nullptr));
         actionView_Train_Statuses->setText(QCoreApplication::translate("CTC_MainWindow", "View Train Statuses", nullptr));
         actionView_Schedule->setText(QCoreApplication::translate("CTC_MainWindow", "View Schedule", nullptr));
+        actionChange_Switch_Locations->setText(QCoreApplication::translate("CTC_MainWindow", "Change Switch Locations", nullptr));
         DataLabel->setText(QString());
         Data->setText(QString());
         previousButton->setText(QCoreApplication::translate("CTC_MainWindow", "<-- Previous", nullptr));
@@ -158,6 +167,7 @@ public:
         menuDispatch->setTitle(QCoreApplication::translate("CTC_MainWindow", "Dispatch", nullptr));
         menuView->setTitle(QCoreApplication::translate("CTC_MainWindow", "View", nullptr));
         menuMode->setTitle(QCoreApplication::translate("CTC_MainWindow", "Mode", nullptr));
+        menuSwitches->setTitle(QCoreApplication::translate("CTC_MainWindow", "Switches", nullptr));
     } // retranslateUi
 
 };

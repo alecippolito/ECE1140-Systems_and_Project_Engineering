@@ -24,7 +24,6 @@ TrainControllerGUI::TrainControllerGUI(int newTrainNum, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::TrainControllerGUI)
 {
-
      ui->setupUi(this);
      trainNum = newTrainNum;
 
@@ -88,12 +87,14 @@ void TrainControllerGUI :: updateSpeed()
     if(tc.getCommandedSpeed() < 40){
         tc.setCommandedSpeed(tc.getCommandedSpeed() + 2);
     }
-    ui -> currentSetpoint -> display(floor(setpointSpeed));
+    // ui -> currentSetpoint -> display(floor(setpointSpeed));
+    ui -> currentSetpoint -> display(setpointSpeed);
+
 
     // Commanded Speed
     double commandedSpeed = tc.getCommandedSpeed() * 0.621371;
-    setpointSpeedForModel = setpointSpeed;
-    ui -> currentCommanded -> display(floor(commandedSpeed));
+    // ui -> currentCommanded -> display(floor(commandedSpeed));
+    ui -> currentCommanded -> display(commandedSpeed);
 
 }
 
@@ -104,6 +105,18 @@ void TrainControllerGUI :: updateBrake()
     if(tc.getEmergencyBrakeFlag()==true){
         tc.setPowerCommand(0);
     }
+
+
+    if(tc.getServiceBrakeFlag() == true){
+
+    }
+    ui->serviceBrake->setDisabled(!tc.getServiceBrakeFlag());
+    ui->releaseServiceBrake->setDisabled(tc.getServiceBrakeFlag());
+
+
+
+
+
 }
 
 void TrainControllerGUI :: dispatchTrain()
@@ -135,9 +148,11 @@ void TrainControllerGUI :: updateStatus()
     ui -> tempSubmit -> setDisabled(tc.getAutomaticMode());
     ui -> eBrakeButton -> setDisabled(tc.getAutomaticMode());
     ui -> serviceBrake -> setDisabled(tc.getAutomaticMode());
+    ui -> releaseServiceBrake -> setDisabled(tc.getAutomaticMode());
+   // ui->releaseServiceBrake->setDisabled(tc.getServiceBrakeFlag());
 
     // Announcments
-    // tc.setStation(train->getStation());
+    tc.setStation(train->getDestination());
     std :: string message = "";
     if(tc.getAuthority() == 0){
         message = "Arriving at : ";
@@ -237,6 +252,12 @@ void TrainControllerGUI :: updateTrain(){
 
     // Lights
     bool curLightStatus = tc.getLightsOn();
+    /*
+    if (train->currentBlock->infrastructure.contains('UNDERGROUD')){
+        ui -> lightStatus -> setText("Light Staus: ON");
+        train->lights_On();
+    }
+    */
     if(curLightStatus == 0){
         ui -> lightStatus -> setText("Light Staus: OFF");
         train->lightsOff();
@@ -267,7 +288,7 @@ void TrainControllerGUI :: getInfo(){
     // tc.setAuthority(train->getAuthority());
     ui -> currentAuthority->display(tc.getAuthority());
     // figure out a way to set Commanded Speed
-    // tc.setCommndedSpeed(train->getVelocity());
+    // tc.setCommandedSpeed(train->getCurrentVelocity());
     // figure out a way to get velocity
     tc.setTrainVelocity(train->getSpeed());
     ui -> currentVelocity->display(tc.getTrainVelocity() * 2.23694);
@@ -303,8 +324,8 @@ void TrainControllerGUI::on_lightButton_clicked()
 
 void TrainControllerGUI::on_serviceBrake_clicked()
 {
-    tc.setPowerCommand(0.0);
     tc.setServiceBrake(true);
+    train->trainMetrics->serviceBrake=true;
 }
 
 
@@ -372,3 +393,11 @@ void TrainControllerGUI::setPaused(bool b)
 {
     isPaused = b;
 }
+
+
+void TrainControllerGUI::on_releaseServiceBrake_clicked()
+{
+    tc.setServiceBrake(false);
+    train->trainMetrics->serviceBrake=false;
+}
+

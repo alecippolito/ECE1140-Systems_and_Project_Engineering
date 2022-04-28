@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_System_CentralTimer_Connector_t {
-    const uint offsetsAndSize[44];
-    char stringdata0[476];
+    const uint offsetsAndSize[46];
+    char stringdata0[503];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_System_CentralTimer_Connector_t, stringdata0) + ofs), len 
@@ -50,7 +50,8 @@ QT_MOC_LITERAL(340, 29), // "on_ThousandTimesSpeed_clicked"
 QT_MOC_LITERAL(370, 25), // "on_TimeButton_1pm_clicked"
 QT_MOC_LITERAL(396, 26), // "receiveDispatchSignal_test"
 QT_MOC_LITERAL(423, 25), // "on_TimeButton_2pm_clicked"
-QT_MOC_LITERAL(449, 26) // "on_pausePlayButton_clicked"
+QT_MOC_LITERAL(449, 26), // "on_pausePlayButton_clicked"
+QT_MOC_LITERAL(476, 26) // "on_CTCTestUIButton_clicked"
 
     },
     "System_CentralTimer_Connector\0sendTime\0"
@@ -66,7 +67,8 @@ QT_MOC_LITERAL(449, 26) // "on_pausePlayButton_clicked"
     "on_TimeButton_1pm_clicked\0"
     "receiveDispatchSignal_test\0"
     "on_TimeButton_2pm_clicked\0"
-    "on_pausePlayButton_clicked"
+    "on_pausePlayButton_clicked\0"
+    "on_CTCTestUIButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -76,7 +78,7 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -84,28 +86,29 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,  134,    2, 0x06,    1 /* Public */,
-       3,    1,  139,    2, 0x06,    4 /* Public */,
-       4,    1,  142,    2, 0x06,    6 /* Public */,
+       1,    2,  140,    2, 0x06,    1 /* Public */,
+       3,    1,  145,    2, 0x06,    4 /* Public */,
+       4,    1,  148,    2, 0x06,    6 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,  145,    2, 0x08,    8 /* Private */,
-       6,    0,  146,    2, 0x08,    9 /* Private */,
-       7,    0,  147,    2, 0x08,   10 /* Private */,
-       8,    0,  148,    2, 0x08,   11 /* Private */,
-       9,    0,  149,    2, 0x08,   12 /* Private */,
-      10,    0,  150,    2, 0x08,   13 /* Private */,
-      11,    0,  151,    2, 0x08,   14 /* Private */,
-      12,    0,  152,    2, 0x08,   15 /* Private */,
-      13,    0,  153,    2, 0x08,   16 /* Private */,
-      14,    0,  154,    2, 0x08,   17 /* Private */,
-      15,    0,  155,    2, 0x08,   18 /* Private */,
-      16,    0,  156,    2, 0x08,   19 /* Private */,
-      17,    0,  157,    2, 0x08,   20 /* Private */,
-      18,    0,  158,    2, 0x08,   21 /* Private */,
-      19,    3,  159,    2, 0x08,   22 /* Private */,
-      20,    0,  166,    2, 0x08,   26 /* Private */,
-      21,    0,  167,    2, 0x08,   27 /* Private */,
+       5,    0,  151,    2, 0x08,    8 /* Private */,
+       6,    0,  152,    2, 0x08,    9 /* Private */,
+       7,    0,  153,    2, 0x08,   10 /* Private */,
+       8,    0,  154,    2, 0x08,   11 /* Private */,
+       9,    0,  155,    2, 0x08,   12 /* Private */,
+      10,    0,  156,    2, 0x08,   13 /* Private */,
+      11,    0,  157,    2, 0x08,   14 /* Private */,
+      12,    0,  158,    2, 0x08,   15 /* Private */,
+      13,    0,  159,    2, 0x08,   16 /* Private */,
+      14,    0,  160,    2, 0x08,   17 /* Private */,
+      15,    0,  161,    2, 0x08,   18 /* Private */,
+      16,    0,  162,    2, 0x08,   19 /* Private */,
+      17,    0,  163,    2, 0x08,   20 /* Private */,
+      18,    0,  164,    2, 0x08,   21 /* Private */,
+      19,    3,  165,    2, 0x08,   22 /* Private */,
+      20,    0,  172,    2, 0x08,   26 /* Private */,
+      21,    0,  173,    2, 0x08,   27 /* Private */,
+      22,    0,  174,    2, 0x08,   28 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
@@ -128,6 +131,7 @@ static const uint qt_meta_data_System_CentralTimer_Connector[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::QString,    2,    2,    2,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -160,6 +164,7 @@ void System_CentralTimer_Connector::qt_static_metacall(QObject *_o, QMetaObject:
         case 17: _t->receiveDispatchSignal_test((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 18: _t->on_TimeButton_2pm_clicked(); break;
         case 19: _t->on_pausePlayButton_clicked(); break;
+        case 20: _t->on_CTCTestUIButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -196,7 +201,7 @@ const QMetaObject System_CentralTimer_Connector::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_System_CentralTimer_Connector_t
 , QtPrivate::TypeAndForceComplete<System_CentralTimer_Connector, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -223,13 +228,13 @@ int System_CentralTimer_Connector::qt_metacall(QMetaObject::Call _c, int _id, vo
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 21)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 20;
+        _id -= 21;
     }
     return _id;
 }

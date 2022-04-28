@@ -48,7 +48,9 @@
          if (authority <= 0) {
                  powerCommand = 0.0;
          }
-         stationStop();
+         if(getAuthority() == 0){
+            stationStop();
+         }
     }
 
     void TrainController :: stationStop(){

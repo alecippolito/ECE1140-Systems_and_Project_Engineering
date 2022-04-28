@@ -1,6 +1,9 @@
+debug/ctc_changeswitches.o
 debug/ctc_choosetrackline.o
 debug/ctc_dispatchtrain.o
 debug/ctc_mainwindow.o
+debug/ctc_openclosetrack.o
+debug/ctc_testui.o
 debug/main.o
 debug/mockWayside.o
 debug/system_centraltimer_connector.o
@@ -16,9 +19,12 @@ debug/Track_controller.o
 debug/PLC.o
 debug/Track_mainwindow.o
 debug/qrc_trainResources.o
+debug/moc_ctc_changeswitches.o
 debug/moc_ctc_choosetrackline.o
 debug/moc_ctc_dispatchtrain.o
 debug/moc_ctc_mainwindow.o
+debug/moc_ctc_openclosetrack.o
+debug/moc_ctc_testui.o
 debug/moc_system_centraltimer_connector.o
 debug/moc_TrainModelUI.o
 debug/moc_TrainControllerGUI.o

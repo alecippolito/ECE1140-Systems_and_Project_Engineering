@@ -36,12 +36,12 @@ static const qt_meta_stringdata_Track_mainwindow_t qt_meta_stringdata_Track_main
 QT_MOC_LITERAL(0, 0, 16), // "Track_mainwindow"
 QT_MOC_LITERAL(1, 17, 16), // "receiveTrainData"
 QT_MOC_LITERAL(2, 34, 0), // ""
-QT_MOC_LITERAL(3, 35, 15), // "QVector<double>"
-QT_MOC_LITERAL(4, 51, 13) // "QVector<bool>"
+QT_MOC_LITERAL(3, 35, 13), // "QVector<bool>"
+QT_MOC_LITERAL(4, 49, 15) // "QVector<double>"
 
     },
     "Track_mainwindow\0receiveTrainData\0\0"
-    "QVector<double>\0QVector<bool>"
+    "QVector<bool>\0QVector<double>"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,10 +59,10 @@ static const uint qt_meta_data_Track_mainwindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    5,   19,    2, 0x08 /* Private */,
+       1,    2,   19,    2, 0x08 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::Int, 0x80000000 | 3, 0x80000000 | 4,    2,    2,    2,    2,    2,
+    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 4,    2,    2,
 
        0        // eod
 };
@@ -73,7 +73,7 @@ void Track_mainwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         auto *_t = static_cast<Track_mainwindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->receiveTrainData((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QVector<double>(*)>(_a[4])),(*reinterpret_cast< QVector<bool>(*)>(_a[5]))); break;
+        case 0: _t->receiveTrainData((*reinterpret_cast< QVector<bool>(*)>(_a[1])),(*reinterpret_cast< QVector<double>(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -82,9 +82,9 @@ void Track_mainwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 0:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-            case 4:
+            case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QVector<bool> >(); break;
-            case 3:
+            case 1:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QVector<double> >(); break;
             }
             break;

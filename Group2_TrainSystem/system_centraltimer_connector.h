@@ -13,6 +13,7 @@
 #include "Track_controller.h"
 #include "PLC.h"
 #include "Track_mainwindow.h"
+#include "ctc_testui.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -47,6 +48,8 @@ private slots:
     void on_TimeButton_2pm_clicked();
     void on_pausePlayButton_clicked();
 
+    void on_CTCTestUIButton_clicked();
+
 signals:
     void sendTime(int,int);
     void sendTimeUpdate(int);
@@ -57,6 +60,7 @@ private:
 
     //create pointers to all modules
     CTC_MainWindow *ctc;
+    CTC_TestUI *ctcTestUI;
 
     //pointer to a QTimer class
     QTimer *timer;

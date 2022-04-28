@@ -68,7 +68,20 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,QString)), this, SLOT(receiveDispatchSignal_test(int,bool,QString)));
 
     //send speed and authority from CTC to Wayside
-    QObject::connect(ctc, SIGNAL(sendAuthAndSpeed(QVector<bool>,QVector<double>)), trackController, SLOT(receiveTrainData(QVector<bool>,QVector<double>)));
+    QObject::connect(ctc, SIGNAL(sendAuthAndSpeed(bool,QVector<bool>,QVector<double>)), trackController, SLOT(receiveTrainData(bool,QVector<bool>,QVector<double>)));
+
+
+    //make the day edits invisible, we only need it for testing
+    ui->MonButton->setVisible(false);
+    ui->TuesButton->setVisible(false);
+    ui->WedButton->setVisible(false);
+    ui->ThursButton->setVisible(false);
+    ui->FriButton->setVisible(false);
+    ui->SatButton->setVisible(false);
+    ui->SunButton->setVisible(false);
+    ui->ThousandTimesSpeed->setVisible(false);
+    ui->TimeButton_1pm->setVisible(false);
+    ui->TimeButton_2pm->setVisible(false);
 }
 
 System_CentralTimer_Connector::~System_CentralTimer_Connector()
@@ -395,3 +408,18 @@ int findRoute(QString destination, bool isRedline)
     }
 
 }
+
+//internal slot - activated when user presses the CTC UI button
+//shows the CTC test UI, makes connections
+void System_CentralTimer_Connector::on_CTCTestUIButton_clicked()
+{
+    ctcTestUI = new CTC_TestUI();
+    ctcTestUI->show();
+
+    //connections
+    QObject::connect(ctc, SIGNAL(sendTrackEditCommand(bool,int,bool)),ctcTestUI,SLOT(receiveTrackEdit(bool,int,bool)));
+    QObject::connect(ctc,SIGNAL(sendSwitchEditCommand(bool,int,int)),ctcTestUI,SLOT(receiveSwitchEdit(bool,int,int)));
+    QObject::connect(ctcTestUI, SIGNAL(sendOccupancies(QVector<bool>,QVector<bool>)), ctc, SLOT(receiveOccupancies(QVector<bool>,QVector<bool>)));
+    QObject::connect(ctc, SIGNAL(sendAuthAndSpeed(bool,QVector<bool>,QVector<double>)), ctcTestUI, SLOT(receiveNewAuthority(bool,QVector<bool>,QVector<double>)));
+}
+

@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QtMath>
 
+//Constructor for Dispatch UI
 CTC_DispatchTrain::CTC_DispatchTrain(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CTC_DispatchTrain)
@@ -23,11 +24,16 @@ CTC_DispatchTrain::CTC_DispatchTrain(QWidget *parent) :
 
 }
 
+//Destructor for Dispatch UI
 CTC_DispatchTrain::~CTC_DispatchTrain()
 {
     delete ui;
 }
 
+//internal slot - runs right after this UI is created by a signal from the main window
+//inputs - which line the train is in, the distances to the stations in that line, and the names of the stations in that line
+//no outputs
+//initializes the internal variables of this class with the inputs in order for the rest of the UI to work
 void CTC_DispatchTrain::receiveStationData(bool redline_temp, QVector<double> distances, QVector<QString> names)
 {
     //copy the received data into the the UI's internal vectors, and show what line we are using
@@ -44,6 +50,11 @@ void CTC_DispatchTrain::receiveStationData(bool redline_temp, QVector<double> di
     ui->StationList->setCurrentRow(0);
 }
 
+//internal slot - runs when the user has selected/deselected "Departure Time"
+//inputs - integer value specifying the state of the check box
+//no outputs
+//if "Departure Time" is selected, then the UI will show that as an option
+// if "Departure Time" is deselected, the the UI will hide that option
 void CTC_DispatchTrain::on_DepartureCheck_stateChanged(int arg1)
 {
     //if arg1 = 0, unchecked. If arg1 = 2, checked
@@ -74,7 +85,11 @@ void CTC_DispatchTrain::on_DepartureCheck_stateChanged(int arg1)
     }
 }
 
-
+//internal slot - runs when the user has selected/deselected "Arrival Time"
+//inputs - integer value specifying the state of the check box
+//no outputs
+//if "Arrival Time" is selected, then the UI will show that as an option
+// if "arrival Time" is deselected, the the UI will hide that option
 void CTC_DispatchTrain::on_ArrivalCheck_stateChanged(int arg1)
 {
     //if arg1 = 0, unchecked. If arg1 = 2, checked
@@ -105,7 +120,11 @@ void CTC_DispatchTrain::on_ArrivalCheck_stateChanged(int arg1)
     }
 }
 
-//initialize the timing options with the current system time
+//internal slot - runs when the main window sends an initial time value
+//inputs - day of the week, seconds since 12:00am monday
+//no outputs
+//initializes the timing options with the current system time. Does not continously update, since this function is only
+// run when the UI is first created
 void CTC_DispatchTrain::updateTimeDisplay(int day_temp, int seconds_temp)
 {
     //initialize the time options to around the current system time
@@ -121,13 +140,21 @@ void CTC_DispatchTrain::updateTimeDisplay(int day_temp, int seconds_temp)
     }
 }
 
+//internal slot - runs after the main window sends the signal containing the time
+//inputs - day of the week, seconds since 12:00am Monday
+//no outputs
+//used for the speed calculation - if the "Departure Time" button is deselected, meaning that the train will leave right now.
+// The train will use these values as its departure time
 void CTC_DispatchTrain::receiveSystemTime(int day_temp, int seconds_temp)
 {
     currentDay = day_temp;
     currentSeconds = seconds_temp;
 }
 
-
+//internal slot - runs when the user selects the "Dispatch" button
+//no inputs/outputs
+//1). checks for errors, as listed below, including a speed check (cannot be lower than 0, cannot be higher than 70mph)
+//2). dispatches train with different values, depending on which boxes are checked (departure time/arrival time)
 void CTC_DispatchTrain::on_DispatchButton_clicked()
 {
     //Failure states for Dispatching from this window:
@@ -206,6 +233,10 @@ void CTC_DispatchTrain::on_DispatchButton_clicked()
     delete error;
 }
 
+//internal function - used internally for the Dispatch Button Clicked / Schedule Button Clicked functions
+//no inputs
+//outputs - suggested speed value
+//takes the distance to the station, and the time span specified by the user to calculate speed
 double CTC_DispatchTrain::returnSuggestedSpeed()
 {
     //retrieve the minimum distance from the yard to the station
@@ -245,7 +276,10 @@ double CTC_DispatchTrain::returnSuggestedSpeed()
 }
 
 
-
+//internal slot - used when the user clicks the "Add to Schedule" button
+//no inputs/outputs
+//1). checks for errors, as listed below, including a speed check (cannot be lower than 0, cannot be higher than 70mph)
+//2). dispatches train with initialized values (the user must explicitly specify departure time and arrival time)
 void CTC_DispatchTrain::on_ScheduleButton_clicked()
 {
     //Failure states for Dispatching from this window:
@@ -297,6 +331,11 @@ void CTC_DispatchTrain::on_ScheduleButton_clicked()
     delete error;
 }
 
+//internal slot - runs when the main window sends a singal containing its current mode
+//inputs - whether or not the mode is manual
+//no outputs
+//used to receive the CTC mode after a request for the CTC mode was sent out from this UI, and used internally to see if the user is
+// allowed to add a train to the schedule
 void CTC_DispatchTrain::receiveCTCMode(bool mode)
 {
     manualMode = mode;

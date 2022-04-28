@@ -81,6 +81,7 @@ public:
     QLabel *trainNumVal;
     QLCDNumber *currentAuthority;
     QLabel *currentAuthorityLabel;
+    QPushButton *releaseServiceBrake;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -115,7 +116,7 @@ public:
         lightButton->setFont(font);
         serviceBrake = new QPushButton(centralwidget);
         serviceBrake->setObjectName(QString::fromUtf8("serviceBrake"));
-        serviceBrake->setGeometry(QRect(20, 180, 191, 41));
+        serviceBrake->setGeometry(QRect(20, 140, 191, 41));
         serviceBrake->setFont(font);
         speedLabel = new QLabel(centralwidget);
         speedLabel->setObjectName(QString::fromUtf8("speedLabel"));
@@ -324,6 +325,10 @@ public:
         currentAuthorityLabel->setGeometry(QRect(490, 100, 81, 21));
         currentAuthorityLabel->setFont(font1);
         currentAuthorityLabel->setAlignment(Qt::AlignCenter);
+        releaseServiceBrake = new QPushButton(centralwidget);
+        releaseServiceBrake->setObjectName(QString::fromUtf8("releaseServiceBrake"));
+        releaseServiceBrake->setGeometry(QRect(20, 180, 191, 41));
+        releaseServiceBrake->setFont(font);
         TrainControllerGUI->setCentralWidget(centralwidget);
         menubar = new QMenuBar(TrainControllerGUI);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -345,7 +350,7 @@ public:
         decSpeed->setText(QCoreApplication::translate("TrainControllerGUI", "-", nullptr));
         doorButton->setText(QCoreApplication::translate("TrainControllerGUI", "Open/Close Door", nullptr));
         lightButton->setText(QCoreApplication::translate("TrainControllerGUI", "Lights On/Off", nullptr));
-        serviceBrake->setText(QCoreApplication::translate("TrainControllerGUI", "Service Brake", nullptr));
+        serviceBrake->setText(QCoreApplication::translate("TrainControllerGUI", "Enable Service Brake", nullptr));
         speedLabel->setText(QCoreApplication::translate("TrainControllerGUI", " Setpoint Speed", nullptr));
         powerLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Power", nullptr));
         lightStatus->setText(QCoreApplication::translate("TrainControllerGUI", "Light Status: OFF", nullptr));
@@ -378,6 +383,7 @@ public:
         trainNumLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Train Number:", nullptr));
         trainNumVal->setText(QCoreApplication::translate("TrainControllerGUI", "\"1\"", nullptr));
         currentAuthorityLabel->setText(QCoreApplication::translate("TrainControllerGUI", "Authority", nullptr));
+        releaseServiceBrake->setText(QCoreApplication::translate("TrainControllerGUI", "Disable Serevice Brake", nullptr));
     } // retranslateUi
 
 };
