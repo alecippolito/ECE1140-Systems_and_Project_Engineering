@@ -5,6 +5,8 @@
 #include <QTime>
 #include "ctc_choosetrackline.h"
 #include "ctc_dispatchtrain.h"
+#include "ctc_openclosetrack.h"
+#include "ctc_changeswitches.h"
 
 //struct for the Train - how train values are stored inside the CTC for display, and to hold values for dispatch signals
 struct Train_CTC{
@@ -25,7 +27,7 @@ struct Train_CTC{
     int TrainNumber;
     bool dispatched;    //used for trains in schedule
     int progressIndex;  //used for dynamic authority routing
-
+    int routeIndex;     //used for dynamic authority routing
 };
 
 //struct for TrackBlocks - the only required data for the CTC
@@ -67,6 +69,10 @@ private slots:
     void on_actionManual_triggered();
     void on_actionAutomatic_triggered();
     void receiveModeRequest();
+    void on_actionOpen_Close_Track_triggered();
+    void receiveTrackEdit(bool,int,bool);
+    void on_actionChange_Switch_Locations_triggered();
+    void receiveSwitchUpdate(bool,int,int);
 
 signals:
     //bool = redline, QVector<double> = station distances from yard, QVector<QString> = station names
@@ -77,7 +83,7 @@ signals:
     void sendTrainData(int,bool,QString);
 
     //signal sending authority and speed to wayside
-    void sendAuthAndSpeed(QVector<bool>,QVector<double>);
+    void sendAuthAndSpeed(bool,QVector<bool>,QVector<double>);
 
     //send time to dispatch UI - day, then second within day
     void sendTime(int,int);
@@ -85,8 +91,14 @@ signals:
     //same as send time, except it is run in the beginning
     void sendInitialTime(int,int);
 
-    //used to send data about whether or not CTC is in manual mode
+    //used to send data about whether or not CTC is in manual mode to dispatch UI
     void sendCTCmode(bool);
+
+    //used to send an open/close track command to the wayside
+    void sendTrackEditCommand(bool,int,bool);
+
+    //used to send an edit switch command to wayside
+    void sendSwitchEditCommand(bool,int,int);
 
 private:
     //internal functions
@@ -95,11 +107,15 @@ private:
     void dispatchTrain();
     void displayTime();
     void updateTrainVector(int,bool,QTime,int,double,int,QString);
+    void checkNextBlocks();
+    QString spaces(int);
 
     //initializing all sub UI's
     Ui::CTC_MainWindow *ui;
     CTC_ChooseTrackLine *cl;
     CTC_DispatchTrain *dp;
+    CTC_OpenCloseTrack *oc;
+    CTC_ChangeSwitches *cs;
 
     //all internal variables and vectors
     QVector<Train_CTC> TrainsDispatched;
@@ -117,8 +133,12 @@ private:
     QVector<QVector<bool> > stationAuthorityVectorsGreen;
     QVector<double> stationDistancesGreen;
     QVector<double> stationDistancesRed;
-    QString spaces(int);
     QVector<QString> days;
+    QVector<bool> redTrackOccupancies;
+    QVector<bool> greenTrackOccupancies;
+    QVector<bool> redTrackOpenClose;
+    QVector<bool> greenTrackOpenClose;
+
     int number;
     int trainSet;
     int trackSetRed;
@@ -137,6 +157,8 @@ private:
     QVector<int> nextStationBlockRed;
     QVector<QVector<double>> speedBaseVectorGreen;
     QVector<QVector<double>> speedBasedVectorRed;
+    QVector<int> greenRoute;
+    QVector<int> redRoute;
 };
 
 #endif // CTC_MAINWINDOW_H

@@ -159,10 +159,17 @@
     <addaction name="actionManual"/>
     <addaction name="actionAutomatic"/>
    </widget>
+   <widget class="QMenu" name="menuSwitches">
+    <property name="title">
+     <string>Switches</string>
+    </property>
+    <addaction name="actionChange_Switch_Locations"/>
+   </widget>
    <addaction name="menuEdit_Track"/>
    <addaction name="menuDispatch"/>
    <addaction name="menuView"/>
    <addaction name="menuMode"/>
+   <addaction name="menuSwitches"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen_Close_Track">
@@ -212,6 +219,11 @@
   <action name="actionView_Schedule">
    <property name="text">
     <string>View Schedule</string>
+   </property>
+  </action>
+  <action name="actionChange_Switch_Locations">
+   <property name="text">
+    <string>Change Switch Locations</string>
    </property>
   </action>
  </widget>

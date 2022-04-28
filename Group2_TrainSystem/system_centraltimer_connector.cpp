@@ -64,7 +64,7 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     QObject::connect(ctc, SIGNAL(sendTrainData(int,bool,QString)), this, SLOT(receiveDispatchSignal_test(int,bool,QString)));
 
     //send speed and authority from CTC to Wayside
-    QObject::connect(ctc, SIGNAL(sendAuthAndSpeed(QVector<bool>,QVector<double>)), trackController, SLOT(receiveTrainData(QVector<bool>,QVector<double>)));
+    QObject::connect(ctc, SIGNAL(sendAuthAndSpeed(bool,QVector<bool>,QVector<double>)), trackController, SLOT(receiveTrainData(bool,QVector<bool>,QVector<double>)));
 }
 
 System_CentralTimer_Connector::~System_CentralTimer_Connector()
