@@ -9,9 +9,11 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ctc_changeswitches.cpp \
     ctc_choosetrackline.cpp \
     ctc_dispatchtrain.cpp \
     ctc_mainwindow.cpp \
+    ctc_openclosetrack.cpp \
     main.cpp \
     mockWayside.cpp \
     system_centraltimer_connector.cpp \
@@ -28,9 +30,11 @@ SOURCES += \
     Track_mainwindow.cpp
 
 HEADERS += \
+    ctc_changeswitches.h \
     ctc_choosetrackline.h \
     ctc_dispatchtrain.h \
     ctc_mainwindow.h \
+    ctc_openclosetrack.h \
     mockWayside.h \
     system_centraltimer_connector.h \
     TrainModelUI.h \
@@ -46,9 +50,11 @@ HEADERS += \
     Track_mainwindow.h
 
 FORMS += \
+    ctc_changeswitches.ui \
     ctc_choosetrackline.ui \
     ctc_dispatchtrain.ui \
     ctc_mainwindow.ui \
+    ctc_openclosetrack.ui \
     system_centraltimer_connector.ui \
     TrainModelUI.ui \
     TrainControllerGUI.ui \

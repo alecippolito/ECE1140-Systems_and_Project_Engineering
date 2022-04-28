@@ -6,6 +6,7 @@
 #include <QTextStream>
 #include <QDebug>
 
+//constructor for the main window UI
 CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CTC_MainWindow)
@@ -33,6 +34,7 @@ CTC_MainWindow::CTC_MainWindow(QWidget *parent) :
     QObject::connect(this, SIGNAL(sendTrainData(int,bool,QString)), this, SLOT(updateTrainDisplay()));
 }
 
+//destructor for the main window UI
 CTC_MainWindow::~CTC_MainWindow()
 {
     delete ui;
@@ -1216,3 +1218,47 @@ void CTC_MainWindow::checkNextBlocks()
         }
     }
 }
+
+//internal slot (no inputs/ outputs) - activated when the Open/Close Track drop down menu button is clicked
+//pressing this button opens the open/close track UI
+void CTC_MainWindow::on_actionOpen_Close_Track_triggered()
+{
+    //show the open close track UI
+    oc = new CTC_OpenCloseTrack();
+    oc->show();
+
+    //connect its signal to a slot in this UI
+    QObject::connect(oc, SIGNAL(sendUpdatedTrackBlock(bool,int,bool)), this, SLOT(receiveTrackEdit(bool,int,bool)));
+}
+
+//internal slot (no inputs/outputs) - activated when the signal is generated from the open close track UI
+//receives that signal from the open close track UI, and dispatches its own signal to be received by the wayside
+void CTC_MainWindow::receiveTrackEdit(bool line, int blockNum, bool status)
+{
+    oc->close();
+    emit sendTrackEditCommand(line,blockNum,status);
+}
+
+//internal slot (no inputs/ outputs) - activated when the Change Switch Locations menu button is clicked
+//opens the change switch UI, connects required signals/slots
+void CTC_MainWindow::on_actionChange_Switch_Locations_triggered()
+{
+    //show the change switch UI
+    cs = new CTC_ChangeSwitches();
+    cs->show();
+
+    //connect required signals and slots
+    QObject::connect(cs, SIGNAL(requestCTCMode()), this, SLOT(receiveModeRequest()));
+    QObject::connect(this, SIGNAL(sendCTCmode(bool)), cs, SLOT(receiveCTCMode(bool)));
+    QObject::connect(cs, SIGNAL(sendSwitchData(bool,int,int)), this, SLOT(receiveSwitchUpdate(bool,int,int)));
+}
+
+//internal slot - activated switch change switch UI sends a signal containing new switch data
+//receives that signal, sends out its own signal to the wayside
+//inputs: bool - whether or not line is the red line, int - the switch block number, int - the switch connection block number
+void CTC_MainWindow::receiveSwitchUpdate(bool line, int switchLocationNum, int switchConnectionLocationNum)
+{
+    cs->close();
+    emit sendSwitchEditCommand(line,switchLocationNum, switchConnectionLocationNum);
+}
+
