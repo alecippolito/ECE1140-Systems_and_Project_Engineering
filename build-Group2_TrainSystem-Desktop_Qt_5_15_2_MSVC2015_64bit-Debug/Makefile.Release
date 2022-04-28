@@ -54,6 +54,7 @@ SOURCES       = ..\Group2_TrainSystem\ctc_choosetrackline.cpp \
 		..\Group2_TrainSystem\ctc_dispatchtrain.cpp \
 		..\Group2_TrainSystem\ctc_mainwindow.cpp \
 		..\Group2_TrainSystem\main.cpp \
+		..\Group2_TrainSystem\mockWayside.cpp \
 		..\Group2_TrainSystem\system_centraltimer_connector.cpp \
 		..\Group2_TrainSystem\TrainModelUI.cpp \
 		..\Group2_TrainSystem\trackmodel.cpp \
@@ -78,6 +79,7 @@ OBJECTS       = release\ctc_choosetrackline.obj \
 		release\ctc_dispatchtrain.obj \
 		release\ctc_mainwindow.obj \
 		release\main.obj \
+		release\mockWayside.obj \
 		release\system_centraltimer_connector.obj \
 		release\TrainModelUI.obj \
 		release\trackmodel.obj \
@@ -104,6 +106,7 @@ DIST          = redline.csv \
 		greenline.csv ..\Group2_TrainSystem\ctc_choosetrackline.h \
 		..\Group2_TrainSystem\ctc_dispatchtrain.h \
 		..\Group2_TrainSystem\ctc_mainwindow.h \
+		..\Group2_TrainSystem\mockWayside.h \
 		..\Group2_TrainSystem\system_centraltimer_connector.h \
 		..\Group2_TrainSystem\TrainModelUI.h \
 		..\Group2_TrainSystem\Train.h \
@@ -119,6 +122,7 @@ DIST          = redline.csv \
 		..\Group2_TrainSystem\ctc_dispatchtrain.cpp \
 		..\Group2_TrainSystem\ctc_mainwindow.cpp \
 		..\Group2_TrainSystem\main.cpp \
+		..\Group2_TrainSystem\mockWayside.cpp \
 		..\Group2_TrainSystem\system_centraltimer_connector.cpp \
 		..\Group2_TrainSystem\TrainModelUI.cpp \
 		..\Group2_TrainSystem\trackmodel.cpp \
@@ -207,7 +211,7 @@ all: Makefile.Release  release\Group2_TrainSystem.exe
 
 release\Group2_TrainSystem.exe: C:\Qt\5.15.2\msvc2015_64\lib\Qt5Widgets.lib C:\Qt\5.15.2\msvc2015_64\lib\Qt5Gui.lib C:\Qt\5.15.2\msvc2015_64\lib\Qt5Core.lib C:\Qt\5.15.2\msvc2015_64\lib\qtmain.lib ui_ctc_choosetrackline.h ui_ctc_dispatchtrain.h ui_ctc_mainwindow.h ui_system_centraltimer_connector.h ui_TrainModelUI.h ui_TrainControllerGUI.h ui_trackmodel.h ui_Track_mainwindow.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\ctc_choosetrackline.obj release\ctc_dispatchtrain.obj release\ctc_mainwindow.obj release\main.obj release\system_centraltimer_connector.obj release\TrainModelUI.obj release\trackmodel.obj release\yardToDormontTrackModel.obj release\Train.obj release\Block.obj release\TrainPhysics.obj release\TrainControllerGUI.obj release\TrainController.obj release\Track_controller.obj release\PLC.obj release\Track_mainwindow.obj release\qrc_trainResources.obj release\moc_ctc_choosetrackline.obj release\moc_ctc_dispatchtrain.obj release\moc_ctc_mainwindow.obj release\moc_system_centraltimer_connector.obj release\moc_TrainModelUI.obj release\moc_TrainControllerGUI.obj release\moc_trackmodel.obj release\moc_Track_mainwindow.obj
+release\ctc_choosetrackline.obj release\ctc_dispatchtrain.obj release\ctc_mainwindow.obj release\main.obj release\mockWayside.obj release\system_centraltimer_connector.obj release\TrainModelUI.obj release\trackmodel.obj release\yardToDormontTrackModel.obj release\Train.obj release\Block.obj release\TrainPhysics.obj release\TrainControllerGUI.obj release\TrainController.obj release\Track_controller.obj release\PLC.obj release\Track_mainwindow.obj release\qrc_trainResources.obj release\moc_ctc_choosetrackline.obj release\moc_ctc_dispatchtrain.obj release\moc_ctc_mainwindow.obj release\moc_system_centraltimer_connector.obj release\moc_TrainModelUI.obj release\moc_TrainControllerGUI.obj release\moc_trackmodel.obj release\moc_Track_mainwindow.obj
 $(LIBS)
 <<
 
@@ -217,10 +221,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Group2_TrainSystem.zip $(SOURCES) $(DIST) ..\Group2_TrainSystem\Group2_TrainSystem.pro C:\Qt\5.15.2\msvc2015_64\mkspecs\features\spec_pre.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\angle.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\windows-desktop.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\msvc-desktop.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\qconfig.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qt_functions.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qt_config.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\win32-msvc\qmake.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.15.2\msvc2015_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\msvc-version.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\toolchain.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\default_pre.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\resolve_config.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\default_post.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\build_pass.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qml_debug.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\precompile_header.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\warn_on.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qt.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\resources_functions.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\resources.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\moc.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\win32\opengl.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\uic.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qmake_use.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\file_copies.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\win32\windows.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\testcase_targets.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\exceptions.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\yacc.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\lex.prf ..\Group2_TrainSystem\Group2_TrainSystem.pro ..\Group2_TrainSystem\trainResources.qrc C:\Qt\5.15.2\msvc2015_64\lib\Qt5Widgets.prl C:\Qt\5.15.2\msvc2015_64\lib\Qt5Gui.prl C:\Qt\5.15.2\msvc2015_64\lib\Qt5Core.prl C:\Qt\5.15.2\msvc2015_64\lib\qtmain.prl   ..\Group2_TrainSystem\trainResources.qrc C:\Qt\5.15.2\msvc2015_64\mkspecs\features\data\dummy.cpp ..\Group2_TrainSystem\ctc_choosetrackline.h ..\Group2_TrainSystem\ctc_dispatchtrain.h ..\Group2_TrainSystem\ctc_mainwindow.h ..\Group2_TrainSystem\system_centraltimer_connector.h ..\Group2_TrainSystem\TrainModelUI.h ..\Group2_TrainSystem\Train.h ..\Group2_TrainSystem\Block.h ..\Group2_TrainSystem\TrainPhysics.h ..\Group2_TrainSystem\TrainControllerGUI.h ..\Group2_TrainSystem\TrainController.h ..\Group2_TrainSystem\trackmodel.h ..\Group2_TrainSystem\yardToDormontTrackModel.h ..\Group2_TrainSystem\Track_controller.h ..\Group2_TrainSystem\PLC.h ..\Group2_TrainSystem\Track_mainwindow.h  ..\Group2_TrainSystem\ctc_choosetrackline.cpp ..\Group2_TrainSystem\ctc_dispatchtrain.cpp ..\Group2_TrainSystem\ctc_mainwindow.cpp ..\Group2_TrainSystem\main.cpp ..\Group2_TrainSystem\system_centraltimer_connector.cpp ..\Group2_TrainSystem\TrainModelUI.cpp ..\Group2_TrainSystem\trackmodel.cpp ..\Group2_TrainSystem\yardToDormontTrackModel.cpp ..\Group2_TrainSystem\Train.cpp ..\Group2_TrainSystem\Block.cpp ..\Group2_TrainSystem\TrainPhysics.cpp ..\Group2_TrainSystem\TrainControllerGUI.cpp ..\Group2_TrainSystem\TrainController.cpp ..\Group2_TrainSystem\Track_controller.cpp ..\Group2_TrainSystem\PLC.cpp ..\Group2_TrainSystem\Track_mainwindow.cpp ..\Group2_TrainSystem\ctc_choosetrackline.ui ..\Group2_TrainSystem\ctc_dispatchtrain.ui ..\Group2_TrainSystem\ctc_mainwindow.ui ..\Group2_TrainSystem\system_centraltimer_connector.ui ..\Group2_TrainSystem\TrainModelUI.ui ..\Group2_TrainSystem\TrainControllerGUI.ui ..\Group2_TrainSystem\trackmodel.ui ..\Group2_TrainSystem\Track_mainwindow.ui    
+	$(ZIP) Group2_TrainSystem.zip $(SOURCES) $(DIST) ..\Group2_TrainSystem\Group2_TrainSystem.pro C:\Qt\5.15.2\msvc2015_64\mkspecs\features\spec_pre.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\angle.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\windows-desktop.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\msvc-desktop.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\qconfig.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qt_functions.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qt_config.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\win32-msvc\qmake.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.15.2\msvc2015_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\common\msvc-version.conf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\toolchain.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\default_pre.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\resolve_config.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\default_post.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\build_pass.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qml_debug.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\precompile_header.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\warn_on.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qt.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\resources_functions.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\resources.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\moc.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\win32\opengl.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\uic.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\qmake_use.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\file_copies.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\win32\windows.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\testcase_targets.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\exceptions.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\yacc.prf C:\Qt\5.15.2\msvc2015_64\mkspecs\features\lex.prf ..\Group2_TrainSystem\Group2_TrainSystem.pro ..\Group2_TrainSystem\trainResources.qrc C:\Qt\5.15.2\msvc2015_64\lib\Qt5Widgets.prl C:\Qt\5.15.2\msvc2015_64\lib\Qt5Gui.prl C:\Qt\5.15.2\msvc2015_64\lib\Qt5Core.prl C:\Qt\5.15.2\msvc2015_64\lib\qtmain.prl   ..\Group2_TrainSystem\trainResources.qrc C:\Qt\5.15.2\msvc2015_64\mkspecs\features\data\dummy.cpp ..\Group2_TrainSystem\ctc_choosetrackline.h ..\Group2_TrainSystem\ctc_dispatchtrain.h ..\Group2_TrainSystem\ctc_mainwindow.h ..\Group2_TrainSystem\mockWayside.h ..\Group2_TrainSystem\system_centraltimer_connector.h ..\Group2_TrainSystem\TrainModelUI.h ..\Group2_TrainSystem\Train.h ..\Group2_TrainSystem\Block.h ..\Group2_TrainSystem\TrainPhysics.h ..\Group2_TrainSystem\TrainControllerGUI.h ..\Group2_TrainSystem\TrainController.h ..\Group2_TrainSystem\trackmodel.h ..\Group2_TrainSystem\yardToDormontTrackModel.h ..\Group2_TrainSystem\Track_controller.h ..\Group2_TrainSystem\PLC.h ..\Group2_TrainSystem\Track_mainwindow.h  ..\Group2_TrainSystem\ctc_choosetrackline.cpp ..\Group2_TrainSystem\ctc_dispatchtrain.cpp ..\Group2_TrainSystem\ctc_mainwindow.cpp ..\Group2_TrainSystem\main.cpp ..\Group2_TrainSystem\mockWayside.cpp ..\Group2_TrainSystem\system_centraltimer_connector.cpp ..\Group2_TrainSystem\TrainModelUI.cpp ..\Group2_TrainSystem\trackmodel.cpp ..\Group2_TrainSystem\yardToDormontTrackModel.cpp ..\Group2_TrainSystem\Train.cpp ..\Group2_TrainSystem\Block.cpp ..\Group2_TrainSystem\TrainPhysics.cpp ..\Group2_TrainSystem\TrainControllerGUI.cpp ..\Group2_TrainSystem\TrainController.cpp ..\Group2_TrainSystem\Track_controller.cpp ..\Group2_TrainSystem\PLC.cpp ..\Group2_TrainSystem\Track_mainwindow.cpp ..\Group2_TrainSystem\ctc_choosetrackline.ui ..\Group2_TrainSystem\ctc_dispatchtrain.ui ..\Group2_TrainSystem\ctc_mainwindow.ui ..\Group2_TrainSystem\system_centraltimer_connector.ui ..\Group2_TrainSystem\TrainModelUI.ui ..\Group2_TrainSystem\TrainControllerGUI.ui ..\Group2_TrainSystem\trackmodel.ui ..\Group2_TrainSystem\Track_mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\ctc_choosetrackline.obj release\ctc_dispatchtrain.obj release\ctc_mainwindow.obj release\main.obj release\system_centraltimer_connector.obj release\TrainModelUI.obj release\trackmodel.obj release\yardToDormontTrackModel.obj release\Train.obj release\Block.obj release\TrainPhysics.obj release\TrainControllerGUI.obj release\TrainController.obj release\Track_controller.obj release\PLC.obj release\Track_mainwindow.obj release\qrc_trainResources.obj release\moc_ctc_choosetrackline.obj release\moc_ctc_dispatchtrain.obj release\moc_ctc_mainwindow.obj release\moc_system_centraltimer_connector.obj release\moc_TrainModelUI.obj release\moc_TrainControllerGUI.obj release\moc_trackmodel.obj release\moc_Track_mainwindow.obj
+	-$(DEL_FILE) release\ctc_choosetrackline.obj release\ctc_dispatchtrain.obj release\ctc_mainwindow.obj release\main.obj release\mockWayside.obj release\system_centraltimer_connector.obj release\TrainModelUI.obj release\trackmodel.obj release\yardToDormontTrackModel.obj release\Train.obj release\Block.obj release\TrainPhysics.obj release\TrainControllerGUI.obj release\TrainController.obj release\Track_controller.obj release\PLC.obj release\Track_mainwindow.obj release\qrc_trainResources.obj release\moc_ctc_choosetrackline.obj release\moc_ctc_dispatchtrain.obj release\moc_ctc_mainwindow.obj release\moc_system_centraltimer_connector.obj release\moc_TrainModelUI.obj release\moc_TrainControllerGUI.obj release\moc_trackmodel.obj release\moc_Track_mainwindow.obj
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -711,10 +715,14 @@ release\moc_system_centraltimer_connector.cpp: ..\Group2_TrainSystem\system_cent
 		..\Group2_TrainSystem\TrainControllerGUI.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTimer \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtimer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasictimer.h \
 		..\Group2_TrainSystem\Track_controller.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
 		..\Group2_TrainSystem\PLC.h \
@@ -847,10 +855,11 @@ release\moc_TrainModelUI.cpp: ..\Group2_TrainSystem\TrainModelUI.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmessagebox.h \
 		..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
 		release\moc_predefs.h \
 		C:\Qt\5.15.2\msvc2015_64\bin\moc.exe
@@ -965,12 +974,16 @@ release\moc_TrainControllerGUI.cpp: ..\Group2_TrainSystem\TrainControllerGUI.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTimer \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtimer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasictimer.h \
 		release\moc_predefs.h \
 		C:\Qt\5.15.2\msvc2015_64\bin\moc.exe
 	C:\Qt\5.15.2\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/ajipp/OneDrive/Documents/GitHub/ECE1140-Group2/build-Group2_TrainSystem-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.2/msvc2015_64/mkspecs/win32-msvc -IC:/Users/ajipp/OneDrive/Documents/GitHub/ECE1140-Group2/Group2_TrainSystem -IC:/Qt/5.15.2/msvc2015_64/include -IC:/Qt/5.15.2/msvc2015_64/include/QtWidgets -IC:/Qt/5.15.2/msvc2015_64/include/QtGui -IC:/Qt/5.15.2/msvc2015_64/include/QtANGLE -IC:/Qt/5.15.2/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\Group2_TrainSystem\TrainControllerGUI.h -o release\moc_TrainControllerGUI.cpp
@@ -1526,7 +1539,9 @@ release\ctc_dispatchtrain.obj: ..\Group2_TrainSystem\ctc_dispatchtrain.cpp ..\Gr
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcalendar.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmessagebox.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QtMath \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmath.h
 
 release\ctc_mainwindow.obj: ..\Group2_TrainSystem\ctc_mainwindow.cpp ..\Group2_TrainSystem\ctc_mainwindow.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
@@ -1789,10 +1804,14 @@ release\main.obj: ..\Group2_TrainSystem\main.cpp ..\Group2_TrainSystem\system_ce
 		..\Group2_TrainSystem\TrainControllerGUI.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTimer \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtimer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasictimer.h \
 		..\Group2_TrainSystem\Track_controller.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
 		..\Group2_TrainSystem\PLC.h \
@@ -1804,6 +1823,116 @@ release\main.obj: ..\Group2_TrainSystem\main.cpp ..\Group2_TrainSystem\system_ce
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qinputmethod.h
+
+release\mockWayside.obj: ..\Group2_TrainSystem\mockWayside.cpp ..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
+		..\Group2_TrainSystem\trackmodel.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qglobal.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qconfig.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtcore-config.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qlogging.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qflags.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qatomic.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmutex.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtgui-config.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qwidget.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstring.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qchar.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringliteral.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringview.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qpair.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qvector.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcontainertools_impl.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qpoint.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qregexp.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmargins.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpaintdevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qrect.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsize.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpalette.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qcolor.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qrgb.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qrgba64.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qbrush.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qmatrix.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpolygon.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qregion.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdatastream.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qline.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtransform.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qimage.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpixelformat.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qpixmap.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qfont.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qfontinfo.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qcursor.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qkeysequence.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qevent.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qlocale.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qset.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qurl.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qurlquery.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qfile.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qfiledevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector2d.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug
 
 release\system_centraltimer_connector.obj: ..\Group2_TrainSystem\system_centraltimer_connector.cpp ..\Group2_TrainSystem\system_centraltimer_connector.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
@@ -1922,10 +2051,14 @@ release\system_centraltimer_connector.obj: ..\Group2_TrainSystem\system_centralt
 		..\Group2_TrainSystem\TrainControllerGUI.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTimer \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtimer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasictimer.h \
 		..\Group2_TrainSystem\Track_controller.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
 		..\Group2_TrainSystem\PLC.h \
@@ -1954,10 +2087,7 @@ release\system_centraltimer_connector.obj: ..\Group2_TrainSystem\system_centralt
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qstatusbar.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QWidget \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDate \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTimer \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtimer.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasictimer.h
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug
 
 release\TrainModelUI.obj: ..\Group2_TrainSystem\TrainModelUI.cpp ..\Group2_TrainSystem\TrainModelUI.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
@@ -2083,10 +2213,11 @@ release\TrainModelUI.obj: ..\Group2_TrainSystem\TrainModelUI.cpp ..\Group2_Train
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qmessagebox.h \
 		..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
 		ui_TrainModelUI.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVariant \
@@ -2283,6 +2414,8 @@ release\yardToDormontTrackModel.obj: ..\Group2_TrainSystem\yardToDormontTrackMod
 		..\Group2_TrainSystem\Block.h
 
 release\Train.obj: ..\Group2_TrainSystem\Train.cpp ..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
@@ -2389,7 +2522,6 @@ release\Train.obj: ..\Group2_TrainSystem\Train.cpp ..\Group2_TrainSystem\Train.h
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
 		..\Group2_TrainSystem\TrainModelUI.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QMainWindow \
@@ -2592,12 +2724,16 @@ release\TrainControllerGUI.obj: ..\Group2_TrainSystem\TrainControllerGUI.cpp ..\
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qicon.h \
 		..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTimer \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtimer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasictimer.h \
 		ui_TrainControllerGUI.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVariant \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QApplication \
@@ -2644,14 +2780,13 @@ release\TrainControllerGUI.obj: ..\Group2_TrainSystem\TrainControllerGUI.cpp ..\
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qstatusbar.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QWidget \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTimer \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtimer.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasictimer.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QObject \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug
 
 release\TrainController.obj: ..\Group2_TrainSystem\TrainController.cpp ..\Group2_TrainSystem\TrainController.h \
 		..\Group2_TrainSystem\Train.h \
+		..\Group2_TrainSystem\mockWayside.h \
+		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\trackmodel.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\QDialog \
 		C:\Qt\5.15.2\msvc2015_64\include\QtWidgets\qdialog.h \
@@ -2758,9 +2893,15 @@ release\TrainController.obj: ..\Group2_TrainSystem\TrainController.cpp ..\Group2
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QVector \
-		..\Group2_TrainSystem\Block.h \
 		..\Group2_TrainSystem\TrainPhysics.h \
-		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTimer \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qtimer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qbasictimer.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDate \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QTime \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QDebug \
+		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QObject
 
 release\Track_controller.obj: ..\Group2_TrainSystem\Track_controller.cpp ..\Group2_TrainSystem\Track_controller.h \
 		C:\Qt\5.15.2\msvc2015_64\include\QtCore\QString \
