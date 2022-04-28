@@ -99,7 +99,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>180</y>
+      <y>140</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -110,7 +110,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Service Brake</string>
+     <string>Enable Service Brake</string>
     </property>
    </widget>
    <widget class="QLabel" name="speedLabel">
@@ -923,6 +923,24 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="releaseServiceBrake">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>4</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Disable Serevice Brake</string>
     </property>
    </widget>
   </widget>

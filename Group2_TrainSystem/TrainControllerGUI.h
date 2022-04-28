@@ -65,6 +65,8 @@ private slots:
     void on_tempSubmit_clicked();
     void on_kpkiSubmit_clicked();
 
+    void on_releaseServiceBrake_clicked();
+
 private:
     // *************************************************
     //              Generated Instance
