@@ -718,7 +718,6 @@ font-weight: bold;</string>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="trainResources.qrc"/>

@@ -58,6 +58,8 @@
     //set power of train car based on power and speed limit from train controller
     void Train::setPower(double p, double limit)
     {
+        if(available)
+        {
         //check block first to see if at end of route, update whether at end of block after setting getting new speed from power
         checkBlock();
         //if(blocksLeft >= 0)
@@ -68,6 +70,12 @@
         //}
 
         updateUI();
+        }
+        else
+        {
+            trainUI->hide();
+            trainUI->~MainWindow();
+        }
         //if(blocksLeft == 0)
         //{
           //  trainUI->hide();
@@ -200,23 +208,31 @@
             atEndOfBlock = false;
             currentBlock->occupied = false;
             currentBlock = nextBlock;
-            if((currentBlock->blockNumber == 57 && currentBlock->lineType == "Green") || (currentBlock->blockNumber == 77 && currentBlock->lineType == "Red")) //if the currentBlock is the yard block
+            //if((currentBlock->blockNumber == 57 && currentBlock->lineType == "Green") || (currentBlock->blockNumber == 77 && currentBlock->lineType == "Red")) //if the currentBlock is the yard block
+            if(currentBlock == nullptr)
             {
                    available = false;
                    nextBlock = nullptr;
                    //shut down train
                    trainUI->hide();
-                   delete this;
+                   trainUI->~MainWindow();
+                   qDebug() << "Before delete this";
+                   delete trainMetrics;
+                   //delete trainUI;
+
+                   qDebug() << "After delete this";
             }
-            else{
+            else
+                {
                     //get next block, if greenline and at 57 then reached end of route
                     nextBlock = route->getNextBlock(whichRouteUsed, currentRouteIndex);
                     currentRouteIndex++;
+                    speedLimitKmHr = currentBlock->speedLimitKmHr;
+                    currentBlock->occupied = true;
+                    trainMetrics->setBlock(currentBlock);
                 }
 
-            speedLimitKmHr = currentBlock->speedLimitKmHr;
-            currentBlock->occupied = true;
-            trainMetrics->setBlock(currentBlock);
+
 
 
 
@@ -258,6 +274,7 @@
 
     void Train::updateUI()
     {
+        if(available){
         //update all UI based on train car/train physics information
         trainUI->updateNumCars(trainMetrics->numCars);
         trainUI->updateLength(trainMetrics->length);
@@ -291,6 +308,7 @@
         trainUI->updateEngineFailureStatus(engineFailure);
         trainUI->updateEmergencyBrakeStatus(passengerBrake);
         trainUI->updateAdSpace(adSpace);
+        }
     }
 
     Block* Train :: getNextBlock()
@@ -306,6 +324,7 @@
     void Train :: setAdSpace(bool newAdSpace){
         adSpace = newAdSpace;
     }
+
     double Train :: getSuggetedSpeed(){
         double suggestedSpeed = 40; //in kmh
         return suggestedSpeed;

@@ -14,7 +14,7 @@ class TrainPhysics{
         double lastAcceleration = 0;
         bool emergencyBrake = false;
         bool serviceBrake = false;
-        double accelerationLimit =0.5;
+        double accelerationLimit = 0.5;
         double decelerationLimitServiceBrake = -1.2;
         double decelerationLimitEmergencyBrake = -2.73;
         double force = 0;

@@ -54,6 +54,10 @@ System_CentralTimer_Connector::System_CentralTimer_Connector(QWidget *parent)
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
     timer->start(1000);
 
+    //train timer called 10 times a second
+    trainTimer = new QTimer(this);
+    connect(trainTimer, SIGNAL(timeout()), this, SLOT(updateTrainTime()));
+    trainTimer->start(100);
 
     //CONNECTIONS BETWEEN MODULES vvvvvvv
 
@@ -125,7 +129,6 @@ void System_CentralTimer_Connector::receiveDispatchSignal_test(int TrainNum_temp
     //connect the time dialation to the train controller
     QObject::connect(this, SIGNAL(sendTimeDialation(double)),tcGUI,SLOT(receiveTimeDialation(double)));
     emit sendTimeDialation(timeDialation);
-
 }
 
 void System_CentralTimer_Connector::updateTime()
@@ -134,13 +137,26 @@ void System_CentralTimer_Connector::updateTime()
     //and it adds 1 to the date value
     day = (secondsInDay == 86399 ? (day == 6 ? 0 : day + 1) : day);
     secondsInDay = (secondsInDay+1)%86400;
-    if(tcGUI != NULL){
-    tcGUI->timerEvent(NULL);
-       }
+    if(tcGUI != NULL && tcGUI->tcAvailable == false)
+    {
+        tcGUI->hide();
+        tcGUI->close();
+    }
+    //if(tcGUI != NULL){
+    //tcGUI->timerEvent(NULL);
+    //}
     emit sendTime(day,secondsInDay);
     emit sendTimeUpdate(timeDialation);
 
     displayDateTime();
+}
+
+void System_CentralTimer_Connector::updateTrainTime()
+{
+    if(tcGUI != NULL)
+    {
+        tcGUI->timerEvent(NULL);
+    }
 }
 
 
@@ -149,6 +165,7 @@ void System_CentralTimer_Connector::on_OneTimesSpeed_clicked()
 {
     timeDialation = 1;
     timer->setInterval(1000/timeDialation);
+    trainTimer->setInterval(100/timeDialation);
     emit sendTimeDialation(timeDialation);
 }
 
@@ -157,6 +174,7 @@ void System_CentralTimer_Connector::on_TenTimesSpeed_clicked()
 {
     timeDialation = 10;
     timer->setInterval(1000/timeDialation);
+    trainTimer->setInterval(100/timeDialation);
     emit sendTimeDialation(timeDialation);
 }
 
@@ -164,6 +182,7 @@ void System_CentralTimer_Connector::on_SixtyTimesSpeed_clicked()
 {
     timeDialation = 60;
     timer->setInterval(1000/timeDialation);
+    trainTimer->setInterval(100/timeDialation);
     emit sendTimeDialation(timeDialation);
 }
 
@@ -171,6 +190,7 @@ void System_CentralTimer_Connector::on_HundredTimesSpeed_clicked()
 {
     timeDialation = 100;
     timer->setInterval(1000/timeDialation);
+    trainTimer->setInterval(100/timeDialation);
     emit sendTimeDialation(timeDialation);
 }
 
@@ -178,6 +198,7 @@ void System_CentralTimer_Connector::on_ThousandTimesSpeed_clicked()
 {
     timeDialation = 1000;
     timer->setInterval(1000/timeDialation);
+    trainTimer->setInterval(100/timeDialation);
     emit sendTimeDialation(timeDialation);
 }
 

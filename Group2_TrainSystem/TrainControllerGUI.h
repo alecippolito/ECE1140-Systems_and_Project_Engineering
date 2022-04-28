@@ -33,6 +33,7 @@ public:
     // *************************************************
     TrainController tc;
     double setpointSpeedForModel;
+    bool tcAvailable = true;
     // *************************************************
     //              Added Functions
     // *************************************************
